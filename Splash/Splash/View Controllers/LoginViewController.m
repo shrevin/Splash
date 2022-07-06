@@ -9,17 +9,26 @@
 #import "Parse/Parse.h"
 
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
 
 @end
 
 @implementation LoginViewController
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return YES;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
 }
 
 - (IBAction)signInButton:(id)sender {
