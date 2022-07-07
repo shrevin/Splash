@@ -143,7 +143,17 @@
 }
 
 - (IBAction)clickSave:(id)sender {
+    int minutes = [self.minutePicker selectedRowInComponent:0] + 1;
+    int seconds = [self.secondPicker selectedRowInComponent:0];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateFormat = @"mm:ss.S";
+    dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
+    NSDate *goal =[NSDate dateWithTimeIntervalSince1970:seconds + (minutes*60)];
+    self.user[@"goal"] = goal;
+    [self.user saveInBackground];
+    //NSLog([dateFormat stringFromDate: goal]);
 }
+
 
 /*
 #pragma mark - Navigation
