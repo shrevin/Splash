@@ -9,16 +9,20 @@
 #import "Parse/Parse.h"
 #import "StatsCell.h"
 #import "LoginViewController.h"
+#import "Parse/PFImageView.h"
 
-@interface HomeViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HomeViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *profileImage;
+@property (strong, nonatomic) IBOutlet PFImageView *profileImage;
+
 @property (strong, nonatomic) IBOutlet UIPickerView *minutePicker;
 @property (strong, nonatomic) IBOutlet UIPickerView *secondPicker;
 @property (strong,nonatomic) NSArray *scoreNames;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) IBOutlet UIButton *profileButton;
+@property (strong, nonatomic) PFUser *user;
+
 
 @end
 
@@ -27,8 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    PFUser *user = [PFUser currentUser];
-    self.usernameLabel.text = user.username;
+    self.user = [PFUser currentUser];
+    self.usernameLabel.text = self.user.username;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.minutePicker.delegate = self;
     self.minutePicker.dataSource = self;
@@ -38,12 +42,15 @@
     [self.minutePicker reloadAllComponents];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    if (self.user[@"profile"]) {
+        self.profileImage.file = self.user[@"profile"];
+        [self.profileImage loadInBackground];
+    }
     
     
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     return CGSizeMake(self.collectionView.bounds.size.width/3, 150);
 }
 
@@ -90,10 +97,49 @@
     }];
 }
 - (IBAction)clickCamera:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+
+    // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+
+    // Do something with the images (based on your use case)
+    if (editedImage) {
+        self.profileImage.image = editedImage;
+    } else {
+        self.profileImage.image = originalImage;
+    }
+    NSData *imageData = UIImagePNGRepresentation(self.profileImage.image);
+    PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"profile.png" data:imageData];
+    PFUser *user = [PFUser currentUser];
+    user[@"profile"] = imageFile;
+    [user saveInBackground];
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)clickLibrary:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
 - (IBAction)clickSave:(id)sender {
