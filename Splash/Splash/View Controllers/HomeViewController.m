@@ -8,15 +8,17 @@
 #import "HomeViewController.h"
 #import "Parse/Parse.h"
 #import "StatsCell.h"
+#import "LoginViewController.h"
 
 @interface HomeViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImage;
-@property (strong, nonatomic) IBOutlet UIPickerView *goalPicker;
-@property (strong,nonatomic) NSArray *goalData;
+@property (strong, nonatomic) IBOutlet UIPickerView *minutePicker;
+@property (strong, nonatomic) IBOutlet UIPickerView *secondPicker;
 @property (strong,nonatomic) NSArray *scoreNames;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) IBOutlet UIButton *profileButton;
 
 @end
 
@@ -28,13 +30,15 @@
     PFUser *user = [PFUser currentUser];
     self.usernameLabel.text = user.username;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
-    self.goalPicker.delegate = self;
-    self.goalPicker.dataSource = self;
-    self.goalData = @[@"1 min", @"2 min", @"3 min", @"4 min", @"5 min", @"6 min", @"7 min", @"8 min"];
+    self.minutePicker.delegate = self;
+    self.minutePicker.dataSource = self;
+    self.secondPicker.delegate = self;
+    self.secondPicker.dataSource = self;
     self.scoreNames = @[@"Your Goal", @"Bubblescore", @"Streak 🔥", @"Avg. Shower Time", @"Total Shower Time", @"# of Showers"];
-    [self.goalPicker reloadAllComponents];
+    [self.minutePicker reloadAllComponents];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    
     
 }
 
@@ -50,11 +54,19 @@
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.goalData.count;
+    if (pickerView.tag == 1) {
+        return 7;
+    } else {
+        return 60;
+    }
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component API_UNAVAILABLE(tvos) {
-    return self.goalData[row];
+    if (pickerView.tag == 1) {
+        return [NSString stringWithFormat:@"%ld", row + 1];
+    } else {
+        return [NSString stringWithFormat:@"%ld", row];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -69,6 +81,23 @@
     return cell;
 }
 
+- (IBAction)clickLogout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
+        self.view.window.rootViewController = loginVC;
+    }];
+}
+- (IBAction)clickCamera:(id)sender {
+    
+}
+
+- (IBAction)clickLibrary:(id)sender {
+}
+
+- (IBAction)clickSave:(id)sender {
+}
 
 /*
 #pragma mark - Navigation

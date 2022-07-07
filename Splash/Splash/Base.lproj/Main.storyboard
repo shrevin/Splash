@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,14 +221,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXD-v7-kZv">
-                                <rect key="frame" x="30" y="762" width="354" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
-                            </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjX-PI-EQT">
-                                <rect key="frame" x="0.0" y="484" width="414" height="263"/>
-                            </pickerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HJO-r5-uPX">
                                 <rect key="frame" x="0.0" y="265" width="414" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -279,37 +270,93 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTu-t8-nGc">
-                                <rect key="frame" x="58" y="216" width="24.5" height="22"/>
-                                <menu key="menu" id="i98-Fl-H0D">
-                                    <menuOptions key="menuOptions" displayInline="YES" singleSelection="YES"/>
-                                    <children>
-                                        <command title="Take photo" id="APV-sF-L2e"/>
-                                        <command title="Choose from library" id="se9-hR-1n5"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" image="camera" catalog="system"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJf-sX-gZP">
+                                <rect key="frame" x="146" y="605" width="28" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjX-PI-EQT">
+                                <rect key="frame" x="30" y="507" width="108" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="3Yu-0A-XsA"/>
+                                    <constraint firstAttribute="height" constant="216" id="cJI-8S-q2a"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXD-v7-kZv">
+                                <rect key="frame" x="179.5" y="731" width="55.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="clickSave:" destination="uNC-Jf-UoS" eventType="touchUpInside" id="CW3-0r-bU4"/>
+                                </connections>
+                            </button>
+                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhl-qF-TdI">
+                                <rect key="frame" x="238" y="507" width="108" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="dmZ-8W-Pnu"/>
+                                    <constraint firstAttribute="width" constant="108" id="yYp-6D-z5b"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acR-7n-BHh">
+                                <rect key="frame" x="357" y="604.5" width="27" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4c-eN-JAF">
+                                <rect key="frame" x="20" y="210" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="CPS-UK-JLY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="c16-tU-8wP"/>
+                                    <constraint firstAttribute="width" constant="36" id="yIL-Tj-wAi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system"/>
+                                <connections>
+                                    <action selector="clickCamera:" destination="uNC-Jf-UoS" eventType="touchUpInside" id="y8d-lj-yi4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jak-cO-zv5">
+                                <rect key="frame" x="84" y="210" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="gF9-Wk-rgj"/>
+                                    <constraint firstAttribute="height" constant="36" id="tqE-OZ-3Ow"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.grid.3x3.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="clickLibrary:" destination="uNC-Jf-UoS" eventType="touchUpInside" id="0GX-Ws-aqr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="csP-AC-ihJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HJO-r5-uPX" firstAttribute="top" secondItem="II5-zD-fqF" secondAttribute="bottom" constant="63" id="0CE-Cf-bsF"/>
+                            <constraint firstItem="f4c-eN-JAF" firstAttribute="top" secondItem="II5-zD-fqF" secondAttribute="bottom" constant="8" symbolic="YES" id="107-Yy-VxH"/>
                             <constraint firstItem="HJO-r5-uPX" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" id="4Do-We-MzJ"/>
                             <constraint firstItem="f3y-Lm-Nbx" firstAttribute="top" secondItem="HJO-r5-uPX" secondAttribute="bottom" constant="28" id="4Xh-Mm-Lbt"/>
-                            <constraint firstItem="gjX-PI-EQT" firstAttribute="top" secondItem="f3y-Lm-Nbx" secondAttribute="bottom" constant="20" id="7Tw-kV-B6B"/>
-                            <constraint firstItem="csP-AC-ihJ" firstAttribute="bottom" secondItem="tXD-v7-kZv" secondAttribute="bottom" constant="20" id="7nZ-Yl-Ss9"/>
-                            <constraint firstItem="gjX-PI-EQT" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" id="BOJ-LF-1g6"/>
-                            <constraint firstItem="ZTu-t8-nGc" firstAttribute="centerX" secondItem="II5-zD-fqF" secondAttribute="centerX" id="HTF-F3-DjJ"/>
-                            <constraint firstItem="csP-AC-ihJ" firstAttribute="trailing" secondItem="gjX-PI-EQT" secondAttribute="trailing" id="HoH-rE-OuK"/>
+                            <constraint firstItem="csP-AC-ihJ" firstAttribute="bottom" secondItem="tXD-v7-kZv" secondAttribute="bottom" constant="51" id="7nZ-Yl-Ss9"/>
+                            <constraint firstItem="yhl-qF-TdI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MJf-sX-gZP" secondAttribute="trailing" constant="10" id="9o5-3o-HFE"/>
+                            <constraint firstItem="csP-AC-ihJ" firstAttribute="trailing" secondItem="acR-7n-BHh" secondAttribute="trailing" constant="30" id="Eaw-Vg-gvR"/>
+                            <constraint firstItem="MJf-sX-gZP" firstAttribute="centerY" secondItem="gjX-PI-EQT" secondAttribute="centerY" id="Ep5-hd-KWj"/>
+                            <constraint firstItem="acR-7n-BHh" firstAttribute="leading" secondItem="yhl-qF-TdI" secondAttribute="trailing" constant="11" id="FSu-ZB-5V9"/>
+                            <constraint firstItem="f4c-eN-JAF" firstAttribute="leading" secondItem="II5-zD-fqF" secondAttribute="leading" id="GpR-qS-9av"/>
                             <constraint firstItem="II5-zD-fqF" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" constant="20" id="L8W-yp-Nap"/>
                             <constraint firstItem="II5-zD-fqF" firstAttribute="top" secondItem="csP-AC-ihJ" secondAttribute="top" constant="14" id="LVu-cv-UjO"/>
-                            <constraint firstItem="tXD-v7-kZv" firstAttribute="top" secondItem="gjX-PI-EQT" secondAttribute="bottom" constant="15" id="Vr9-YN-lp2"/>
+                            <constraint firstItem="tXD-v7-kZv" firstAttribute="top" secondItem="gjX-PI-EQT" secondAttribute="bottom" constant="8" id="NE5-pj-8jo"/>
+                            <constraint firstItem="gjX-PI-EQT" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" constant="30" id="NZg-EU-3nR"/>
+                            <constraint firstItem="yhl-qF-TdI" firstAttribute="centerY" secondItem="gjX-PI-EQT" secondAttribute="centerY" id="QBg-se-ZVu"/>
+                            <constraint firstItem="acR-7n-BHh" firstAttribute="centerY" secondItem="yhl-qF-TdI" secondAttribute="centerY" id="SrF-Vy-Ne1"/>
                             <constraint firstItem="csP-AC-ihJ" firstAttribute="trailing" secondItem="HJO-r5-uPX" secondAttribute="trailing" id="XVO-8z-zQD"/>
                             <constraint firstItem="f3y-Lm-Nbx" firstAttribute="centerX" secondItem="csP-AC-ihJ" secondAttribute="centerX" id="Ysj-m4-d9I"/>
-                            <constraint firstItem="ZTu-t8-nGc" firstAttribute="top" secondItem="II5-zD-fqF" secondAttribute="bottom" constant="14" id="fVR-w4-YLF"/>
-                            <constraint firstItem="csP-AC-ihJ" firstAttribute="trailing" secondItem="tXD-v7-kZv" secondAttribute="trailing" constant="30" id="uuC-Du-VkK"/>
-                            <constraint firstItem="tXD-v7-kZv" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" constant="30" id="w6S-mA-6hZ"/>
+                            <constraint firstItem="tXD-v7-kZv" firstAttribute="centerX" secondItem="csP-AC-ihJ" secondAttribute="centerX" id="aeH-5D-VZl"/>
+                            <constraint firstItem="MJf-sX-gZP" firstAttribute="leading" secondItem="gjX-PI-EQT" secondAttribute="trailing" constant="8" symbolic="YES" id="dcK-fw-flp"/>
+                            <constraint firstItem="Jak-cO-zv5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f4c-eN-JAF" secondAttribute="trailing" constant="10" id="few-sc-IG5"/>
+                            <constraint firstItem="Jak-cO-zv5" firstAttribute="top" secondItem="II5-zD-fqF" secondAttribute="bottom" constant="8" symbolic="YES" id="prJ-aQ-dma"/>
+                            <constraint firstItem="gjX-PI-EQT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="f3y-Lm-Nbx" secondAttribute="bottom" constant="10" id="uqB-cE-ZJb"/>
+                            <constraint firstItem="Jak-cO-zv5" firstAttribute="trailing" secondItem="II5-zD-fqF" secondAttribute="trailing" id="z58-ga-231"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="p3p-it-sjS">
@@ -319,13 +366,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="clickLogout:" destination="uNC-Jf-UoS" eventType="touchUpInside" id="LMt-DI-wU3"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="HJO-r5-uPX" id="W4P-ir-YYe"/>
-                        <outlet property="goalPicker" destination="gjX-PI-EQT" id="8vB-fI-5pO"/>
+                        <outlet property="minutePicker" destination="gjX-PI-EQT" id="uWD-sI-1gS"/>
                         <outlet property="profileImage" destination="II5-zD-fqF" id="DnG-Ec-7Nf"/>
+                        <outlet property="secondPicker" destination="yhl-qF-TdI" id="kwM-6Z-UNb"/>
                         <outlet property="usernameLabel" destination="bwo-MN-ybW" id="BuO-4V-Vp0"/>
                     </connections>
                 </viewController>
@@ -474,6 +525,7 @@
         <image name="globe.americas.fill" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="square.grid.3x3.fill" catalog="system" width="128" height="112"/>
         <image name="timer" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
