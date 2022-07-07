@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="893" y="84"/>
         </scene>
-        <!--Time View Controller-->
+        <!--Beat your goal!-->
         <scene sceneID="rqk-Hw-hfW">
             <objects>
                 <viewController id="8PD-3t-jXJ" customClass="TimeViewController" sceneMemberID="viewController">
@@ -110,48 +110,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Singing in the Shower" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7b-zM-lgv">
-                                <rect key="frame" x="20" y="76" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Whn-cS-rHp">
-                                <rect key="frame" x="131" y="124" width="153" height="32"/>
+                                <rect key="frame" x="131" y="99" width="153" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Music"/>
                                     <segment title="No Music"/>
                                 </segments>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-je-QFi">
-                                <rect key="frame" x="39" y="667" width="336" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.0" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbL-Az-70A">
+                                <rect key="frame" x="81" y="502.5" width="252" height="100.5"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="65"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDF-vt-EYJ">
+                                <rect key="frame" x="167" y="683" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="HrH-gN-sCE"/>
+                                    <constraint firstAttribute="width" constant="80" id="yAu-lo-Lc6"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Start">
+                                <buttonConfiguration key="configuration" style="plain" title="Finish">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickStop:" destination="8PD-3t-jXJ" eventType="touchUpInside" id="1wY-iT-TPv"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdS-we-adX">
-                                <rect key="frame" x="39" y="739" width="336" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-je-QFi">
+                                <rect key="frame" x="167" y="683" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Th5-ln-NlM"/>
+                                    <constraint firstAttribute="height" constant="80" id="bxc-SO-iDv"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Stop">
-                                    <color key="baseForegroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Start" cornerStyle="large">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickStart:" destination="8PD-3t-jXJ" eventType="touchUpInside" id="qiT-Bh-u39"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GeP-mw-6d2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="ZxB-je-QFi" secondAttribute="bottom" constant="50" id="0DP-of-T7v"/>
+                            <constraint firstItem="ZxB-je-QFi" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="80" id="721-cN-Stt"/>
+                            <constraint firstItem="PDF-vt-EYJ" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="80" id="Wso-hT-wJS"/>
+                            <constraint firstItem="TbL-Az-70A" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="bU1-Ah-Sap"/>
+                            <constraint firstItem="PDF-vt-EYJ" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="ep8-2a-fVW"/>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="PDF-vt-EYJ" secondAttribute="bottom" constant="50" id="wVb-fl-DpB"/>
+                            <constraint firstItem="ZxB-je-QFi" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="z0u-Rz-Al4"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bbu-2l-kMt"/>
+                    <navigationItem key="navigationItem" title="Beat your goal!" id="bbu-2l-kMt"/>
+                    <connections>
+                        <outlet property="startButton" destination="ZxB-je-QFi" id="mF5-xH-lso"/>
+                        <outlet property="stopButton" destination="PDF-vt-EYJ" id="Eul-KI-xsL"/>
+                        <outlet property="stopwatchLabel" destination="TbL-Az-70A" id="tSS-Qk-s00"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sei-og-wsN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2586.9565217391305" y="950.89285714285711"/>
+            <point key="canvasLocation" x="2418.840579710145" y="950.89285714285711"/>
         </scene>
         <!--Impact View Controller-->
         <scene sceneID="cWX-Pc-nXm">
