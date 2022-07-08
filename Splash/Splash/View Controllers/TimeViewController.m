@@ -8,6 +8,8 @@
 #import "TimeViewController.h"
 #import "Parse/Parse.h"
 #import <QuartzCore/QuartzCore.h>
+#import <SpotifyiOS/SpotifyiOS.h>
+
 
 
 @interface TimeViewController ()
@@ -29,7 +31,6 @@ int startMinute;
 int startSeconds;
 int currMinute;
 int currSeconds;
-NSDate *start;
 CFTimeInterval startTime;
 
 
@@ -42,11 +43,14 @@ CFTimeInterval startTime;
     dateFormat.dateFormat = @"mm:ss.S";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     self.stopwatchLabel.text = [dateFormat stringFromDate: self.user[@"goal"]];
     dateAtStart = self.user[@"goal"];
+    self.startButton.hidden = NO;
+    self.stopButton.hidden = YES;
 
 }
 
@@ -87,6 +91,7 @@ CFTimeInterval startTime;
 
 
 - (IBAction)clickStart:(id)sender {
+    startTime = CACurrentMediaTime();
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:dateAtStart];
     currMinute = [components minute];
@@ -95,8 +100,7 @@ CFTimeInterval startTime;
     startSeconds = [components second];
     downTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(dateForFormatter) userInfo:nil repeats:true];
     self.startButton.hidden = YES;
-    start = [NSDate date];
-    startTime = CACurrentMediaTime();
+    self.stopButton.hidden = NO;
     
 }
 
@@ -106,13 +110,13 @@ CFTimeInterval startTime;
     [upTimer invalidate];
     [downTimer invalidate];
     self.startButton.hidden = NO;
+    self.stopButton.hidden = YES;
     self.stopwatchLabel.text = [dateFormat stringFromDate: self.user[@"goal"]];
     currMinute = startMinute;
     currSeconds = startSeconds;
     self.stopwatchLabel.textColor = [UIColor blackColor];
-    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    NSLog([NSString stringWithFormat:@"%d", timeInterval]);
     CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+    NSLog([NSString stringWithFormat:@"%ld", elapsedTime]);
 }
 
 /*
