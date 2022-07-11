@@ -9,6 +9,7 @@
 #import <SpotifyiOS/SpotifyiOS.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, SPTSessionManagerDelegate>
+// , SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate
 
 
 @end

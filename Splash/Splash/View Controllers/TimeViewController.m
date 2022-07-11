@@ -138,10 +138,17 @@ UIAlertController *alert;
         [Shower postShower:@(roundf(elapsedTime)) met:@(metGoal) g:@(goalSeconds) completion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error == nil) {
                 NSLog(@"SUCCESSFULLY SAVED SHOWER");
+                if (metGoal >= 0) {
+                    self.user[@"bubblescore"] = @([self.user[@"bubblescore"] intValue] + 1);
+                    [self.user saveInBackground];
+                }
+                self.user[@"numShowers"] = @([self.user[@"bubblescore"] intValue] + 1);
+                [self.user saveInBackground];
             } else {
                 NSLog(@"did not save shower");
             }
         }];
+        
     }];
     // add the OK action to the alert controller
     [alert addAction:saveAction];

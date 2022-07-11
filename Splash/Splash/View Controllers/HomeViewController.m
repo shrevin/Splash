@@ -50,6 +50,10 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [self.collectionView reloadData];
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.collectionView.bounds.size.width/3, 150);
 }
@@ -84,7 +88,14 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     StatsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"stats" forIndexPath:indexPath];
     NSString *name = self.scoreNames[indexPath.row];
-    [cell setCell:name value:@"20"];
+    if (indexPath.row == 1) {
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
+        NSLog([NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]);
+    } else if (indexPath.row == 5){
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
+    } else {
+        [cell setCell:name value:@"20"];
+    }
     return cell;
 }
 

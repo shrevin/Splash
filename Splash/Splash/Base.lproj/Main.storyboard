@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -110,22 +111,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Whn-cS-rHp">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Whn-cS-rHp">
                                 <rect key="frame" x="131" y="99" width="153" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Music"/>
                                     <segment title="No Music"/>
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.0" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbL-Az-70A">
-                                <rect key="frame" x="81" y="502.5" width="252" height="100.5"/>
+                                <rect key="frame" x="81" y="635.5" width="252" height="98"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="98" id="1AS-qu-qzA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="65"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDF-vt-EYJ">
-                                <rect key="frame" x="167" y="683" width="80" height="80"/>
+                                <rect key="frame" x="167" y="733" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="HrH-gN-sCE"/>
@@ -140,7 +144,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-je-QFi">
-                                <rect key="frame" x="167" y="683" width="80" height="80"/>
+                                <rect key="frame" x="167" y="733" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Th5-ln-NlM"/>
@@ -154,16 +158,58 @@
                                     <action selector="clickStart:" destination="8PD-3t-jXJ" eventType="touchUpInside" id="qiT-Bh-u39"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Spotify account:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QM-Lh-DwA">
+                                <rect key="frame" x="15" y="154" width="232" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fX1-zS-lFB">
+                                <rect key="frame" x="257" y="140.5" width="145" height="48"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Continue with Spotify">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.quarternote.3" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sej-44-sR8">
+                                <rect key="frame" x="11" y="208" width="391" height="303"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="304" id="iDd-zt-Zwf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsg-De-zNI">
+                                <rect key="frame" x="163" y="531.5" width="88.5" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GeP-mw-6d2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="ZxB-je-QFi" secondAttribute="bottom" constant="50" id="0DP-of-T7v"/>
-                            <constraint firstItem="ZxB-je-QFi" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="80" id="721-cN-Stt"/>
-                            <constraint firstItem="PDF-vt-EYJ" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="80" id="Wso-hT-wJS"/>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="ZxB-je-QFi" secondAttribute="bottom" id="0DP-of-T7v"/>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="trailing" secondItem="Whn-cS-rHp" secondAttribute="trailing" constant="130" id="3j0-Qg-XQd"/>
+                            <constraint firstItem="ZxB-je-QFi" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="-0.5" id="721-cN-Stt"/>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="trailing" secondItem="fX1-zS-lFB" secondAttribute="trailing" constant="12" id="9gh-aN-tNe"/>
+                            <constraint firstItem="sej-44-sR8" firstAttribute="leading" secondItem="GeP-mw-6d2" secondAttribute="leading" constant="11" id="BkG-dv-1Z3"/>
+                            <constraint firstItem="2QM-Lh-DwA" firstAttribute="top" secondItem="Whn-cS-rHp" secondAttribute="bottom" constant="24" id="FSW-Ai-lWY"/>
+                            <constraint firstItem="sej-44-sR8" firstAttribute="top" secondItem="2QM-Lh-DwA" secondAttribute="bottom" constant="32.5" id="LyS-lb-6fA"/>
+                            <constraint firstItem="Dsg-De-zNI" firstAttribute="centerX" secondItem="TbL-Az-70A" secondAttribute="centerX" id="MIY-E0-MQF"/>
+                            <constraint firstItem="Dsg-De-zNI" firstAttribute="top" secondItem="sej-44-sR8" secondAttribute="bottom" constant="20" id="W5j-jA-eNm"/>
+                            <constraint firstItem="PDF-vt-EYJ" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="-0.5" id="Wso-hT-wJS"/>
                             <constraint firstItem="TbL-Az-70A" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="bU1-Ah-Sap"/>
+                            <constraint firstItem="fX1-zS-lFB" firstAttribute="leading" secondItem="2QM-Lh-DwA" secondAttribute="trailing" constant="10" id="dQu-H1-bMm"/>
                             <constraint firstItem="PDF-vt-EYJ" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="ep8-2a-fVW"/>
-                            <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="PDF-vt-EYJ" secondAttribute="bottom" constant="50" id="wVb-fl-DpB"/>
+                            <constraint firstItem="Whn-cS-rHp" firstAttribute="top" secondItem="GeP-mw-6d2" secondAttribute="top" constant="11" id="hYg-fP-Xa8"/>
+                            <constraint firstItem="2QM-Lh-DwA" firstAttribute="leading" secondItem="GeP-mw-6d2" secondAttribute="leading" constant="15" id="kE1-oP-qud"/>
+                            <constraint firstItem="Whn-cS-rHp" firstAttribute="leading" secondItem="GeP-mw-6d2" secondAttribute="leading" constant="131" id="ojQ-nu-K9M"/>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="trailing" secondItem="sej-44-sR8" secondAttribute="trailing" constant="12" id="paS-G7-tpV"/>
+                            <constraint firstItem="TbL-Az-70A" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dsg-De-zNI" secondAttribute="bottom" constant="10" id="uAr-iX-5TV"/>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="PDF-vt-EYJ" secondAttribute="bottom" id="wVb-fl-DpB"/>
+                            <constraint firstItem="fX1-zS-lFB" firstAttribute="centerY" secondItem="2QM-Lh-DwA" secondAttribute="centerY" id="yKN-X8-Cj7"/>
                             <constraint firstItem="ZxB-je-QFi" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="z0u-Rz-Al4"/>
                         </constraints>
                     </view>
@@ -178,17 +224,86 @@
             </objects>
             <point key="canvasLocation" x="2418.840579710145" y="950.89285714285711"/>
         </scene>
-        <!--Impact View Controller-->
+        <!--Impact-->
         <scene sceneID="cWX-Pc-nXm">
             <objects>
                 <viewController id="VuP-Ft-7g2" customClass="ImpactViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VXd-pr-qWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M5-zd-2Xb">
+                                <rect key="frame" x="32" y="159.5" width="351" height="203"/>
+                                <color key="backgroundColor" red="0.65575445600000004" green="0.91976243260000001" blue="0.86031611060000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">The average shower lasts 8 minutes, meaning around 16 gallons of water are used up (think of 16 milk cartons!)
+The recommended shower time is 4 min! Keep working on your goal!
+Momentarily switching off the shower when you don’t need the water to flow, like when you’re soaping up, shampooing or shaving can also save you lots of water.
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemTealColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important Facts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUh-ni-cA5">
+                                <rect key="frame" x="150.5" y="125" width="113" height="18.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calculate Your Impact:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELw-n0-Wva">
+                                <rect key="frame" x="32" y="438" width="171" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter 2.1 (avg) if unsure" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d92-Jw-sIn">
+                                <rect key="frame" x="186" y="492" width="180" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg. water flow of your showerhead:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jX-EP-WjW">
+                                <rect key="frame" x="35" y="476" width="140" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2if-to-G2Z">
+                                <rect key="frame" x="186" y="587" width="180" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Showers per week" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETX-Ck-6tD">
+                                <rect key="frame" x="19" y="579" width="159" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqd-7n-I29">
+                                <rect key="frame" x="132" y="721" width="151" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Calculate">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fhc-mL-MFJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fhc-mL-MFJ" firstAttribute="top" secondItem="vUh-ni-cA5" secondAttribute="top" constant="-37" id="6Ld-1m-Dgm"/>
+                            <constraint firstItem="fhc-mL-MFJ" firstAttribute="trailing" secondItem="9M5-zd-2Xb" secondAttribute="trailing" constant="31" id="DN5-Vf-xE1"/>
+                            <constraint firstItem="9M5-zd-2Xb" firstAttribute="leading" secondItem="fhc-mL-MFJ" secondAttribute="leading" constant="32" id="K6Y-0O-7f1"/>
+                            <constraint firstItem="9M5-zd-2Xb" firstAttribute="top" secondItem="vUh-ni-cA5" secondAttribute="bottom" constant="16" id="uEF-ah-SG1"/>
+                            <constraint firstItem="vUh-ni-cA5" firstAttribute="centerX" secondItem="fhc-mL-MFJ" secondAttribute="centerX" id="ykq-xO-xWw"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="L9K-P7-pJl"/>
+                    <navigationItem key="navigationItem" title="Impact" id="L9K-P7-pJl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE3-wV-deG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -609,14 +724,24 @@
         <image name="flame" catalog="system" width="108" height="128"/>
         <image name="globe.americas.fill" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="music.quarternote.3" catalog="system" width="128" height="103"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.grid.3x3.fill" catalog="system" width="128" height="112"/>
         <image name="timer" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

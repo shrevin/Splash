@@ -11,7 +11,7 @@
 
 @interface ShowersViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *showersTableView;
-@property (strong, nonatomic) NSArray *showersArray;
+@property (strong, nonatomic) NSMutableArray *showersArray;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 
@@ -28,6 +28,7 @@
     [self getData];
     [self.refreshControl addTarget:self action:@selector(getData) forControlEvents:UIControlEventValueChanged];
     [self.showersTableView insertSubview:self.refreshControl atIndex:0];
+    self.showersTableView.layer.cornerRadius = 10.0;
  
 }
 
@@ -37,7 +38,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
       if (!error) {
         // The find succeeded.
-          self.showersArray = objects;
+          self.showersArray = [[NSMutableArray alloc] init];
+          for (int i = objects.count - 1; i >= 0; i = i - 1) {
+              [self.showersArray addObject:objects[i]];
+          }
+          //self.showersArray = objects;
           [self.showersTableView reloadData];
       } else {
         // Log details of the failure
