@@ -413,21 +413,77 @@
             </objects>
             <point key="canvasLocation" x="644.92753623188412" y="950.89285714285711"/>
         </scene>
-        <!--Showers View Controller-->
+        <!--Drip, drop, drip, drop-->
         <scene sceneID="jJ2-8c-uFl">
             <objects>
                 <viewController id="h29-iR-9qt" customClass="ShowersViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BXA-u7-OWE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mfL-vu-CDO">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showerCell" rowHeight="119" id="gKe-Fg-ieR" customClass="ShowerCell">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="119"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gKe-Fg-ieR" id="iqu-zE-W0Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sPY-ix-moM" customClass="PFImageView">
+                                                    <rect key="frame" x="26" y="20" width="40" height="40"/>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="6G9-rd-6w2"/>
+                                                        <constraint firstAttribute="width" constant="40" id="mO5-yZ-0vT"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, June 22, 2022" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEl-Gh-blj">
+                                                    <rect key="frame" x="85" y="20" width="206.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5m 30s" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-df-HXV">
+                                                    <rect key="frame" x="85" y="49" width="58" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hr4-df-HXV" firstAttribute="leading" secondItem="MEl-Gh-blj" secondAttribute="leading" id="4Vb-5A-bJE"/>
+                                                <constraint firstItem="hr4-df-HXV" firstAttribute="top" secondItem="MEl-Gh-blj" secondAttribute="bottom" constant="8.5" id="Eqh-uY-UV7"/>
+                                                <constraint firstItem="MEl-Gh-blj" firstAttribute="top" secondItem="sPY-ix-moM" secondAttribute="top" id="HPL-2f-9wK"/>
+                                                <constraint firstItem="sPY-ix-moM" firstAttribute="top" secondItem="iqu-zE-W0Z" secondAttribute="top" constant="20" symbolic="YES" id="Iou-DG-Cqe"/>
+                                                <constraint firstAttribute="bottom" secondItem="hr4-df-HXV" secondAttribute="bottom" constant="49.5" id="JCL-wG-Wfe"/>
+                                                <constraint firstItem="MEl-Gh-blj" firstAttribute="leading" secondItem="sPY-ix-moM" secondAttribute="trailing" constant="19" id="QMM-eH-Xcx"/>
+                                                <constraint firstItem="sPY-ix-moM" firstAttribute="leading" secondItem="iqu-zE-W0Z" secondAttribute="leading" constant="26" id="nd2-r7-y73"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="MEl-Gh-blj" id="9Wo-hF-JVd"/>
+                                            <outlet property="lengthLabel" destination="hr4-df-HXV" id="9kc-lw-vDK"/>
+                                            <outlet property="profilePic" destination="sPY-ix-moM" id="W3R-Gv-kSa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="xlO-jG-v04"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="B7U-rg-Voe"/>
+                    <navigationItem key="navigationItem" title="Drip, drop, drip, drop" id="B7U-rg-Voe"/>
+                    <connections>
+                        <outlet property="showersTableView" destination="mfL-vu-CDO" id="wRT-3z-oZc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iG6-6t-aH0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4717.391304347826" y="950.89285714285711"/>
+            <point key="canvasLocation" x="4715.9420289855079" y="950.89285714285711"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Pc-Ol-7kW">
@@ -558,6 +614,9 @@
         <image name="timer" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

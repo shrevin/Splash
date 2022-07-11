@@ -14,6 +14,8 @@
 		7B512D81287631660029195A /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D80287631660029195A /* LeaderboardViewController.m */; };
 		7B512D85287649B20029195A /* StatsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D84287649B20029195A /* StatsCell.m */; };
 		7B512EA82878990F0029195A /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512EA72877A49D0029195A /* SpotifyiOS.framework */; };
+		7B512EAC2878AF370029195A /* Shower.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EAB2878AF370029195A /* Shower.m */; };
+		7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EAE2878B24D0029195A /* ShowerCell.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E2D2876160D0060575C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E2C2876160D0060575C /* SceneDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
@@ -66,6 +68,10 @@
 		7B512D83287649B20029195A /* StatsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatsCell.h; sourceTree = "<group>"; };
 		7B512D84287649B20029195A /* StatsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatsCell.m; sourceTree = "<group>"; };
 		7B512EA72877A49D0029195A /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		7B512EAA2878AF370029195A /* Shower.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shower.h; sourceTree = "<group>"; };
+		7B512EAB2878AF370029195A /* Shower.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shower.m; sourceTree = "<group>"; };
+		7B512EAD2878B24D0029195A /* ShowerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowerCell.h; sourceTree = "<group>"; };
+		7B512EAE2878B24D0029195A /* ShowerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowerCell.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -133,8 +139,19 @@
 			children = (
 				7B512D83287649B20029195A /* StatsCell.h */,
 				7B512D84287649B20029195A /* StatsCell.m */,
+				7B512EAD2878B24D0029195A /* ShowerCell.h */,
+				7B512EAE2878B24D0029195A /* ShowerCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7B512EA92878AE2C0029195A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7B512EAA2878AF370029195A /* Shower.h */,
+				7B512EAB2878AF370029195A /* Shower.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7BE02E1C2876160D0060575C = {
@@ -162,6 +179,7 @@
 		7BE02E272876160D0060575C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				7B512EA92878AE2C0029195A /* Models */,
 				7B512D822876488B0029195A /* Views */,
 				7BE02E5D287617080060575C /* View Controllers */,
 				7BE02E282876160D0060575C /* AppDelegate.h */,
@@ -468,12 +486,14 @@
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
 				7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */,
 				7B512D85287649B20029195A /* StatsCell.m in Sources */,
+				7B512EAC2878AF370029195A /* Shower.m in Sources */,
 				7BE02E3B2876160E0060575C /* main.m in Sources */,
 				7B512D75287630F10029195A /* HomeViewController.m in Sources */,
 				7BE02E2D2876160D0060575C /* SceneDelegate.m in Sources */,
 				7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
+				7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

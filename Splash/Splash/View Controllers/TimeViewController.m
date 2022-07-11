@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 #import <QuartzCore/QuartzCore.h>
 #import <SpotifyiOS/SpotifyiOS.h>
+#import "Shower.h"
 
 
 
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
+
 
 
 @end
@@ -32,6 +34,7 @@ int startSeconds;
 int currMinute;
 int currSeconds;
 CFTimeInterval startTime;
+UIAlertController *alert;
 
 
 - (void)viewDidLoad {
@@ -43,6 +46,7 @@ CFTimeInterval startTime;
     dateFormat.dateFormat = @"mm:ss.S";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
+    
     
 }
 
@@ -116,9 +120,48 @@ CFTimeInterval startTime;
     currSeconds = startSeconds;
     self.stopwatchLabel.textColor = [UIColor blackColor];
     CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-    NSLog([NSString stringWithFormat:@"%ld", elapsedTime]);
+    NSLog([@"elapsed time: " stringByAppendingString: [NSString stringWithFormat:@"%f", elapsedTime]]);
+    int goalSeconds = (startMinute * 60) + startSeconds;
+    NSLog([NSString stringWithFormat:@"%i",goalSeconds]);
+    int metGoal = goalSeconds - roundf(elapsedTime);
+    NSLog([NSString stringWithFormat:@"%i",metGoal]);
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Save Shower"
+                                                                               message:[@"Time: " stringByAppendingString:[TimeViewController formatTimeString:roundf(elapsedTime)]]
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) { // handle cancel response here. Doing nothing will dismiss the view.
+    }];
+    [alert addAction:cancelAction];
+    // create an OK action
+    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // handle response here.
+        [Shower postShower:@(roundf(elapsedTime)) met:@(metGoal) g:@(goalSeconds) completion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error == nil) {
+                NSLog(@"SUCCESSFULLY SAVED SHOWER");
+            } else {
+                NSLog(@"did not save shower");
+            }
+        }];
+    }];
+    // add the OK action to the alert controller
+    [alert addAction:saveAction];
+    [self presentViewController:alert animated:YES completion:^{
+        // optional code for what happens after the alert controller has finished presenting
+    }];
 }
 
+
++ (int) getRemainingSec: (int)secs {
+    return secs - ([self convertSecsToMin:secs] * 60);
+}
+
++ (int) convertSecsToMin:(int)secs {
+    return floorf(secs / 60);
+}
+
++ (NSString*) formatTimeString:(int)secs {
+    return [[[[[NSString stringWithFormat: @"%i", [self convertSecsToMin:secs]] stringByAppendingString:@"m"] stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat: @"%i", [self getRemainingSec:secs]]] stringByAppendingString:@"s"];
+}
 /*
 #pragma mark - Navigation
 

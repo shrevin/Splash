@@ -10,7 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TimeViewController : UIViewController
-
++ (NSString*) formatTimeString:(int)secs;
++ (int) getRemainingSec: (int)secs;
++ (int) convertSecsToMin:(int)secs;
 @end
 
 NS_ASSUME_NONNULL_END
