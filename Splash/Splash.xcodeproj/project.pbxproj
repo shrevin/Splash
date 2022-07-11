@@ -16,6 +16,7 @@
 		7B512EA82878990F0029195A /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512EA72877A49D0029195A /* SpotifyiOS.framework */; };
 		7B512EAC2878AF370029195A /* Shower.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EAB2878AF370029195A /* Shower.m */; };
 		7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EAE2878B24D0029195A /* ShowerCell.m */; };
+		7B512EB2287CD0540029195A /* LeaderboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EB1287CD0540029195A /* LeaderboardCell.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E2D2876160D0060575C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E2C2876160D0060575C /* SceneDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
@@ -72,6 +73,8 @@
 		7B512EAB2878AF370029195A /* Shower.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shower.m; sourceTree = "<group>"; };
 		7B512EAD2878B24D0029195A /* ShowerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowerCell.h; sourceTree = "<group>"; };
 		7B512EAE2878B24D0029195A /* ShowerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowerCell.m; sourceTree = "<group>"; };
+		7B512EB0287CD0540029195A /* LeaderboardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaderboardCell.h; sourceTree = "<group>"; };
+		7B512EB1287CD0540029195A /* LeaderboardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaderboardCell.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				7B512D84287649B20029195A /* StatsCell.m */,
 				7B512EAD2878B24D0029195A /* ShowerCell.h */,
 				7B512EAE2878B24D0029195A /* ShowerCell.m */,
+				7B512EB0287CD0540029195A /* LeaderboardCell.h */,
+				7B512EB1287CD0540029195A /* LeaderboardCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
 				7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */,
+				7B512EB2287CD0540029195A /* LeaderboardCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

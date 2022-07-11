@@ -6,8 +6,10 @@
 //
 
 #import "LeaderboardViewController.h"
+#import "LeaderboardCell.h"
 
-@interface LeaderboardViewController ()
+@interface LeaderboardViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *leaderboardTableView;
 
 @end
 
@@ -16,8 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.leaderboardTableView.delegate = self;
+    self.leaderboardTableView.dataSource = self;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LeaderboardCell *cell = [self.leaderboardTableView dequeueReusableCellWithIdentifier:@"lbcell"];
+    return cell;
+}
 /*
 #pragma mark - Navigation
 
