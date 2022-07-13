@@ -9,11 +9,13 @@
 #import "Parse/Parse.h"
 #import <SpotifyiOS/SpotifyiOS.h>
 #import "Splash-Bridging-Header.h"
+#import "TimeViewController.h"
 
 @interface AppDelegate () // <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
-@property (nonatomic, strong) SPTSessionManager *sessionManager;
-@property (nonatomic, strong) SPTConfiguration *configuration;
-@property (nonatomic, strong) SPTAppRemote *appRemote;
+//@property (nonatomic, strong) SPTSessionManager *sessionManager;
+//@property (nonatomic, strong) SPTConfiguration *configuration;
+//@property (nonatomic, strong) SPTAppRemote *appRemote;
+@property(nonatomic, strong) TimeViewController *rootViewController;
 @end
 
 @implementation AppDelegate
@@ -56,98 +58,93 @@
 //    self.appRemote.delegate = self;
 //    NSLog([NSString stringWithFormat:@"%i",self.appRemote.isConnected]);
 //
-
+   
     return YES;
 }
 
 // Once a user successfully returns to your application, we’ll need to notify sessionManager about it by implementing the following method:
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
-{
-    NSLog(@"RETURNED");
-    [self.sessionManager application:app openURL:url options:options];
-    return true;
-}
 
-#pragma mark - UISceneSession lifecycle
-
-- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
-}
-
-
-- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-}
-
-#pragma mark - SPTSessionManagerDelegate
-
-// method required from SPTSessionManagerDelegate
-- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
-{
-    // connecting to Spotify once a user successfully authenticates
-    self.appRemote.connectionParameters.accessToken = session.accessToken;
-    [self.appRemote connect]; // if this is successful, the appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote method will be invoked
-    NSLog(@"success: %@", session);
-}
-
-// method required from SPTSessionManagerDelegate
-- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
-{
-  NSLog(@"fail: %@", error);
-}
-
-// method required from SPTSessionManagerDelegate
-- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
-{
-  NSLog(@"renewed: %@", session);
-}
+//#pragma mark - UISceneSession lifecycle
 //
-//// SPTAppRemoteDelegate methods that allow us to see playback state
-- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote
-{
-    // Connection was successful, you can begin issuing commands
-    self.appRemote.playerAPI.delegate = self;
-    [self.appRemote.playerAPI subscribeToPlayerState:^(id _Nullable result, NSError * _Nullable error) {
-        if (error) {
-          NSLog(@"error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"connected");
-        }
-    }];
-}
-
-- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(NSError *)error
-{
-  NSLog(@"disconnected");
-}
-
-- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(NSError *)error
-{
-  NSLog(@"failed");
-}
-
-- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState
-{
-    NSLog(@"player state changed");
-    NSLog(@"Track name: %@", playerState.track.name);
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-  if (self.appRemote.isConnected) {
-    [self.appRemote disconnect];
-  }
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-  if (self.appRemote.connectionParameters.accessToken) {
-    [self.appRemote connect];
-  }
-}
+//- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
+//    // Called when a new scene session is being created.
+//    // Use this method to select a configuration to create the new scene with.
+//    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
+//}
+//
+//
+//- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
+//    // Called when the user discards a scene session.
+//    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+//    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+//}
+//
+//#pragma mark - SPTSessionManagerDelegate
+//
+//// method required from SPTSessionManagerDelegate
+//- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
+//{
+//    // connecting to Spotify once a user successfully authenticates
+//    self.appRemote.connectionParameters.accessToken = session.accessToken;
+//    [self.appRemote connect]; // if this is successful, the appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote method will be invoked
+//    NSLog(@"success: %@", session);
+//}
+//
+//// method required from SPTSessionManagerDelegate
+//- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
+//{
+//  NSLog(@"fail: %@", error);
+//}
+//
+//// method required from SPTSessionManagerDelegate
+//- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
+//{
+//  NSLog(@"renewed: %@", session);
+//}
+////
+////// SPTAppRemoteDelegate methods that allow us to see playback state
+//- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote
+//{
+//    // Connection was successful, you can begin issuing commands
+//    self.appRemote.playerAPI.delegate = self;
+//    [self.appRemote.playerAPI subscribeToPlayerState:^(id _Nullable result, NSError * _Nullable error) {
+//        if (error) {
+//          NSLog(@"error: %@", error.localizedDescription);
+//        } else {
+//            NSLog(@"connected");
+//        }
+//    }];
+//}
+//
+//- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(NSError *)error
+//{
+//  NSLog(@"disconnected");
+//}
+//
+//- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(NSError *)error
+//{
+//  NSLog(@"failed");
+//}
+//
+//- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState
+//{
+//    NSLog(@"player state changed");
+//    NSLog(@"Track name: %@", playerState.track.name);
+//}
+//
+//- (void)applicationWillResignActive:(UIApplication *)application
+//{
+//  if (self.appRemote.isConnected) {
+//    [self.appRemote disconnect];
+//  }
+//}
+//
+//- (void)applicationDidBecomeActive:(UIApplication *)application
+//{
+//  if (self.appRemote.connectionParameters.accessToken) {
+//    [self.appRemote connect];
+//  }
+//}
+//
 
 @end

@@ -286,7 +286,8 @@ extension ViewController: SPTSessionManagerDelegate {
 
 // MARK: - Networking
 extension ViewController {
-
+    // reuse this as a separate Swift class, method for fetching info
+    // create Swift object inside obj c file and call method
     // getting the access token
     func fetchAccessToken(completion: @escaping ([String: Any]?, Error?) -> Void) {
         let url = URL(string: "https://accounts.spotify.com/api/token")!

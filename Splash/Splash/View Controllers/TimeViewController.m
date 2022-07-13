@@ -10,10 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import <SpotifyiOS/SpotifyiOS.h>
 #import "Shower.h"
+#import "SpotifyAPIManager.h"
 
 
 
-@interface TimeViewController () <SPTSessionManagerDelegate> //SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
+@interface TimeViewController () <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *stopwatchLabel;
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
@@ -51,17 +52,16 @@ UIAlertController *alert;
     self.user = [PFUser currentUser];
     
     
-    // SPOTIFY SDK Authorization & Configuration
-    self.configuration  = [[SPTConfiguration alloc] initWithClientID:@"54c6c371e13b4f8ab5e82bd97ff3f563" redirectURL:[NSURL URLWithString:@"splash://"]];
-    NSURL *tokenSwapURL =  [NSURL URLWithString:@"http://localhost:1234/swap"];
-    NSURL *tokenRefreshURL = [NSURL URLWithString:@"http://localhost:1234/refresh"];
-    self.configuration.tokenSwapURL = tokenSwapURL;
-    self.configuration.tokenRefreshURL = tokenRefreshURL;
-    // playURI is empty, so playback of user’s last track is resumed
-    self.configuration.playURI = @"";
+//    // SPOTIFY SDK Authorization & Configuration
+//    self.configuration  = [[SPTConfiguration alloc] initWithClientID:@"54c6c371e13b4f8ab5e82bd97ff3f563" redirectURL:[NSURL URLWithString:@"splash://"]];
+//    NSURL *tokenSwapURL =  [NSURL URLWithString:@"http://localhost:1234/swap"];
+//    NSURL *tokenRefreshURL = [NSURL URLWithString:@"http://localhost:1234/refresh"];
+//    self.configuration.tokenSwapURL = tokenSwapURL;
+//    self.configuration.tokenRefreshURL = tokenRefreshURL;
+//    // playURI is empty, so playback of user’s last track is resumed
+//    self.configuration.playURI = @"";
     
-    
-   
+
 }
 
 
@@ -188,33 +188,58 @@ UIAlertController *alert;
 
 // METHODS THAT HAVE TO DO WITH SPOTIFY SDK
 - (IBAction)clickConnect:(id)sender {
-    // instantiating session manager
-    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
-    self.sessionManager.delegate = self;
-    // With SPTConfiguration and SPTSessionManager both configured, we can invoke the authorization screen:
-    SPTScope requestedScope = SPTAppRemoteControlScope;
-    [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
-//    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
-//    self.appRemote.delegate = self;
+    [[SpotifyAPIManager shared] startConnection];
 }
 
 
-#pragma mark - SPTSessionManagerDelegate
-
-- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
-{
-  NSLog(@"success: %@", session);
-}
-
-- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
-{
-  NSLog(@"fail: %@", error);
-}
-
-- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
-{
-  NSLog(@"renewed: %@", session);
-}
+//#pragma mark - SPTSessionManagerDelegate
+//
+//- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
+//{
+//    NSLog(@"success: %@", session);
+//    self.appRemote.connectionParameters.accessToken = session.accessToken;
+//    [self.appRemote connect];
+//}
+//
+//- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
+//{
+//  NSLog(@"fail: %@", error);
+//}
+//
+//- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
+//{
+//  NSLog(@"renewed: %@", session);
+//}
+//
+//#pragma mark - SPTAppRemoteDelegate
+//
+//- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote
+//{
+//  NSLog(@"connected");
+//}
+//
+//- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(NSError *)error
+//{
+//  NSLog(@"disconnected");
+//}
+//
+//- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(NSError *)error
+//{
+//    NSLog(@"failed");
+//    // Connection was successful, you can begin issuing commands
+//      self.appRemote.playerAPI.delegate = self;
+//      [self.appRemote.playerAPI subscribeToPlayerState:^(id _Nullable result, NSError * _Nullable error) {
+//        if (error) {
+//          NSLog(@"error: %@", error.localizedDescription);
+//        }
+//      }];
+//}
+//
+//- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState
+//{
+//    NSLog(@"player state changed");
+//    NSLog(@"Track name: %@", playerState.track.name);
+//}
 
 //
 //- (void) updateViewBasedOnConnected {
