@@ -8,8 +8,9 @@
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
 #import <SpotifyiOS/SpotifyiOS.h>
+#import "Splash-Bridging-Header.h"
 
-@interface AppDelegate () <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
+@interface AppDelegate () // <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
 @property (nonatomic, strong) SPTSessionManager *sessionManager;
 @property (nonatomic, strong) SPTConfiguration *configuration;
 @property (nonatomic, strong) SPTAppRemote *appRemote;
@@ -29,32 +30,32 @@
 
         [Parse initializeWithConfiguration:config];
     
-    // defining client id
-    NSString *spotifyClientID = @"54c6c371e13b4f8ab5e82bd97ff3f563";
-    // defining redirect url
-    NSURL *spotifyRedirectURL = [NSURL URLWithString:@"spotify-ios-quick-start://spotify-login-callback"];
-    
-    // instantiating the SDK
-    self.configuration  = [[SPTConfiguration alloc] initWithClientID:spotifyClientID redirectURL:spotifyRedirectURL];
-    
-    // Setting up token swap
-    NSURL *tokenSwapURL =  [NSURL URLWithString:@"https://splash-shower-app.herokuapp.com/api/token"];
-    NSURL *tokenRefreshURL = [NSURL URLWithString:@"https://splash-shower-app.herokuapp.com/api/refresh_token"];
-    self.configuration.tokenSwapURL = tokenSwapURL;
-    self.configuration.tokenRefreshURL = tokenRefreshURL;
-    // playURI is empty, so playback of user’s last track is resumed
-    self.configuration.playURI = @"";
-    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
-    
-    // invoking the authorization screen
-    SPTScope requestedScope = SPTAppRemoteControlScope;
-    [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
-
-    // initalizing App Remote on a class-level closure
-    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
-    self.appRemote.delegate = self;
-    NSLog([NSString stringWithFormat:@"%i",self.appRemote.isConnected]);
-    
+//    // defining client id
+//    NSString *spotifyClientID = @"54c6c371e13b4f8ab5e82bd97ff3f563";
+//    // defining redirect url
+//    NSURL *spotifyRedirectURL = [NSURL URLWithString:@"spotify-ios-quick-start://spotify-login-callback"];
+//
+//    // instantiating the SDK
+//    self.configuration  = [[SPTConfiguration alloc] initWithClientID:spotifyClientID redirectURL:spotifyRedirectURL];
+//
+//    // Setting up token swap
+//    NSURL *tokenSwapURL =  [NSURL URLWithString:@"https://splash-shower-app.herokuapp.com/api/token"];
+//    NSURL *tokenRefreshURL = [NSURL URLWithString:@"https://splash-shower-app.herokuapp.com/api/refresh_token"];
+//    self.configuration.tokenSwapURL = tokenSwapURL;
+//    self.configuration.tokenRefreshURL = tokenRefreshURL;
+//    // playURI is empty, so playback of user’s last track is resumed
+//    self.configuration.playURI = @"";
+//    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
+//
+//    // invoking the authorization screen
+//    SPTScope requestedScope = SPTAppRemoteControlScope;
+//    [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
+//
+//    // initalizing App Remote on a class-level closure
+//    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
+//    self.appRemote.delegate = self;
+//    NSLog([NSString stringWithFormat:@"%i",self.appRemote.isConnected]);
+//
 
     return YES;
 }

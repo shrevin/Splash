@@ -13,12 +13,15 @@
 
 
 
-@interface TimeViewController ()
+@interface TimeViewController () <SPTSessionManagerDelegate> //SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *stopwatchLabel;
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
-
+@property (strong, nonatomic) IBOutlet UIImageView *songImage;
+@property (strong, nonatomic) IBOutlet UILabel *songLabel;
+@property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
+@property (strong, nonatomic) IBOutlet UIButton *connectButton;
 
 
 @end
@@ -48,7 +51,19 @@ UIAlertController *alert;
     self.user = [PFUser currentUser];
     
     
+    // SPOTIFY SDK Authorization & Configuration
+    self.configuration  = [[SPTConfiguration alloc] initWithClientID:@"54c6c371e13b4f8ab5e82bd97ff3f563" redirectURL:[NSURL URLWithString:@"splash://"]];
+    NSURL *tokenSwapURL =  [NSURL URLWithString:@"http://localhost:1234/swap"];
+    NSURL *tokenRefreshURL = [NSURL URLWithString:@"http://localhost:1234/refresh"];
+    self.configuration.tokenSwapURL = tokenSwapURL;
+    self.configuration.tokenRefreshURL = tokenRefreshURL;
+    // playURI is empty, so playback of user’s last track is resumed
+    self.configuration.playURI = @"";
+    
+    
+   
 }
+
 
 - (void) viewDidAppear:(BOOL)animated {
     self.stopwatchLabel.text = [dateFormat stringFromDate: self.user[@"goal"]];
@@ -169,6 +184,54 @@ UIAlertController *alert;
 + (NSString*) formatTimeString:(int)secs {
     return [[[[[NSString stringWithFormat: @"%i", [self convertSecsToMin:secs]] stringByAppendingString:@"m"] stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat: @"%i", [self getRemainingSec:secs]]] stringByAppendingString:@"s"];
 }
+
+
+// METHODS THAT HAVE TO DO WITH SPOTIFY SDK
+- (IBAction)clickConnect:(id)sender {
+    // instantiating session manager
+    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
+    self.sessionManager.delegate = self;
+    // With SPTConfiguration and SPTSessionManager both configured, we can invoke the authorization screen:
+    SPTScope requestedScope = SPTAppRemoteControlScope;
+    [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
+//    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
+//    self.appRemote.delegate = self;
+}
+
+
+#pragma mark - SPTSessionManagerDelegate
+
+- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
+{
+  NSLog(@"success: %@", session);
+}
+
+- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
+{
+  NSLog(@"fail: %@", error);
+}
+
+- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
+{
+  NSLog(@"renewed: %@", session);
+}
+
+//
+//- (void) updateViewBasedOnConnected {
+//    if (appRemote.isConnected == true) {
+//        self.connectButton.hidden = YES;
+//        self.songImage.hidden = NO;
+//        self.songLabel.hidden = NO;
+//        self.playPauseButton.hidden = NO;
+//    }
+//    else { // show login
+//        self.connectButton.hidden = NO;
+//        self.songImage.hidden = YES;
+//        self.songLabel.hidden = YES;
+//        self.playPauseButton.hidden = YES;
+//    }
+//}
+
 /*
 #pragma mark - Navigation
 

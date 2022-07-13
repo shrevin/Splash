@@ -90,7 +90,7 @@
     NSString *name = self.scoreNames[indexPath.row];
     if (indexPath.row == 1) {
         [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
-        NSLog([NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]);
+        //NSLog([NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]);
     } else if (indexPath.row == 5){
         [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
     } else {
