@@ -63,6 +63,8 @@
 
 -(void) setResponseCode:(NSString *)responseCode {
     _responseCode = responseCode;
+    NSLog(@"inside setter for response code");
+    // CALL FETCH MOVIES IN HERE AND GET ACCESS TOKEN
     
 }
 

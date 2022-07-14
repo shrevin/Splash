@@ -381,8 +381,8 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="II5-zD-fqF" customClass="PFImageView">
-                                <rect key="frame" x="146" y="168.5" width="121" height="110"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="II5-zD-fqF" customClass="PFImageView">
+                                <rect key="frame" x="132" y="148.5" width="150" height="149"/>
                                 <color key="backgroundColor" red="0.81176471709999998" green="0.86274516580000005" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -396,8 +396,8 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXU-FB-dR7">
-                                <rect key="frame" x="189" y="284" width="36" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXU-FB-dR7">
+                                <rect key="frame" x="189" y="303" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="9Z5-3S-9LK"/>
                                     <constraint firstAttribute="height" constant="36" id="SPz-kl-9IC"/>
@@ -412,45 +412,60 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                                 <state key="normal" image="camera" catalog="system"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pgz-NP-wdq">
-                                <rect key="frame" x="0.0" y="389.5" width="414" height="506.5"/>
+                                <rect key="frame" x="20" y="369.5" width="374" height="433.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myStatsCell" rowHeight="64" id="2qp-dF-rmd" customClass="StatsCell">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="64"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myStatsCell" rowHeight="78" id="2qp-dF-rmd" customClass="StatsCell">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2qp-dF-rmd" id="74o-pk-kcO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bubblescore:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUA-C8-gHx">
-                                                    <rect key="frame" x="31" y="21" width="101" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubblescore:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUA-C8-gHx">
+                                                    <rect key="frame" x="31" y="25" width="101.5" height="28"/>
+                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-Gx-XNA">
-                                                    <rect key="frame" x="140" y="21" width="11" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-Gx-XNA">
+                                                    <rect key="frame" x="136.5" y="27" width="10" height="24"/>
+                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7g-uZ-qDk">
-                                                    <rect key="frame" x="363" y="17" width="37" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7g-uZ-qDk">
+                                                    <rect key="frame" x="337" y="0.0" width="37" height="78"/>
+                                                    <color key="tintColor" red="0.52659587149999998" green="0.52659587149999998" blue="0.52659587149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system"/>
+                                                    <connections>
+                                                        <segue destination="czH-2Z-C6C" kind="show" id="cqp-6y-whX"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.82369689749999997" green="0.85378272639999997" blue="0.91976243260000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="BUA-C8-gHx" firstAttribute="leading" secondItem="74o-pk-kcO" secondAttribute="leading" constant="31" id="8cR-Vo-kll"/>
+                                                <constraint firstAttribute="bottom" secondItem="S7g-uZ-qDk" secondAttribute="bottom" id="9Ex-7k-qKC"/>
+                                                <constraint firstItem="S7g-uZ-qDk" firstAttribute="top" secondItem="74o-pk-kcO" secondAttribute="top" id="GVW-19-IOI"/>
+                                                <constraint firstItem="yrt-Gx-XNA" firstAttribute="leading" secondItem="BUA-C8-gHx" secondAttribute="trailing" constant="4" id="V8A-oa-rJe"/>
+                                                <constraint firstItem="yrt-Gx-XNA" firstAttribute="centerY" secondItem="BUA-C8-gHx" secondAttribute="centerY" id="bJG-tN-raG"/>
+                                                <constraint firstItem="BUA-C8-gHx" firstAttribute="centerY" secondItem="74o-pk-kcO" secondAttribute="centerY" id="dcL-xI-UVJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="S7g-uZ-qDk" secondAttribute="trailing" id="fyW-Yg-EG1"/>
+                                                <constraint firstItem="BUA-C8-gHx" firstAttribute="top" secondItem="74o-pk-kcO" secondAttribute="top" constant="25" id="h5s-61-Iwg"/>
+                                                <constraint firstAttribute="bottom" secondItem="BUA-C8-gHx" secondAttribute="bottom" constant="25" id="xwS-q5-Pay"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="typeLabel" destination="BUA-C8-gHx" id="28I-A0-equ"/>
+                                            <outlet property="valueLabel" destination="yrt-Gx-XNA" id="UTn-XD-0DP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@username" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwo-MN-ybW">
-                                <rect key="frame" x="37" y="319" width="339" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwo-MN-ybW">
+                                <rect key="frame" x="154.5" y="338" width="105" height="26.5"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -459,15 +474,15 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                         <viewLayoutGuide key="safeArea" id="csP-AC-ihJ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Pgz-NP-wdq" firstAttribute="bottom" secondItem="csP-AC-ihJ" secondAttribute="bottom" constant="83" id="4aN-jS-2tc"/>
+                            <constraint firstItem="Pgz-NP-wdq" firstAttribute="bottom" secondItem="csP-AC-ihJ" secondAttribute="bottom" constant="-10" id="4aN-jS-2tc"/>
                             <constraint firstItem="XXU-FB-dR7" firstAttribute="top" secondItem="II5-zD-fqF" secondAttribute="bottom" constant="5" id="7YH-41-rTw"/>
                             <constraint firstItem="bwo-MN-ybW" firstAttribute="centerX" secondItem="csP-AC-ihJ" secondAttribute="centerX" id="CQa-2W-IQd"/>
-                            <constraint firstItem="Pgz-NP-wdq" firstAttribute="top" secondItem="bwo-MN-ybW" secondAttribute="bottom" constant="25" id="U2K-74-BVa"/>
+                            <constraint firstItem="Pgz-NP-wdq" firstAttribute="top" secondItem="bwo-MN-ybW" secondAttribute="bottom" constant="5" id="U2K-74-BVa"/>
                             <constraint firstItem="sq7-9A-yDw" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" constant="40" id="WEo-we-QGc"/>
-                            <constraint firstItem="Pgz-NP-wdq" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" id="bd6-Np-ZYu"/>
+                            <constraint firstItem="Pgz-NP-wdq" firstAttribute="leading" secondItem="csP-AC-ihJ" secondAttribute="leading" constant="20" id="bd6-Np-ZYu"/>
                             <constraint firstItem="II5-zD-fqF" firstAttribute="top" secondItem="sq7-9A-yDw" secondAttribute="bottom" constant="12.5" id="g8D-S9-hJQ"/>
                             <constraint firstItem="bwo-MN-ybW" firstAttribute="top" secondItem="XXU-FB-dR7" secondAttribute="bottom" constant="-1" id="gfo-Nb-kpM"/>
-                            <constraint firstItem="csP-AC-ihJ" firstAttribute="trailing" secondItem="Pgz-NP-wdq" secondAttribute="trailing" id="hP8-yn-z3h"/>
+                            <constraint firstItem="csP-AC-ihJ" firstAttribute="trailing" secondItem="Pgz-NP-wdq" secondAttribute="trailing" constant="20" id="hP8-yn-z3h"/>
                             <constraint firstItem="sq7-9A-yDw" firstAttribute="top" secondItem="csP-AC-ihJ" secondAttribute="top" constant="10" id="m5i-s3-gS0"/>
                             <constraint firstItem="II5-zD-fqF" firstAttribute="centerX" secondItem="csP-AC-ihJ" secondAttribute="centerX" id="mCi-Mb-WBp"/>
                             <constraint firstItem="XXU-FB-dR7" firstAttribute="centerX" secondItem="II5-zD-fqF" secondAttribute="centerX" id="mhm-bW-k8b"/>
@@ -609,7 +624,23 @@ Momentarily switching off the shower when you don’t need the water to flow, li
             </objects>
             <point key="canvasLocation" x="89.855072463768124" y="950.89285714285711"/>
         </scene>
-        <!--Drip, drop, drip, drop-->
+        <!--View Controller-->
+        <scene sceneID="VcK-C8-XBv">
+            <objects>
+                <viewController id="czH-2Z-C6C" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T5K-ru-YF3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="obM-74-Lno"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ko8-IE-b4t"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ml8-em-vBC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="59" y="1652"/>
+        </scene>
+        <!--Saved Showers-->
         <scene sceneID="jJ2-8c-uFl">
             <objects>
                 <viewController id="h29-iR-9qt" customClass="ShowersViewController" sceneMemberID="viewController">
@@ -672,7 +703,7 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                         <viewLayoutGuide key="safeArea" id="xlO-jG-v04"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Drip, drop, drip, drop" id="B7U-rg-Voe"/>
+                    <navigationItem key="navigationItem" title="Saved Showers" id="B7U-rg-Voe"/>
                     <connections>
                         <outlet property="showersTableView" destination="mfL-vu-CDO" id="wRT-3z-oZc"/>
                     </connections>

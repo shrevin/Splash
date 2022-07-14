@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 #import "Parse/PFImageView.h"
 
-@interface HomeViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *profileImage;
 
@@ -27,6 +27,7 @@
 @end
 
 @implementation HomeViewController
+NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +36,7 @@
     self.usernameLabel.text = self.user.username;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
    
-    self.scoreNames = @[@"Your Goal", @"Bubblescore", @"Streak 🔥", @"Avg. Shower Time", @"Total Shower Time", @"# of Showers"];
+    self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -53,25 +54,53 @@
     UIMenu *menu = [[UIMenu alloc] menuByReplacingChildren:[NSArray arrayWithObjects:camera, chooseLibary, nil]];
     self.pullDownButtonForPFP.menu = menu;
     self.pullDownButtonForPFP.showsMenuAsPrimaryAction = YES;
-    
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+    self.tableView.sectionHeaderTopPadding = 0;
     
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView
+                                           dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    return header;
+}
 
 - (void) viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 1;
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog([NSString stringWithFormat:@"%i", indexPath.section]);
     StatsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myStatsCell"];
+    if (indexPath.section % 2) {
+        [cell setBackgroundColor:[UIColor orangeColor]];
+    }
+    NSString *name = self.scoreNames[indexPath.section];
+    if (indexPath.section == 1) {
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
+            //NSLog([NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]);
+        } else if (indexPath.section == 5){
+            [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
+        } else {
+            [cell setCell:name value:@"20"];
+        }
+    [cell setCell:name value:@"20"];
+    cell.layer.cornerRadius = 16;
     return cell;
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 6;
+}
+
+
 
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 //    return CGSizeMake(self.collectionView.bounds.size.width/3, 150);
