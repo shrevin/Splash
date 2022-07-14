@@ -47,7 +47,7 @@ UIAlertController *alert;
     self.startButton.layer.cornerRadius = 40;
     self.stopButton.layer.cornerRadius = 40;
     dateFormat = [[NSDateFormatter alloc] init];
-    dateFormat.dateFormat = @"mm:ss.S";
+    dateFormat.dateFormat = @"mm:ss";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
     
@@ -155,9 +155,14 @@ UIAlertController *alert;
                 NSLog(@"SUCCESSFULLY SAVED SHOWER");
                 if (metGoal >= 0) {
                     self.user[@"bubblescore"] = @([self.user[@"bubblescore"] intValue] + 1);
-                    [self.user saveInBackground];
+                    NSNumber *streak = self.user[@"streak"];
+                    self.user[@"streak"] = @([streak intValue] + 1);
+                    //[self.user saveInBackground];
+                } else {
+                    self.user[@"streak"] = @(0);
+                    //[self.user saveInBackground];
                 }
-                self.user[@"numShowers"] = @([self.user[@"bubblescore"] intValue] + 1);
+                self.user[@"numShowers"] = @([self.user[@"numShowers"] intValue] + 1);
                 [self.user saveInBackground];
             } else {
                 NSLog(@"did not save shower");

@@ -6,10 +6,13 @@
 //
 
 import Foundation
+@objc class NetworkCalls: NSObject {
 
-class NetworkCalls {
+    @objc func hi() -> Void {
+        print("hi");
+    }
     
-    func fetchAccessToken(responseCode: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
+    @objc func fetchAccessToken(responseCode: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
         let url = URL(string: "https://accounts.spotify.com/api/token")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -45,6 +48,27 @@ class NetworkCalls {
         }
         task.resume()
     }
+    
+//    @objc func fetchArtwork(for track: SPTAppRemoteTrack) {
+//        appRemote.imageAPI?.fetchImage(forItem: track, with: CGSize.zero, callback: { [weak self] (image, error) in
+//            if let error = error {
+//                print("Error fetching track image: " + error.localizedDescription)
+//            } else if let image = image as? UIImage {
+//                self?.imageView.image = image
+//            }
+//        })
+//    }
+//    
+//    // fetching the player state using appRemote
+//    @objc func fetchPlayerState() {
+//        appRemote.playerAPI?.getPlayerState({ [weak self] (playerState, error) in
+//            if let error = error {
+//                print("Error getting player state:" + error.localizedDescription)
+//            } else if let playerState = playerState as? SPTAppRemotePlayerState {
+//                self?.update(playerState: playerState)
+//            }
+//        })
+//    }
 }
 
 

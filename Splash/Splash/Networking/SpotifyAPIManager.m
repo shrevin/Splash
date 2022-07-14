@@ -7,6 +7,8 @@
 
 #import "SpotifyAPIManager.h"
 #import <SpotifyiOS/SpotifyiOS.h>
+#import "Splash-Swift.h"
+
 
 
 @implementation SpotifyAPIManager 
@@ -38,15 +40,13 @@
     self.appRemote.delegate = self;
 }
 
-- (void) getAccessToken {
-    
-}
+
 
 #pragma mark - SPTSessionManagerDelegate
 
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
 {
-    NSLog(@"success: %@", session);
+    //NSLog(@"success: %@", session);
     self.appRemote.connectionParameters.accessToken = session.accessToken;
     [self.appRemote connect];
 }
@@ -65,8 +65,37 @@
     _responseCode = responseCode;
     NSLog(@"inside setter for response code");
     // CALL FETCH MOVIES IN HERE AND GET ACCESS TOKEN
+    NetworkCalls* calls = [[NetworkCalls alloc]init];
+    [calls fetchAccessTokenWithResponseCode:responseCode completion:^(NSDictionary<NSString *,id> * _Nullable dictionary, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error");
+            return;
+        }
+        NSString *accessToken = dictionary[@"access_token"];
+        self.appRemote.connectionParameters.accessToken = accessToken;
+        [self.appRemote connect];
+
+    }];
     
 }
+
+# pragma  mark - SPTAppRemoteDelegate
+- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote {
+    NSLog(@"SUCCESSFULLY CONNECTED WHOOP WHOOP");
+}
+
+
+- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(nullable NSError *)error {
+    NSLog(@"error :(");
+}
+
+
+
+- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
+    NSLog(@"error :(");
+}
+
+
 
 -(void)parseURL:(NSURL*)url {
     NSLog(@"URLLLLL");

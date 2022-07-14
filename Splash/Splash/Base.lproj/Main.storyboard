@@ -214,7 +214,7 @@
             </objects>
             <point key="canvasLocation" x="2418.840579710145" y="950.89285714285711"/>
         </scene>
-        <!--Impact-->
+        <!--Impact View Controller-->
         <scene sceneID="cWX-Pc-nXm">
             <objects>
                 <viewController id="VuP-Ft-7g2" customClass="ImpactViewController" sceneMemberID="viewController">
@@ -222,82 +222,112 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M5-zd-2Xb">
-                                <rect key="frame" x="32" y="159.5" width="351" height="203"/>
-                                <color key="backgroundColor" red="0.65575445600000004" green="0.91976243260000001" blue="0.86031611060000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">The average shower lasts 8 minutes, meaning around 16 gallons of water are used up (think of 16 milk cartons!)
-The recommended shower time is 4 min! Keep working on your goal!
-Momentarily switching off the shower when you don’t need the water to flow, like when you’re soaping up, shampooing or shaving can also save you lots of water.
-</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemTealColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important Facts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUh-ni-cA5">
-                                <rect key="frame" x="150.5" y="125" width="113" height="18.5"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calculate Your Impact:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELw-n0-Wva">
-                                <rect key="frame" x="32" y="438" width="171" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter 2.1 (avg) if unsure" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d92-Jw-sIn">
-                                <rect key="frame" x="186" y="492" width="180" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter 2.1 (avg) if unsure" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d92-Jw-sIn">
+                                <rect key="frame" x="203.5" y="442" width="180.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg. water flow of your showerhead:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jX-EP-WjW">
-                                <rect key="frame" x="35" y="476" width="140" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" misplaced="YES" text="Avg. water flow of your showerhead (gal/min):" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jX-EP-WjW">
+                                <rect key="frame" x="30" y="432" width="178" height="60"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2if-to-G2Z">
-                                <rect key="frame" x="186" y="587" width="180" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2if-to-G2Z">
+                                <rect key="frame" x="247" y="544" width="137" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Showers per week" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETX-Ck-6tD">
-                                <rect key="frame" x="19" y="579" width="159" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of showers per week:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETX-Ck-6tD">
+                                <rect key="frame" x="30" y="547" width="209" height="21.5"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqd-7n-I29">
-                                <rect key="frame" x="132" y="721" width="151" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculate Your Impact" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18i-A5-9Yx">
+                                <rect key="frame" x="30" y="98" width="242" height="31.5"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuD-09-yNK">
+                                <rect key="frame" x="30" y="143" width="354" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- The average shower lasts 8 minutes, meaning around 16 gallons of water are used up (think of 16 milk cartons!)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Se2-WK-lxl">
+                                        <rect key="frame" x="4" y="10" width="346" height="64"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- The recommended shower time is 4 min! Keep working on your goal!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPR-wj-3Ki">
+                                        <rect key="frame" x="0.0" y="89" width="354" height="42.5"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Switch off the shower when you don't need it like when soaping up or shampooing to save water!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-FQ-euj">
+                                        <rect key="frame" x="0.0" y="146.5" width="354" height="64"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="AsW-FQ-euj" secondAttribute="trailing" id="DXV-UO-ETh"/>
+                                    <constraint firstItem="GPR-wj-3Ki" firstAttribute="leading" secondItem="nuD-09-yNK" secondAttribute="leading" id="EYq-Ub-VMu"/>
+                                    <constraint firstItem="Se2-WK-lxl" firstAttribute="leading" secondItem="nuD-09-yNK" secondAttribute="leading" constant="4" id="ICL-Zk-Nav"/>
+                                    <constraint firstAttribute="trailing" secondItem="Se2-WK-lxl" secondAttribute="trailing" constant="4" id="IpZ-Nj-R0N"/>
+                                    <constraint firstAttribute="height" constant="240" id="JSn-bK-efX"/>
+                                    <constraint firstItem="AsW-FQ-euj" firstAttribute="leading" secondItem="nuD-09-yNK" secondAttribute="leading" id="Srd-Yl-Qs9"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AsW-FQ-euj" secondAttribute="bottom" constant="10" id="X5Q-p0-S87"/>
+                                    <constraint firstItem="GPR-wj-3Ki" firstAttribute="top" secondItem="Se2-WK-lxl" secondAttribute="bottom" constant="15" id="cqr-el-dPD"/>
+                                    <constraint firstAttribute="trailing" secondItem="GPR-wj-3Ki" secondAttribute="trailing" id="g2F-vt-4v0"/>
+                                    <constraint firstItem="Se2-WK-lxl" firstAttribute="top" secondItem="nuD-09-yNK" secondAttribute="top" constant="10" id="sfW-7T-Ntx"/>
+                                    <constraint firstItem="AsW-FQ-euj" firstAttribute="top" secondItem="GPR-wj-3Ki" secondAttribute="bottom" constant="15" id="tPQ-SS-f3N"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqd-7n-I29">
+                                <rect key="frame" x="165" y="640" width="84.5" height="31"/>
+                                <color key="backgroundColor" red="0.81176471709999998" green="0.86274516580000005" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Calculate">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fhc-mL-MFJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fhc-mL-MFJ" firstAttribute="top" secondItem="vUh-ni-cA5" secondAttribute="top" constant="-37" id="6Ld-1m-Dgm"/>
-                            <constraint firstItem="fhc-mL-MFJ" firstAttribute="trailing" secondItem="9M5-zd-2Xb" secondAttribute="trailing" constant="31" id="DN5-Vf-xE1"/>
-                            <constraint firstItem="9M5-zd-2Xb" firstAttribute="leading" secondItem="fhc-mL-MFJ" secondAttribute="leading" constant="32" id="K6Y-0O-7f1"/>
-                            <constraint firstItem="9M5-zd-2Xb" firstAttribute="top" secondItem="vUh-ni-cA5" secondAttribute="bottom" constant="16" id="uEF-ah-SG1"/>
-                            <constraint firstItem="vUh-ni-cA5" firstAttribute="centerX" secondItem="fhc-mL-MFJ" secondAttribute="centerX" id="ykq-xO-xWw"/>
+                            <constraint firstItem="ETX-Ck-6tD" firstAttribute="leading" secondItem="4jX-EP-WjW" secondAttribute="leading" id="2sb-ah-sJT"/>
+                            <constraint firstItem="Rqd-7n-I29" firstAttribute="centerX" secondItem="fhc-mL-MFJ" secondAttribute="centerX" id="7PK-1b-sza"/>
+                            <constraint firstItem="18i-A5-9Yx" firstAttribute="top" secondItem="fhc-mL-MFJ" secondAttribute="top" constant="10" id="7Q6-Ga-7GR"/>
+                            <constraint firstItem="nuD-09-yNK" firstAttribute="top" secondItem="18i-A5-9Yx" secondAttribute="bottom" constant="13.5" id="7um-3q-0c5"/>
+                            <constraint firstItem="2if-to-G2Z" firstAttribute="centerY" secondItem="ETX-Ck-6tD" secondAttribute="centerY" constant="3" id="B5e-ZZ-eFW"/>
+                            <constraint firstItem="d92-Jw-sIn" firstAttribute="trailing" secondItem="nuD-09-yNK" secondAttribute="trailing" id="DQ8-d6-arf"/>
+                            <constraint firstItem="nuD-09-yNK" firstAttribute="leading" secondItem="fhc-mL-MFJ" secondAttribute="leading" constant="30" id="EHr-jS-7Z3"/>
+                            <constraint firstItem="d92-Jw-sIn" firstAttribute="top" secondItem="nuD-09-yNK" secondAttribute="bottom" constant="59" id="L0E-cM-zkV"/>
+                            <constraint firstItem="d92-Jw-sIn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4jX-EP-WjW" secondAttribute="trailing" constant="10" id="Rlm-h1-naW"/>
+                            <constraint firstItem="fhc-mL-MFJ" firstAttribute="trailing" secondItem="nuD-09-yNK" secondAttribute="trailing" constant="30" id="SSO-lG-FYx"/>
+                            <constraint firstItem="2if-to-G2Z" firstAttribute="trailing" secondItem="d92-Jw-sIn" secondAttribute="trailing" id="Umk-gl-crg"/>
+                            <constraint firstItem="fhc-mL-MFJ" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Rqd-7n-I29" secondAttribute="bottom" constant="20" id="WXj-Ng-jhA"/>
+                            <constraint firstItem="2if-to-G2Z" firstAttribute="leading" secondItem="ETX-Ck-6tD" secondAttribute="trailing" constant="8" id="WwK-Vm-PlI"/>
+                            <constraint firstItem="Rqd-7n-I29" firstAttribute="top" secondItem="2if-to-G2Z" secondAttribute="bottom" constant="62" id="asi-O3-nlL"/>
+                            <constraint firstItem="18i-A5-9Yx" firstAttribute="leading" secondItem="fhc-mL-MFJ" secondAttribute="leading" constant="30" id="jvh-pj-kmF"/>
+                            <constraint firstItem="4jX-EP-WjW" firstAttribute="leading" secondItem="nuD-09-yNK" secondAttribute="leading" id="jxj-LK-KnD"/>
+                            <constraint firstItem="ETX-Ck-6tD" firstAttribute="top" secondItem="4jX-EP-WjW" secondAttribute="bottom" constant="50" id="soH-nj-rze"/>
+                            <constraint firstItem="4jX-EP-WjW" firstAttribute="top" secondItem="nuD-09-yNK" secondAttribute="bottom" constant="50" id="yjO-0e-bVW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Impact" id="L9K-P7-pJl"/>
+                    <navigationItem key="navigationItem" id="L9K-P7-pJl"/>
+                    <connections>
+                        <outlet property="background" destination="nuD-09-yNK" id="Jf7-RQ-mXj"/>
+                        <outlet property="calculateButton" destination="Rqd-7n-I29" id="AuQ-KQ-h1j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE3-wV-deG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6698.5507246376819" y="950.89285714285711"/>
+            <point key="canvasLocation" x="6549" y="1945"/>
         </scene>
         <!--Leaderboard 🔥-->
         <scene sceneID="4Zf-qF-QHB">
@@ -411,7 +441,7 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                                 </menu>
                                 <state key="normal" image="camera" catalog="system"/>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pgz-NP-wdq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pgz-NP-wdq">
                                 <rect key="frame" x="20" y="369.5" width="374" height="433.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -439,9 +469,6 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                                                     <color key="tintColor" red="0.52659587149999998" green="0.52659587149999998" blue="0.52659587149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system"/>
-                                                    <connections>
-                                                        <segue destination="czH-2Z-C6C" kind="show" id="cqp-6y-whX"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.82369689749999997" green="0.85378272639999997" blue="0.91976243260000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -460,6 +487,7 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                                         <connections>
                                             <outlet property="typeLabel" destination="BUA-C8-gHx" id="28I-A0-equ"/>
                                             <outlet property="valueLabel" destination="yrt-Gx-XNA" id="UTn-XD-0DP"/>
+                                            <segue destination="czH-2Z-C6C" kind="show" id="zjr-db-cMY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -531,7 +559,7 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a goal from 2 to 8 minutes. Try to aim for 4 minutes and keep improving :)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbV-JP-ixb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a goal from 1 to 8 minutes. Try to aim for 4 minutes and keep improving :)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbV-JP-ixb">
                                 <rect key="frame" x="20" y="159" width="374" height="50"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -824,7 +852,7 @@ Momentarily switching off the shower when you don’t need the water to flow, li
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyW-VN-yRY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5788.4057971014499" y="950.89285714285711"/>
+            <point key="canvasLocation" x="5636" y="1945"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="PTA-da-oO2">
@@ -883,9 +911,6 @@ Momentarily switching off the shower when you don’t need the water to flow, li
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

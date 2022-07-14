@@ -8,16 +8,18 @@
 #import <Foundation/Foundation.h>
 #import <SpotifyiOS/SpotifyiOS.h>
 
+@class NetworkCalls;
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SpotifyAPIManager : NSObject <SPTSessionManagerDelegate>
+@interface SpotifyAPIManager : NSObject <SPTSessionManagerDelegate, SPTAppRemoteDelegate>
 + (instancetype)shared;
 -(void)parseURL:(NSURL*)url;
 - (void)startConnection;
 @property SPTConfiguration *configuration;
 @property SPTSessionManager *sessionManager;
 @property SPTAppRemote *appRemote;
-@property NSString *responseCode;
+@property (nonatomic) NSString *responseCode;
 @end
 
 NS_ASSUME_NONNULL_END

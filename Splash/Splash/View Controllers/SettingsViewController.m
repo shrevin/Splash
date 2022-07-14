@@ -25,6 +25,7 @@
     [self.background.layer setBorderWidth: 0.5];
     self.background.layer.cornerRadius = 16;
     self.updateButton.layer.cornerRadius = 8;
+    self.updateButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
     self.minPicker.delegate = self;
     self.minPicker.dataSource = self;
     self.secPicker.delegate = self;

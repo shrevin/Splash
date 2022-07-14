@@ -10,6 +10,8 @@
 #import "StatsCell.h"
 #import "LoginViewController.h"
 #import "Parse/PFImageView.h"
+#import "TimeViewController.h"
+#import "Shower.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -57,6 +59,16 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
     self.tableView.sectionHeaderTopPadding = 0;
     
+//    // Creating scrolling functionality
+//    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//    scrollView.backgroundColor = [UIColor blueColor];
+//    [self.view addSubview:scrollView];
+//    [scrollView setContentSize:CGSizeMake(self.view.frame.size.width*3, self.view.frame.size.height)];
+//    UIView *redView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//    redView.backgroundColor = [UIColor redColor];
+//    [scrollView addSubview:redView];
+
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -76,30 +88,62 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog([NSString stringWithFormat:@"%i", indexPath.section]);
+    //NSLog([NSString stringWithFormat:@"%i", indexPath.section]);
     StatsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myStatsCell"];
     if (indexPath.section % 2) {
-        [cell setBackgroundColor:[UIColor orangeColor]];
+        [cell setBackgroundColor:[UIColor blackColor]];
     }
     NSString *name = self.scoreNames[indexPath.section];
-    if (indexPath.section == 1) {
-        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
+    if (indexPath.section == 0) {
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self.user[@"goal"]];
+        int currMinute = [components minute];
+        int currSeconds = [components second];
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", [TimeViewController formatTimeString:(currMinute*60) + currSeconds]]];
             //NSLog([NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]);
-        } else if (indexPath.section == 5){
+    } else if (indexPath.section == 1) {
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
+    } else if (indexPath.section == 2) {
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"streak"]]];
+    } else if (indexPath.section == 5){
             [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
-        } else {
+    } else {
             [cell setCell:name value:@"20"];
-        }
-    [cell setCell:name value:@"20"];
+    }
     cell.layer.cornerRadius = 16;
     return cell;
 }
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//     if (indexPath.section % 2) {
+//         [cell setBackgroundColor:[UIColor blackColor]];
+//     }
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 6;
 }
 
+- (int) getTotalShowerTime {
+    PFQuery *query = [PFQuery queryWithClassName:@"Shower"];
+    [query whereKey:@"user" equalTo:self.user];
+    int totalTimeInSecs = 0;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+      if (!error) {
+        // The find succeeded.
+        NSLog(@"Successfully retrieved %d scores.", objects.count);
+        // Do something with the found objects
+//        for (PFObject *object in objects) {
+//            totalTimeInSecs = totalTimeInSecs + [object[@"len"] intValue];
+//        }
+      } else {
+        // Log details of the failure
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
+      }
+    }];
+    return totalTimeInSecs;
+}
 
 
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
