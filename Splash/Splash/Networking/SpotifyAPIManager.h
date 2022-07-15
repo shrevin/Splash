@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SpotifyAPIManager : NSObject <SPTSessionManagerDelegate, SPTAppRemoteDelegate>
+@interface SpotifyAPIManager : NSObject <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
 + (instancetype)shared;
 -(void)parseURL:(NSURL*)url;
 - (void)startConnection;

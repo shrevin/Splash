@@ -82,6 +82,12 @@
 # pragma  mark - SPTAppRemoteDelegate
 - (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote {
     NSLog(@"SUCCESSFULLY CONNECTED WHOOP WHOOP");
+    appRemote.playerAPI.delegate = self;
+    [appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"THERE IS AN ERROR (INSIDE appRemoteDidEstablishConnection)");
+            }
+    }];
 }
 
 
@@ -96,9 +102,29 @@
 }
 
 
-
--(void)parseURL:(NSURL*)url {
-    NSLog(@"URLLLLL");
-    
+- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
+    NSLog(@"PLAYER STATE CHANGED");
+    NSLog([NSString stringWithFormat:@"Spotify Track name: %@", playerState.track.name]);
+//    NetworkCalls *calls2 = [[NetworkCalls alloc]init];
+//    [calls2 fetchPlayerStateWithAppRemote:self.appRemote];
 }
+
+
+//- (void) fetchPlayerState {
+//    [self.appRemote.playerAPI getPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"Error getting player state");
+//        } else {
+//            [self updatePlayerState:result];
+//        }
+//    }];
+//}
+//
+//
+//- (void) updatePlayerState {
+//    NetworkCalls *calls = [[NetworkCalls alloc]init];
+//    [TimeViewController setSongImage:[calls fetchArtworkFor:playerState appRemote:self.appRemote]];
+//}
+
+
 @end

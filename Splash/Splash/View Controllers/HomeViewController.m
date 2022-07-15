@@ -30,6 +30,7 @@
 
 @implementation HomeViewController
 NSString *HeaderViewIdentifier = @"TableViewHeaderView";
+int totalTime;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,6 +106,11 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
         [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
     } else if (indexPath.section == 2) {
         [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"streak"]]];
+    } else if (indexPath.section == 3) {
+        int averageTime = roundf([self.user[@"totalShowerTime"] intValue] / [self.user[@"numShowers"] intValue]);
+        [cell setCell:name value:[TimeViewController formatTimeString:averageTime]];
+    } else if (indexPath.section ==  4){
+        [cell setCell:name value:[TimeViewController formatTimeString:[self.user[@"totalShowerTime"] intValue]]];
     } else if (indexPath.section == 5){
             [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
     } else {
@@ -125,25 +131,6 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
     return 6;
 }
 
-- (int) getTotalShowerTime {
-    PFQuery *query = [PFQuery queryWithClassName:@"Shower"];
-    [query whereKey:@"user" equalTo:self.user];
-    int totalTimeInSecs = 0;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-      if (!error) {
-        // The find succeeded.
-        NSLog(@"Successfully retrieved %d scores.", objects.count);
-        // Do something with the found objects
-//        for (PFObject *object in objects) {
-//            totalTimeInSecs = totalTimeInSecs + [object[@"len"] intValue];
-//        }
-      } else {
-        // Log details of the failure
-        NSLog(@"Error: %@ %@", error, [error userInfo]);
-      }
-    }];
-    return totalTimeInSecs;
-}
 
 
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

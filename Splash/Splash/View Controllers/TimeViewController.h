@@ -14,7 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString*) formatTimeString:(int)secs;
 + (int) getRemainingSec: (int)secs;
 + (int) convertSecsToMin:(int)secs;
+- (void) setSongImage: (UIImage*) song_image;
+- (void) setSongLabel: (NSString*) song_label;
 @property (strong, nonatomic) NSString *responseCode;
+
+
 //@property (strong, nonatomic) SPTAppRemoteAccessTokenKey *accessToken;
 
 @end

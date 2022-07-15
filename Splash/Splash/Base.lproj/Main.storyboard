@@ -203,7 +203,7 @@
                     <connections>
                         <outlet property="connectButton" destination="fX1-zS-lFB" id="yIR-oN-zjq"/>
                         <outlet property="playPauseButton" destination="cJr-pL-vyR" id="zbX-ev-TYj"/>
-                        <outlet property="songImage" destination="wG3-5b-shu" id="iwe-W4-Ary"/>
+                        <outlet property="songImage" destination="wG3-5b-shu" id="oTV-Te-7Cw"/>
                         <outlet property="songLabel" destination="BEj-U3-Opk" id="pQz-qc-YeF"/>
                         <outlet property="startButton" destination="ZxB-je-QFi" id="mF5-xH-lso"/>
                         <outlet property="stopButton" destination="PDF-vt-EYJ" id="Eul-KI-xsL"/>
@@ -223,7 +223,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter 2.1 (avg) if unsure" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d92-Jw-sIn">
-                                <rect key="frame" x="203.5" y="442" width="180.5" height="34"/>
+                                <rect key="frame" x="203.5" y="453.5" width="180.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -234,12 +234,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2if-to-G2Z">
-                                <rect key="frame" x="247" y="544" width="137" height="34"/>
+                                <rect key="frame" x="247" y="555.5" width="137" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of showers per week:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETX-Ck-6tD">
-                                <rect key="frame" x="30" y="547" width="209" height="21.5"/>
+                                <rect key="frame" x="30" y="558.5" width="209" height="21.5"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -251,7 +251,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuD-09-yNK">
-                                <rect key="frame" x="30" y="143" width="354" height="240"/>
+                                <rect key="frame" x="30" y="154.5" width="354" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- The average shower lasts 8 minutes, meaning around 16 gallons of water are used up (think of 16 milk cartons!)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Se2-WK-lxl">
                                         <rect key="frame" x="4" y="10" width="346" height="64"/>
@@ -288,7 +288,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqd-7n-I29">
-                                <rect key="frame" x="165" y="640" width="84.5" height="31"/>
+                                <rect key="frame" x="165" y="651.5" width="84.5" height="31"/>
                                 <color key="backgroundColor" red="0.81176471709999998" green="0.86274516580000005" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Calculate">
@@ -302,7 +302,7 @@
                             <constraint firstItem="ETX-Ck-6tD" firstAttribute="leading" secondItem="4jX-EP-WjW" secondAttribute="leading" id="2sb-ah-sJT"/>
                             <constraint firstItem="Rqd-7n-I29" firstAttribute="centerX" secondItem="fhc-mL-MFJ" secondAttribute="centerX" id="7PK-1b-sza"/>
                             <constraint firstItem="18i-A5-9Yx" firstAttribute="top" secondItem="fhc-mL-MFJ" secondAttribute="top" constant="10" id="7Q6-Ga-7GR"/>
-                            <constraint firstItem="nuD-09-yNK" firstAttribute="top" secondItem="18i-A5-9Yx" secondAttribute="bottom" constant="13.5" id="7um-3q-0c5"/>
+                            <constraint firstItem="nuD-09-yNK" firstAttribute="top" secondItem="18i-A5-9Yx" secondAttribute="bottom" constant="25" id="7um-3q-0c5"/>
                             <constraint firstItem="2if-to-G2Z" firstAttribute="centerY" secondItem="ETX-Ck-6tD" secondAttribute="centerY" constant="3" id="B5e-ZZ-eFW"/>
                             <constraint firstItem="d92-Jw-sIn" firstAttribute="trailing" secondItem="nuD-09-yNK" secondAttribute="trailing" id="DQ8-d6-arf"/>
                             <constraint firstItem="nuD-09-yNK" firstAttribute="leading" secondItem="fhc-mL-MFJ" secondAttribute="leading" constant="30" id="EHr-jS-7Z3"/>

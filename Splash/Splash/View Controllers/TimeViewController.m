@@ -19,10 +19,10 @@
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
-@property (strong, nonatomic) IBOutlet UIImageView *songImage;
 @property (strong, nonatomic) IBOutlet UILabel *songLabel;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (strong, nonatomic) IBOutlet UIButton *connectButton;
+@property (strong, nonatomic) IBOutlet UIImageView *songImage;
 
 
 @end
@@ -50,6 +50,7 @@ UIAlertController *alert;
     dateFormat.dateFormat = @"mm:ss";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
+    self.songLabel.text = @"hi";
     
     
 //    // SPOTIFY SDK Authorization & Configuration
@@ -72,6 +73,17 @@ UIAlertController *alert;
     self.stopButton.hidden = YES;
 
 }
+
+
+- (void) setSongImage: (UIImage*) song_image {
+    self.songImage.image = song_image;
+}
+
+- (void) setSongLabel: (NSString*) song_label {
+    self.songLabel.text = song_label;
+ 
+}
+
 
 -(void)dateForFormatter{
     if((currMinute>0 || currSeconds>=0) && currMinute>=0) {
@@ -162,6 +174,7 @@ UIAlertController *alert;
                     self.user[@"streak"] = @(0);
                     //[self.user saveInBackground];
                 }
+                self.user[@"totalShowerTime"] = @([self.user[@"totalShowerTime"] intValue] + roundf(elapsedTime));
                 self.user[@"numShowers"] = @([self.user[@"numShowers"] intValue] + 1);
                 [self.user saveInBackground];
             } else {
