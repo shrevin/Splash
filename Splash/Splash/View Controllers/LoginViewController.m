@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    
 }
 
 - (IBAction)signInButton:(id)sender {

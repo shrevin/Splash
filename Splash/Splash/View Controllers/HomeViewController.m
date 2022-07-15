@@ -116,7 +116,7 @@ int totalTime;
     } else {
             [cell setCell:name value:@"20"];
     }
-    cell.layer.cornerRadius = 16;
+    cell.layer.cornerRadius = 25;
     return cell;
 }
 
@@ -131,31 +131,6 @@ int totalTime;
     return 6;
 }
 
-
-
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    return CGSizeMake(self.collectionView.bounds.size.width/3, 150);
-//}
-//
-//
-//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return 6;
-//}
-//
-//// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-//- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    StatsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"stats" forIndexPath:indexPath];
-//    NSString *name = self.scoreNames[indexPath.row];
-//    if (indexPath.row == 1) {
-//        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
-//        //NSLog([NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]);
-//    } else if (indexPath.row == 5){
-//        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
-//    } else {
-//        [cell setCell:name value:@"20"];
-//    }
-//    return cell;
-//}
 
 - (IBAction)clickLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {

@@ -18,6 +18,7 @@
 @end
 
 @implementation ShowersViewController
+NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +30,8 @@
     [self.refreshControl addTarget:self action:@selector(getData) forControlEvents:UIControlEventValueChanged];
     [self.showersTableView insertSubview:self.refreshControl atIndex:0];
     self.showersTableView.layer.cornerRadius = 10.0;
- 
+    [self.showersTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifierForShowers];
+    self.showersTableView.sectionHeaderTopPadding = 0;
 }
 
 -(void) getData {
@@ -52,15 +54,28 @@
     [self.refreshControl endRefreshing];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView
+                                           dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifierForShowers];
+    return header;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return self.showersArray.count;
 }
 
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShowerCell *cell = [self.showersTableView dequeueReusableCellWithIdentifier:@"showerCell"];
-    [cell setCell:self.showersArray[indexPath.row]];
+    [cell setCell:self.showersArray[indexPath.section]];
+    cell.layer.cornerRadius = 25;
+    cell.layer.borderWidth = 1;
+    cell.layer.borderColor = [[UIColor grayColor] CGColor];
     return cell;
 }
 /*
