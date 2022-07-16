@@ -11,6 +11,8 @@
 #import <SpotifyiOS/SpotifyiOS.h>
 #import "Shower.h"
 #import "SpotifyAPIManager.h"
+#import "Splash-Swift.h"
+
 
 
 
@@ -19,11 +21,10 @@
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
-@property (strong, nonatomic) IBOutlet UILabel *songLabel;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (strong, nonatomic) IBOutlet UIButton *connectButton;
+@property (strong, nonatomic) IBOutlet UILabel *songLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *songImage;
-
 
 @end
 
@@ -50,7 +51,6 @@ UIAlertController *alert;
     dateFormat.dateFormat = @"mm:ss";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
-    self.songLabel.text = @"hi";
     
     
 //    // SPOTIFY SDK Authorization & Configuration
@@ -71,17 +71,6 @@ UIAlertController *alert;
     dateAtStart = self.user[@"goal"];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
-
-}
-
-
-- (void) setSongImage: (UIImage*) song_image {
-    self.songImage.image = song_image;
-}
-
-- (void) setSongLabel: (NSString*) song_label {
-    self.songLabel.text = song_label;
- 
 }
 
 
@@ -209,72 +198,44 @@ UIAlertController *alert;
     [[SpotifyAPIManager shared] startConnection];
 }
 
+# pragma  mark - SPTAppRemoteDelegate
+- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote {
+    NSLog(@"SUCCESSFULLY CONNECTED WHOOP WHOOP");
+    appRemote.playerAPI.delegate = self;
+    [appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"THERE IS AN ERROR (INSIDE appRemoteDidEstablishConnection)");
+            }
+    }];
+}
 
-//#pragma mark - SPTSessionManagerDelegate
-//
-//- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
-//{
-//    NSLog(@"success: %@", session);
-//    self.appRemote.connectionParameters.accessToken = session.accessToken;
-//    [self.appRemote connect];
-//}
-//
-//- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
-//{
-//  NSLog(@"fail: %@", error);
-//}
-//
-//- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
-//{
-//  NSLog(@"renewed: %@", session);
-//}
-//
-//#pragma mark - SPTAppRemoteDelegate
-//
-//- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote
-//{
-//  NSLog(@"connected");
-//}
-//
-//- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(NSError *)error
-//{
-//  NSLog(@"disconnected");
-//}
-//
-//- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(NSError *)error
-//{
-//    NSLog(@"failed");
-//    // Connection was successful, you can begin issuing commands
-//      self.appRemote.playerAPI.delegate = self;
-//      [self.appRemote.playerAPI subscribeToPlayerState:^(id _Nullable result, NSError * _Nullable error) {
-//        if (error) {
-//          NSLog(@"error: %@", error.localizedDescription);
-//        }
-//      }];
-//}
-//
-//- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState
-//{
-//    NSLog(@"player state changed");
-//    NSLog(@"Track name: %@", playerState.track.name);
-//}
+- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(nullable NSError *)error {
+    NSLog(@"error :(");
+}
 
-//
-//- (void) updateViewBasedOnConnected {
-//    if (appRemote.isConnected == true) {
-//        self.connectButton.hidden = YES;
-//        self.songImage.hidden = NO;
-//        self.songLabel.hidden = NO;
-//        self.playPauseButton.hidden = NO;
-//    }
-//    else { // show login
-//        self.connectButton.hidden = NO;
-//        self.songImage.hidden = YES;
-//        self.songLabel.hidden = YES;
-//        self.playPauseButton.hidden = YES;
-//    }
-//}
 
+
+- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
+    NSLog(@"error :(");
+}
+
+
+- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
+    NSLog(@"PLAYER STATE CHANGED");
+    NSLog([NSString stringWithFormat:@"Spotify Track name: %@", playerState.track.name]);
+    NSString *name = [NSString stringWithFormat:@"%@", playerState.track.name];
+    self.songLabel.text = name;
+    NetworkCalls* calls = [[NetworkCalls alloc]init];
+    UIImage *song_pic = [calls fetchArtworkFor:playerState.track appRemote:self.appRemote];
+    self.songImage.image = song_pic;
+    [self.songImage setNeedsDisplay];
+
+//    TimeViewController *timeVC = [[TimeViewController alloc]init];
+//    [UIApplication sharedApplication].delegate.window.rootViewController = timeVC;
+//    [timeVC setSongLabel:[NSString stringWithFormat:@"%@", playerState.track.name]];
+    // send a notification to time view controller with appRemote object
+    // fetch image and track name there
+}
 /*
 #pragma mark - Navigation
 

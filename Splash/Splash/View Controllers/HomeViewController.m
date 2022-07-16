@@ -38,9 +38,7 @@ int totalTime;
     self.user = [PFUser currentUser];
     self.usernameLabel.text = self.user.username;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
-   
     self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
-   
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     if (self.user[@"profile"]) {
