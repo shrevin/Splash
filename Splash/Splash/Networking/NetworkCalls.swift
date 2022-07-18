@@ -51,13 +51,12 @@ import Foundation
         task.resume()
     }
     
-    @objc func fetchArtwork(for track: SPTAppRemoteTrack, appRemote: SPTAppRemote){
+    @objc func fetchArtwork(for track: SPTAppRemoteTrack, appRemote: SPTAppRemote, im_view: UIImageView){
         appRemote.imageAPI?.fetchImage(forItem: track, with: CGSize.zero, callback: { [weak self] (image, error) in
             if let error = error {
                 print("Error fetching track image: " + error.localizedDescription)
             } else if let image = image as? UIImage {
-//                TimeViewController *timeVC = [TimeViewController alloc]init];
-//                timeVC.setSongImage(image);
+                im_view.image = image;
             }
         })
     }
@@ -79,12 +78,12 @@ import Foundation
         })
     }
     
-    @objc func update(playerState: SPTAppRemotePlayerState, appRemote: SPTAppRemote) {
-        fetchArtwork(for: playerState.track, appRemote: appRemote)
-//        if lastPlayerState?.track.uri != playerState.track.uri {
-//            fetchArtwork(for: playerState.track, appRemote: appRemote)
-//        }
-    }
+//    @objc func update(playerState: SPTAppRemotePlayerState, appRemote: SPTAppRemote) {
+//        fetchArtwork(for: playerState.track, appRemote: appRemote)
+////        if lastPlayerState?.track.uri != playerState.track.uri {
+////            fetchArtwork(for: playerState.track, appRemote: appRemote)
+////        }
+//    }
 }
 
     

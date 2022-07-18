@@ -13,7 +13,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *gallonsPerYearLabel;
 @property (strong, nonatomic) IBOutlet UILabel *bgalPerWeekLabel;
 @property (strong, nonatomic) IBOutlet UILabel *bgalPerYearLabel;
+@property (strong, nonatomic) IBOutlet UILabel *savedGalPerWeek;
+@property (strong, nonatomic) IBOutlet UILabel *savedGalPerYear;
 @property (strong, nonatomic) PFUser *user;
+@property (strong, nonatomic) IBOutlet UIView *backView1;
+@property (strong, nonatomic) IBOutlet UIView *backView2;
+@property (strong, nonatomic) IBOutlet UIView *backView3;
+
+
 @end
 
 @implementation ImpactCalculationsViewController
@@ -22,9 +29,17 @@
     [super viewDidLoad];
     self.user = [PFUser currentUser];
     // Do any additional setup after loading the view.
-    int avgShowerTime = roundf([self.user[@"totalShowerTime"] intValue] / [self.user[@"numShowers"] intValue]);
-    NSLog([NSString stringWithFormat:@"%i", self.waterFlow]);
-    NSLog([NSString stringWithFormat:@"%i", self.showersPerWeek]);
+    float avgShowerTime = ([self.user[@"totalShowerTime"] floatValue] / [self.user[@"numShowers"] floatValue])/60;
+    self.gallonsPerWeekLabel.text = [NSString stringWithFormat:@"%.2f", avgShowerTime * self.waterFlow * self.showersPerWeek];
+    self.gallonsPerYearLabel.text = [NSString stringWithFormat:@"%.2f", avgShowerTime * self.waterFlow * self.showersPerWeek * 52.0];
+    self.bgalPerWeekLabel.text = [NSString stringWithFormat:@"%.2f", (avgShowerTime - 1) * self.waterFlow * self.showersPerWeek];
+    self.bgalPerYearLabel.text = [NSString stringWithFormat:@"%.2f", (avgShowerTime - 1) * self.waterFlow * self.showersPerWeek * 52];
+    self.savedGalPerWeek.text = [NSString stringWithFormat:@"%.2f",[self.gallonsPerWeekLabel.text floatValue] - [self.bgalPerWeekLabel.text floatValue]];
+    self.savedGalPerYear.text = [NSString stringWithFormat:@"%.2f",[self.gallonsPerYearLabel.text floatValue] - [self.bgalPerYearLabel.text floatValue]];
+    self.backView1.layer.cornerRadius = 16;
+    self.backView2.layer.cornerRadius = 16;
+    self.backView3.layer.cornerRadius = 16;
+    
     // multiply by avg. water flow
     // multiply by number of showers per week
     

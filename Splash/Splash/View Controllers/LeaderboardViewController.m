@@ -59,6 +59,10 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LeaderboardCell *cell = [self.leaderboardTableView dequeueReusableCellWithIdentifier:@"lbcell"];
     [cell setCell:self.leaderboard[indexPath.section]];
+    NSLog([NSString stringWithFormat:@"%i", indexPath.section]);
+    if (indexPath.section % 2 && indexPath.section > 0 ) {
+        [cell setBackgroundColor:[UIColor colorWithRed:0.929 green:0.883 blue:0.667 alpha:1.0]];
+    }
     cell.layer.cornerRadius = 16;
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor grayColor] CGColor];

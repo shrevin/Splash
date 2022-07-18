@@ -37,7 +37,10 @@
     
     // initializing app remote
     self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
-    self.appRemote.delegate = self;
+    UITabBarController *tabVC = (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    self.appRemote.delegate = (TimeViewController*)(UINavigationController*)[[[tabVC viewControllers]objectAtIndex:1] topViewController];
+    
+    //[[((UITabBarController *)self.window.rootViewController) viewControllers] objectAtIndex:TimerVCIndex];
 }
 
 
@@ -79,35 +82,48 @@
     
 }
 
-# pragma  mark - SPTAppRemoteDelegate
-- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote {
-    NSLog(@"SUCCESSFULLY CONNECTED WHOOP WHOOP");
-    appRemote.playerAPI.delegate = self;
-    [appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"THERE IS AN ERROR (INSIDE appRemoteDidEstablishConnection)");
-            }
-    }];
-}
-
-
-- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(nullable NSError *)error {
-    NSLog(@"error :(");
-}
-
-
-
-- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
-    NSLog(@"error :(");
-}
-
-
-- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
-    NSLog(@"PLAYER STATE CHANGED");
-    NSLog([NSString stringWithFormat:@"Spotify Track name: %@", playerState.track.name]);
-//    NetworkCalls *calls2 = [[NetworkCalls alloc]init];
-//    [calls2 fetchPlayerStateWithAppRemote:self.appRemote];
-}
+//# pragma  mark - SPTAppRemoteDelegate
+//- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote {
+//    NSLog(@"SUCCESSFULLY CONNECTED WHOOP WHOOP");
+//    appRemote.playerAPI.delegate = self;
+//    [appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"THERE IS AN ERROR (INSIDE appRemoteDidEstablishConnection)");
+//            }
+//    }];
+//}
+//
+//
+//- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(nullable NSError *)error {
+//    NSLog(@"error :(");
+//}
+//
+//
+//
+//- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
+//    NSLog(@"error :(");
+//}
+//
+//
+//
+//- (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC {
+//    UIViewController *currentVC;
+//    if ([rootVC presentedViewController]) {
+//        //The view is presented
+//        rootVC = [rootVC presentedViewController];
+//    }
+//    return rootVC;
+//}
+//    
+//- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
+//    NSLog(@"PLAYER STATE CHANGED");
+//    NSLog([NSString stringWithFormat:@"Spotify Track name: %@", playerState.track.name]);
+//    TimeViewController *timeVC = [[TimeViewController alloc]init];
+//    [UIApplication sharedApplication].delegate.window.rootViewController = timeVC;
+//    //[timeVC setSongLabel:[NSString stringWithFormat:@"%@", playerState.track.name]];
+//    // send a notification to time view controller with appRemote object
+//    // fetch image and track name there
+//}
 
 
 //- (void) fetchPlayerState {

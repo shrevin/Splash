@@ -15,12 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) getRemainingSec: (int)secs;
 + (int) convertSecsToMin:(int)secs;
 
-+ (void) yo;
-
-@property SPTConfiguration *configuration;
-@property SPTSessionManager *sessionManager;
-@property SPTAppRemote *appRemote;
-@property (nonatomic) NSString *responseCode;
 
 
 //@property (strong, nonatomic) SPTAppRemoteAccessTokenKey *accessToken;

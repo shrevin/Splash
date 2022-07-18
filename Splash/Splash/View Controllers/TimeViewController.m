@@ -40,6 +40,7 @@ int currMinute;
 int currSeconds;
 CFTimeInterval startTime;
 UIAlertController *alert;
+bool isPaused;
 
 
 - (void)viewDidLoad {
@@ -51,18 +52,15 @@ UIAlertController *alert;
     dateFormat.dateFormat = @"mm:ss";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
-    
-    
-//    // SPOTIFY SDK Authorization & Configuration
-//    self.configuration  = [[SPTConfiguration alloc] initWithClientID:@"54c6c371e13b4f8ab5e82bd97ff3f563" redirectURL:[NSURL URLWithString:@"splash://"]];
-//    NSURL *tokenSwapURL =  [NSURL URLWithString:@"http://localhost:1234/swap"];
-//    NSURL *tokenRefreshURL = [NSURL URLWithString:@"http://localhost:1234/refresh"];
-//    self.configuration.tokenSwapURL = tokenSwapURL;
-//    self.configuration.tokenRefreshURL = tokenRefreshURL;
-//    // playURI is empty, so playback of user’s last track is resumed
-//    self.configuration.playURI = @"";
-    
-
+    self.songImage.layer.cornerRadius = 16;
+    self.connectButton.layer.cornerRadius = 16;
+    self.connectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+    self.connectButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.connectButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
+    self.startButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
+    self.stopButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
+    self.songImage.hidden = YES;
+    self.playPauseButton.hidden = YES;
 }
 
 
@@ -198,9 +196,27 @@ UIAlertController *alert;
     [[SpotifyAPIManager shared] startConnection];
 }
 
+- (IBAction)clickPlayPause:(id)sender {
+    if (isPaused) {
+        [[SpotifyAPIManager shared].appRemote.playerAPI resume:nil];
+        UIImage *image = [UIImage systemImageNamed:@"pause.circle.fill"];
+        [self.playPauseButton setImage:image forState:normal];
+        isPaused = NO;
+    } else {
+        [[SpotifyAPIManager shared].appRemote.playerAPI pause:nil];
+        isPaused = YES;
+        UIImage *image = [UIImage systemImageNamed:@"play.circle.fill"];
+        [self.playPauseButton setImage:image forState:normal];
+    }
+}
+
+
 # pragma  mark - SPTAppRemoteDelegate
 - (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote {
-    NSLog(@"SUCCESSFULLY CONNECTED WHOOP WHOOP");
+    NSLog(@"SUCCESSFULLY CONNECTED");
+    self.connectButton.hidden = YES;
+    self.songImage.hidden = NO;
+    self.playPauseButton.hidden = NO;
     appRemote.playerAPI.delegate = self;
     [appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
             if (error) {
@@ -222,19 +238,12 @@ UIAlertController *alert;
 
 - (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
     NSLog(@"PLAYER STATE CHANGED");
+    isPaused = playerState.isPaused;
     NSLog([NSString stringWithFormat:@"Spotify Track name: %@", playerState.track.name]);
     NSString *name = [NSString stringWithFormat:@"%@", playerState.track.name];
     self.songLabel.text = name;
     NetworkCalls* calls = [[NetworkCalls alloc]init];
-    UIImage *song_pic = [calls fetchArtworkFor:playerState.track appRemote:self.appRemote];
-    self.songImage.image = song_pic;
-    [self.songImage setNeedsDisplay];
-
-//    TimeViewController *timeVC = [[TimeViewController alloc]init];
-//    [UIApplication sharedApplication].delegate.window.rootViewController = timeVC;
-//    [timeVC setSongLabel:[NSString stringWithFormat:@"%@", playerState.track.name]];
-    // send a notification to time view controller with appRemote object
-    // fetch image and track name there
+    [calls fetchArtworkFor:playerState.track appRemote:[SpotifyAPIManager shared].appRemote im_view:self.songImage];
 }
 /*
 #pragma mark - Navigation

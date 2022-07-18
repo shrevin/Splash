@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
@@ -105,7 +106,7 @@
         <!--Beat your goal!-->
         <scene sceneID="rqk-Hw-hfW">
             <objects>
-                <viewController id="8PD-3t-jXJ" customClass="TimeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="timeVC" id="8PD-3t-jXJ" customClass="TimeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ANu-te-wxa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,32 +128,63 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-je-QFi">
                                 <rect key="frame" x="167" y="733" width="80" height="80"/>
-                                <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Th5-ln-NlM"/>
                                     <constraint firstAttribute="height" constant="80" id="bxc-SO-iDv"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Start" cornerStyle="large">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="clickStart:" destination="8PD-3t-jXJ" eventType="touchUpInside" id="qiT-Bh-u39"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.0" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbL-Az-70A">
-                                <rect key="frame" x="81" y="605" width="252" height="98"/>
+                                <rect key="frame" x="101" y="605" width="212" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="98" id="1AS-qu-qzA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="65"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="65"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fX1-zS-lFB">
-                                <rect key="frame" x="122" y="178" width="171" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemCyanColor"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yDv-tn-3df">
+                                <rect key="frame" x="130.5" y="108" width="153" height="32"/>
+                                <segments>
+                                    <segment title="Music"/>
+                                    <segment title="No Music"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEj-U3-Opk">
+                                <rect key="frame" x="15" y="484" width="384" height="0.0"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJr-pL-vyR">
+                                <rect key="frame" x="167" y="495" width="79" height="59"/>
+                                <color key="tintColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <imageReference key="image" image="pause.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickPlayPause:" destination="8PD-3t-jXJ" eventType="touchUpInside" id="01l-NJ-B0Q"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3sm-Wc-mJs">
+                                <rect key="frame" x="69.5" y="189" width="275" height="275"/>
+                                <color key="backgroundColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="hyz-gd-eAF"/>
+                                    <constraint firstAttribute="height" constant="275" id="soa-8u-Uv5"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fX1-zS-lFB">
+                                <rect key="frame" x="134.5" y="325" width="145.5" height="31"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Connect to Spotify"/>
@@ -160,41 +192,26 @@
                                     <action selector="clickConnect:" destination="8PD-3t-jXJ" eventType="touchUpInside" id="Q12-yQ-0El"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yDv-tn-3df">
-                                <rect key="frame" x="131" y="116" width="153" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Music"/>
-                                    <segment title="No Music"/>
-                                </segments>
-                            </segmentedControl>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-5b-shu">
-                                <rect key="frame" x="59" y="249" width="296" height="225"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.81176471709999998" green="0.86274516580000005" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Track Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEj-U3-Opk">
-                                <rect key="frame" x="161" y="482" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJr-pL-vyR">
-                                <rect key="frame" x="81" y="511" width="252" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play / Pause"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GeP-mw-6d2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="ZxB-je-QFi" secondAttribute="bottom" id="0DP-of-T7v"/>
+                            <constraint firstItem="BEj-U3-Opk" firstAttribute="leading" secondItem="GeP-mw-6d2" secondAttribute="leading" constant="15" id="5op-p7-vlT"/>
                             <constraint firstItem="ZxB-je-QFi" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="30" id="721-cN-Stt"/>
+                            <constraint firstItem="fX1-zS-lFB" firstAttribute="top" secondItem="GeP-mw-6d2" secondAttribute="top" constant="237" id="74p-fr-FtX"/>
+                            <constraint firstItem="yDv-tn-3df" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="8Lz-8M-Tuc"/>
+                            <constraint firstItem="3sm-Wc-mJs" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="AYO-Nw-yip"/>
+                            <constraint firstItem="BEj-U3-Opk" firstAttribute="top" secondItem="3sm-Wc-mJs" secondAttribute="bottom" constant="20" id="EMM-JE-8nE"/>
+                            <constraint firstItem="cJr-pL-vyR" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="IOR-he-x5X"/>
+                            <constraint firstItem="fX1-zS-lFB" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="KmF-Sc-WjP"/>
+                            <constraint firstItem="3sm-Wc-mJs" firstAttribute="top" secondItem="yDv-tn-3df" secondAttribute="bottom" constant="50" id="ScC-DJ-1sL"/>
                             <constraint firstItem="PDF-vt-EYJ" firstAttribute="top" secondItem="TbL-Az-70A" secondAttribute="bottom" constant="30" id="Wso-hT-wJS"/>
+                            <constraint firstItem="GeP-mw-6d2" firstAttribute="trailing" secondItem="BEj-U3-Opk" secondAttribute="trailing" constant="15" id="a22-1o-ddH"/>
                             <constraint firstItem="TbL-Az-70A" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="bU1-Ah-Sap"/>
                             <constraint firstItem="PDF-vt-EYJ" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="ep8-2a-fVW"/>
+                            <constraint firstItem="cJr-pL-vyR" firstAttribute="top" secondItem="BEj-U3-Opk" secondAttribute="bottom" constant="20" id="mFY-8W-eB1"/>
+                            <constraint firstItem="yDv-tn-3df" firstAttribute="top" secondItem="GeP-mw-6d2" secondAttribute="top" constant="20" id="sCz-mc-eka"/>
                             <constraint firstItem="GeP-mw-6d2" firstAttribute="bottom" secondItem="PDF-vt-EYJ" secondAttribute="bottom" id="wVb-fl-DpB"/>
                             <constraint firstItem="ZxB-je-QFi" firstAttribute="centerX" secondItem="GeP-mw-6d2" secondAttribute="centerX" id="z0u-Rz-Al4"/>
                         </constraints>
@@ -203,8 +220,8 @@
                     <connections>
                         <outlet property="connectButton" destination="fX1-zS-lFB" id="yIR-oN-zjq"/>
                         <outlet property="playPauseButton" destination="cJr-pL-vyR" id="zbX-ev-TYj"/>
-                        <outlet property="songImage" destination="wG3-5b-shu" id="oTV-Te-7Cw"/>
-                        <outlet property="songLabel" destination="BEj-U3-Opk" id="pQz-qc-YeF"/>
+                        <outlet property="songImage" destination="3sm-Wc-mJs" id="184-rX-tMn"/>
+                        <outlet property="songLabel" destination="BEj-U3-Opk" id="kQq-R0-eko"/>
                         <outlet property="startButton" destination="ZxB-je-QFi" id="mF5-xH-lso"/>
                         <outlet property="stopButton" destination="PDF-vt-EYJ" id="Eul-KI-xsL"/>
                         <outlet property="stopwatchLabel" destination="TbL-Az-70A" id="tSS-Qk-s00"/>
@@ -294,6 +311,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Calculate">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="Tbk-RB-5PT" kind="show" id="Cys-Y1-khf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fhc-mL-MFJ"/>
@@ -323,11 +343,197 @@
                     <connections>
                         <outlet property="background" destination="nuD-09-yNK" id="Jf7-RQ-mXj"/>
                         <outlet property="calculateButton" destination="Rqd-7n-I29" id="AuQ-KQ-h1j"/>
+                        <outlet property="showersTextField" destination="2if-to-G2Z" id="eWl-bz-U8y"/>
+                        <outlet property="waterFlowTextField" destination="d92-Jw-sIn" id="poh-QH-j1j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE3-wV-deG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6549" y="1945"/>
+            <point key="canvasLocation" x="4371" y="1926"/>
+        </scene>
+        <!--Impact Calculations View Controller-->
+        <scene sceneID="wZ2-sM-asd">
+            <objects>
+                <viewController id="Tbk-RB-5PT" customClass="ImpactCalculationsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BCd-Ud-alG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-ow-18h">
+                                <rect key="frame" x="20" y="251" width="186" height="157"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / year" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NR-DZ-MLf">
+                                        <rect key="frame" x="7" y="70" width="171" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gal/wk" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2a-OH-L5Q">
+                                        <rect key="frame" x="60" y="46" width="64" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gal/yr" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xI2-TL-AcP">
+                                        <rect key="frame" x="60" y="118" width="59" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-g9-aRa">
+                                        <rect key="frame" x="7" y="8" width="173" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="186" id="Hci-0F-kHI"/>
+                                    <constraint firstAttribute="height" constant="157" id="ldD-bQ-NVY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXD-jc-8Dr">
+                                <rect key="frame" x="215" y="252" width="179" height="156"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-HS-xB5">
+                                        <rect key="frame" x="0.0" y="8" width="179" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bgal/wk" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qj-Ut-jzL">
+                                        <rect key="frame" x="55" y="44" width="74" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bgal/yr" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-dw-TSS">
+                                        <rect key="frame" x="55" y="116" width="69" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / year" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctE-pp-La6">
+                                        <rect key="frame" x="7" y="72" width="171" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="179" id="TrG-eh-c3b"/>
+                                    <constraint firstAttribute="height" constant="156" id="tvP-RD-4rm"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtL-qG-4EC">
+                                <rect key="frame" x="71" y="204" width="104" height="22"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubble Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak4-8L-hXu">
+                                <rect key="frame" x="256" y="204" width="97" height="22"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivt-Rq-vuo">
+                                <rect key="frame" x="28" y="446" width="362" height="197"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5L-NK-bH2">
+                                        <rect key="frame" x="30" y="74" width="80" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gallons of water / week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPh-ot-QQn">
+                                        <rect key="frame" x="118" y="75" width="179" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gallons of water / year" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF2-Rp-IF6">
+                                        <rect key="frame" x="122" y="98" width="171" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-KR-fhr">
+                                        <rect key="frame" x="30" y="99" width="84" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you decrease your shower time by on minute, you could save" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBO-yD-I5d">
+                                        <rect key="frame" x="30" y="16" width="304" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92941176889999999" green="0.88319088329999995" blue="0.66677280539999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Impact in Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rh-dj-Jge">
+                                <rect key="frame" x="28" y="135" width="228" height="28.5"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="shadowColor" red="0.8170874923" green="0.70036070770000003" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <size key="shadowOffset" width="0.0" height="-2"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T45-E1-cDB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wtL-qG-4EC" firstAttribute="top" secondItem="2Rh-dj-Jge" secondAttribute="bottom" constant="40.5" id="AhV-Kc-Jsn"/>
+                            <constraint firstItem="Ivt-Rq-vuo" firstAttribute="top" secondItem="gXD-jc-8Dr" secondAttribute="bottom" constant="38" id="CjJ-ZG-7tD"/>
+                            <constraint firstItem="Ak4-8L-hXu" firstAttribute="top" secondItem="2Rh-dj-Jge" secondAttribute="bottom" constant="40.5" id="DFo-rl-UyK"/>
+                            <constraint firstItem="Ebh-ow-18h" firstAttribute="top" secondItem="wtL-qG-4EC" secondAttribute="bottom" constant="25" id="IHt-nO-7Ff"/>
+                            <constraint firstItem="gXD-jc-8Dr" firstAttribute="leading" secondItem="Ebh-ow-18h" secondAttribute="trailing" constant="9" id="Kfx-aG-ix1"/>
+                            <constraint firstItem="Ebh-ow-18h" firstAttribute="leading" secondItem="T45-E1-cDB" secondAttribute="leading" constant="20" id="Ojm-Mv-sgx"/>
+                            <constraint firstItem="gXD-jc-8Dr" firstAttribute="top" secondItem="Ak4-8L-hXu" secondAttribute="bottom" constant="26" id="QG7-Fr-m3R"/>
+                            <constraint firstItem="T45-E1-cDB" firstAttribute="trailing" secondItem="Ak4-8L-hXu" secondAttribute="trailing" constant="61" id="Zw4-8A-CBk"/>
+                            <constraint firstItem="Ivt-Rq-vuo" firstAttribute="leading" secondItem="T45-E1-cDB" secondAttribute="leading" constant="28" id="gEh-uy-fY4"/>
+                            <constraint firstItem="T45-E1-cDB" firstAttribute="trailing" secondItem="Ivt-Rq-vuo" secondAttribute="trailing" constant="24" id="gHA-lQ-Ll9"/>
+                            <constraint firstItem="2Rh-dj-Jge" firstAttribute="top" secondItem="T45-E1-cDB" secondAttribute="top" constant="47" id="gb2-KN-kvc"/>
+                            <constraint firstItem="Ivt-Rq-vuo" firstAttribute="top" secondItem="Ebh-ow-18h" secondAttribute="bottom" constant="38" id="h2c-Je-jpr"/>
+                            <constraint firstItem="T45-E1-cDB" firstAttribute="trailing" secondItem="gXD-jc-8Dr" secondAttribute="trailing" constant="20" id="hzt-yj-sUT"/>
+                            <constraint firstItem="2Rh-dj-Jge" firstAttribute="leading" secondItem="T45-E1-cDB" secondAttribute="leading" constant="28" id="jBb-ag-DUa"/>
+                            <constraint firstItem="T45-E1-cDB" firstAttribute="bottom" secondItem="Ivt-Rq-vuo" secondAttribute="bottom" constant="170" id="pNI-Ba-D7e"/>
+                            <constraint firstItem="wtL-qG-4EC" firstAttribute="leading" secondItem="T45-E1-cDB" secondAttribute="leading" constant="71" id="r90-0V-R74"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gUE-YG-wdl"/>
+                    <connections>
+                        <outlet property="backView1" destination="Ebh-ow-18h" id="X2V-R5-zkc"/>
+                        <outlet property="backView2" destination="gXD-jc-8Dr" id="d3J-c4-EC7"/>
+                        <outlet property="backView3" destination="Ivt-Rq-vuo" id="5ew-G1-aLm"/>
+                        <outlet property="bgalPerWeekLabel" destination="1Qj-Ut-jzL" id="tru-47-gvf"/>
+                        <outlet property="bgalPerYearLabel" destination="Eu4-dw-TSS" id="jaD-Fk-As8"/>
+                        <outlet property="gallonsPerWeekLabel" destination="F2a-OH-L5Q" id="pYT-Be-OT7"/>
+                        <outlet property="gallonsPerYearLabel" destination="xI2-TL-AcP" id="9DY-cw-fNN"/>
+                        <outlet property="savedGalPerWeek" destination="x5L-NK-bH2" id="0u4-WR-0ol"/>
+                        <outlet property="savedGalPerYear" destination="uTg-KR-fhr" id="phz-Q9-hGU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mji-Nu-UMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5373.913043478261" y="1925.8928571428571"/>
         </scene>
         <!--Leaderboard 🔥-->
         <scene sceneID="4Zf-qF-QHB">
@@ -349,7 +555,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cYY-Ak-myZ" customClass="PFImageView">
-                                                    <rect key="frame" x="20" y="24" width="50" height="90"/>
+                                                    <rect key="frame" x="20" y="68" width="50" height="50"/>
                                                     <color key="backgroundColor" red="0.81176471709999998" green="0.86274516580000005" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="DcL-Fb-uq3"/>
@@ -357,28 +563,28 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@shreyavinjamuri" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsG-hz-z6G">
-                                                    <rect key="frame" x="103" y="24" width="138.5" height="21.5"/>
+                                                    <rect key="frame" x="103" y="68" width="138.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bubblescore: " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QN0-WI-BdE">
-                                                    <rect key="frame" x="103" y="57" width="91.5" height="21.5"/>
+                                                    <rect key="frame" x="103" y="101" width="91.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5F-Qq-xBF">
-                                                    <rect key="frame" x="196.5" y="57" width="19" height="21.5"/>
+                                                    <rect key="frame" x="196.5" y="101" width="19" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cYY-Ak-myZ" firstAttribute="top" secondItem="mff-J2-rJo" secondAttribute="top" constant="24" id="8jN-6u-0Rg"/>
+                                                <constraint firstItem="cYY-Ak-myZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mff-J2-rJo" secondAttribute="top" constant="24" id="8jN-6u-0Rg"/>
                                                 <constraint firstItem="vsG-hz-z6G" firstAttribute="leading" secondItem="cYY-Ak-myZ" secondAttribute="trailing" constant="33" id="DGx-Ce-WSK"/>
-                                                <constraint firstAttribute="bottom" secondItem="cYY-Ak-myZ" secondAttribute="bottom" constant="24" id="DLS-5N-VzV"/>
+                                                <constraint firstAttribute="bottom" secondItem="cYY-Ak-myZ" secondAttribute="bottom" constant="20" id="DLS-5N-VzV"/>
                                                 <constraint firstItem="QN0-WI-BdE" firstAttribute="top" secondItem="vsG-hz-z6G" secondAttribute="bottom" constant="11.5" id="DqP-Xl-T8B"/>
                                                 <constraint firstItem="QN0-WI-BdE" firstAttribute="leading" secondItem="vsG-hz-z6G" secondAttribute="leading" id="GkP-cN-F9Y"/>
                                                 <constraint firstItem="S5F-Qq-xBF" firstAttribute="leading" secondItem="QN0-WI-BdE" secondAttribute="trailing" constant="2" id="QLJ-8p-8Qv"/>
@@ -483,7 +689,7 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system"/>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.82369689749999997" green="0.85378272639999997" blue="0.91976243260000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="BUA-C8-gHx" firstAttribute="leading" secondItem="74o-pk-kcO" secondAttribute="leading" constant="31" id="8cR-Vo-kll"/>
                                                 <constraint firstAttribute="bottom" secondItem="S7g-uZ-qDk" secondAttribute="bottom" id="9Ex-7k-qKC"/>
@@ -700,21 +906,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sPY-ix-moM" customClass="PFImageView">
-                                                    <rect key="frame" x="26" y="30" width="45" height="59"/>
+                                                    <rect key="frame" x="26" y="37" width="45" height="45"/>
                                                     <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="45" id="72e-Nd-oDu"/>
+                                                        <constraint firstAttribute="height" constant="45" id="0Dj-gt-Bsu"/>
                                                         <constraint firstAttribute="width" constant="45" id="LjH-Z9-5G8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5m 30s" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-df-HXV">
-                                                    <rect key="frame" x="85" y="64" width="57.5" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5m 30s" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-df-HXV">
+                                                    <rect key="frame" x="85" y="67" width="57.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wednesday, June 22, 2022" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEl-Gh-blj">
-                                                    <rect key="frame" x="85" y="34" width="205.5" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, June 22, 2022" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEl-Gh-blj">
+                                                    <rect key="frame" x="85" y="37" width="205.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -724,8 +930,8 @@
                                                 <constraint firstItem="sPY-ix-moM" firstAttribute="leading" secondItem="iqu-zE-W0Z" secondAttribute="leading" constant="26" id="7Lo-sB-xoc"/>
                                                 <constraint firstItem="sPY-ix-moM" firstAttribute="centerY" secondItem="iqu-zE-W0Z" secondAttribute="centerY" id="MtK-7M-SpQ"/>
                                                 <constraint firstItem="MEl-Gh-blj" firstAttribute="leading" secondItem="sPY-ix-moM" secondAttribute="trailing" constant="14" id="UIi-lK-vI5"/>
+                                                <constraint firstItem="sPY-ix-moM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iqu-zE-W0Z" secondAttribute="top" constant="15" id="cDi-7r-JiJ"/>
                                                 <constraint firstItem="hr4-df-HXV" firstAttribute="leading" secondItem="MEl-Gh-blj" secondAttribute="leading" id="dCD-NG-ZHB"/>
-                                                <constraint firstItem="sPY-ix-moM" firstAttribute="top" secondItem="iqu-zE-W0Z" secondAttribute="top" constant="30" id="j19-2n-PMb"/>
                                                 <constraint firstItem="MEl-Gh-blj" firstAttribute="top" secondItem="sPY-ix-moM" secondAttribute="top" id="nVb-ur-3Jo"/>
                                                 <constraint firstItem="hr4-df-HXV" firstAttribute="top" secondItem="MEl-Gh-blj" secondAttribute="bottom" constant="8.5" id="umn-6r-DBj"/>
                                             </constraints>
@@ -870,7 +1076,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyW-VN-yRY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5636" y="1945"/>
+            <point key="canvasLocation" x="3394" y="1926"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="PTA-da-oO2">
@@ -918,13 +1124,14 @@
         <image name="flame" catalog="system" width="108" height="128"/>
         <image name="globe.americas.fill" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="pause.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="timer" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
