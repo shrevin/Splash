@@ -8,6 +8,7 @@
 #import "LeaderboardViewController.h"
 #import "LeaderboardCell.h"
 #import "Parse/Parse.h"
+#import "DetailsViewController.h"
 
 @interface LeaderboardViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *leaderboardTableView;
@@ -60,22 +61,22 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
     LeaderboardCell *cell = [self.leaderboardTableView dequeueReusableCellWithIdentifier:@"lbcell"];
     [cell setCell:self.leaderboard[indexPath.section]];
     NSLog([NSString stringWithFormat:@"%i", indexPath.section]);
-    if (indexPath.section % 2 && indexPath.section > 0 ) {
-        [cell setBackgroundColor:[UIColor colorWithRed:0.929 green:0.883 blue:0.667 alpha:1.0]];
-    }
     cell.layer.cornerRadius = 16;
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor grayColor] CGColor];
     return cell;
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    DetailsViewController *detailsVC = [segue destinationViewController];
+    LeaderboardCell *cell = sender;
+    detailsVC.user = cell.user;
 }
-*/
+
 
 @end

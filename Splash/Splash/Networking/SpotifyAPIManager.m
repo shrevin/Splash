@@ -8,6 +8,7 @@
 #import "SpotifyAPIManager.h"
 #import <SpotifyiOS/SpotifyiOS.h>
 #import "Splash-Swift.h"
+#import "TimeViewController.h"
 
 
 
@@ -39,8 +40,6 @@
     self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
     UITabBarController *tabVC = (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
     self.appRemote.delegate = (TimeViewController*)(UINavigationController*)[[[tabVC viewControllers]objectAtIndex:1] topViewController];
-    
-    //[[((UITabBarController *)self.window.rootViewController) viewControllers] objectAtIndex:TimerVCIndex];
 }
 
 
@@ -81,66 +80,6 @@
     }];
     
 }
-
-//# pragma  mark - SPTAppRemoteDelegate
-//- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote {
-//    NSLog(@"SUCCESSFULLY CONNECTED WHOOP WHOOP");
-//    appRemote.playerAPI.delegate = self;
-//    [appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
-//            if (error) {
-//                NSLog(@"THERE IS AN ERROR (INSIDE appRemoteDidEstablishConnection)");
-//            }
-//    }];
-//}
-//
-//
-//- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(nullable NSError *)error {
-//    NSLog(@"error :(");
-//}
-//
-//
-//
-//- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
-//    NSLog(@"error :(");
-//}
-//
-//
-//
-//- (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC {
-//    UIViewController *currentVC;
-//    if ([rootVC presentedViewController]) {
-//        //The view is presented
-//        rootVC = [rootVC presentedViewController];
-//    }
-//    return rootVC;
-//}
-//    
-//- (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
-//    NSLog(@"PLAYER STATE CHANGED");
-//    NSLog([NSString stringWithFormat:@"Spotify Track name: %@", playerState.track.name]);
-//    TimeViewController *timeVC = [[TimeViewController alloc]init];
-//    [UIApplication sharedApplication].delegate.window.rootViewController = timeVC;
-//    //[timeVC setSongLabel:[NSString stringWithFormat:@"%@", playerState.track.name]];
-//    // send a notification to time view controller with appRemote object
-//    // fetch image and track name there
-//}
-
-
-//- (void) fetchPlayerState {
-//    [self.appRemote.playerAPI getPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
-//        if (error) {
-//            NSLog(@"Error getting player state");
-//        } else {
-//            [self updatePlayerState:result];
-//        }
-//    }];
-//}
-//
-//
-//- (void) updatePlayerState {
-//    NetworkCalls *calls = [[NetworkCalls alloc]init];
-//    [TimeViewController setSongImage:[calls fetchArtworkFor:playerState appRemote:self.appRemote]];
-//}
 
 
 @end

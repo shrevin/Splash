@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *bubblescoreValueLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *profileImage;
+@property (strong, nonatomic) PFUser *user;
 
 -(void)setCell:(PFUser*)top_user;
 @end

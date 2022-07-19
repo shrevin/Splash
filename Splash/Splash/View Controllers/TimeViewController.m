@@ -7,16 +7,18 @@
 
 #import "TimeViewController.h"
 #import "Parse/Parse.h"
-#import <QuartzCore/QuartzCore.h>
 #import <SpotifyiOS/SpotifyiOS.h>
 #import "Shower.h"
 #import "SpotifyAPIManager.h"
 #import "Splash-Swift.h"
+#import "NoMusicViewController.h"
+#import <UIKit/UIKit.h>
 
 
 
 
-@interface TimeViewController () <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
+
+@interface TimeViewController () <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTAppRemotePlaybackRestrictions>
 @property (strong, nonatomic) IBOutlet UILabel *stopwatchLabel;
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
@@ -25,6 +27,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *connectButton;
 @property (strong, nonatomic) IBOutlet UILabel *songLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *songImage;
+@property (strong, nonatomic) IBOutlet UIButton *skipForwardButton;
+@property (strong, nonatomic) IBOutlet UIButton *skipBackwardsButton;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
+@property NoMusicViewController *noMusicVC;
+
+
+//@property (assign, nonatomic) NSInteger index; // allows us to control which screen is shown in page view controller
+
+
 
 @end
 
@@ -42,12 +53,11 @@ CFTimeInterval startTime;
 UIAlertController *alert;
 bool isPaused;
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.startButton.layer.cornerRadius = 40;
-    self.stopButton.layer.cornerRadius = 40;
+    self.startButton.layer.cornerRadius = 16;
+    self.stopButton.layer.cornerRadius = 16;
     dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateFormat = @"mm:ss";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
@@ -61,15 +71,27 @@ bool isPaused;
     self.stopButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
     self.songImage.hidden = YES;
     self.playPauseButton.hidden = YES;
+    self.skipForwardButton.hidden = YES;
+    self.skipBackwardsButton.hidden = YES;
+    // container view controller part
+    self.noMusicVC = [self.storyboard instantiateViewControllerWithIdentifier:@"noMusic"];
+    [self addChildViewController:self.noMusicVC];
+    [self.view addSubview:self.noMusicVC.view];
+    [self.noMusicVC didMoveToParentViewController:self];
+    self.noMusicVC.view.frame = self.view.bounds;
 }
 
 
 - (void) viewDidAppear:(BOOL)animated {
+    self.noMusicVC.view.hidden = YES;
     self.stopwatchLabel.text = [dateFormat stringFromDate: self.user[@"goal"]];
     dateAtStart = self.user[@"goal"];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
 }
+
+
+
 
 
 -(void)dateForFormatter{
@@ -123,6 +145,16 @@ bool isPaused;
 }
 
 
+- (IBAction)tapSegment:(id)sender {
+    
+    if (self.segment.selectedSegmentIndex == 1) {
+        self.noMusicVC.view.hidden = NO;
+    } else {
+        self.noMusicVC.view.hidden = YES;
+        
+    }
+    
+}
 
 - (IBAction)clickStop:(id)sender {
     [upTimer invalidate];
@@ -139,7 +171,11 @@ bool isPaused;
     NSLog([NSString stringWithFormat:@"%i",goalSeconds]);
     int metGoal = goalSeconds - roundf(elapsedTime);
     NSLog([NSString stringWithFormat:@"%i",metGoal]);
+    [self requestToSaveShower:elapsedTime metGoal:metGoal goalSeconds:goalSeconds];
     
+}
+
+- (void) requestToSaveShower:(CFTimeInterval)elapsedTime metGoal:(int)metGoal goalSeconds:(int)goalSeconds {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Save Shower"
                                                                                message:[@"Time: " stringByAppendingString:[TimeViewController formatTimeString:roundf(elapsedTime)]]
                                                                         preferredStyle:(UIAlertControllerStyleAlert)];
@@ -191,7 +227,7 @@ bool isPaused;
 }
 
 
-// METHODS THAT HAVE TO DO WITH SPOTIFY SDK
+// Methods to Use Spotify SDK
 - (IBAction)clickConnect:(id)sender {
     [[SpotifyAPIManager shared] startConnection];
 }
@@ -199,13 +235,13 @@ bool isPaused;
 - (IBAction)clickPlayPause:(id)sender {
     if (isPaused) {
         [[SpotifyAPIManager shared].appRemote.playerAPI resume:nil];
-        UIImage *image = [UIImage systemImageNamed:@"pause.circle.fill"];
+        UIImage *image = [UIImage imageNamed:@"pause"];
         [self.playPauseButton setImage:image forState:normal];
         isPaused = NO;
     } else {
         [[SpotifyAPIManager shared].appRemote.playerAPI pause:nil];
         isPaused = YES;
-        UIImage *image = [UIImage systemImageNamed:@"play.circle.fill"];
+        UIImage *image = [UIImage imageNamed:@"play"];
         [self.playPauseButton setImage:image forState:normal];
     }
 }
@@ -217,6 +253,8 @@ bool isPaused;
     self.connectButton.hidden = YES;
     self.songImage.hidden = NO;
     self.playPauseButton.hidden = NO;
+    self.skipForwardButton.hidden = NO;
+    self.skipBackwardsButton.hidden = NO;
     appRemote.playerAPI.delegate = self;
     [appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
             if (error) {
@@ -245,6 +283,9 @@ bool isPaused;
     NetworkCalls* calls = [[NetworkCalls alloc]init];
     [calls fetchArtworkFor:playerState.track appRemote:[SpotifyAPIManager shared].appRemote im_view:self.songImage];
 }
+
+
+
 /*
 #pragma mark - Navigation
 

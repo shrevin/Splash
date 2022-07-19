@@ -18,14 +18,15 @@
 		7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EAE2878B24D0029195A /* ShowerCell.m */; };
 		7B512EB2287CD0540029195A /* LeaderboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EB1287CD0540029195A /* LeaderboardCell.m */; };
 		7B512EB7287CE1DF0029195A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EB6287CE1DF0029195A /* Constants.swift */; };
-		7B512EB9287CE9250029195A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EB8287CE9250029195A /* ViewController.swift */; };
-		7B512EBF287CF0E10029195A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EBE287CF0E10029195A /* SceneDelegate.swift */; };
 		7B512EC2287CF2B10029195A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EC0287CF2B10029195A /* SceneDelegate.m */; };
 		7B512EC7287E3B140029195A /* Access.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EC6287E3B140029195A /* Access.m */; };
 		7B512ED5287F61E40029195A /* SpotifyAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512ED4287F61E40029195A /* SpotifyAPIManager.m */; };
 		7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512ED7287F6F1B0029195A /* SettingsViewController.m */; };
 		7B512EDA287F88D30029195A /* NetworkCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512ED9287F88D30029195A /* NetworkCalls.swift */; };
 		7B512EE02881EFE10029195A /* ImpactCalculationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */; };
+		7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EE2288616DC0029195A /* DetailsViewController.m */; };
+		7B512EE62886184D0029195A /* DetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EE52886184D0029195A /* DetailsCell.m */; };
+		7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EEB28874C640029195A /* NoMusicViewController.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -85,8 +86,6 @@
 		7B512EB1287CD0540029195A /* LeaderboardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaderboardCell.m; sourceTree = "<group>"; };
 		7B512EB3287CDF730029195A /* Splash-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Splash-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B512EB6287CE1DF0029195A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		7B512EB8287CE9250029195A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7B512EBE287CF0E10029195A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7B512EC0287CF2B10029195A /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneDelegate.m; path = ../../../../.Trash/SceneDelegate.m; sourceTree = "<group>"; };
 		7B512EC1287CF2B10029195A /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneDelegate.h; path = ../../../../.Trash/SceneDelegate.h; sourceTree = "<group>"; };
 		7B512EC6287E3B140029195A /* Access.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Access.m; sourceTree = "<group>"; };
@@ -97,6 +96,12 @@
 		7B512ED9287F88D30029195A /* NetworkCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCalls.swift; sourceTree = "<group>"; };
 		7B512EDE2881EFE10029195A /* ImpactCalculationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImpactCalculationsViewController.h; sourceTree = "<group>"; };
 		7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImpactCalculationsViewController.m; sourceTree = "<group>"; };
+		7B512EE1288616DC0029195A /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		7B512EE2288616DC0029195A /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		7B512EE42886184D0029195A /* DetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCell.h; sourceTree = "<group>"; };
+		7B512EE52886184D0029195A /* DetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCell.m; sourceTree = "<group>"; };
+		7B512EEA28874C640029195A /* NoMusicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoMusicViewController.h; sourceTree = "<group>"; };
+		7B512EEB28874C640029195A /* NoMusicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoMusicViewController.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -166,6 +171,8 @@
 				7B512EAE2878B24D0029195A /* ShowerCell.m */,
 				7B512EB0287CD0540029195A /* LeaderboardCell.h */,
 				7B512EB1287CD0540029195A /* LeaderboardCell.m */,
+				7B512EE42886184D0029195A /* DetailsCell.h */,
+				7B512EE52886184D0029195A /* DetailsCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,10 +229,8 @@
 				7BE02E292876160D0060575C /* AppDelegate.m */,
 				7B512EC1287CF2B10029195A /* SceneDelegate.h */,
 				7B512EC0287CF2B10029195A /* SceneDelegate.m */,
-				7B512EBE287CF0E10029195A /* SceneDelegate.swift */,
 				7B512EC6287E3B140029195A /* Access.m */,
 				7BE02E312876160D0060575C /* Main.storyboard */,
-				7B512EB8287CE9250029195A /* ViewController.swift */,
 				7BE02E342876160E0060575C /* Assets.xcassets */,
 				7BE02E362876160E0060575C /* LaunchScreen.storyboard */,
 				7BE02E392876160E0060575C /* Info.plist */,
@@ -272,6 +277,10 @@
 				7B512ED7287F6F1B0029195A /* SettingsViewController.m */,
 				7B512EDE2881EFE10029195A /* ImpactCalculationsViewController.h */,
 				7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */,
+				7B512EE1288616DC0029195A /* DetailsViewController.h */,
+				7B512EE2288616DC0029195A /* DetailsViewController.m */,
+				7B512EEA28874C640029195A /* NoMusicViewController.h */,
+				7B512EEB28874C640029195A /* NoMusicViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -528,7 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B512EB9287CE9250029195A /* ViewController.swift in Sources */,
+				7B512EE62886184D0029195A /* DetailsCell.m in Sources */,
 				7B512D81287631660029195A /* LeaderboardViewController.m in Sources */,
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
 				7B512EC2287CF2B10029195A /* SceneDelegate.m in Sources */,
@@ -536,17 +545,18 @@
 				7B512D85287649B20029195A /* StatsCell.m in Sources */,
 				7B512EAC2878AF370029195A /* Shower.m in Sources */,
 				7BE02E3B2876160E0060575C /* main.m in Sources */,
-				7B512EBF287CF0E10029195A /* SceneDelegate.swift in Sources */,
 				7B512D75287630F10029195A /* HomeViewController.m in Sources */,
 				7B512EE02881EFE10029195A /* ImpactCalculationsViewController.m in Sources */,
 				7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */,
 				7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */,
+				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
 				7B512EDA287F88D30029195A /* NetworkCalls.swift in Sources */,
 				7B512EB7287CE1DF0029195A /* Constants.swift in Sources */,
 				7B512EC7287E3B140029195A /* Access.m in Sources */,
 				7B512ED5287F61E40029195A /* SpotifyAPIManager.m in Sources */,
+				7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */,
 				7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */,
 				7B512EB2287CD0540029195A /* LeaderboardCell.m in Sources */,
 			);

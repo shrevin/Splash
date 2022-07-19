@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString*) formatTimeString:(int)secs;
 + (int) getRemainingSec: (int)secs;
 + (int) convertSecsToMin:(int)secs;
-
+@property NSUInteger *pageIndex;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
 
 //@property (strong, nonatomic) SPTAppRemoteAccessTokenKey *accessToken;

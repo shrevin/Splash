@@ -17,6 +17,7 @@
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.profileImage.file = top_user[@"profile"];
     [self.profileImage loadInBackground];
+    self.user = top_user;
 }
 
 - (void)awakeFromNib {
