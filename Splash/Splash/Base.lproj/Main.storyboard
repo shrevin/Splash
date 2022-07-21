@@ -641,7 +641,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lKh-3p-og0">
-                                <rect key="frame" x="20" y="88" width="374" height="725"/>
+                                <rect key="frame" x="20" y="128" width="374" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lbcell" rowHeight="138" id="Fzc-d5-EHr" customClass="LeaderboardCell">
@@ -700,19 +700,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2AP-Nn-qMh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TeD-Ov-3qH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lKh-3p-og0" firstAttribute="top" secondItem="TeD-Ov-3qH" secondAttribute="top" id="Gsu-4p-OZi"/>
                             <constraint firstItem="TeD-Ov-3qH" firstAttribute="trailing" secondItem="lKh-3p-og0" secondAttribute="trailing" constant="20" id="WLT-1x-6ha"/>
+                            <constraint firstItem="2AP-Nn-qMh" firstAttribute="leading" secondItem="TeD-Ov-3qH" secondAttribute="leading" id="XuN-O3-rHm"/>
+                            <constraint firstItem="TeD-Ov-3qH" firstAttribute="trailing" secondItem="2AP-Nn-qMh" secondAttribute="trailing" id="dRC-9a-cqz"/>
                             <constraint firstItem="lKh-3p-og0" firstAttribute="leading" secondItem="TeD-Ov-3qH" secondAttribute="leading" constant="20" id="kL1-3Q-GU7"/>
+                            <constraint firstItem="TeD-Ov-3qH" firstAttribute="top" secondItem="2AP-Nn-qMh" secondAttribute="top" id="t1a-Qu-SlO"/>
+                            <constraint firstItem="lKh-3p-og0" firstAttribute="top" secondItem="2AP-Nn-qMh" secondAttribute="top" constant="40" id="u3B-oC-phn"/>
                             <constraint firstItem="lKh-3p-og0" firstAttribute="bottom" secondItem="TeD-Ov-3qH" secondAttribute="bottom" id="zox-TT-AHK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Leaderboard 🔥" id="aMm-78-c0g"/>
                     <connections>
                         <outlet property="leaderboardTableView" destination="lKh-3p-og0" id="kkL-0X-nvB"/>
+                        <outlet property="searchBar" destination="2AP-Nn-qMh" id="fwM-eS-G3m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lp1-NC-ot6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1101,7 +1109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mfL-vu-CDO">
-                                <rect key="frame" x="20" y="88" width="374" height="725"/>
+                                <rect key="frame" x="20" y="128" width="374" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showerCell" rowHeight="119" id="gKe-Fg-ieR" customClass="ShowerCell">
@@ -1151,11 +1159,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gnk-6Z-O9O">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xlO-jG-v04"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mfL-vu-CDO" firstAttribute="top" secondItem="xlO-jG-v04" secondAttribute="top" id="A6N-ou-Q82"/>
+                            <constraint firstItem="xlO-jG-v04" firstAttribute="trailing" secondItem="gnk-6Z-O9O" secondAttribute="trailing" id="Jl4-9X-b7I"/>
+                            <constraint firstItem="gnk-6Z-O9O" firstAttribute="leading" secondItem="xlO-jG-v04" secondAttribute="leading" id="Lbg-d1-d2o"/>
+                            <constraint firstItem="mfL-vu-CDO" firstAttribute="top" secondItem="gnk-6Z-O9O" secondAttribute="top" constant="40" id="OG9-lh-Vai"/>
+                            <constraint firstItem="xlO-jG-v04" firstAttribute="top" secondItem="gnk-6Z-O9O" secondAttribute="top" id="TJJ-aB-y9a"/>
                             <constraint firstItem="mfL-vu-CDO" firstAttribute="leading" secondItem="xlO-jG-v04" secondAttribute="leading" constant="20" id="eqe-Ia-HbO"/>
                             <constraint firstItem="xlO-jG-v04" firstAttribute="trailing" secondItem="mfL-vu-CDO" secondAttribute="trailing" constant="20" id="okg-fY-hOD"/>
                             <constraint firstItem="mfL-vu-CDO" firstAttribute="bottom" secondItem="xlO-jG-v04" secondAttribute="bottom" id="s4j-92-mAM"/>
@@ -1175,6 +1190,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="gnk-6Z-O9O" id="6HK-B2-G7e"/>
                         <outlet property="showersTableView" destination="mfL-vu-CDO" id="wRT-3z-oZc"/>
                     </connections>
                 </viewController>
@@ -1318,7 +1334,7 @@
         <scene sceneID="KK7-8e-cOI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rPl-ot-WYy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" selectedImage="person" catalog="system" id="Xn7-jg-aYa"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="person" catalog="system" id="Xn7-jg-aYa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qc-XF-LUe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

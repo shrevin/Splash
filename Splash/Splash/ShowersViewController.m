@@ -8,17 +8,24 @@
 #import "ShowersViewController.h"
 #import "ShowerCell.h"
 #import "Parse/Parse.h"
+#import "TimeViewController.h"
 
-@interface ShowersViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ShowersViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *showersTableView;
 @property (strong, nonatomic) NSMutableArray *showersArray;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *filteredData;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+
+
 
 
 @end
 
 @implementation ShowersViewController
 NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +39,12 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
     self.showersTableView.layer.cornerRadius = 10.0;
     [self.showersTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifierForShowers];
     self.showersTableView.sectionHeaderTopPadding = 0;
+    self.searchBar.delegate = self;
+    self.filteredData = [[NSMutableArray alloc]init];
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tapGestureRecognizer.delegate = self;
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
+    
 }
 
 -(void) getData {
@@ -44,14 +57,23 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
           for (int i = objects.count - 1; i >= 0; i = i - 1) {
               [self.showersArray addObject:objects[i]];
           }
-          //self.showersArray = objects;
+          self.filteredData = self.showersArray;
           [self.showersTableView reloadData];
+          //self.showersArray = objects;
       } else {
         // Log details of the failure
         NSLog(@"Error: %@ %@", error, [error userInfo]);
       }
     }];
     [self.refreshControl endRefreshing];
+    
+    
+}
+
+- (void) dismissKeyboard
+{
+    //Code to handle the gesture
+    [self.searchBar resignFirstResponder];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -66,18 +88,37 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.showersArray.count;
+    return self.filteredData.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShowerCell *cell = [self.showersTableView dequeueReusableCellWithIdentifier:@"showerCell"];
-    [cell setCell:self.showersArray[indexPath.section]];
+    [cell setCell:self.filteredData[indexPath.section]];
     cell.layer.cornerRadius = 25;
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor grayColor] CGColor];
     return cell;
 }
+
+// called when text changes (including clear)
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length != 0) {
+       
+            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Shower *evaluatedShower, NSDictionary *bindings) {
+                NSDateFormatter *format = [[NSDateFormatter alloc] init];
+                [format setLocalizedDateFormatFromTemplate:@"EEEE, MMM d, yyyy"];
+                return [[format stringFromDate:evaluatedShower.createdAt] containsString:searchText] || [[TimeViewController formatTimeString:[[NSString stringWithFormat:@"%@", evaluatedShower[@"len"]] intValue]] containsString:searchText];
+            }];
+            self.filteredData = [self.showersArray filteredArrayUsingPredicate:predicate];
+        }
+        else {
+            self.filteredData = self.showersArray;
+        }
+        
+        [self.showersTableView reloadData];
+}
+
 /*
 #pragma mark - Navigation
 

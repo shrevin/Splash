@@ -8,11 +8,12 @@
 #import "ImpactViewController.h"
 #import "ImpactCalculationsViewController.h"
 
-@interface ImpactViewController ()
+@interface ImpactViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *background;
 @property (strong, nonatomic) IBOutlet UIButton *calculateButton;
 @property (strong, nonatomic) IBOutlet UITextField *waterFlowTextField;
 @property (strong, nonatomic) IBOutlet UITextField *showersTextField;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 
 @end
 
@@ -28,11 +29,21 @@
     self.calculateButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
     self.waterFlowTextField.delegate = self;
     self.showersTextField.delegate = self;
+    self.tapGestureRecognizer.delegate = self;
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.view endEditing:YES];
     return YES;
+}
+
+- (void) dismissKeyboard
+{
+    //Code to handle the gesture
+    [self.waterFlowTextField resignFirstResponder];
+    [self.showersTextField resignFirstResponder];
 }
 
 #pragma mark - Navigation

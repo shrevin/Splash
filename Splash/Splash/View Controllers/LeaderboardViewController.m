@@ -10,10 +10,13 @@
 #import "Parse/Parse.h"
 #import "DetailsViewController.h"
 
-@interface LeaderboardViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface LeaderboardViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *leaderboardTableView;
 @property (strong, nonatomic) NSMutableArray *leaderboard;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSMutableArray *filteredLeaderboard;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -32,6 +35,18 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
     self.leaderboardTableView.sectionHeaderTopPadding = 0;
     [self.refreshControl addTarget:self action:@selector(getLeaderboardData) forControlEvents:UIControlEventValueChanged];
     [self.leaderboardTableView insertSubview:self.refreshControl atIndex:0];
+    self.searchBar.delegate = self;
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tapGestureRecognizer.delegate = self;
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
+    
+}
+
+
+- (void) dismissKeyboard
+{
+    //Code to handle the gesture
+    [self.searchBar resignFirstResponder];
 }
 
 - (void) getLeaderboardData {
@@ -39,8 +54,23 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
     [query orderByDescending:@"bubblescore"];
     query.limit = 10;
     self.leaderboard = [query findObjects];
+    self.filteredLeaderboard = self.leaderboard;
     [self.refreshControl endRefreshing];
 }
+
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"username"] containsString:searchText] || [[evaluatedObject[@"bubblescore"] stringValue] containsString:searchText];
+        }];
+        self.filteredLeaderboard = [self.leaderboard filteredArrayUsingPredicate:predicate];
+    } else {
+        self.filteredLeaderboard = self.leaderboard;
+    }
+    [self.leaderboardTableView reloadData];
+}
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView
@@ -54,13 +84,12 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return self.filteredLeaderboard.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LeaderboardCell *cell = [self.leaderboardTableView dequeueReusableCellWithIdentifier:@"lbcell"];
-    [cell setCell:self.leaderboard[indexPath.section]];
-    NSLog([NSString stringWithFormat:@"%i", indexPath.section]);
+    [cell setCell:self.filteredLeaderboard[indexPath.section]];
     cell.layer.cornerRadius = 16;
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [[UIColor grayColor] CGColor];
