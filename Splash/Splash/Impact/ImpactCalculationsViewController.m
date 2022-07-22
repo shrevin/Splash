@@ -39,12 +39,7 @@
     self.backView1.layer.cornerRadius = 16;
     self.backView2.layer.cornerRadius = 16;
     self.backView3.layer.cornerRadius = 16;
-    
-    // multiply by avg. water flow
-    // multiply by number of showers per week
-    
 }
-
 
 /*
 #pragma mark - Navigation

@@ -10,7 +10,7 @@
 #import "Parse/PFImageView.h"
 #import "Shower.h"
 #import "TimeViewController.h"
-
+#import "Helper.h"
 
 @implementation ShowerCell
 
@@ -21,7 +21,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
@@ -32,7 +31,7 @@
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocalizedDateFormatFromTemplate:@"EEEE, MMM d, yyyy"];
     self.dateLabel.text = [format stringFromDate:s.createdAt];
-    self.lengthLabel.text = [TimeViewController formatTimeString:[[NSString stringWithFormat:@"%@", s[@"len"]] intValue]];
+    self.lengthLabel.text = [Helper formatTimeString:[[NSString stringWithFormat:@"%@", s[@"len"]] intValue]];
 }
 
 @end

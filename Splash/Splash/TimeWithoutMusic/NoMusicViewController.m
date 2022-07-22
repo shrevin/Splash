@@ -41,7 +41,7 @@ bool isPausedNoMusic;
     dateFormatNoMusic.dateFormat = @"mm:ss";
     dateFormatNoMusic.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
-    
+    // layout vc
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -49,6 +49,8 @@ bool isPausedNoMusic;
     dateAtStartNoMusic = self.user[@"goal"];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
+    // layout subviews
+    // viewDidLayoutSubviews
 }
 
 /*

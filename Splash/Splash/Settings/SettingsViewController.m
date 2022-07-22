@@ -17,32 +17,40 @@
 @end
 
 @implementation SettingsViewController
+const int kNumberOfRowsForSettings = 1;
+const int kNumberOfMinutes = 7;
+const int kNumberOfSeconds = 60;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.background.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    [self.background.layer setBorderWidth: 0.5];
-    self.background.layer.cornerRadius = 16;
-    self.updateButton.layer.cornerRadius = 8;
-    self.updateButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
+    [self setUpView];
     self.minPicker.delegate = self;
     self.minPicker.dataSource = self;
     self.secPicker.delegate = self;
     self.secPicker.dataSource = self;
 }
-//
-//// returns the number of 'columns' to display.
+
+- (void) setUpView {
+    [self.background.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [self.background.layer setBorderWidth: 0.5];
+    self.background.layer.cornerRadius = 16;
+    self.updateButton.layer.cornerRadius = 8;
+}
+
+
+#pragma mark - UIPickerView Delegate and DataSource Methods
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+    return kNumberOfRowsForSettings;
 }
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (pickerView.tag == 1) {
-        return 7;
+        return kNumberOfMinutes;
     } else {
-        return 60;
+        return kNumberOfSeconds;
     }
 }
 
@@ -53,6 +61,9 @@
         return [NSString stringWithFormat:@"%ld", row];
     }
 }
+
+#pragma mark - Action Methods for Buttons
+
 - (IBAction)clickUpdate:(id)sender {
     PFUser *user = [PFUser currentUser];
     int minutes = [self.minPicker selectedRowInComponent:0] + 1;
@@ -64,6 +75,7 @@
     user[@"goal"] = goal;
     [user saveInBackground];
 }
+
 /*
 #pragma mark - Navigation
 

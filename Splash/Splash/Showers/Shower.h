@@ -15,9 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *metGoal;
 @property (nonatomic, strong) NSNumber *goal;
 @property (nonatomic, strong) PFUser *user;
-
 + (void) postShower:(NSNumber * _Nullable)len met:(NSNumber * _Nullable)metGoal g:(NSNumber * _Nullable )g completion:(PFBooleanResultBlock  _Nullable)completion;
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -18,7 +18,6 @@
        return @"Shower";
 }
 
-
 + (void) postShower:(NSNumber * _Nullable )len met:(NSNumber * _Nullable )met g:(NSNumber * _Nullable )g completion:(PFBooleanResultBlock  _Nullable)completion {
     Shower *newShower = [Shower new];
     newShower[@"len"] = len;

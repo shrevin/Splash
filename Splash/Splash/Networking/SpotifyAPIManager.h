@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property SPTSessionManager *sessionManager;
 @property SPTAppRemote *appRemote;
 @property (nonatomic) NSString *responseCode;
+@property (nonatomic, weak) id<SPTAppRemoteDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

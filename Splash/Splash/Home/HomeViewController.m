@@ -12,123 +12,52 @@
 #import "Parse/PFImageView.h"
 #import "TimeViewController.h"
 #import "Shower.h"
+#import "Helper.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *profileImage;
-
 @property (strong,nonatomic) NSArray *scoreNames;
-//@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIButton *pullDownButtonForPFP;
-
 @property (strong, nonatomic) IBOutlet UIButton *profileButton;
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
-
+@property (strong, nonatomic) IBOutlet UIButton *friendsButton;
 @end
 
 @implementation HomeViewController
 NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 int totalTime;
+const int kNumberOfRowsForHome = 1;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setUpView];
     self.user = [PFUser currentUser];
-    self.usernameLabel.text = self.user.username;
-    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    if (self.user[@"profile"]) {
-        self.profileImage.file = self.user[@"profile"];
-        [self.profileImage loadInBackground];
-    }
     UIAction *camera = [UIAction actionWithTitle:@"Take photo" image:NULL identifier:NULL handler:^(UIAction *action) {
         [self clickCamera];
     }];
     UIAction *chooseLibary = [UIAction actionWithTitle:@"Choose from library" image:NULL identifier:NULL handler:^(UIAction *action) {
         [self clickLibrary];
     }];
-   
     UIMenu *menu = [[UIMenu alloc] menuByReplacingChildren:[NSArray arrayWithObjects:camera, chooseLibary, nil]];
     self.pullDownButtonForPFP.menu = menu;
     self.pullDownButtonForPFP.showsMenuAsPrimaryAction = YES;
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
     self.tableView.sectionHeaderTopPadding = 0;
-    
-//    // Creating scrolling functionality
-//    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    scrollView.backgroundColor = [UIColor blueColor];
-//    [self.view addSubview:scrollView];
-//    [scrollView setContentSize:CGSizeMake(self.view.frame.size.width*3, self.view.frame.size.height)];
-//    UIView *redView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    redView.backgroundColor = [UIColor redColor];
-//    [scrollView addSubview:redView];
-
-    
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = [tableView
-                                           dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
-    return header;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
+    NSArray *friends = self.user[@"friends"];
+    [self.friendsButton setTitle:[NSString stringWithFormat:@"%lu friends", (unsigned long)friends.count]
+                        forState:UIControlStateNormal];
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //NSLog([NSString stringWithFormat:@"%i", indexPath.section]);
-    StatsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myStatsCell"];
-    if (indexPath.section % 2) {
-        [cell setBackgroundColor:[UIColor blackColor]];
-    }
-    NSString *name = self.scoreNames[indexPath.section];
-    if (indexPath.section == 0) {
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self.user[@"goal"]];
-        int currMinute = [components minute];
-        int currSeconds = [components second];
-        [cell setCell:name value:[NSString stringWithFormat:@"%@", [TimeViewController formatTimeString:(currMinute*60) + currSeconds]]];
-            //NSLog([NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]);
-    } else if (indexPath.section == 1) {
-        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
-    } else if (indexPath.section == 2) {
-        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"streak"]]];
-    } else if (indexPath.section == 3) {
-        int averageTime = roundf([self.user[@"totalShowerTime"] intValue] / [self.user[@"numShowers"] intValue]);
-        [cell setCell:name value:[TimeViewController formatTimeString:averageTime]];
-    } else if (indexPath.section ==  4){
-        [cell setCell:name value:[TimeViewController formatTimeString:[self.user[@"totalShowerTime"] intValue]]];
-    } else if (indexPath.section == 5){
-            [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
-    } else {
-            [cell setCell:name value:@"20"];
-    }
-    cell.layer.cornerRadius = 25;
-    return cell;
-}
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//     if (indexPath.section % 2) {
-//         [cell setBackgroundColor:[UIColor blackColor]];
-//     }
-//}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 6;
-}
-
 
 - (IBAction)clickLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
@@ -139,9 +68,65 @@ int totalTime;
     }];
 }
 
+- (void) setUpView {
+    self.usernameLabel.text = self.user.username;
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
+    self.friendsButton.layer.cornerRadius = 16;
+    if (self.user[@"profile"]) {
+        self.profileImage.file = self.user[@"profile"];
+        [self.profileImage loadInBackground];
+    }
+}
+#pragma mark - Table View Delegate Methods
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView
+                                           dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    return header;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return kNumberOfRowsForHome;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    StatsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myStatsCell"];
+    if (indexPath.section % 2) {
+        [cell setBackgroundColor:[UIColor blackColor]];
+    }
+    NSString *name = self.scoreNames[indexPath.section];
+    if (indexPath.section == 0) {
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self.user[@"goal"]];
+        int currMinute = [components minute];
+        int currSeconds = [components second];
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", [Helper formatTimeString:(currMinute*60) + currSeconds]]];
+    } else if (indexPath.section == 1) {
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
+    } else if (indexPath.section == 2) {
+        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"streak"]]];
+    } else if (indexPath.section == 3) {
+        int averageTime = roundf([self.user[@"totalShowerTime"] intValue] / [self.user[@"numShowers"] intValue]);
+        [cell setCell:name value:[Helper formatTimeString:averageTime]];
+    } else if (indexPath.section ==  4){
+        [cell setCell:name value:[Helper formatTimeString:[self.user[@"totalShowerTime"] intValue]]];
+    } else if (indexPath.section == 5){
+            [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
+    } else {
+            [cell setCell:name value:@"20"];
+    }
+    cell.layer.cornerRadius = 25;
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.scoreNames.count;
+}
+
+#pragma mark - Helper Methods for Setting Profile Picture
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
@@ -171,7 +156,7 @@ int totalTime;
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        DLog(@"Camera 🚫 available so we will use photo library instead");
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [self presentViewController:imagePickerVC animated:YES completion:nil];
@@ -186,9 +171,6 @@ int totalTime;
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
-
-
-
 /*
 #pragma mark - Navigation
 
@@ -198,5 +180,4 @@ int totalTime;
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

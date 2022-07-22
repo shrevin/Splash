@@ -9,8 +9,8 @@
 #import <SpotifyiOS/SpotifyiOS.h>
 #import "Splash-Swift.h"
 #import "TimeViewController.h"
-
-
+#import "LoginViewController.h"
+#import "Helper.h"
 
 @implementation SpotifyAPIManager 
 
@@ -35,11 +35,9 @@
     self.sessionManager.delegate = self;
     SPTScope requestedScope = SPTAppRemoteControlScope;
     [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
-    
     // initializing app remote
     self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
-    UITabBarController *tabVC = (UITabBarController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    self.appRemote.delegate = (TimeViewController*)(UINavigationController*)[[[tabVC viewControllers]objectAtIndex:1] topViewController];
+    self.appRemote.delegate = self.delegate;
 }
 
 
@@ -48,29 +46,29 @@
 
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
 {
-    //NSLog(@"success: %@", session);
+    DLog(@"success: %@", session);
     self.appRemote.connectionParameters.accessToken = session.accessToken;
     [self.appRemote connect];
 }
 
 - (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
 {
-  NSLog(@"fail: %@", error);
+    DLog(@"fail: %@", error);
 }
 
 - (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
 {
-  NSLog(@"renewed: %@", session);
+    DLog(@"renewed: %@", session);
 }
 
 -(void) setResponseCode:(NSString *)responseCode {
     _responseCode = responseCode;
-    NSLog(@"inside setter for response code");
+    DLog(@"inside setter for response code");
     // CALL FETCH MOVIES IN HERE AND GET ACCESS TOKEN
     NetworkCalls* calls = [[NetworkCalls alloc]init];
     [calls fetchAccessTokenWithResponseCode:responseCode completion:^(NSDictionary<NSString *,id> * _Nullable dictionary, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"error");
+            DLog(@"error");
             return;
         }
         NSString *accessToken = dictionary[@"access_token"];
