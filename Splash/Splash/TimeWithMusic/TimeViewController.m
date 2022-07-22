@@ -47,12 +47,22 @@ bool isPaused;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.startButton.layer.cornerRadius = 16;
-    self.stopButton.layer.cornerRadius = 16;
     dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateFormat = @"mm:ss";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.user = [PFUser currentUser];
+    [self setUpView];
+    // container view controller part
+    self.noMusicVC = [self.storyboard instantiateViewControllerWithIdentifier:@"noMusic"];
+    [self addChildViewController:self.noMusicVC];
+    [self.view addSubview:self.noMusicVC.view];
+    [self.noMusicVC didMoveToParentViewController:self];
+    self.noMusicVC.view.frame = self.view.bounds;
+}
+
+- (void) setUpView {
+    self.startButton.layer.cornerRadius = 16;
+    self.stopButton.layer.cornerRadius = 16;
     self.songImage.layer.cornerRadius = 16;
     self.connectButton.layer.cornerRadius = 16;
     self.connectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
@@ -64,12 +74,6 @@ bool isPaused;
     self.playPauseButton.hidden = YES;
     self.skipForwardButton.hidden = YES;
     self.skipBackwardsButton.hidden = YES;
-    // container view controller part
-    self.noMusicVC = [self.storyboard instantiateViewControllerWithIdentifier:@"noMusic"];
-    [self addChildViewController:self.noMusicVC];
-    [self.view addSubview:self.noMusicVC.view];
-    [self.noMusicVC didMoveToParentViewController:self];
-    self.noMusicVC.view.frame = self.view.bounds;
 }
 
 - (void) viewDidAppear:(BOOL)animated {

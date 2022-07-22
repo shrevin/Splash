@@ -30,6 +30,7 @@
 		7B512F0A288A2A060029195A /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F09288A2A060029195A /* Helper.m */; };
 		7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F0D288A6A100029195A /* FriendsViewController.m */; };
 		7B512F11288A708A0029195A /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F10288A708A0029195A /* FriendsCell.m */; };
+		7B512F14288B16B40029195A /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F13288B16B40029195A /* ForgotPasswordViewController.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -111,6 +112,8 @@
 		7B512F0D288A6A100029195A /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		7B512F0F288A708A0029195A /* FriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
 		7B512F10288A708A0029195A /* FriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
+		7B512F12288B16B40029195A /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		7B512F13288B16B40029195A /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 			children = (
 				7BE02E5E2876171D0060575C /* LoginViewController.h */,
 				7BE02E5F2876171D0060575C /* LoginViewController.m */,
+				7B512F12288B16B40029195A /* ForgotPasswordViewController.h */,
+				7B512F13288B16B40029195A /* ForgotPasswordViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -626,6 +631,7 @@
 				7B512D75287630F10029195A /* HomeViewController.m in Sources */,
 				7B512EFC288A01430029195A /* DetailsCell.m in Sources */,
 				7B512F0A288A2A060029195A /* Helper.m in Sources */,
+				7B512F14288B16B40029195A /* ForgotPasswordViewController.m in Sources */,
 				7B512EE02881EFE10029195A /* ImpactCalculationsViewController.m in Sources */,
 				7B512F11288A708A0029195A /* FriendsCell.m in Sources */,
 				7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */,

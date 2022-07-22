@@ -11,7 +11,7 @@
 #import "DetailsViewController.h"
 
 @interface FriendsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property (strong, nonatomic) NSArray *possible_friends;
+@property (strong, nonatomic) NSArray *possibleFriends;
 @property (strong, nonatomic) NSMutableArray *friendsIds;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
@@ -39,21 +39,21 @@
 - (void) getData {
     PFQuery *query = [PFUser query];
     [query whereKey:@"objectId" notContainedIn:self.friendsIds];
-    self.possible_friends = [query findObjects];
+    self.possibleFriends = [query findObjects];
     [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.possible_friends.count;
+    return self.possibleFriends.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendsCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"friendsCell" forIndexPath:indexPath];
     cell.layer.cornerRadius = 30;
-    [cell setCell:self.possible_friends[indexPath.row]];
+    [cell setCell:self.possibleFriends[indexPath.row]];
     return cell;
 }
 

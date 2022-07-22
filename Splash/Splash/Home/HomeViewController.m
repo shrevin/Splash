@@ -22,26 +22,23 @@
 @property (strong, nonatomic) IBOutlet UIButton *profileButton;
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *friendsButton;
 @end
 
 @implementation HomeViewController
 NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 int totalTime;
+const int kNumberOfRowsForHome = 1;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setUpView];
     self.user = [PFUser currentUser];
-    self.usernameLabel.text = self.user.username;
-    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    if (self.user[@"profile"]) {
-        self.profileImage.file = self.user[@"profile"];
-        [self.profileImage loadInBackground];
-    }
     UIAction *camera = [UIAction actionWithTitle:@"Take photo" image:NULL identifier:NULL handler:^(UIAction *action) {
         [self clickCamera];
     }];
@@ -57,6 +54,9 @@ int totalTime;
 
 - (void) viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
+    NSArray *friends = self.user[@"friends"];
+    [self.friendsButton setTitle:[NSString stringWithFormat:@"%lu friends", (unsigned long)friends.count]
+                        forState:UIControlStateNormal];
 }
 
 - (IBAction)clickLogout:(id)sender {
@@ -68,6 +68,15 @@ int totalTime;
     }];
 }
 
+- (void) setUpView {
+    self.usernameLabel.text = self.user.username;
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
+    self.friendsButton.layer.cornerRadius = 16;
+    if (self.user[@"profile"]) {
+        self.profileImage.file = self.user[@"profile"];
+        [self.profileImage loadInBackground];
+    }
+}
 #pragma mark - Table View Delegate Methods
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -77,7 +86,7 @@ int totalTime;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return kNumberOfRowsForHome;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,7 +121,7 @@ int totalTime;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return self.scoreNames.count;
 }
 
 #pragma mark - Helper Methods for Setting Profile Picture

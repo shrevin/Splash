@@ -11,6 +11,7 @@
 #import "Splash-Bridging-Header.h"
 #import "TimeViewController.h"
 #import "SpotifyAPIManager.h"
+#import "Helper.h"
 
 @interface AppDelegate ()
 @property(nonatomic, strong) TimeViewController *rootViewController;
@@ -53,12 +54,12 @@
     NSDictionary *parameters = [[SpotifyAPIManager shared].appRemote authorizationParametersFromURL:url];
     if (parameters[@"code"] != nil) {
         [SpotifyAPIManager shared].responseCode = parameters[@"code"];
-        NSLog([NSString stringWithFormat:@"%@", [SpotifyAPIManager shared].responseCode]);
-        NSLog(@"response code not null");
+        DLog([NSString stringWithFormat:@"%@", [SpotifyAPIManager shared].responseCode]);
+        DLog(@"response code not null");
     } else if (parameters[SPTAppRemoteAccessTokenKey] != nil){
-        NSLog(@"access token not null");
+        DLog(@"access token not null");
     } else if (parameters[SPTAppRemoteErrorDescriptionKey] != nil){
-        NSLog([NSString stringWithFormat:@"%@", [[SpotifyAPIManager shared].appRemote authorizationParametersFromURL:url][SPTAppRemoteErrorDescriptionKey]]);
+        DLog([NSString stringWithFormat:@"%@", [[SpotifyAPIManager shared].appRemote authorizationParametersFromURL:url][SPTAppRemoteErrorDescriptionKey]]);
     }
     return YES;
 }

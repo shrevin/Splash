@@ -22,6 +22,7 @@
 
 @implementation ShowersViewController
 NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
+const int kNumberOfRowsForShowers = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,7 +76,7 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return kNumberOfRowsForShowers;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

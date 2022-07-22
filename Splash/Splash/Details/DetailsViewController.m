@@ -28,19 +28,37 @@
 
 @implementation DetailsViewController
 NSString *DetailsHeaderViewIdentifier = @"DetailsTableViewHeaderView";
+const int kNumberOfRowsForDetails = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.usernameLabel.text = self.user[@"username"];
-    self.profilePic.layer.cornerRadius = 16;
-    self.profilePic.file = self.user[@"profile"];
-    [self.profilePic loadInBackground];
+    [self setupView];
+    [self setupTableView];
     self.scoreNames = @[@"💪 Goal ", @"🧼 Bubblescore", @"🔥 Streak ", @"⏳ Avg. Shower Time ", @"🕜 Total Shower Time ", @"🚿 Number of Showers "];
+    self.current = [PFUser currentUser];
+    self.friends = self.current[@"friends"];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self checkFriends];
+    [self checkIfUserEqualsCurrent];
+}
+
+#pragma mark - Helper methods for setting up view and table view
+
+- (void) setupTableView {
     self.detailsTableView.delegate = self;
     self.detailsTableView.dataSource = self;
     [self.detailsTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:DetailsHeaderViewIdentifier];
     self.detailsTableView.sectionHeaderTopPadding = 0;
+}
+
+- (void) setupView {
+    self.usernameLabel.text = self.user[@"username"];
+    self.profilePic.layer.cornerRadius = 16;
+    self.profilePic.file = self.user[@"profile"];
+    [self.profilePic loadInBackground];
     self.removeFriendButton.layer.cornerRadius = 16;
     self.addFriendButton.layer.cornerRadius = 16;
     self.challengeButton.layer.cornerRadius = 16;
@@ -49,13 +67,6 @@ NSString *DetailsHeaderViewIdentifier = @"DetailsTableViewHeaderView";
     self.removeFriendButton.hidden = YES;
     self.challengeButton.hidden = YES;
     self.onLBButton.hidden = YES;
-    self.current = [PFUser currentUser];
-    self.friends = self.current[@"friends"];
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-    [self checkFriends];
-    [self checkIfUserEqualsCurrent];
 }
 
 #pragma mark - Helper Methods for Displaying Buttons Based on Friend Status
@@ -96,7 +107,7 @@ NSString *DetailsHeaderViewIdentifier = @"DetailsTableViewHeaderView";
 #pragma mark - Action Methods for Buttons
 
 - (IBAction)clickAdd:(id)sender {
-    if (![self hasUser:self.friends u:self.user]) {
+    if (![self hasUser:self.friends u:self.user] && (![self.current.objectId isEqualToString:self.user.objectId])) {
         [self.current addObject:self.user forKey:@"friends"];
         [self.current saveInBackground];
         DLog(@"ADDED FRIEND");
@@ -119,12 +130,12 @@ NSString *DetailsHeaderViewIdentifier = @"DetailsTableViewHeaderView";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return kNumberOfRowsForDetails;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return self.scoreNames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

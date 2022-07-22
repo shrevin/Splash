@@ -22,6 +22,7 @@
 
 @implementation LeaderboardViewController
 NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
+const int kNumberOfRowsForLeaderboard = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,7 +82,7 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return kNumberOfRowsForLeaderboard;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
