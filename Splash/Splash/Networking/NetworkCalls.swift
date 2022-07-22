@@ -14,6 +14,7 @@ import Foundation
     
     private var lastPlayerState: SPTAppRemotePlayerState?
     
+    // method to get access token to access Spotify's appRemote
     @objc func fetchAccessToken(responseCode: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
         let url = URL(string: "https://accounts.spotify.com/api/token")!
         var request = URLRequest(url: url)
@@ -51,6 +52,7 @@ import Foundation
         task.resume()
     }
     
+    // method to get artwork for track playing
     @objc func fetchArtwork(for track: SPTAppRemoteTrack, appRemote: SPTAppRemote, im_view: UIImageView){
         appRemote.imageAPI?.fetchImage(forItem: track, with: CGSize.zero, callback: { [weak self] (image, error) in
             if let error = error {
@@ -60,45 +62,5 @@ import Foundation
             }
         })
     }
-    //
-//    // fetching the player state using appRemote
-    @objc func fetchPlayerState(appRemote: SPTAppRemote) {
-        appRemote.playerAPI?.getPlayerState({ [weak self] (playerState, error) in
-            if let error = error {
-                print("Error getting player state:" + error.localizedDescription)
-            } else if let playerState = playerState as? SPTAppRemotePlayerState {
-                appRemote.imageAPI?.fetchImage(forItem: playerState.track, with: CGSize.zero, callback: { [weak self] (image, error) in
-                    if let error = error {
-                        print("Error fetching track image: " + error.localizedDescription)
-                    } else if let image = image as? UIImage {
-                        
-                    }
-                })
-            }
-        })
-    }
-    
-//    @objc func update(playerState: SPTAppRemotePlayerState, appRemote: SPTAppRemote) {
-//        fetchArtwork(for: playerState.track, appRemote: appRemote)
-////        if lastPlayerState?.track.uri != playerState.track.uri {
-////            fetchArtwork(for: playerState.track, appRemote: appRemote)
-////        }
-//    }
 }
-
-    
-//    lastPlayerState = playerState
-//    trackLabel.text = playerState.track.name
-//    trackLabel.isHidden = false;
-//
-//    let configuration = UIImage.SymbolConfiguration(pointSize: 50, weight: .bold, scale: .large)
-//    if playerState.isPaused {
-//        playPauseButton.setImage(UIImage(systemName: "play.circle.fill", withConfiguration: configuration), for: .normal)
-//    } else {
-//        playPauseButton.setImage(UIImage(systemName: "pause.circle.fill", withConfiguration: configuration), for: .normal)
-//    }
-
-
-
-
 

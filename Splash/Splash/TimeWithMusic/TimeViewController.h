@@ -11,15 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TimeViewController : UIViewController <SPTSessionManagerDelegate>
-+ (NSString*) formatTimeString:(int)secs;
-+ (int) getRemainingSec: (int)secs;
-+ (int) convertSecsToMin:(int)secs;
 @property NSUInteger *pageIndex;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-
-
-//@property (strong, nonatomic) SPTAppRemoteAccessTokenKey *accessToken;
-
 @end
 
 NS_ASSUME_NONNULL_END

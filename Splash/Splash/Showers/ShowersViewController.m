@@ -9,6 +9,7 @@
 #import "ShowerCell.h"
 #import "Parse/Parse.h"
 #import "TimeViewController.h"
+#import "Helper.h"
 
 @interface ShowersViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *showersTableView;
@@ -17,15 +18,10 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredData;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
-
-
-
-
 @end
 
 @implementation ShowersViewController
 NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +36,7 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
     [self.showersTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifierForShowers];
     self.showersTableView.sectionHeaderTopPadding = 0;
     self.searchBar.delegate = self;
-    self.filteredData = [[NSMutableArray alloc]init];
+    self.filteredData = [[NSMutableArray alloc] init];
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     self.tapGestureRecognizer.delegate = self;
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
@@ -59,15 +55,12 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
           }
           self.filteredData = self.showersArray;
           [self.showersTableView reloadData];
-          //self.showersArray = objects;
       } else {
         // Log details of the failure
-        NSLog(@"Error: %@ %@", error, [error userInfo]);
+          DLog(@"Error: %@ %@", error, [error userInfo]);
       }
     }];
     [self.refreshControl endRefreshing];
-    
-    
 }
 
 - (void) dismissKeyboard
@@ -77,8 +70,7 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = [tableView
-                                           dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifierForShowers];
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifierForShowers];
     return header;
 }
 
@@ -104,19 +96,16 @@ NSString *HeaderViewIdentifierForShowers = @"ShowerViewHeaderView";
 // called when text changes (including clear)
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
-       
-            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Shower *evaluatedShower, NSDictionary *bindings) {
-                NSDateFormatter *format = [[NSDateFormatter alloc] init];
-                [format setLocalizedDateFormatFromTemplate:@"EEEE, MMM d, yyyy"];
-                return [[format stringFromDate:evaluatedShower.createdAt] containsString:searchText] || [[TimeViewController formatTimeString:[[NSString stringWithFormat:@"%@", evaluatedShower[@"len"]] intValue]] containsString:searchText];
-            }];
-            self.filteredData = [self.showersArray filteredArrayUsingPredicate:predicate];
-        }
-        else {
-            self.filteredData = self.showersArray;
-        }
-        
-        [self.showersTableView reloadData];
+       NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Shower *evaluatedShower, NSDictionary *bindings) {
+           NSDateFormatter *format = [[NSDateFormatter alloc] init];
+           [format setLocalizedDateFormatFromTemplate:@"EEEE, MMM d, yyyy"];
+           return [[format stringFromDate:evaluatedShower.createdAt] containsString:searchText] || [[Helper formatTimeString:[[NSString stringWithFormat:@"%@", evaluatedShower[@"len"]] intValue]] containsString:searchText];
+        }];
+        self.filteredData = [self.showersArray filteredArrayUsingPredicate:predicate];
+    } else {
+        self.filteredData = self.showersArray;
+    }
+    [self.showersTableView reloadData];
 }
 
 /*

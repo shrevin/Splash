@@ -7,12 +7,12 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "Helper.h"
 
 
 @interface LoginViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
-
 @end
 
 @implementation LoginViewController
@@ -22,13 +22,11 @@
     return YES;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
-    
 }
 
 - (IBAction)signInButton:(id)sender {
@@ -43,6 +41,8 @@
     [self registerUser];
 }
 
+#pragma mark - Helper methods to login or register an user
+
 - (void)registerUser {
     // initialize a user object
     PFUser *newUser = [PFUser user];
@@ -53,9 +53,9 @@
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
+            DLog(@"Error: %@", error.localizedDescription);
         } else {
-            NSLog(@"User registered successfully");
+            DLog(@"User registered successfully");
             [self performSegueWithIdentifier:@"segueFromLogin" sender:self];
             // manually segue to logged in view
         }
@@ -77,15 +77,17 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
+            DLog(@"User log in failed: %@", error.localizedDescription);
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{}];
         } else {
-            NSLog(@"User logged in successfully");
+            DLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"segueFromLogin" sender:self];
             // display view controller that needs to shown after successful login
         }
     }];
 }
+
+#pragma mark - Helper methods to display alerts for empty text fields
 
 - (void) alertEmptyUsername {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Username" message:@"Please enter a username" preferredStyle:(UIAlertControllerStyleAlert)];
@@ -118,13 +120,14 @@
     
 }
 
-/*
 #pragma mark - Navigation
-
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UITabBarController *tabs = [segue destinationViewController];
+    [UIApplication sharedApplication].delegate.window.rootViewController = tabs;
 }
 */
 

@@ -38,10 +38,10 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
     self.searchBar.delegate = self;
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     self.tapGestureRecognizer.delegate = self;
+    self.tapGestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
     
 }
-
 
 - (void) dismissKeyboard
 {
@@ -58,6 +58,7 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
     [self.refreshControl endRefreshing];
 }
 
+#pragma mark - Search Bar Delegate Method
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
@@ -71,6 +72,7 @@ NSString *HeaderViewIdentifierForLeaderboard = @"LeaderboardViewHeaderView";
     [self.leaderboardTableView reloadData];
 }
 
+#pragma mark - Table View Delegate and DataSource Methods
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView

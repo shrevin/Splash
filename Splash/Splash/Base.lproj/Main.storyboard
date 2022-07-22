@@ -57,10 +57,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uk-II-Mpn">
                                 <rect key="frame" x="40" y="549" width="334" height="31"/>
-                                <color key="backgroundColor" red="0.0" green="0.65656037739999995" blue="0.76859849690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.040425717100000001" green="0.55554660180000004" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign In">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" red="0.040425717100000001" green="0.55554660180000004" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="signInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="siz-dI-p0v"/>
@@ -337,51 +338,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter 2.1 (avg) if unsure" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d92-Jw-sIn">
-                                <rect key="frame" x="203.5" y="453.5" width="180.5" height="34"/>
+                                <rect key="frame" x="203.5" y="451" width="180.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" misplaced="YES" text="Avg. water flow of your showerhead (gal/min):" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jX-EP-WjW">
                                 <rect key="frame" x="30" y="432" width="178" height="60"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2if-to-G2Z">
-                                <rect key="frame" x="247" y="555.5" width="137" height="34"/>
+                                <rect key="frame" x="250" y="527.5" width="134" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of showers per week:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETX-Ck-6tD">
-                                <rect key="frame" x="30" y="558.5" width="209" height="21.5"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                <rect key="frame" x="30" y="531.5" width="212" height="20"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculate Your Impact" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18i-A5-9Yx">
-                                <rect key="frame" x="30" y="98" width="242" height="31.5"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="25"/>
+                                <rect key="frame" x="30" y="98" width="220" height="29"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuD-09-yNK">
-                                <rect key="frame" x="30" y="154.5" width="354" height="240"/>
+                                <rect key="frame" x="30" y="152" width="354" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- The average shower lasts 8 minutes, meaning around 16 gallons of water are used up (think of 16 milk cartons!)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Se2-WK-lxl">
-                                        <rect key="frame" x="4" y="10" width="346" height="64"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <rect key="frame" x="4" y="10" width="346" height="58"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- The recommended shower time is 4 min! Keep working on your goal!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPR-wj-3Ki">
-                                        <rect key="frame" x="0.0" y="89" width="354" height="42.5"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="83" width="354" height="39"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Switch off the shower when you don't need it like when soaping up or shampooing to save water!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-FQ-euj">
-                                        <rect key="frame" x="0.0" y="146.5" width="354" height="64"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="137" width="354" height="39"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -402,7 +403,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqd-7n-I29">
-                                <rect key="frame" x="165" y="651.5" width="84.5" height="31"/>
+                                <rect key="frame" x="165" y="623.5" width="84.5" height="31"/>
                                 <color key="backgroundColor" red="0.81176471709999998" green="0.86274516580000005" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Calculate">
@@ -457,33 +458,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-ow-18h">
-                                <rect key="frame" x="20" y="251" width="186" height="157"/>
+                                <rect key="frame" x="20" y="247" width="186" height="157"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / year" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NR-DZ-MLf">
                                         <rect key="frame" x="7" y="70" width="171" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gal/wk" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2a-OH-L5Q">
-                                        <rect key="frame" x="60" y="46" width="64" height="25"/>
+                                        <rect key="frame" x="60" y="46" width="50" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gal/yr" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xI2-TL-AcP">
-                                        <rect key="frame" x="60" y="118" width="59" height="25"/>
+                                        <rect key="frame" x="60" y="118" width="42" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-g9-aRa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / week" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-g9-aRa">
                                         <rect key="frame" x="7" y="8" width="173" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -495,33 +496,33 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXD-jc-8Dr">
-                                <rect key="frame" x="215" y="252" width="179" height="156"/>
+                                <rect key="frame" x="215" y="248" width="179" height="156"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-HS-xB5">
                                         <rect key="frame" x="0.0" y="8" width="179" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bgal/wk" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qj-Ut-jzL">
-                                        <rect key="frame" x="55" y="44" width="74" height="25"/>
+                                        <rect key="frame" x="55" y="44" width="60" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bgal/yr" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-dw-TSS">
-                                        <rect key="frame" x="55" y="116" width="69" height="25"/>
+                                        <rect key="frame" x="55" y="116" width="52" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gal of water / year" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctE-pp-La6">
                                         <rect key="frame" x="7" y="72" width="171" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -533,52 +534,52 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtL-qG-4EC">
-                                <rect key="frame" x="71" y="204" width="104" height="22"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                <rect key="frame" x="71" y="202" width="93.5" height="20"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubble Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak4-8L-hXu">
-                                <rect key="frame" x="256" y="204" width="97" height="22"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                <rect key="frame" x="268" y="202" width="85" height="20"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivt-Rq-vuo">
-                                <rect key="frame" x="28" y="446" width="362" height="197"/>
+                                <rect key="frame" x="28" y="442" width="362" height="201"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5L-NK-bH2">
                                         <rect key="frame" x="30" y="74" width="80" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gallons of water / week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPh-ot-QQn">
                                         <rect key="frame" x="118" y="75" width="179" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gallons of water / year" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF2-Rp-IF6">
-                                        <rect key="frame" x="122" y="98" width="171" height="22"/>
+                                        <rect key="frame" x="129" y="98" width="159" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-KR-fhr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-KR-fhr">
                                         <rect key="frame" x="30" y="99" width="84" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you decrease your shower time by on minute, you could save" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBO-yD-I5d">
                                         <rect key="frame" x="30" y="16" width="304" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -586,11 +587,11 @@
                                 <color key="backgroundColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Impact in Numbers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rh-dj-Jge">
-                                <rect key="frame" x="28" y="135" width="228" height="28.5"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="21"/>
+                                <rect key="frame" x="28" y="135" width="210" height="26.5"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="shadowColor" red="0.8170874923" green="0.70036070770000003" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="shadowColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <size key="shadowOffset" width="0.0" height="-2"/>
                             </label>
                         </subviews>
@@ -660,20 +661,20 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@shreyavinjamuri" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsG-hz-z6G">
-                                                    <rect key="frame" x="103" y="68" width="138.5" height="21.5"/>
-                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                                    <rect key="frame" x="103" y="68" width="123.5" height="20"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bubblescore: " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QN0-WI-BdE">
-                                                    <rect key="frame" x="103" y="101" width="91.5" height="21.5"/>
-                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                                    <rect key="frame" x="103" y="99.5" width="87.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5F-Qq-xBF">
-                                                    <rect key="frame" x="196.5" y="101" width="19" height="21.5"/>
-                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                                    <rect key="frame" x="192.5" y="99.5" width="17" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -748,86 +749,117 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xBS-jP-8vq">
-                                <rect key="frame" x="10" y="413" width="394" height="200"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="hQe-1J-fbt"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5aq-wr-3Ic">
-                                    <size key="itemSize" width="180" height="185"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailsCell" id="t4p-bn-84B" customClass="DetailsCell">
-                                        <rect key="frame" x="0.0" y="7.5" width="180" height="185"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jOK-8T-vAB">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="185"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💪 Goal" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHC-k7-Hcs">
-                                                    <rect key="frame" x="21" y="0.0" width="138" height="70"/>
-                                                    <color key="backgroundColor" red="0.61767869959999999" green="0.74681933040000004" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="138" id="ajr-FG-CTB"/>
-                                                        <constraint firstAttribute="height" constant="70" id="vd5-9d-nae"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <color key="highlightedColor" red="0.61767869959999999" green="0.74681933040000004" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5m 30 s" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcF-PA-3Z2">
-                                                    <rect key="frame" x="59" y="90" width="62" height="21.5"/>
-                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="mcF-PA-3Z2" firstAttribute="centerX" secondItem="jOK-8T-vAB" secondAttribute="centerX" id="781-j2-XdP"/>
-                                                <constraint firstItem="hHC-k7-Hcs" firstAttribute="centerX" secondItem="jOK-8T-vAB" secondAttribute="centerX" id="br9-c8-DiP"/>
-                                                <constraint firstItem="mcF-PA-3Z2" firstAttribute="top" secondItem="hHC-k7-Hcs" secondAttribute="bottom" constant="20" id="fvU-CU-nd1"/>
-                                                <constraint firstItem="hHC-k7-Hcs" firstAttribute="top" secondItem="jOK-8T-vAB" secondAttribute="top" id="gp1-zn-6M3"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <size key="customSize" width="180" height="185"/>
-                                        <connections>
-                                            <outlet property="statLabel" destination="mcF-PA-3Z2" id="g45-9K-tig"/>
-                                            <outlet property="titleLabel" destination="hHC-k7-Hcs" id="tUg-RU-6ry"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGI-bu-hf4">
                                 <rect key="frame" x="159.5" y="337" width="95" height="31"/>
                                 <color key="backgroundColor" red="0.92941176889999999" green="0.70980393890000004" blue="0.52941179279999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Friend"/>
+                                <connections>
+                                    <action selector="clickAdd:" destination="AXI-W9-WXw" eventType="touchUpInside" id="JP5-4b-5Zs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aI7-qD-RlR">
+                                <rect key="frame" x="30" y="337" width="354" height="31"/>
+                                <color key="backgroundColor" red="0.92941176889999999" green="0.88319088329999995" blue="0.66677280539999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Yay! You're on the leaderboard!"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ke0-KE-wIN">
+                                <rect key="frame" x="20" y="384" width="374" height="429"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsCell" rowHeight="85" id="HDO-gq-cfI" customClass="DetailsCell">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HDO-gq-cfI" id="pTF-4h-U7m">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💪 Goal: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dN-T7-p8h">
+                                                    <rect key="frame" x="44" y="25" width="72" height="35"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m 0s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-d8-Bv7">
+                                                    <rect key="frame" x="124" y="32" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.5470751787" green="0.72638329209999997" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="5dN-T7-p8h" secondAttribute="bottom" constant="25" id="QB2-PD-j36"/>
+                                                <constraint firstItem="ud5-d8-Bv7" firstAttribute="centerY" secondItem="5dN-T7-p8h" secondAttribute="centerY" id="ZZO-Pe-8fp"/>
+                                                <constraint firstItem="5dN-T7-p8h" firstAttribute="top" secondItem="pTF-4h-U7m" secondAttribute="top" constant="25" id="e21-4g-K4y"/>
+                                                <constraint firstItem="ud5-d8-Bv7" firstAttribute="leading" secondItem="5dN-T7-p8h" secondAttribute="trailing" constant="8" symbolic="YES" id="jba-pF-7nN"/>
+                                                <constraint firstItem="5dN-T7-p8h" firstAttribute="leading" secondItem="pTF-4h-U7m" secondAttribute="leading" constant="44" id="t0Y-oC-1z3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="statLabel" destination="ud5-d8-Bv7" id="jLs-1J-ED8"/>
+                                            <outlet property="typeLabel" destination="5dN-T7-p8h" id="Ork-Uo-CwB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yx-Uv-fMj">
+                                <rect key="frame" x="20" y="337" width="120" height="31"/>
+                                <color key="backgroundColor" red="0.78746811224489799" green="0.15048363095238096" blue="0.0" alpha="0.77317880794701987" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Remove Friend"/>
+                                <connections>
+                                    <action selector="clickRemove:" destination="AXI-W9-WXw" eventType="touchUpInside" id="vTP-x3-KIG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1x-bt-avF">
+                                <rect key="frame" x="276" y="337" width="118" height="31"/>
+                                <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Challenge"/>
+                                <connections>
+                                    <action selector="clickChallenge:" destination="AXI-W9-WXw" eventType="touchUpInside" id="D8f-vT-8Dn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a1j-JL-9Zv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ke0-KE-wIN" firstAttribute="top" secondItem="aI7-qD-RlR" secondAttribute="bottom" constant="16" id="1ct-5a-q07"/>
+                            <constraint firstItem="5yx-Uv-fMj" firstAttribute="leading" secondItem="a1j-JL-9Zv" secondAttribute="leading" constant="20" id="309-Eu-EjM"/>
+                            <constraint firstItem="aI7-qD-RlR" firstAttribute="leading" secondItem="a1j-JL-9Zv" secondAttribute="leading" constant="30" id="77X-fu-3fJ"/>
                             <constraint firstItem="wGI-bu-hf4" firstAttribute="centerX" secondItem="a1j-JL-9Zv" secondAttribute="centerX" id="9e7-xH-wmg"/>
                             <constraint firstItem="HBt-3Z-Tj3" firstAttribute="centerX" secondItem="a1j-JL-9Zv" secondAttribute="centerX" id="BWR-5I-Xqs"/>
                             <constraint firstItem="Vo7-ah-Yfx" firstAttribute="top" secondItem="HBt-3Z-Tj3" secondAttribute="bottom" constant="20" id="Ba5-bJ-aZc"/>
                             <constraint firstItem="Vo7-ah-Yfx" firstAttribute="centerX" secondItem="a1j-JL-9Zv" secondAttribute="centerX" id="Bxi-sV-ddU"/>
                             <constraint firstItem="HBt-3Z-Tj3" firstAttribute="top" secondItem="a1j-JL-9Zv" secondAttribute="top" constant="40" id="Dil-mQ-u0M"/>
-                            <constraint firstItem="xBS-jP-8vq" firstAttribute="leading" secondItem="a1j-JL-9Zv" secondAttribute="leading" constant="10" id="a4O-ca-VVO"/>
-                            <constraint firstItem="a1j-JL-9Zv" firstAttribute="trailing" secondItem="xBS-jP-8vq" secondAttribute="trailing" constant="10" id="c76-HH-emc"/>
+                            <constraint firstItem="t1x-bt-avF" firstAttribute="leading" secondItem="wGI-bu-hf4" secondAttribute="trailing" constant="21.5" id="LP5-Rn-Snb"/>
+                            <constraint firstItem="a1j-JL-9Zv" firstAttribute="trailing" secondItem="ke0-KE-wIN" secondAttribute="trailing" constant="20" id="MKH-QK-fTw"/>
+                            <constraint firstItem="aI7-qD-RlR" firstAttribute="top" secondItem="Vo7-ah-Yfx" secondAttribute="bottom" constant="18" id="NbS-z6-uP7"/>
+                            <constraint firstItem="a1j-JL-9Zv" firstAttribute="trailing" secondItem="t1x-bt-avF" secondAttribute="trailing" constant="20" id="Xzj-bx-936"/>
+                            <constraint firstItem="ke0-KE-wIN" firstAttribute="leading" secondItem="a1j-JL-9Zv" secondAttribute="leading" constant="20" id="YWn-gy-JeX"/>
                             <constraint firstItem="wGI-bu-hf4" firstAttribute="top" secondItem="Vo7-ah-Yfx" secondAttribute="bottom" constant="18" id="dD6-qW-YyX"/>
-                            <constraint firstItem="xBS-jP-8vq" firstAttribute="top" secondItem="wGI-bu-hf4" secondAttribute="bottom" constant="45" id="m84-RT-BFN"/>
+                            <constraint firstItem="t1x-bt-avF" firstAttribute="centerY" secondItem="wGI-bu-hf4" secondAttribute="centerY" id="ffH-QW-Nmv"/>
+                            <constraint firstItem="5yx-Uv-fMj" firstAttribute="centerY" secondItem="wGI-bu-hf4" secondAttribute="centerY" id="k5B-yw-l7d"/>
+                            <constraint firstItem="ke0-KE-wIN" firstAttribute="bottom" secondItem="a1j-JL-9Zv" secondAttribute="bottom" id="lXJ-pP-kus"/>
+                            <constraint firstItem="t1x-bt-avF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5yx-Uv-fMj" secondAttribute="trailing" constant="30" id="r9G-Ow-irW"/>
+                            <constraint firstItem="ke0-KE-wIN" firstAttribute="top" secondItem="wGI-bu-hf4" secondAttribute="bottom" constant="16" id="rvS-sW-eQk"/>
+                            <constraint firstItem="a1j-JL-9Zv" firstAttribute="trailing" secondItem="aI7-qD-RlR" secondAttribute="trailing" constant="30" id="ya3-8d-ZP1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rBi-mC-yRk"/>
                     <connections>
-                        <outlet property="collectionView" destination="xBS-jP-8vq" id="zhn-Td-LxU"/>
+                        <outlet property="addFriendButton" destination="wGI-bu-hf4" id="XnR-ZO-Gg5"/>
+                        <outlet property="challengeButton" destination="t1x-bt-avF" id="Uqo-Ea-IGp"/>
+                        <outlet property="detailsTableView" destination="ke0-KE-wIN" id="yDI-7O-JrJ"/>
+                        <outlet property="onLBButton" destination="aI7-qD-RlR" id="5km-cZ-1lj"/>
                         <outlet property="profilePic" destination="HBt-3Z-Tj3" id="FbU-Wa-PdW"/>
+                        <outlet property="removeFriendButton" destination="5yx-Uv-fMj" id="0eb-rq-fXL"/>
                         <outlet property="usernameLabel" destination="Vo7-ah-Yfx" id="Sdr-Ui-jh7"/>
                     </connections>
                 </viewController>
@@ -844,7 +876,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="II5-zD-fqF" customClass="PFImageView">
-                                <rect key="frame" x="132" y="144.5" width="150" height="149"/>
+                                <rect key="frame" x="132" y="144" width="150" height="149"/>
                                 <color key="backgroundColor" red="0.81176471709999998" green="0.86274516580000005" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.61767869959999999" green="0.74681933040000004" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -853,13 +885,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq7-9A-yDw">
-                                <rect key="frame" x="40" y="98" width="79.5" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                <rect key="frame" x="40" y="98" width="74" height="33"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXU-FB-dR7">
-                                <rect key="frame" x="189" y="299" width="36" height="36"/>
+                                <rect key="frame" x="189" y="298.5" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="9Z5-3S-9LK"/>
                                     <constraint firstAttribute="height" constant="36" id="SPz-kl-9IC"/>
@@ -874,7 +906,7 @@
                                 <state key="normal" image="camera" catalog="system"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pgz-NP-wdq">
-                                <rect key="frame" x="20" y="360.5" width="374" height="442.5"/>
+                                <rect key="frame" x="20" y="359.5" width="374" height="443.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myStatsCell" rowHeight="78" id="2qp-dF-rmd" customClass="StatsCell">
@@ -885,14 +917,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubblescore:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUA-C8-gHx">
-                                                    <rect key="frame" x="31" y="25" width="99.5" height="28"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <rect key="frame" x="31" y="25" width="89" height="28"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-Gx-XNA">
-                                                    <rect key="frame" x="134.5" y="29" width="10" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                    <rect key="frame" x="124" y="29" width="8.5" height="20"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -925,8 +957,8 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwo-MN-ybW">
-                                <rect key="frame" x="159.5" y="334" width="95.5" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <rect key="frame" x="162.5" y="333.5" width="89.5" height="21"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -992,14 +1024,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a goal from 1 to 8 minutes. Try to aim for 4 minutes and keep improving :)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbV-JP-ixb">
-                                <rect key="frame" x="20" y="159" width="374" height="50"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                <rect key="frame" x="20" y="154.5" width="374" height="45.5"/>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82a-NL-OzX">
-                                <rect key="frame" x="118" y="88" width="178.5" height="57.5"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="46"/>
+                                <rect key="frame" x="135" y="88" width="144.5" height="53"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="46"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1014,31 +1046,31 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGg-8G-cZ9">
-                                <rect key="frame" x="20" y="262" width="374" height="419"/>
+                                <rect key="frame" x="20" y="253" width="374" height="428"/>
                                 <subviews>
                                     <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8o-zh-gqG">
-                                        <rect key="frame" x="15" y="101.5" width="108" height="216"/>
+                                        <rect key="frame" x="15" y="106" width="108" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="miX-S3-HF1"/>
                                             <constraint firstAttribute="width" constant="108" id="zvu-3a-PKr"/>
                                         </constraints>
                                     </pickerView>
                                     <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBX-0V-6dC">
-                                        <rect key="frame" x="198.5" y="101.5" width="108" height="216"/>
+                                        <rect key="frame" x="191.5" y="106" width="108" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="kNd-Ly-f4u"/>
                                             <constraint firstAttribute="height" constant="216" id="uaY-as-GNJ"/>
                                         </constraints>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp0-pq-V4J">
-                                        <rect key="frame" x="126" y="199" width="32.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                        <rect key="frame" x="126" y="204" width="25.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-MN-Yv3">
-                                        <rect key="frame" x="303.5" y="199" width="21.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-MN-Yv3">
+                                        <rect key="frame" x="296.5" y="204" width="22.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1128,14 +1160,14 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5m 30s" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-df-HXV">
-                                                    <rect key="frame" x="85" y="65.5" width="49.5" height="28.5"/>
-                                                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="17"/>
+                                                    <rect key="frame" x="85" y="57" width="49.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, June 22, 2022" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEl-Gh-blj">
-                                                    <rect key="frame" x="85" y="37" width="177" height="28.5"/>
-                                                    <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="17"/>
+                                                    <rect key="frame" x="85" y="37" width="176" height="20"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1212,8 +1244,8 @@
                         <segue destination="Zig-hZ-ucJ" kind="relationship" relationship="viewControllers" id="wdD-YV-hhm"/>
                         <segue destination="7tw-So-tMn" kind="relationship" relationship="viewControllers" id="En1-Pq-dUC"/>
                         <segue destination="WYX-Ta-Rkf" kind="relationship" relationship="viewControllers" id="tpI-Cs-Ebu"/>
-                        <segue destination="Nle-QL-f2i" kind="relationship" relationship="viewControllers" id="PR6-gm-wKU"/>
-                        <segue destination="rPl-ot-WYy" kind="relationship" relationship="viewControllers" id="O5c-ur-unx"/>
+                        <segue destination="rPl-ot-WYy" kind="relationship" relationship="viewControllers" id="ywl-D8-oDc"/>
+                        <segue destination="Nle-QL-f2i" kind="relationship" relationship="viewControllers" id="bO7-1Q-gQz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWK-qc-sc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1223,14 +1255,87 @@
         <!--Find Friends-->
         <scene sceneID="Ng6-rg-V1Y">
             <objects>
-                <viewController id="bpe-FW-DDj" sceneMemberID="viewController">
+                <viewController id="bpe-FW-DDj" customClass="FriendsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MZ0-xM-c6L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VdS-34-aSN">
+                                <rect key="frame" x="20" y="121" width="374" height="775"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oEA-bE-buV">
+                                    <size key="itemSize" width="182" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendsCell" id="Uqv-m1-06H" customClass="FriendsCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="182" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zv8-v4-SJb">
+                                            <rect key="frame" x="0.0" y="0.0" width="182" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fbj-E4-HRA" customClass="PFImageView">
+                                                    <rect key="frame" x="41" y="20.5" width="100" height="96"/>
+                                                    <color key="backgroundColor" red="0.61767869959999999" green="0.74681933040000004" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="97" id="7NT-hD-vFT"/>
+                                                        <constraint firstAttribute="height" constant="97" id="dRs-bN-JuN"/>
+                                                        <constraint firstAttribute="width" constant="100" id="waw-5f-2KI"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYc-8j-gyj">
+                                                    <rect key="frame" x="73" y="131" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fbj-E4-HRA" firstAttribute="centerX" secondItem="Zv8-v4-SJb" secondAttribute="centerX" id="2En-hf-8yy"/>
+                                                <constraint firstItem="fbj-E4-HRA" firstAttribute="top" secondItem="Zv8-v4-SJb" secondAttribute="top" constant="20" symbolic="YES" id="F2f-Ua-FTN"/>
+                                                <constraint firstItem="ZYc-8j-gyj" firstAttribute="centerX" secondItem="Zv8-v4-SJb" secondAttribute="centerX" id="XSh-uL-xx1"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZYc-8j-gyj" secondAttribute="bottom" constant="28" id="agI-SI-WGn"/>
+                                                <constraint firstItem="ZYc-8j-gyj" firstAttribute="top" secondItem="fbj-E4-HRA" secondAttribute="bottom" constant="14" id="kUW-Pl-2JK"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" systemColor="systemCyanColor"/>
+                                        <size key="customSize" width="182" height="180"/>
+                                        <connections>
+                                            <outlet property="friendName" destination="ZYc-8j-gyj" id="zJ6-be-ViK"/>
+                                            <outlet property="friendPic" destination="fbj-E4-HRA" id="zQv-Ku-Ji4"/>
+                                            <segue destination="AXI-W9-WXw" kind="show" id="qRs-0e-3Ba"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5qQ-EB-jKW">
+                                <rect key="frame" x="0.0" y="77" width="414" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZC4-d4-CLa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5qQ-EB-jKW" firstAttribute="top" secondItem="MZ0-xM-c6L" secondAttribute="top" id="Fld-mJ-sWW"/>
+                            <constraint firstItem="5qQ-EB-jKW" firstAttribute="leading" secondItem="ZC4-d4-CLa" secondAttribute="leading" id="IV6-cV-XFW"/>
+                            <constraint firstAttribute="bottom" secondItem="VdS-34-aSN" secondAttribute="bottom" id="KJm-VV-hZS"/>
+                            <constraint firstItem="VdS-34-aSN" firstAttribute="trailing" secondItem="ZC4-d4-CLa" secondAttribute="trailing" constant="-20" id="cx9-Eg-bb8"/>
+                            <constraint firstItem="VdS-34-aSN" firstAttribute="top" secondItem="MZ0-xM-c6L" secondAttribute="top" id="dzR-FW-MOq"/>
+                            <constraint firstItem="5qQ-EB-jKW" firstAttribute="trailing" secondItem="ZC4-d4-CLa" secondAttribute="trailing" id="eIp-kE-wFW"/>
+                            <constraint firstItem="VdS-34-aSN" firstAttribute="top" secondItem="MZ0-xM-c6L" secondAttribute="top" id="g7f-1F-59n"/>
+                            <constraint firstAttribute="bottom" secondItem="VdS-34-aSN" secondAttribute="bottom" id="iV4-Ld-vAm"/>
+                            <constraint firstItem="VdS-34-aSN" firstAttribute="leading" secondItem="ZC4-d4-CLa" secondAttribute="leading" constant="20" id="kk6-Do-P9f"/>
+                            <constraint firstItem="VdS-34-aSN" firstAttribute="top" secondItem="5qQ-EB-jKW" secondAttribute="bottom" id="s89-AI-uAq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Friends" id="Gdz-tE-nCG"/>
+                    <connections>
+                        <outlet property="collectionView" destination="VdS-34-aSN" id="XpP-Tn-x4f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKb-81-gMm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1336,6 +1441,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rPl-ot-WYy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="person" catalog="system" id="Xn7-jg-aYa"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9Oj-6V-NE6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qc-XF-LUe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1350,6 +1456,9 @@
             <point key="canvasLocation" x="5249.275362318841" y="64.955357142857139"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qRs-0e-3Ba"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
@@ -1362,8 +1471,14 @@
         <image name="skip_left" width="50" height="50"/>
         <image name="skip_right" width="50" height="50"/>
         <image name="timer" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

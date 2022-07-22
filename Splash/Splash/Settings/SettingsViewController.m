@@ -31,8 +31,9 @@
     self.secPicker.delegate = self;
     self.secPicker.dataSource = self;
 }
-//
-//// returns the number of 'columns' to display.
+
+#pragma mark - UIPickerView Delegate and DataSource Methods
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
@@ -53,6 +54,9 @@
         return [NSString stringWithFormat:@"%ld", row];
     }
 }
+
+#pragma mark - Action Methods for Buttons
+
 - (IBAction)clickUpdate:(id)sender {
     PFUser *user = [PFUser currentUser];
     int minutes = [self.minPicker selectedRowInComponent:0] + 1;
@@ -64,6 +68,7 @@
     user[@"goal"] = goal;
     [user saveInBackground];
 }
+
 /*
 #pragma mark - Navigation
 

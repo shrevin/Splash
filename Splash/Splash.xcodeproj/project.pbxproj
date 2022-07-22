@@ -25,8 +25,11 @@
 		7B512EDA287F88D30029195A /* NetworkCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512ED9287F88D30029195A /* NetworkCalls.swift */; };
 		7B512EE02881EFE10029195A /* ImpactCalculationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */; };
 		7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EE2288616DC0029195A /* DetailsViewController.m */; };
-		7B512EE62886184D0029195A /* DetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EE52886184D0029195A /* DetailsCell.m */; };
 		7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EEB28874C640029195A /* NoMusicViewController.m */; };
+		7B512EFC288A01430029195A /* DetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EFB288A01430029195A /* DetailsCell.m */; };
+		7B512F0A288A2A060029195A /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F09288A2A060029195A /* Helper.m */; };
+		7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F0D288A6A100029195A /* FriendsViewController.m */; };
+		7B512F11288A708A0029195A /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F10288A708A0029195A /* FriendsCell.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -69,8 +72,8 @@
 		7B512D74287630F10029195A /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7B512D76287631080029195A /* TimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeViewController.h; sourceTree = "<group>"; };
 		7B512D77287631080029195A /* TimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeViewController.m; sourceTree = "<group>"; };
-		7B512D792876312D0029195A /* ShowersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ShowersViewController.h; path = Splash/ShowersViewController.h; sourceTree = SOURCE_ROOT; };
-		7B512D7A2876312D0029195A /* ShowersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ShowersViewController.m; path = Splash/ShowersViewController.m; sourceTree = SOURCE_ROOT; };
+		7B512D792876312D0029195A /* ShowersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ShowersViewController.h; path = Splash/Showers/ShowersViewController.h; sourceTree = SOURCE_ROOT; };
+		7B512D7A2876312D0029195A /* ShowersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ShowersViewController.m; path = Splash/Showers/ShowersViewController.m; sourceTree = SOURCE_ROOT; };
 		7B512D7C2876314D0029195A /* ImpactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImpactViewController.h; sourceTree = "<group>"; };
 		7B512D7D2876314D0029195A /* ImpactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImpactViewController.m; sourceTree = "<group>"; };
 		7B512D7F287631660029195A /* LeaderboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
@@ -98,10 +101,16 @@
 		7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImpactCalculationsViewController.m; sourceTree = "<group>"; };
 		7B512EE1288616DC0029195A /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		7B512EE2288616DC0029195A /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
-		7B512EE42886184D0029195A /* DetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCell.h; sourceTree = "<group>"; };
-		7B512EE52886184D0029195A /* DetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCell.m; sourceTree = "<group>"; };
 		7B512EEA28874C640029195A /* NoMusicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoMusicViewController.h; sourceTree = "<group>"; };
 		7B512EEB28874C640029195A /* NoMusicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoMusicViewController.m; sourceTree = "<group>"; };
+		7B512EFA288A01430029195A /* DetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsCell.h; sourceTree = "<group>"; };
+		7B512EFB288A01430029195A /* DetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsCell.m; sourceTree = "<group>"; };
+		7B512F08288A2A060029195A /* Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		7B512F09288A2A060029195A /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		7B512F0C288A6A100029195A /* FriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		7B512F0D288A6A100029195A /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		7B512F0F288A708A0029195A /* FriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
+		7B512F10288A708A0029195A /* FriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -162,30 +171,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7B512D822876488B0029195A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7B512D83287649B20029195A /* StatsCell.h */,
-				7B512D84287649B20029195A /* StatsCell.m */,
-				7B512EAD2878B24D0029195A /* ShowerCell.h */,
-				7B512EAE2878B24D0029195A /* ShowerCell.m */,
-				7B512EB0287CD0540029195A /* LeaderboardCell.h */,
-				7B512EB1287CD0540029195A /* LeaderboardCell.m */,
-				7B512EE42886184D0029195A /* DetailsCell.h */,
-				7B512EE52886184D0029195A /* DetailsCell.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		7B512EA92878AE2C0029195A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7B512EAA2878AF370029195A /* Shower.h */,
-				7B512EAB2878AF370029195A /* Shower.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		7B512EC8287F49750029195A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +179,119 @@
 				7B512ED9287F88D30029195A /* NetworkCalls.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		7B512EFD288A22610029195A /* Showers */ = {
+			isa = PBXGroup;
+			children = (
+				7B512EAA2878AF370029195A /* Shower.h */,
+				7B512EAB2878AF370029195A /* Shower.m */,
+				7B512D792876312D0029195A /* ShowersViewController.h */,
+				7B512D7A2876312D0029195A /* ShowersViewController.m */,
+				7B512EAD2878B24D0029195A /* ShowerCell.h */,
+				7B512EAE2878B24D0029195A /* ShowerCell.m */,
+			);
+			path = Showers;
+			sourceTree = "<group>";
+		};
+		7B512EFE288A22840029195A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7BE02E5E2876171D0060575C /* LoginViewController.h */,
+				7BE02E5F2876171D0060575C /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7B512F00288A229C0029195A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7B512D73287630F10029195A /* HomeViewController.h */,
+				7B512D74287630F10029195A /* HomeViewController.m */,
+				7B512D83287649B20029195A /* StatsCell.h */,
+				7B512D84287649B20029195A /* StatsCell.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7B512F01288A22B10029195A /* TimeWithMusic */ = {
+			isa = PBXGroup;
+			children = (
+				7B512D76287631080029195A /* TimeViewController.h */,
+				7B512D77287631080029195A /* TimeViewController.m */,
+			);
+			path = TimeWithMusic;
+			sourceTree = "<group>";
+		};
+		7B512F02288A22C80029195A /* TimeWithoutMusic */ = {
+			isa = PBXGroup;
+			children = (
+				7B512EEA28874C640029195A /* NoMusicViewController.h */,
+				7B512EEB28874C640029195A /* NoMusicViewController.m */,
+			);
+			path = TimeWithoutMusic;
+			sourceTree = "<group>";
+		};
+		7B512F03288A22E40029195A /* Impact */ = {
+			isa = PBXGroup;
+			children = (
+				7B512D7C2876314D0029195A /* ImpactViewController.h */,
+				7B512D7D2876314D0029195A /* ImpactViewController.m */,
+				7B512EDE2881EFE10029195A /* ImpactCalculationsViewController.h */,
+				7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */,
+			);
+			path = Impact;
+			sourceTree = "<group>";
+		};
+		7B512F04288A22FE0029195A /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				7B512D7F287631660029195A /* LeaderboardViewController.h */,
+				7B512D80287631660029195A /* LeaderboardViewController.m */,
+				7B512EB0287CD0540029195A /* LeaderboardCell.h */,
+				7B512EB1287CD0540029195A /* LeaderboardCell.m */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		7B512F05288A230A0029195A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7B512ED6287F6F1B0029195A /* SettingsViewController.h */,
+				7B512ED7287F6F1B0029195A /* SettingsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7B512F06288A23100029195A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				7B512EE1288616DC0029195A /* DetailsViewController.h */,
+				7B512EE2288616DC0029195A /* DetailsViewController.m */,
+				7B512EFA288A01430029195A /* DetailsCell.h */,
+				7B512EFB288A01430029195A /* DetailsCell.m */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		7B512F07288A29BE0029195A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7B512F08288A2A060029195A /* Helper.h */,
+				7B512F09288A2A060029195A /* Helper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		7B512F0B288A69F40029195A /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				7B512F0C288A6A100029195A /* FriendsViewController.h */,
+				7B512F0D288A6A100029195A /* FriendsViewController.m */,
+				7B512F0F288A708A0029195A /* FriendsCell.h */,
+				7B512F10288A708A0029195A /* FriendsCell.m */,
+			);
+			path = Friends;
 			sourceTree = "<group>";
 		};
 		7BE02E1C2876160D0060575C = {
@@ -221,10 +319,18 @@
 		7BE02E272876160D0060575C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				7BE02E5D287617080060575C /* View Controllers */,
+				7B512F00288A229C0029195A /* Home */,
+				7B512F06288A23100029195A /* Details */,
+				7B512F05288A230A0029195A /* Settings */,
+				7B512F04288A22FE0029195A /* Leaderboard */,
+				7B512F03288A22E40029195A /* Impact */,
+				7B512F02288A22C80029195A /* TimeWithoutMusic */,
+				7B512F01288A22B10029195A /* TimeWithMusic */,
+				7B512EFE288A22840029195A /* Login */,
+				7B512EFD288A22610029195A /* Showers */,
 				7B512EC8287F49750029195A /* Networking */,
-				7B512EA92878AE2C0029195A /* Models */,
-				7B512D822876488B0029195A /* Views */,
+				7B512F0B288A69F40029195A /* Friends */,
+				7B512F07288A29BE0029195A /* Helper */,
 				7BE02E282876160D0060575C /* AppDelegate.h */,
 				7BE02E292876160D0060575C /* AppDelegate.m */,
 				7B512EC1287CF2B10029195A /* SceneDelegate.h */,
@@ -256,33 +362,6 @@
 				7BE02E502876160E0060575C /* SplashUITestsLaunchTests.m */,
 			);
 			path = SplashUITests;
-			sourceTree = "<group>";
-		};
-		7BE02E5D287617080060575C /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				7B512D792876312D0029195A /* ShowersViewController.h */,
-				7B512D7A2876312D0029195A /* ShowersViewController.m */,
-				7BE02E5E2876171D0060575C /* LoginViewController.h */,
-				7BE02E5F2876171D0060575C /* LoginViewController.m */,
-				7B512D73287630F10029195A /* HomeViewController.h */,
-				7B512D74287630F10029195A /* HomeViewController.m */,
-				7B512D76287631080029195A /* TimeViewController.h */,
-				7B512D77287631080029195A /* TimeViewController.m */,
-				7B512D7C2876314D0029195A /* ImpactViewController.h */,
-				7B512D7D2876314D0029195A /* ImpactViewController.m */,
-				7B512D7F287631660029195A /* LeaderboardViewController.h */,
-				7B512D80287631660029195A /* LeaderboardViewController.m */,
-				7B512ED6287F6F1B0029195A /* SettingsViewController.h */,
-				7B512ED7287F6F1B0029195A /* SettingsViewController.m */,
-				7B512EDE2881EFE10029195A /* ImpactCalculationsViewController.h */,
-				7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */,
-				7B512EE1288616DC0029195A /* DetailsViewController.h */,
-				7B512EE2288616DC0029195A /* DetailsViewController.m */,
-				7B512EEA28874C640029195A /* NoMusicViewController.h */,
-				7B512EEB28874C640029195A /* NoMusicViewController.m */,
-			);
-			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		B134505EA1D35C7BDE43513C /* Pods */ = {
@@ -537,7 +616,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B512EE62886184D0029195A /* DetailsCell.m in Sources */,
 				7B512D81287631660029195A /* LeaderboardViewController.m in Sources */,
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
 				7B512EC2287CF2B10029195A /* SceneDelegate.m in Sources */,
@@ -546,8 +624,12 @@
 				7B512EAC2878AF370029195A /* Shower.m in Sources */,
 				7BE02E3B2876160E0060575C /* main.m in Sources */,
 				7B512D75287630F10029195A /* HomeViewController.m in Sources */,
+				7B512EFC288A01430029195A /* DetailsCell.m in Sources */,
+				7B512F0A288A2A060029195A /* Helper.m in Sources */,
 				7B512EE02881EFE10029195A /* ImpactCalculationsViewController.m in Sources */,
+				7B512F11288A708A0029195A /* FriendsCell.m in Sources */,
 				7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */,
+				7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */,
 				7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */,
 				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
