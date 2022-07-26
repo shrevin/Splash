@@ -10,7 +10,6 @@
 
 @implementation LeaderboardCell
 
-
 -(void)setCell:(PFUser*)top_user {
     self.usernameLabel.text = top_user[@"username"];
     self.bubblescoreValueLabel.text = [NSString stringWithFormat:@"%@", top_user[@"bubblescore"]];

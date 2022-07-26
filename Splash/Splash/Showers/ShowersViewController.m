@@ -27,10 +27,15 @@ const int kNumberOfRowsForShowers = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getData];
+    [self setUpTableView];
+    [self setUpTapGesture];
+}
+
+- (void) setUpTableView {
     self.showersTableView.delegate = self;
     self.showersTableView.dataSource = self;
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self getData];
     [self.refreshControl addTarget:self action:@selector(getData) forControlEvents:UIControlEventValueChanged];
     [self.showersTableView insertSubview:self.refreshControl atIndex:0];
     self.showersTableView.layer.cornerRadius = 10.0;
@@ -38,10 +43,12 @@ const int kNumberOfRowsForShowers = 1;
     self.showersTableView.sectionHeaderTopPadding = 0;
     self.searchBar.delegate = self;
     self.filteredData = [[NSMutableArray alloc] init];
+}
+
+- (void) setUpTapGesture {
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     self.tapGestureRecognizer.delegate = self;
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
-    
 }
 
 -(void) getData {

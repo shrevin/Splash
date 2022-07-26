@@ -40,7 +40,16 @@
     self.appRemote.delegate = self.delegate;
 }
 
-
+-(void)connect2Spotify
+{
+    if (self.appRemote!=nil)
+    {
+        if (!self.appRemote.connected){
+            self.appRemote.connectionParameters.accessToken = self.token;
+            [self.appRemote connect];
+        }
+    }
+}
 
 #pragma mark - SPTSessionManagerDelegate
 
@@ -72,6 +81,7 @@
             return;
         }
         NSString *accessToken = dictionary[@"access_token"];
+        self.token = accessToken;
         self.appRemote.connectionParameters.accessToken = accessToken;
         [self.appRemote connect];
 

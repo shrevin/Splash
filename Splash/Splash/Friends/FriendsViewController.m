@@ -10,10 +10,13 @@
 #import "FriendsCell.h"
 #import "DetailsViewController.h"
 
-@interface FriendsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property (strong, nonatomic) NSArray *possibleFriends;
+@interface FriendsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, UISearchBarDelegate>
+@property (strong, nonatomic) NSMutableArray *possibleFriends;
+@property (strong, nonatomic) NSMutableArray *possibleFriendsFiltered;
 @property (strong, nonatomic) NSMutableArray *friendsIds;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation FriendsViewController
@@ -21,16 +24,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.friendsIds = [[NSMutableArray alloc]init];
     [self populateFriendsId];
     [self getData];
+    [self setUpCollectionView];
+    [self setUpTapGesture];
+}
+
+- (void) setUpCollectionView {
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-   
-    
+    self.searchBar.delegate = self;
+}
+
+- (void) setUpTapGesture {
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tapGestureRecognizer.delegate = self;
+    self.tapGestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
 - (void) populateFriendsId {
+    self.friendsIds = [[NSMutableArray alloc]init];
     NSArray *friendsList = [PFUser currentUser][@"friends"];
     for (PFUser *user in friendsList) {
         [self.friendsIds addObject:user.objectId];
@@ -39,21 +53,44 @@
 - (void) getData {
     PFQuery *query = [PFUser query];
     [query whereKey:@"objectId" notContainedIn:self.friendsIds];
+    [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
     self.possibleFriends = [query findObjects];
+    self.possibleFriendsFiltered = self.possibleFriends;
+    [self.collectionView reloadData];
+}
+
+- (void) dismissKeyboard
+{
+    //Code to handle the gesture
+    [self.searchBar resignFirstResponder];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *evaluatedObject, NSDictionary *bindings) {
+            NSString *username = evaluatedObject[@"username"];
+            return [username.lowercaseString containsString:searchText.lowercaseString];
+        }];
+        self.possibleFriendsFiltered = [self.possibleFriends filteredArrayUsingPredicate:predicate];
+    } else {
+        self.possibleFriendsFiltered = self.possibleFriends;
+    }
     [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.possibleFriends.count;
+    return self.possibleFriendsFiltered.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendsCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"friendsCell" forIndexPath:indexPath];
     cell.layer.cornerRadius = 30;
-    [cell setCell:self.possibleFriends[indexPath.row]];
+    [cell setCell:self.possibleFriendsFiltered[indexPath.row]];
     return cell;
 }
 

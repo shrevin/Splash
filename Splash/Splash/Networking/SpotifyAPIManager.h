@@ -16,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shared;
 -(void)parseURL:(NSURL*)url;
 - (void)startConnection;
+- (void)connect2Spotify;
 @property SPTConfiguration *configuration;
 @property SPTSessionManager *sessionManager;
 @property SPTAppRemote *appRemote;
 @property (nonatomic) NSString *responseCode;
+@property (nonatomic) NSString *token;
 @property (nonatomic, weak) id<SPTAppRemoteDelegate> delegate;
 @end
 

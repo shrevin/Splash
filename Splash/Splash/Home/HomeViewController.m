@@ -14,15 +14,15 @@
 #import "Shower.h"
 #import "Helper.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *profileImage;
 @property (strong,nonatomic) NSArray *scoreNames;
 @property (strong, nonatomic) IBOutlet UIButton *pullDownButtonForPFP;
-@property (strong, nonatomic) IBOutlet UIButton *profileButton;
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *friendsButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @end
 
 @implementation HomeViewController
@@ -30,26 +30,10 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 int totalTime;
 const int kNumberOfRowsForHome = 1;
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self setUpView];
-    self.user = [PFUser currentUser];
-    self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    UIAction *camera = [UIAction actionWithTitle:@"Take photo" image:NULL identifier:NULL handler:^(UIAction *action) {
-        [self clickCamera];
-    }];
-    UIAction *chooseLibary = [UIAction actionWithTitle:@"Choose from library" image:NULL identifier:NULL handler:^(UIAction *action) {
-        [self clickLibrary];
-    }];
-    UIMenu *menu = [[UIMenu alloc] menuByReplacingChildren:[NSArray arrayWithObjects:camera, chooseLibary, nil]];
-    self.pullDownButtonForPFP.menu = menu;
-    self.pullDownButtonForPFP.showsMenuAsPrimaryAction = YES;
-    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
-    self.tableView.sectionHeaderTopPadding = 0;
+    [self configureChangeProfilePicButton];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -58,6 +42,8 @@ const int kNumberOfRowsForHome = 1;
     [self.friendsButton setTitle:[NSString stringWithFormat:@"%lu friends", (unsigned long)friends.count]
                         forState:UIControlStateNormal];
 }
+
+#pragma mark - Action method for clicking logout button
 
 - (IBAction)clickLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
@@ -68,15 +54,36 @@ const int kNumberOfRowsForHome = 1;
     }];
 }
 
+#pragma mark - Helper methods for setting up view controller and pull down button
+
 - (void) setUpView {
+    self.user = [PFUser currentUser];
+    self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.usernameLabel.text = self.user.username;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.friendsButton.layer.cornerRadius = 16;
-    if (self.user[@"profile"]) {
-        self.profileImage.file = self.user[@"profile"];
-        [self.profileImage loadInBackground];
-    }
+    self.profileImage.file = self.user[@"profile"];
+    [self.profileImage loadInBackground];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+    self.tableView.sectionHeaderTopPadding = 0;
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.tableView.bounds.size.height/2);
+    self.tableView.scrollEnabled = NO;
 }
+
+- (void) configureChangeProfilePicButton {
+    UIAction *camera = [UIAction actionWithTitle:@"Take photo" image:NULL identifier:NULL handler:^(UIAction *action) {
+        [self clickCamera];
+    }];
+    UIAction *chooseLibary = [UIAction actionWithTitle:@"Choose from library" image:NULL identifier:NULL handler:^(UIAction *action) {
+        [self clickLibrary];
+    }];
+    UIMenu *menu = [[UIMenu alloc] menuByReplacingChildren:[NSArray arrayWithObjects:camera, chooseLibary, nil]];
+    self.pullDownButtonForPFP.menu = menu;
+    self.pullDownButtonForPFP.showsMenuAsPrimaryAction = YES;
+}
+
 #pragma mark - Table View Delegate Methods
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

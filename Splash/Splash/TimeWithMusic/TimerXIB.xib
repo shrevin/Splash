@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimerXIBView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="wqV-eN-Gul"/>
+                <outlet property="startButton" destination="QE0-xz-Imt" id="OHF-yi-kiA"/>
+                <outlet property="stopButton" destination="2zw-RU-0Yi" id="gAX-b8-69o"/>
+                <outlet property="timeLabel" destination="yNF-1t-50T" id="AS8-LX-aFw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNF-1t-50T">
+                    <rect key="frame" x="131" y="11" width="152" height="112"/>
+                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="80"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zw-RU-0Yi">
+                    <rect key="frame" x="174.5" y="133" width="65" height="30"/>
+                    <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="b0I-lB-pZ7"/>
+                        <constraint firstAttribute="width" constant="65" id="cDl-rY-Mky"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Stop"/>
+                    <connections>
+                        <action selector="clickStop:" destination="-1" eventType="touchUpInside" id="lu3-qt-FxB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE0-xz-Imt">
+                    <rect key="frame" x="174.5" y="133" width="65" height="30"/>
+                    <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="72M-Jv-jja"/>
+                        <constraint firstAttribute="width" constant="65" id="d13-ko-oAf"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Start"/>
+                    <connections>
+                        <action selector="clickStart:" destination="-1" eventType="touchUpInside" id="VgP-ij-aw6"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="yNF-1t-50T" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="M7g-Bc-YNg"/>
+                <constraint firstItem="QE0-xz-Imt" firstAttribute="top" secondItem="yNF-1t-50T" secondAttribute="bottom" constant="10" id="Rmc-t1-yim"/>
+                <constraint firstItem="2zw-RU-0Yi" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Toi-3x-SFC"/>
+                <constraint firstItem="2zw-RU-0Yi" firstAttribute="top" secondItem="yNF-1t-50T" secondAttribute="bottom" constant="10" id="aEp-oT-qpc"/>
+                <constraint firstItem="QE0-xz-Imt" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="sz0-3y-U6n"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="yNF-1t-50T" secondAttribute="top" constant="33" id="tEL-4O-T1G"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-147.99107142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

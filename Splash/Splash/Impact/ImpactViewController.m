@@ -22,19 +22,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.waterFlowTextField.delegate = self;
-    self.showersTextField.delegate = self;
-    self.tapGestureRecognizer.delegate = self;
-    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self setUpView];
+    [self setUpTapGesture];
 }
 
 - (void) setUpView {
+    self.waterFlowTextField.delegate = self;
+    self.showersTextField.delegate = self;
     [self.background.layer setBorderColor: [[UIColor blackColor] CGColor]];
     [self.background.layer setBorderWidth: 0.5];
     self.background.layer.cornerRadius = 16;
     self.calculateButton.layer.cornerRadius = 8;
     self.calculateButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
+}
+
+- (void) setUpTapGesture {
+    self.tapGestureRecognizer.delegate = self;
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 

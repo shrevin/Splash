@@ -31,6 +31,19 @@
 		7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F0D288A6A100029195A /* FriendsViewController.m */; };
 		7B512F11288A708A0029195A /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F10288A708A0029195A /* FriendsCell.m */; };
 		7B512F14288B16B40029195A /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F13288B16B40029195A /* ForgotPasswordViewController.m */; };
+		7B512F1B288F2E000029195A /* TimerXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F1A288F2E000029195A /* TimerXIB.xib */; };
+		7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F1D288F2EA60029195A /* TimerXIBView.m */; };
+		7B512F21288F5B9C0029195A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F20288F5B9C0029195A /* AVFoundation.framework */; };
+		7B512F23288F5CA80029195A /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F22288F5CA80029195A /* ding.mp3 */; };
+		7B512F2D288F5F2D0029195A /* 4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F24288F5F2D0029195A /* 4.mp3 */; };
+		7B512F2E288F5F2D0029195A /* 7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F25288F5F2D0029195A /* 7.mp3 */; };
+		7B512F2F288F5F2D0029195A /* 8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F26288F5F2D0029195A /* 8.mp3 */; };
+		7B512F30288F5F2D0029195A /* overtime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F27288F5F2D0029195A /* overtime.mp3 */; };
+		7B512F31288F5F2D0029195A /* 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F28288F5F2D0029195A /* 3.mp3 */; };
+		7B512F32288F5F2D0029195A /* 6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F29288F5F2D0029195A /* 6.mp3 */; };
+		7B512F33288F5F2D0029195A /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2A288F5F2D0029195A /* 2.mp3 */; };
+		7B512F34288F5F2D0029195A /* 5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2B288F5F2D0029195A /* 5.mp3 */; };
+		7B512F35288F5F2D0029195A /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2C288F5F2D0029195A /* 1.mp3 */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -114,6 +127,20 @@
 		7B512F10288A708A0029195A /* FriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
 		7B512F12288B16B40029195A /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		7B512F13288B16B40029195A /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		7B512F1A288F2E000029195A /* TimerXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerXIB.xib; sourceTree = "<group>"; };
+		7B512F1C288F2EA60029195A /* TimerXIBView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimerXIBView.h; sourceTree = "<group>"; };
+		7B512F1D288F2EA60029195A /* TimerXIBView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimerXIBView.m; sourceTree = "<group>"; };
+		7B512F20288F5B9C0029195A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7B512F22288F5CA80029195A /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
+		7B512F24288F5F2D0029195A /* 4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 4.mp3; sourceTree = "<group>"; };
+		7B512F25288F5F2D0029195A /* 7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 7.mp3; sourceTree = "<group>"; };
+		7B512F26288F5F2D0029195A /* 8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 8.mp3; sourceTree = "<group>"; };
+		7B512F27288F5F2D0029195A /* overtime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = overtime.mp3; sourceTree = "<group>"; };
+		7B512F28288F5F2D0029195A /* 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 3.mp3; sourceTree = "<group>"; };
+		7B512F29288F5F2D0029195A /* 6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 6.mp3; sourceTree = "<group>"; };
+		7B512F2A288F5F2D0029195A /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2.mp3; sourceTree = "<group>"; };
+		7B512F2B288F5F2D0029195A /* 5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 5.mp3; sourceTree = "<group>"; };
+		7B512F2C288F5F2D0029195A /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -141,6 +168,7 @@
 			files = (
 				B9EFC9561E308BDE745F5D1E /* Pods_Splash.framework in Frameworks */,
 				7B512EA82878990F0029195A /* SpotifyiOS.framework in Frameworks */,
+				7B512F21288F5B9C0029195A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +194,7 @@
 		0D64A6C2ECDC89BCCDEC3194 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B512F20288F5B9C0029195A /* AVFoundation.framework */,
 				7B512EA72877A49D0029195A /* SpotifyiOS.framework */,
 				EDB32165BF3D449C3957D3A9 /* Pods_Splash.framework */,
 				0C3691AA964ACEEE44AAD3A2 /* Pods_Splash_SplashUITests.framework */,
@@ -224,6 +253,9 @@
 			children = (
 				7B512D76287631080029195A /* TimeViewController.h */,
 				7B512D77287631080029195A /* TimeViewController.m */,
+				7B512F1A288F2E000029195A /* TimerXIB.xib */,
+				7B512F1C288F2EA60029195A /* TimerXIBView.h */,
+				7B512F1D288F2EA60029195A /* TimerXIBView.m */,
 			);
 			path = TimeWithMusic;
 			sourceTree = "<group>";
@@ -299,6 +331,23 @@
 			path = Friends;
 			sourceTree = "<group>";
 		};
+		7B512F1F288F59C00029195A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				7B512F22288F5CA80029195A /* ding.mp3 */,
+				7B512F2C288F5F2D0029195A /* 1.mp3 */,
+				7B512F2A288F5F2D0029195A /* 2.mp3 */,
+				7B512F28288F5F2D0029195A /* 3.mp3 */,
+				7B512F24288F5F2D0029195A /* 4.mp3 */,
+				7B512F2B288F5F2D0029195A /* 5.mp3 */,
+				7B512F29288F5F2D0029195A /* 6.mp3 */,
+				7B512F25288F5F2D0029195A /* 7.mp3 */,
+				7B512F26288F5F2D0029195A /* 8.mp3 */,
+				7B512F27288F5F2D0029195A /* overtime.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		7BE02E1C2876160D0060575C = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +385,7 @@
 				7B512EC8287F49750029195A /* Networking */,
 				7B512F0B288A69F40029195A /* Friends */,
 				7B512F07288A29BE0029195A /* Helper */,
+				7B512F1F288F59C00029195A /* Audio */,
 				7BE02E282876160D0060575C /* AppDelegate.h */,
 				7BE02E292876160D0060575C /* AppDelegate.m */,
 				7B512EC1287CF2B10029195A /* SceneDelegate.h */,
@@ -491,9 +541,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B512F32288F5F2D0029195A /* 6.mp3 in Resources */,
+				7B512F34288F5F2D0029195A /* 5.mp3 in Resources */,
+				7B512F35288F5F2D0029195A /* 1.mp3 in Resources */,
+				7B512F31288F5F2D0029195A /* 3.mp3 in Resources */,
 				7BE02E382876160E0060575C /* LaunchScreen.storyboard in Resources */,
+				7B512F1B288F2E000029195A /* TimerXIB.xib in Resources */,
+				7B512F23288F5CA80029195A /* ding.mp3 in Resources */,
+				7B512F2F288F5F2D0029195A /* 8.mp3 in Resources */,
+				7B512F2D288F5F2D0029195A /* 4.mp3 in Resources */,
+				7B512F30288F5F2D0029195A /* overtime.mp3 in Resources */,
 				7BE02E352876160E0060575C /* Assets.xcassets in Resources */,
+				7B512F33288F5F2D0029195A /* 2.mp3 in Resources */,
 				7BE02E332876160D0060575C /* Main.storyboard in Resources */,
+				7B512F2E288F5F2D0029195A /* 7.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +700,7 @@
 				7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */,
 				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
+				7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
 				7B512EDA287F88D30029195A /* NetworkCalls.swift in Sources */,
 				7B512EB7287CE1DF0029195A /* Constants.swift in Sources */,
