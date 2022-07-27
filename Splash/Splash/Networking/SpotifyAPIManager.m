@@ -6,7 +6,6 @@
 //
 
 #import "SpotifyAPIManager.h"
-#import <SpotifyiOS/SpotifyiOS.h>
 #import "Splash-Swift.h"
 #import "TimeViewController.h"
 #import "LoginViewController.h"
@@ -36,19 +35,12 @@
     SPTScope requestedScope = SPTAppRemoteControlScope;
     [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
     // initializing app remote
-    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
-    self.appRemote.delegate = self.delegate;
+    [self initializeAppRemote];
 }
 
--(void)connect2Spotify
-{
-    if (self.appRemote!=nil)
-    {
-        if (!self.appRemote.connected){
-            self.appRemote.connectionParameters.accessToken = self.token;
-            [self.appRemote connect];
-        }
-    }
+- (void) initializeAppRemote {
+    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
+    self.appRemote.delegate = self.delegate;
 }
 
 #pragma mark - SPTSessionManagerDelegate
@@ -57,6 +49,7 @@
 {
     DLog(@"success: %@", session);
     self.appRemote.connectionParameters.accessToken = session.accessToken;
+    self.token = session.accessToken;
     [self.appRemote connect];
 }
 
@@ -81,8 +74,8 @@
             return;
         }
         NSString *accessToken = dictionary[@"access_token"];
-        self.token = accessToken;
         self.appRemote.connectionParameters.accessToken = accessToken;
+        self.token = accessToken;
         [self.appRemote connect];
 
     }];

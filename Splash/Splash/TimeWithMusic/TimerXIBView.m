@@ -11,7 +11,7 @@
 #import "Shower.h"
 #import "SpotifyAPIManager.h"
 
-@interface TimerXIBView ()
+@interface TimerXIBView () <SPTAppRemoteDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
@@ -141,25 +141,31 @@ UIAlertController *alertForShower;
 
 - (void) playSound:(NSString*)timeInterval sound:(NSString*)sound {
     if ([self.timeLabel.text isEqualToString:timeInterval]) {
+        [[SpotifyAPIManager shared].appRemote.playerAPI pause:nil];
         DLog(@"played sound");
         NSString *path = [[NSBundle mainBundle] pathForResource:sound ofType:@"mp3"];
         NSURL *url = [NSURL URLWithString:path];
         self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
         [self.player play];
+        [self performSelector:@selector(playMusic) withObject:self afterDelay:5.0];
     }
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    if ([SpotifyAPIManager shared].appRemote.isConnected) {
-        [[SpotifyAPIManager shared].appRemote disconnect];
-    }
+- (void) playMusic {
+    [[SpotifyAPIManager shared].appRemote.playerAPI resume:nil];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    if ([SpotifyAPIManager shared].appRemote.connectionParameters.accessToken) {
-        [[SpotifyAPIManager shared].appRemote connect];
-    }
-}
+//- (void)applicationWillResignActive:(UIApplication *)application {
+//    if ([SpotifyAPIManager shared].appRemote.isConnected) {
+//        [[SpotifyAPIManager shared].appRemote disconnect];
+//    }
+//}
+//
+//- (void)applicationDidBecomeActive:(UIApplication *)application {
+//    if ([SpotifyAPIManager shared].appRemote.connectionParameters.accessToken) {
+//        [[SpotifyAPIManager shared].appRemote connect];
+//    }
+//}
 
 - (void) goingPastZero {
     currSec += 1;

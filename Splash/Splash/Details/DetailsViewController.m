@@ -23,7 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *challengeButton;
 @property (strong, nonatomic) PFUser *current;
 @property (strong, nonatomic) IBOutlet UIButton *onLBButton;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSArray *friends;
 @end
 
@@ -37,9 +36,6 @@ const int kNumberOfRowsForDetails = 1;
     [self setupView];
     [self setupTableView];
     [self setUpScrollView];
-}
-
-- (void) viewDidAppear:(BOOL)animated {
     [self checkFriends];
     [self checkIfUserEqualsCurrent];
 }
@@ -72,7 +68,7 @@ const int kNumberOfRowsForDetails = 1;
 }
 
 - (void) setUpScrollView {
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 100);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.view.frame.size.height + self.detailsTableView.bounds.size.height/3.5);
     self.detailsTableView.scrollEnabled = NO;
 }
 

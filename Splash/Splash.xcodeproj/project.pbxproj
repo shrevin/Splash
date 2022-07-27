@@ -44,6 +44,8 @@
 		7B512F33288F5F2D0029195A /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2A288F5F2D0029195A /* 2.mp3 */; };
 		7B512F34288F5F2D0029195A /* 5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2B288F5F2D0029195A /* 5.mp3 */; };
 		7B512F35288F5F2D0029195A /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2C288F5F2D0029195A /* 1.mp3 */; };
+		7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F372890B4FA0029195A /* DescriptionViewController.swift */; };
+		7B512F3A2890BA2D0029195A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F392890BA2D0029195A /* UIKit.framework */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -141,6 +143,8 @@
 		7B512F2A288F5F2D0029195A /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2.mp3; sourceTree = "<group>"; };
 		7B512F2B288F5F2D0029195A /* 5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 5.mp3; sourceTree = "<group>"; };
 		7B512F2C288F5F2D0029195A /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
+		7B512F372890B4FA0029195A /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		7B512F392890BA2D0029195A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9EFC9561E308BDE745F5D1E /* Pods_Splash.framework in Frameworks */,
+				7B512F3A2890BA2D0029195A /* UIKit.framework in Frameworks */,
 				7B512EA82878990F0029195A /* SpotifyiOS.framework in Frameworks */,
 				7B512F21288F5B9C0029195A /* AVFoundation.framework in Frameworks */,
 			);
@@ -194,6 +199,7 @@
 		0D64A6C2ECDC89BCCDEC3194 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B512F392890BA2D0029195A /* UIKit.framework */,
 				7B512F20288F5B9C0029195A /* AVFoundation.framework */,
 				7B512EA72877A49D0029195A /* SpotifyiOS.framework */,
 				EDB32165BF3D449C3957D3A9 /* Pods_Splash.framework */,
@@ -348,6 +354,14 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		7B512F362890B4D30029195A /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				7B512F372890B4FA0029195A /* DescriptionViewController.swift */,
+			);
+			path = Description;
+			sourceTree = "<group>";
+		};
 		7BE02E1C2876160D0060575C = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +399,7 @@
 				7B512EC8287F49750029195A /* Networking */,
 				7B512F0B288A69F40029195A /* Friends */,
 				7B512F07288A29BE0029195A /* Helper */,
+				7B512F362890B4D30029195A /* Description */,
 				7B512F1F288F59C00029195A /* Audio */,
 				7BE02E282876160D0060575C /* AppDelegate.h */,
 				7BE02E292876160D0060575C /* AppDelegate.m */,
@@ -683,6 +698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B512D81287631660029195A /* LeaderboardViewController.m in Sources */,
+				7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */,
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
 				7B512EC2287CF2B10029195A /* SceneDelegate.m in Sources */,
 				7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */,

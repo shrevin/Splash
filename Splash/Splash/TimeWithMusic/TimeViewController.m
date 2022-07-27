@@ -121,8 +121,21 @@ bool isPaused;
     DLog(@"error :(");
 }
 
+-(void)connect2Spotify
+{
+    // [[SpotifyAPIManager shared] startConnection];
+    if ([SpotifyAPIManager shared].appRemote!=nil)
+    {
+        if (![SpotifyAPIManager shared].appRemote.connected){
+            [SpotifyAPIManager shared].appRemote.connectionParameters.accessToken = [SpotifyAPIManager shared].token;
+            [[SpotifyAPIManager shared].appRemote connect];
+        }
+    }
+}
+
 - (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
     DLog(@"error :(");
+    [self performSelector:@selector(connect2Spotify) withObject:self afterDelay:0.1];
 }
 
 - (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
@@ -134,6 +147,8 @@ bool isPaused;
     NetworkCalls* calls = [[NetworkCalls alloc]init];
     [calls fetchArtworkFor:playerState.track appRemote:[SpotifyAPIManager shared].appRemote im_view:self.songImage];
 }
+
+
 
 /*
 #pragma mark - Navigation

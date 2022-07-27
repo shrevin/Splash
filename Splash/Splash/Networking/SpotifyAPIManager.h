@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shared;
 -(void)parseURL:(NSURL*)url;
 - (void)startConnection;
-- (void)connect2Spotify;
+- (void) initializeAppRemote;
 @property SPTConfiguration *configuration;
 @property SPTSessionManager *sessionManager;
 @property SPTAppRemote *appRemote;
