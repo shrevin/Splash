@@ -7,45 +7,47 @@
 
 import UIKit
 
-class DescriptionViewController: UIViewController {
-    let redView = UIView(frame: CGRect(x: 20, y: 100, width: 140, height: 100))
-    let animation = CABasicAnimation()
+
+@objc class DescriptionViewController: UIViewController {
+    var blueView = UIView()
+    @objc var label = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        redView.backgroundColor = .systemRed
-        view.addSubview(redView)
+        self.setUpView()
+        UIView.transition(with: self.label, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            self.showAnimation()
+        }) { True in
+            self.view.addSubview(self.label)
+        }
+    }
+    
+    func setUpView() {
+        self.blueView.frame = CGRect(x: self.view.bounds.size.width/2 - 35, y: self.view.bounds.size.height/2 - 35, width: 70, height: 70)
+        self.label.frame = CGRect(x: self.view.bounds.size.width/2 - 175, y: self.view.bounds.size.height/2 - 175, width: 200, height: 200)
+        self.blueView.backgroundColor = UIColor(red: 0.779, green: 0.897, blue: 0.934, alpha: 0.8)
+        self.blueView.layer.cornerRadius = 16
+        view.addSubview(blueView)
+        self.label.center = self.view.center
+        self.label.numberOfLines = 10
+        self.label.textAlignment = .center
+        self.label.font = UIFont(name: "Gill Sans", size: 20)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // Do any additional setup after loading the view.
-        animateRight();
-        animateDown()
+        
     }
     
-    func animateRight() {
-        animation.keyPath = "position.x" // Note: z-axis
-        animation.fromValue = 20 + 140/2
-        animation.toValue = 300
-        animation.duration = 1
-        redView.layer.add(animation, forKey: "basic")
-        redView.layer.position = CGPoint(x: 300, y: 100)
+    func showAnimation () {
+        let animation = CABasicAnimation()
+        animation.keyPath = "transform.scale"
+        animation.fromValue = 1
+        animation.toValue = 5
+        animation.duration = 0.4
+        self.blueView.layer.add(animation, forKey: "basic")
+        blueView.layer.transform = CATransform3DMakeScale(5, 5, 1)
     }
-    
-    func animateDown() {
-        animation.keyPath = "position.y"
-        animation.fromValue = 100 + 100/2;
-        animation.toValue = 600
-        animation.duration = 1
-        redView.layer.add(animation, forKey: "basic")
-        redView.layer.position = CGPoint(x: 300, y: 600)
-    }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.frame = view.bounds
-//        gradientLayer.colors = [UIColor.blue.cgColor,  UIColor.purple.cgColor]
-//        view.layer.addSublayer(gradientLayer)
-//
-//    }
-
     /*
     // MARK: - Navigation
 
@@ -57,3 +59,4 @@ class DescriptionViewController: UIViewController {
     */
 
 }
+

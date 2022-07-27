@@ -1437,8 +1437,8 @@
             filePath = "Splash/Home/HomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-setUpView"
             landmarkType = "7">
          </BreakpointContent>
@@ -1453,8 +1453,8 @@
             filePath = "Splash/Home/HomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1750,16 +1750,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32C40E87-64DA-406D-AEBE-79C3B0CD61BA"
+            uuid = "63A47E4F-B171-464D-A283-5E3253D8B291"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Splash/Description/DescriptionViewController.swift"
+            filePath = "Splash/TimeWithMusic/TimerXIBView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "animateRight()"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "-requestToSaveShower:metGoal:goalSeconds:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94474194-6B9D-4AD3-A04A-F417294D6BA3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Splash/TimeWithMusic/TimerXIBView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-requestToSaveShower:metGoal:goalSeconds:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

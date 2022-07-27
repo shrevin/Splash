@@ -155,18 +155,6 @@ UIAlertController *alertForShower;
     [[SpotifyAPIManager shared].appRemote.playerAPI resume:nil];
 }
 
-//- (void)applicationWillResignActive:(UIApplication *)application {
-//    if ([SpotifyAPIManager shared].appRemote.isConnected) {
-//        [[SpotifyAPIManager shared].appRemote disconnect];
-//    }
-//}
-//
-//- (void)applicationDidBecomeActive:(UIApplication *)application {
-//    if ([SpotifyAPIManager shared].appRemote.connectionParameters.accessToken) {
-//        [[SpotifyAPIManager shared].appRemote connect];
-//    }
-//}
-
 - (void) goingPastZero {
     currSec += 1;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:currSec + (currMin*60)];

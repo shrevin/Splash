@@ -13,6 +13,7 @@
 #import "TimeViewController.h"
 #import "Shower.h"
 #import "Helper.h"
+#import "Splash-Swift.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -29,6 +30,7 @@
 NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 int totalTime;
 const int kNumberOfRowsForHome = 1;
+NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that you can set for your showers. You can change this in settings. Keep trying to improve your goal!", @"A number that determines how many times you met your goal. If you complete your shower before the clock turns red, your bubblescore will increase by 1!", @"The number of times you met your goal in a row!", @"The total number of showers you took divided by the total time you showered.", @"The sum of the times of all the showers you took.", @"The number of showers you choose to save in the app."];
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -178,13 +180,20 @@ const int kNumberOfRowsForHome = 1;
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"toDescriptions"]) {
+        DescriptionViewController *descriptionVC = [segue destinationViewController];
+        StatsCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        int index = indexPath.section;
+        descriptionVC.label.text = descriptions[index];
+    }
 }
-*/
+
 @end

@@ -929,7 +929,7 @@
                                                             <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system"/>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.77900000000000003" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstItem="BUA-C8-gHx" firstAttribute="leading" secondItem="74o-pk-kcO" secondAttribute="leading" constant="31" id="8cR-Vo-kll"/>
                                                         <constraint firstItem="yrt-Gx-XNA" firstAttribute="leading" secondItem="BUA-C8-gHx" secondAttribute="trailing" constant="4" id="V8A-oa-rJe"/>
@@ -946,7 +946,7 @@
                                                 <connections>
                                                     <outlet property="typeLabel" destination="BUA-C8-gHx" id="28I-A0-equ"/>
                                                     <outlet property="valueLabel" destination="yrt-Gx-XNA" id="UTn-XD-0DP"/>
-                                                    <segue destination="vRS-QN-xSG" kind="show" id="FQC-XC-g2t"/>
+                                                    <segue destination="vRS-QN-xSG" kind="show" identifier="toDescriptions" id="FQC-XC-g2t"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
