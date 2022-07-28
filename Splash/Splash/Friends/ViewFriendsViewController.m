@@ -24,8 +24,6 @@ NSArray *_rows;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    // Do any additional setup after loading the view.        
-        //_testArray = [[NSMutableArray alloc] init];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

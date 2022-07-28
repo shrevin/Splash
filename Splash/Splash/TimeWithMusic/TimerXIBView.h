@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TimerXIBView : UIView
 - (void) updateTime;
 - (void) updateFontSize:(int)size;
-@property UIViewController *root;
+@property (weak) UIViewController *root;
 @end
 
 NS_ASSUME_NONNULL_END
