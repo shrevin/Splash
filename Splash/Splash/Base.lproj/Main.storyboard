@@ -109,7 +109,7 @@
                                     <segue destination="Ra2-Nj-ftE" kind="show" id="LaN-Al-p7Q"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ug3-UE-PaV">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="final_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ug3-UE-PaV">
                                 <rect key="frame" x="90.5" y="119" width="233" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="DVi-Uj-sWX"/>
@@ -247,7 +247,7 @@
                             <rect key="frame" x="107" y="5.5" width="200" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Music"/>
+                                <segment title="Timer + Music"/>
                                 <segment title="Timer"/>
                                 <segment title="Routine"/>
                             </segments>
@@ -1547,9 +1547,9 @@
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
         <image name="drop" catalog="system" width="101" height="128"/>
+        <image name="final_logo" width="852" height="794"/>
         <image name="flame" catalog="system" width="108" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="logo" width="852" height="794"/>
         <image name="pause" width="50" height="50"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>

@@ -124,19 +124,15 @@ bool isPaused;
 
 -(void)connect2Spotify
 {
-    // [[SpotifyAPIManager shared] startConnection];
-    if ([SpotifyAPIManager shared].appRemote!=nil)
-    {
-        if (![SpotifyAPIManager shared].appRemote.connected){
-            [SpotifyAPIManager shared].appRemote.connectionParameters.accessToken = [SpotifyAPIManager shared].token;
-            [[SpotifyAPIManager shared].appRemote connect];
-        }
-    }
+    [[SpotifyAPIManager shared] startConnection];
 }
 
 - (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
     DLog(@"error :(");
-    [self performSelector:@selector(connect2Spotify) withObject:self afterDelay:0.1];
+    if (self.stopwatchMusicScreen.playingMusic) {
+        [self performSelector:@selector(connect2Spotify) withObject:self afterDelay:0.1];
+        self.stopwatchMusicScreen.playingMusic = NO;
+    }
 }
 
 - (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {

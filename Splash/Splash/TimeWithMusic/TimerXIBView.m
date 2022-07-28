@@ -64,6 +64,7 @@ UIAlertController *alertForShower;
     startDate = self.user[@"goal"];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
+    self.playingMusic = NO;
 }
 
 - (void) updateTime {
@@ -141,13 +142,31 @@ UIAlertController *alertForShower;
 
 - (void) playSound:(NSString*)timeInterval sound:(NSString*)sound {
     if ([self.timeLabel.text isEqualToString:timeInterval]) {
-        [[SpotifyAPIManager shared].appRemote.playerAPI pause:nil];
+        // [[SpotifyAPIManager shared].appRemote.playerAPI pause:nil];
         DLog(@"played sound");
+        self.playingMusic = YES;
         NSString *path = [[NSBundle mainBundle] pathForResource:sound ofType:@"mp3"];
         NSURL *url = [NSURL URLWithString:path];
         self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
         [self.player play];
-        [self performSelector:@selector(playMusic) withObject:self afterDelay:5.0];
+        //[self performSelector:@selector(playMusic) withObject:self afterDelay:5.0];
+    }
+}
+
+- (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
+    DLog(@"error :(");
+    [self performSelector:@selector(connect2Spotify) withObject:self afterDelay:0.1];
+}
+
+-(void)connect2Spotify
+{
+    // [[SpotifyAPIManager shared] startConnection];
+    if ([SpotifyAPIManager shared].appRemote!=nil)
+    {
+        if (![SpotifyAPIManager shared].appRemote.connected){
+            [SpotifyAPIManager shared].appRemote.connectionParameters.accessToken = [SpotifyAPIManager shared].token;
+            [[SpotifyAPIManager shared].appRemote connect];
+        }
     }
 }
 

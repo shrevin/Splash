@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) updateTime;
 - (void) updateFontSize:(int)size;
 @property (weak) UIViewController *root;
+@property BOOL *playingMusic;
 @end
 
 NS_ASSUME_NONNULL_END

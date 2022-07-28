@@ -10,6 +10,7 @@
 #import "Parse/Parse.h"
 #import "ViewFriendsCell.h"
 #import "DetailsViewController.h"
+#import "Helper.h"
 
 @interface ViewFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -37,7 +38,6 @@ NSArray *_rows;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"Cell";
-    
     ViewFriendsCell *cell = (ViewFriendsCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
@@ -50,7 +50,7 @@ NSArray *_rows;
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+    [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
                                                 title:@"Delete"];
 
     return rightUtilityButtons;
@@ -59,13 +59,11 @@ NSArray *_rows;
 
 - (void)swipeableTableViewCell:(ViewFriendsCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     if (index == 0) {
-        NSLog(@"DELETEEE");
+        DLog(@"DELETEEE");
         NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-        //[_testArray removeObjectAtIndex:cellIndexPath.row];
         [[PFUser currentUser] removeObject:cell.user forKey:@"friends"];
         [[PFUser currentUser] saveInBackground];
         [self.friends removeObjectAtIndex:cellIndexPath.row];
-        //[self getFriends];
         [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath]
                             withRowAnimation:UITableViewRowAnimationAutomatic];
         
@@ -79,7 +77,6 @@ NSArray *_rows;
     NSLog(@"SELECTED");
     ViewFriendsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"toDetails" sender:cell];
-    //NSLog([NSString stringWithFormat:@"%i", indexPath.row]);
 }
 
 

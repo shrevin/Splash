@@ -1549,8 +1549,8 @@
             filePath = "Splash/TimeWithMusic/TimerXIBView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-playSound:sound:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1565,8 +1565,8 @@
             filePath = "Splash/TimeWithMusic/TimerXIBView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-playSound:sound:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1638,22 +1638,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4049B261-75DF-4AAC-88E5-8239A3A6116C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Splash/TimeWithMusic/TimeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-connect2Spotify"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "12485D37-06D1-476A-ABCA-B93DF46DC1C5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1677,8 +1661,8 @@
             filePath = "Splash/TimeWithMusic/TimeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-appRemote:didDisconnectWithError:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1725,8 +1709,8 @@
             filePath = "Splash/TimeWithMusic/TimerXIBView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-playSound:sound:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1741,8 +1725,8 @@
             filePath = "Splash/TimeWithMusic/TimerXIBView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-playMusic"
             landmarkType = "7">
          </BreakpointContent>
@@ -1757,8 +1741,8 @@
             filePath = "Splash/TimeWithMusic/TimerXIBView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-requestToSaveShower:metGoal:goalSeconds:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1773,8 +1757,8 @@
             filePath = "Splash/TimeWithMusic/TimerXIBView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-requestToSaveShower:metGoal:goalSeconds:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1789,8 +1773,8 @@
             filePath = "Splash/Friends/ViewFriendsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1821,8 +1805,8 @@
             filePath = "Splash/Friends/ViewFriendsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-getFriends"
             landmarkType = "7">
          </BreakpointContent>
@@ -1878,7 +1862,23 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6DD7721A-10D8-46D8-97A7-0BE3894B29DC"
+            uuid = "4E9F62A0-8A66-4E41-BB19-EB87EFD8733A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Splash/Friends/ViewFriendsViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55DB21D8-E653-4BAB-880E-16EF17E3DC24"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -1894,38 +1894,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4E9F62A0-8A66-4E41-BB19-EB87EFD8733A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Splash/Friends/ViewFriendsViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "55DB21D8-E653-4BAB-880E-16EF17E3DC24"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Splash/Friends/ViewFriendsViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "43E29C29-3A78-4C1F-8E43-A368B9A6B127"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1933,9 +1901,25 @@
             filePath = "Splash/Friends/ViewFriendsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9063ED21-75C7-49AF-9CB0-8B0E0E4381CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Splash/TimeWithMusic/TimerXIBView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-appRemote:didDisconnectWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
