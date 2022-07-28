@@ -10,9 +10,12 @@
 #import "Helper.h"
 
 
-@interface LoginViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
+@interface LoginViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (strong, nonatomic) IBOutlet UIButton *signInButton;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+
 @end
 
 @implementation LoginViewController
@@ -25,8 +28,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setUpView];
+    [self setUpTapGesture];
+}
+
+- (void) setUpView {
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    self.usernameField.layer.cornerRadius = 16;
+    self.passwordField.layer.cornerRadius = 16;
+    self.signInButton.layer.cornerRadius = 16;
+}
+
+- (void) setUpTapGesture {
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tapGestureRecognizer.delegate = self;
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
+}
+
+- (void) dismissKeyboard
+{
+    //Code to handle the gesture
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
 }
 
 - (IBAction)signInButton:(id)sender {

@@ -89,7 +89,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uk-II-Mpn">
-                                <rect key="frame" x="40" y="528.5" width="334" height="31"/>
+                                <rect key="frame" x="30" y="528.5" width="354" height="31"/>
                                 <color key="backgroundColor" red="0.27843138579999999" green="0.41176474089999998" blue="0.58039218189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -127,7 +127,7 @@
                             <constraint firstItem="tfC-LR-ojV" firstAttribute="centerY" secondItem="UjR-nF-Eem" secondAttribute="centerY" id="HTX-S6-EiD"/>
                             <constraint firstItem="qzK-sB-DWK" firstAttribute="top" secondItem="Kt3-po-1Un" secondAttribute="bottom" constant="40" id="Hl4-gq-5wK"/>
                             <constraint firstItem="UjR-nF-Eem" firstAttribute="top" secondItem="nHF-L9-MTK" secondAttribute="bottom" constant="150" id="Jof-ev-Nh8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Uk-II-Mpn" secondAttribute="trailing" constant="40" id="XNU-hr-IMg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Uk-II-Mpn" secondAttribute="trailing" constant="30" id="XNU-hr-IMg"/>
                             <constraint firstItem="Kt3-po-1Un" firstAttribute="top" secondItem="Ug3-UE-PaV" secondAttribute="bottom" constant="19.5" id="Xlj-er-249"/>
                             <constraint firstItem="tfC-LR-ojV" firstAttribute="leading" secondItem="UjR-nF-Eem" secondAttribute="trailing" constant="0.5" id="YRb-XN-KGM"/>
                             <constraint firstItem="qzK-sB-DWK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Z1r-sg-TA5"/>
@@ -135,7 +135,7 @@
                             <constraint firstItem="nHF-L9-MTK" firstAttribute="trailing" secondItem="9Uk-II-Mpn" secondAttribute="trailing" id="bKY-bY-SRf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UjR-nF-Eem" secondAttribute="bottom" constant="10" id="eIR-hY-qs8"/>
                             <constraint firstItem="UjR-nF-Eem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="l0L-Wc-eal"/>
-                            <constraint firstItem="9Uk-II-Mpn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="pfg-Bo-ntT"/>
+                            <constraint firstItem="9Uk-II-Mpn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="pfg-Bo-ntT"/>
                             <constraint firstItem="Ug3-UE-PaV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qSs-Qe-lPo"/>
                             <constraint firstItem="Kt3-po-1Un" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="uWH-6q-vaU"/>
                             <constraint firstItem="9Uk-II-Mpn" firstAttribute="top" secondItem="qzK-sB-DWK" secondAttribute="bottom" constant="64" id="zju-3X-8RL"/>
@@ -144,6 +144,7 @@
                     <navigationItem key="navigationItem" id="51j-5D-r9h"/>
                     <connections>
                         <outlet property="passwordField" destination="qzK-sB-DWK" id="yl1-Qg-3bB"/>
+                        <outlet property="signInButton" destination="9Uk-II-Mpn" id="rIt-Hf-2dY"/>
                         <outlet property="usernameField" destination="Kt3-po-1Un" id="iTt-Fm-Gcn"/>
                         <segue destination="h5i-8e-Web" kind="presentation" identifier="segueFromLogin" modalPresentationStyle="fullScreen" id="3mj-IN-Sf2"/>
                     </connections>

@@ -16,33 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="rpl-yq-Vjk">
-                                <rect key="frame" x="82" y="162" width="251" height="248"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="251" id="rZ8-gt-jAB"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="shower smart, save water" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF4-aN-mcN">
                                 <rect key="frame" x="100" y="475" width="200" height="23"/>
                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Showerify" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyF-tB-84c">
-                                <rect key="frame" x="110" y="398" width="194" height="57"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showerify" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyF-tB-84c">
+                                <rect key="frame" x="110.5" y="398" width="193.5" height="57"/>
                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="50"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="final_logo" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-Lr-FDn">
+                                <rect key="frame" x="87" y="142" width="240" height="222"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="222" id="NdW-Z2-Imj"/>
+                                    <constraint firstAttribute="width" constant="240" id="vwZ-mQ-L2q"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QF4-aN-mcN" firstAttribute="top" secondItem="LyF-tB-84c" secondAttribute="bottom" constant="20" id="8sP-1k-2sL"/>
-                            <constraint firstItem="LyF-tB-84c" firstAttribute="top" secondItem="rpl-yq-Vjk" secondAttribute="bottom" constant="-12" id="C9f-TC-kSE"/>
-                            <constraint firstItem="rpl-yq-Vjk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OWy-Fu-Cdn"/>
+                            <constraint firstItem="VeZ-Lr-FDn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Gjs-nL-ym1"/>
+                            <constraint firstItem="VeZ-Lr-FDn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="98" id="Jcq-GR-9Y4"/>
+                            <constraint firstItem="LyF-tB-84c" firstAttribute="top" secondItem="VeZ-Lr-FDn" secondAttribute="bottom" constant="34" id="VTZ-S1-xep"/>
                             <constraint firstItem="LyF-tB-84c" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ZO2-7o-5fp"/>
-                            <constraint firstItem="rpl-yq-Vjk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="118" id="dHc-cX-rSq"/>
                             <constraint firstItem="QF4-aN-mcN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="djS-Sm-f3w"/>
                         </constraints>
                     </view>
@@ -53,7 +54,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="852" height="794"/>
+        <image name="final_logo" width="852" height="794"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
