@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B33605428923C65002AE3FE /* ViewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605328923C65002AE3FE /* ViewFriendsViewController.m */; };
+		7B33605A28924A8D002AE3FE /* ViewFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605928924A8D002AE3FE /* ViewFriendsCell.m */; };
 		7B512D75287630F10029195A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D74287630F10029195A /* HomeViewController.m */; };
 		7B512D78287631080029195A /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D77287631080029195A /* TimeViewController.m */; };
 		7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D7A2876312D0029195A /* ShowersViewController.m */; };
@@ -84,6 +86,10 @@
 		51B3B10E6785926A62617D7A /* Pods-Splash-SplashUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash-SplashUITests.debug.xcconfig"; path = "Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D494687862A51CD3767EEF9 /* Pods-Splash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash.debug.xcconfig"; path = "Target Support Files/Pods-Splash/Pods-Splash.debug.xcconfig"; sourceTree = "<group>"; };
 		6EE88852BEB7D03956D70961 /* Pods-Splash-SplashUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash-SplashUITests.release.xcconfig"; path = "Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7B33605228923C65002AE3FE /* ViewFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsViewController.h; sourceTree = "<group>"; };
+		7B33605328923C65002AE3FE /* ViewFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFriendsViewController.m; sourceTree = "<group>"; };
+		7B33605828924A8D002AE3FE /* ViewFriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsCell.h; sourceTree = "<group>"; };
+		7B33605928924A8D002AE3FE /* ViewFriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFriendsCell.m; sourceTree = "<group>"; };
 		7B512D73287630F10029195A /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7B512D74287630F10029195A /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7B512D76287631080029195A /* TimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeViewController.h; sourceTree = "<group>"; };
@@ -333,6 +339,10 @@
 				7B512F0D288A6A100029195A /* FriendsViewController.m */,
 				7B512F0F288A708A0029195A /* FriendsCell.h */,
 				7B512F10288A708A0029195A /* FriendsCell.m */,
+				7B33605228923C65002AE3FE /* ViewFriendsViewController.h */,
+				7B33605328923C65002AE3FE /* ViewFriendsViewController.m */,
+				7B33605828924A8D002AE3FE /* ViewFriendsCell.h */,
+				7B33605928924A8D002AE3FE /* ViewFriendsCell.m */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -701,7 +711,9 @@
 				7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */,
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
 				7B512EC2287CF2B10029195A /* SceneDelegate.m in Sources */,
+				7B33605428923C65002AE3FE /* ViewFriendsViewController.m in Sources */,
 				7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */,
+				7B33605A28924A8D002AE3FE /* ViewFriendsCell.m in Sources */,
 				7B512D85287649B20029195A /* StatsCell.m in Sources */,
 				7B512EAC2878AF370029195A /* Shower.m in Sources */,
 				7BE02E3B2876160E0060575C /* main.m in Sources */,

@@ -29,6 +29,10 @@ CFTimeInterval startTimeNoMusic;
 UIAlertController *alertNoMusic;
 bool isPausedNoMusic;
 
+- (void) viewDidLoad {
+    self.stopwatch.root = self;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [self.stopwatch updateTime];
     [self.stopwatch updateFontSize:120];

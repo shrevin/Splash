@@ -35,6 +35,7 @@ bool isPaused;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.stopwatchMusicScreen.root = self;
     [self setUpView];
     [self setUpContainerVC];
 }

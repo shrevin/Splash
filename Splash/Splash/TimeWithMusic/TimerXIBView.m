@@ -194,7 +194,7 @@ UIAlertController *alertForShower;
     }];
     // add the OK action to the alert controller
     [alert addAction:saveAction];
-    [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:alert animated:YES completion:^{
+    [self.root presentViewController:alert animated:YES completion:^{
         // optional code for what happens after the alert controller has finished presenting
     }];
 }
