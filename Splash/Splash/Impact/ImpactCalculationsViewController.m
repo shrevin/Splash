@@ -27,8 +27,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [PFUser currentUser];
     // Do any additional setup after loading the view.
+    [self setUpView];
+    [self performCalculations];
+}
+
+- (void) setUpView {
+    self.user = [PFUser currentUser];
+    self.backView1.layer.cornerRadius = 16;
+    self.backView2.layer.cornerRadius = 16;
+    self.backView3.layer.cornerRadius = 16;
+}
+
+- (void) performCalculations {
     float avgShowerTime = ([self.user[@"totalShowerTime"] floatValue] / [self.user[@"numShowers"] floatValue])/60;
     self.gallonsPerWeekLabel.text = [NSString stringWithFormat:@"%.2f", avgShowerTime * self.waterFlow * self.showersPerWeek];
     self.gallonsPerYearLabel.text = [NSString stringWithFormat:@"%.2f", avgShowerTime * self.waterFlow * self.showersPerWeek * 52.0];
@@ -36,9 +47,6 @@
     self.bgalPerYearLabel.text = [NSString stringWithFormat:@"%.2f", (avgShowerTime - 1) * self.waterFlow * self.showersPerWeek * 52];
     self.savedGalPerWeek.text = [NSString stringWithFormat:@"%.2f",[self.gallonsPerWeekLabel.text floatValue] - [self.bgalPerWeekLabel.text floatValue]];
     self.savedGalPerYear.text = [NSString stringWithFormat:@"%.2f",[self.gallonsPerYearLabel.text floatValue] - [self.bgalPerYearLabel.text floatValue]];
-    self.backView1.layer.cornerRadius = 16;
-    self.backView2.layer.cornerRadius = 16;
-    self.backView3.layer.cornerRadius = 16;
 }
 
 /*

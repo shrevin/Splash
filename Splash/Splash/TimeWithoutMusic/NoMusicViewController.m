@@ -7,13 +7,12 @@
 
 #import "NoMusicViewController.h"
 #import "Parse/Parse.h"
+#import "TimerXIBView.h"
+#import "Helper.h"
 
 @interface NoMusicViewController ()
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet UIButton *startButton;
-@property (strong, nonatomic) IBOutlet UIButton *stopButton;
 @property (strong, nonatomic) PFUser *user;
-
+@property (strong, nonatomic) IBOutlet TimerXIBView *stopwatch;
 @end
 
 @implementation NoMusicViewController
@@ -30,27 +29,14 @@ CFTimeInterval startTimeNoMusic;
 UIAlertController *alertNoMusic;
 bool isPausedNoMusic;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.startButton.layer.cornerRadius = 16;
-    self.stopButton.layer.cornerRadius = 16;
-    self.startButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
-    self.stopButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
-    dateFormatNoMusic = [[NSDateFormatter alloc] init];
-    dateFormatNoMusic.dateFormat = @"mm:ss";
-    dateFormatNoMusic.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    self.user = [PFUser currentUser];
-    // layout vc
+- (void) viewDidLoad {
+    self.stopwatch.root = self;
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    self.timeLabel.text = [dateFormatNoMusic stringFromDate: self.user[@"goal"]];
-    dateAtStartNoMusic = self.user[@"goal"];
-    self.startButton.hidden = NO;
-    self.stopButton.hidden = YES;
-    // layout subviews
-    // viewDidLayoutSubviews
+- (void)viewDidAppear:(BOOL)animated {
+    [self.stopwatch updateTime];
+    [self.stopwatch updateFontSize:120];
+    DLog(@"APPEARED");
 }
 
 /*

@@ -14,12 +14,10 @@
 #import "NoMusicViewController.h"
 #import "Helper.h"
 #import <UIKit/UIKit.h>
+#import "TimerXIBView.h"
 
 @interface TimeViewController () <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTAppRemotePlaybackRestrictions>
-@property (strong, nonatomic) IBOutlet UILabel *stopwatchLabel;
 @property (strong, nonatomic) PFUser *user;
-@property (strong, nonatomic) IBOutlet UIButton *startButton;
-@property (strong, nonatomic) IBOutlet UIButton *stopButton;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (strong, nonatomic) IBOutlet UIButton *connectButton;
 @property (strong, nonatomic) IBOutlet UILabel *songLabel;
@@ -28,31 +26,41 @@
 @property (strong, nonatomic) IBOutlet UIButton *skipBackwardsButton;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
 @property NoMusicViewController *noMusicVC;
+@property (strong, nonatomic) IBOutlet TimerXIBView *stopwatchMusicScreen;
 @end
 
 @implementation TimeViewController
-NSTimer *upTimer;
-NSTimer *downTimer;
-NSDateFormatter *dateFormat;
-NSDate *dateAtStart;
-NSTimeInterval elapsedTimeAtStop = 0;
-int startMinute;
-int startSeconds;
-int currMinute;
-int currSeconds;
-CFTimeInterval startTime;
-UIAlertController *alert;
 bool isPaused;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    dateFormat = [[NSDateFormatter alloc] init];
-    dateFormat.dateFormat = @"mm:ss";
-    dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    self.user = [PFUser currentUser];
+    self.stopwatchMusicScreen.root = self;
     [self setUpView];
-    // container view controller part
+    [self setUpContainerVC];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    if (self.segment.selectedSegmentIndex == 0) {
+        self.noMusicVC.view.hidden = YES;
+    }
+    [self.stopwatchMusicScreen updateTime];
+}
+
+- (void) setUpView {
+    self.user = [PFUser currentUser];
+    self.songImage.layer.cornerRadius = 16;
+    self.connectButton.layer.cornerRadius = 16;
+    self.connectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+    self.connectButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.connectButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
+    self.songImage.hidden = YES;
+    self.playPauseButton.hidden = YES;
+    self.skipForwardButton.hidden = YES;
+    self.skipBackwardsButton.hidden = YES;
+}
+
+- (void) setUpContainerVC {
     self.noMusicVC = [self.storyboard instantiateViewControllerWithIdentifier:@"noMusic"];
     [self addChildViewController:self.noMusicVC];
     [self.view addSubview:self.noMusicVC.view];
@@ -60,153 +68,21 @@ bool isPaused;
     self.noMusicVC.view.frame = self.view.bounds;
 }
 
-- (void) setUpView {
-    self.startButton.layer.cornerRadius = 16;
-    self.stopButton.layer.cornerRadius = 16;
-    self.songImage.layer.cornerRadius = 16;
-    self.connectButton.layer.cornerRadius = 16;
-    self.connectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
-    self.connectButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.connectButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
-    self.startButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
-    self.stopButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
-    self.songImage.hidden = YES;
-    self.playPauseButton.hidden = YES;
-    self.skipForwardButton.hidden = YES;
-    self.skipBackwardsButton.hidden = YES;
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-    self.noMusicVC.view.hidden = YES;
-    self.stopwatchLabel.text = [dateFormat stringFromDate: self.user[@"goal"]];
-    dateAtStart = self.user[@"goal"];
-    self.startButton.hidden = NO;
-    self.stopButton.hidden = YES;
-}
-
-#pragma mark - Helper Methods to Format Dates and Timer
--(void)dateForFormatter{
-    if((currMinute>0 || currSeconds>=0) && currMinute>=0) {
-        if(currSeconds==0) {
-            currMinute-=1;
-            currSeconds=59;
-        } else if(currSeconds>0) {
-            currSeconds-=1;
-        }
-        if(currMinute>-1) {
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:currSeconds + (currMinute*60)];
-            self.stopwatchLabel.text = [dateFormat stringFromDate:date];
-        } else {
-            currMinute = 0;
-            currSeconds = 1;
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:currSeconds + (currMinute*60)];
-            self.stopwatchLabel.text = [dateFormat stringFromDate:date];
-            self.stopwatchLabel.textColor = [UIColor redColor];
-            [downTimer invalidate];
-            upTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(goingPastZero) userInfo:nil repeats:true];
-        }
-    }
-    
-}
-
-- (void) goingPastZero {
-    if (currSeconds < 60) {
-        currSeconds+=1;
-    } else {
-        currMinute +=1;
-        currSeconds = 0;
-    }
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:currSeconds + (currMinute*60)];
-    self.stopwatchLabel.text = [dateFormat stringFromDate:date];
-}
-
 #pragma mark - Action methods for clicking buttons and changing segment
-
-- (IBAction)clickStart:(id)sender {
-    startTime = CACurrentMediaTime();
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:dateAtStart];
-    currMinute = [components minute];
-    currSeconds = [components second];
-    startMinute = [components minute];
-    startSeconds = [components second];
-    downTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(dateForFormatter) userInfo:nil repeats:true];
-    self.startButton.hidden = YES;
-    self.stopButton.hidden = NO;
-    
-}
 
 - (IBAction)tapSegment:(id)sender {
     
     if (self.segment.selectedSegmentIndex == 1) {
         self.noMusicVC.view.hidden = NO;
+        [self.noMusicVC reloadInputViews];
     } else {
         self.noMusicVC.view.hidden = YES;
-        
     }
     
 }
 
-- (IBAction)clickStop:(id)sender {
-    [upTimer invalidate];
-    [downTimer invalidate];
-    self.startButton.hidden = NO;
-    self.stopButton.hidden = YES;
-    self.stopwatchLabel.text = [dateFormat stringFromDate: self.user[@"goal"]];
-    currMinute = startMinute;
-    currSeconds = startSeconds;
-    self.stopwatchLabel.textColor = [UIColor blackColor];
-    CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-    DLog([@"elapsed time: " stringByAppendingString: [NSString stringWithFormat:@"%f", elapsedTime]]);
-    int goalSeconds = (startMinute * 60) + startSeconds;
-    DLog([NSString stringWithFormat:@"%i",goalSeconds]);
-    int metGoal = goalSeconds - roundf(elapsedTime);
-    DLog([NSString stringWithFormat:@"%i",metGoal]);
-    [self requestToSaveShower:elapsedTime metGoal:metGoal goalSeconds:goalSeconds];
-    
-}
+# pragma  mark - Methods for Spotify SDK
 
-#pragma mark - Helper method for saving shower functionality
-
-- (void) requestToSaveShower:(CFTimeInterval)elapsedTime metGoal:(int)metGoal goalSeconds:(int)goalSeconds {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Save Shower"
-                                                                               message:[@"Time: " stringByAppendingString:[Helper formatTimeString:roundf(elapsedTime)]]
-                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) { // handle cancel response here. Doing nothing will dismiss the view.
-    }];
-    [alert addAction:cancelAction];
-    // create an OK action
-    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
-        [Shower postShower:@(roundf(elapsedTime)) met:@(metGoal) g:@(goalSeconds) completion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (error == nil) {
-                DLog(@"SUCCESSFULLY SAVED SHOWER");
-                if (metGoal >= 0) {
-                    self.user[@"bubblescore"] = @([self.user[@"bubblescore"] intValue] + 1);
-                    NSNumber *streak = self.user[@"streak"];
-                    self.user[@"streak"] = @([streak intValue] + 1);
-                    //[self.user saveInBackground];
-                } else {
-                    self.user[@"streak"] = @(0);
-                    //[self.user saveInBackground];
-                }
-                self.user[@"totalShowerTime"] = @([self.user[@"totalShowerTime"] intValue] + roundf(elapsedTime));
-                self.user[@"numShowers"] = @([self.user[@"numShowers"] intValue] + 1);
-                [self.user saveInBackground];
-            } else {
-                DLog(@"did not save shower");
-            }
-        }];
-        
-    }];
-    // add the OK action to the alert controller
-    [alert addAction:saveAction];
-    [self presentViewController:alert animated:YES completion:^{
-        // optional code for what happens after the alert controller has finished presenting
-    }];
-}
-
-# pragma  mark - Methods for Spotify
 - (IBAction)clickConnect:(id)sender {
     [SpotifyAPIManager shared].delegate = self;
     [[SpotifyAPIManager shared] startConnection];
@@ -246,8 +122,17 @@ bool isPaused;
     DLog(@"error :(");
 }
 
+-(void)connect2Spotify
+{
+    [[SpotifyAPIManager shared] startConnection];
+}
+
 - (void)appRemote:(SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
     DLog(@"error :(");
+    if (self.stopwatchMusicScreen.playingMusic) {
+        [self performSelector:@selector(connect2Spotify) withObject:self afterDelay:0.1];
+        self.stopwatchMusicScreen.playingMusic = NO;
+    }
 }
 
 - (void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState {
@@ -259,6 +144,8 @@ bool isPaused;
     NetworkCalls* calls = [[NetworkCalls alloc]init];
     [calls fetchArtworkFor:playerState.track appRemote:[SpotifyAPIManager shared].appRemote im_view:self.songImage];
 }
+
+
 
 /*
 #pragma mark - Navigation

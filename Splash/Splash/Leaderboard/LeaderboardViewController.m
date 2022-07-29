@@ -28,20 +28,8 @@ const int kNumberOfRowsForLeaderboard = 1;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self getLeaderboardData];
-    self.leaderboardTableView.delegate = self;
-    self.leaderboardTableView.dataSource = self;
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.leaderboardTableView.layer.cornerRadius = 10.0;
-    [self.leaderboardTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifierForLeaderboard];
-    self.leaderboardTableView.sectionHeaderTopPadding = 0;
-    [self.refreshControl addTarget:self action:@selector(getLeaderboardData) forControlEvents:UIControlEventValueChanged];
-    [self.leaderboardTableView insertSubview:self.refreshControl atIndex:0];
-    self.searchBar.delegate = self;
-    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    self.tapGestureRecognizer.delegate = self;
-    self.tapGestureRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:self.tapGestureRecognizer];
-    
+    [self setUpTableView];
+    [self setUpTapGesture];
 }
 
 - (void) dismissKeyboard
@@ -50,6 +38,8 @@ const int kNumberOfRowsForLeaderboard = 1;
     [self.searchBar resignFirstResponder];
 }
 
+#pragma mark - Helper methods to fetch data and set up views
+
 - (void) getLeaderboardData {
     PFQuery *query = [PFUser query];
     [query orderByDescending:@"bubblescore"];
@@ -57,6 +47,25 @@ const int kNumberOfRowsForLeaderboard = 1;
     self.leaderboard = [query findObjects];
     self.filteredLeaderboard = self.leaderboard;
     [self.refreshControl endRefreshing];
+}
+
+- (void) setUpTableView {
+    self.leaderboardTableView.delegate = self;
+    self.leaderboardTableView.dataSource = self;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getLeaderboardData) forControlEvents:UIControlEventValueChanged];
+    self.leaderboardTableView.layer.cornerRadius = 10.0;
+    [self.leaderboardTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifierForLeaderboard];
+    self.leaderboardTableView.sectionHeaderTopPadding = 0;
+    [self.leaderboardTableView insertSubview:self.refreshControl atIndex:0];
+    self.searchBar.delegate = self;
+}
+
+- (void) setUpTapGesture {
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tapGestureRecognizer.delegate = self;
+    self.tapGestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
 #pragma mark - Search Bar Delegate Method
@@ -73,7 +82,7 @@ const int kNumberOfRowsForLeaderboard = 1;
     [self.leaderboardTableView reloadData];
 }
 
-#pragma mark - Table View Delegate and DataSource Methods
+#pragma mark - Table View DataSource Methods
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView

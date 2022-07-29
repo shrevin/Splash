@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailsViewController : UIViewController
 @property (strong, nonatomic) PFUser *user;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B33605428923C65002AE3FE /* ViewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605328923C65002AE3FE /* ViewFriendsViewController.m */; };
+		7B33605A28924A8D002AE3FE /* ViewFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605928924A8D002AE3FE /* ViewFriendsCell.m */; };
 		7B512D75287630F10029195A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D74287630F10029195A /* HomeViewController.m */; };
 		7B512D78287631080029195A /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D77287631080029195A /* TimeViewController.m */; };
 		7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D7A2876312D0029195A /* ShowersViewController.m */; };
@@ -31,6 +33,23 @@
 		7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F0D288A6A100029195A /* FriendsViewController.m */; };
 		7B512F11288A708A0029195A /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F10288A708A0029195A /* FriendsCell.m */; };
 		7B512F14288B16B40029195A /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F13288B16B40029195A /* ForgotPasswordViewController.m */; };
+		7B512F1B288F2E000029195A /* TimerXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F1A288F2E000029195A /* TimerXIB.xib */; };
+		7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F1D288F2EA60029195A /* TimerXIBView.m */; };
+		7B512F21288F5B9C0029195A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F20288F5B9C0029195A /* AVFoundation.framework */; };
+		7B512F23288F5CA80029195A /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F22288F5CA80029195A /* ding.mp3 */; };
+		7B512F2D288F5F2D0029195A /* 4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F24288F5F2D0029195A /* 4.mp3 */; };
+		7B512F2E288F5F2D0029195A /* 7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F25288F5F2D0029195A /* 7.mp3 */; };
+		7B512F2F288F5F2D0029195A /* 8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F26288F5F2D0029195A /* 8.mp3 */; };
+		7B512F30288F5F2D0029195A /* overtime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F27288F5F2D0029195A /* overtime.mp3 */; };
+		7B512F31288F5F2D0029195A /* 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F28288F5F2D0029195A /* 3.mp3 */; };
+		7B512F32288F5F2D0029195A /* 6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F29288F5F2D0029195A /* 6.mp3 */; };
+		7B512F33288F5F2D0029195A /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2A288F5F2D0029195A /* 2.mp3 */; };
+		7B512F34288F5F2D0029195A /* 5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2B288F5F2D0029195A /* 5.mp3 */; };
+		7B512F35288F5F2D0029195A /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F2C288F5F2D0029195A /* 1.mp3 */; };
+		7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F372890B4FA0029195A /* DescriptionViewController.swift */; };
+		7B512F3A2890BA2D0029195A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F392890BA2D0029195A /* UIKit.framework */; };
+		7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */; };
+		7B9252432893555F001C179B /* ParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252422893555F001C179B /* ParseManager.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -69,6 +88,10 @@
 		51B3B10E6785926A62617D7A /* Pods-Splash-SplashUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash-SplashUITests.debug.xcconfig"; path = "Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D494687862A51CD3767EEF9 /* Pods-Splash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash.debug.xcconfig"; path = "Target Support Files/Pods-Splash/Pods-Splash.debug.xcconfig"; sourceTree = "<group>"; };
 		6EE88852BEB7D03956D70961 /* Pods-Splash-SplashUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash-SplashUITests.release.xcconfig"; path = "Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7B33605228923C65002AE3FE /* ViewFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsViewController.h; sourceTree = "<group>"; };
+		7B33605328923C65002AE3FE /* ViewFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFriendsViewController.m; sourceTree = "<group>"; };
+		7B33605828924A8D002AE3FE /* ViewFriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsCell.h; sourceTree = "<group>"; };
+		7B33605928924A8D002AE3FE /* ViewFriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFriendsCell.m; sourceTree = "<group>"; };
 		7B512D73287630F10029195A /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7B512D74287630F10029195A /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7B512D76287631080029195A /* TimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeViewController.h; sourceTree = "<group>"; };
@@ -114,6 +137,25 @@
 		7B512F10288A708A0029195A /* FriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
 		7B512F12288B16B40029195A /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		7B512F13288B16B40029195A /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		7B512F1A288F2E000029195A /* TimerXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerXIB.xib; sourceTree = "<group>"; };
+		7B512F1C288F2EA60029195A /* TimerXIBView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimerXIBView.h; sourceTree = "<group>"; };
+		7B512F1D288F2EA60029195A /* TimerXIBView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimerXIBView.m; sourceTree = "<group>"; };
+		7B512F20288F5B9C0029195A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7B512F22288F5CA80029195A /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
+		7B512F24288F5F2D0029195A /* 4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 4.mp3; sourceTree = "<group>"; };
+		7B512F25288F5F2D0029195A /* 7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 7.mp3; sourceTree = "<group>"; };
+		7B512F26288F5F2D0029195A /* 8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 8.mp3; sourceTree = "<group>"; };
+		7B512F27288F5F2D0029195A /* overtime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = overtime.mp3; sourceTree = "<group>"; };
+		7B512F28288F5F2D0029195A /* 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 3.mp3; sourceTree = "<group>"; };
+		7B512F29288F5F2D0029195A /* 6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 6.mp3; sourceTree = "<group>"; };
+		7B512F2A288F5F2D0029195A /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2.mp3; sourceTree = "<group>"; };
+		7B512F2B288F5F2D0029195A /* 5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 5.mp3; sourceTree = "<group>"; };
+		7B512F2C288F5F2D0029195A /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
+		7B512F372890B4FA0029195A /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		7B512F392890BA2D0029195A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeImpactViewController.swift; sourceTree = "<group>"; };
+		7B9252412893555F001C179B /* ParseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseManager.h; sourceTree = "<group>"; };
+		7B9252422893555F001C179B /* ParseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseManager.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -140,7 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9EFC9561E308BDE745F5D1E /* Pods_Splash.framework in Frameworks */,
+				7B512F3A2890BA2D0029195A /* UIKit.framework in Frameworks */,
 				7B512EA82878990F0029195A /* SpotifyiOS.framework in Frameworks */,
+				7B512F21288F5B9C0029195A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +210,8 @@
 		0D64A6C2ECDC89BCCDEC3194 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B512F392890BA2D0029195A /* UIKit.framework */,
+				7B512F20288F5B9C0029195A /* AVFoundation.framework */,
 				7B512EA72877A49D0029195A /* SpotifyiOS.framework */,
 				EDB32165BF3D449C3957D3A9 /* Pods_Splash.framework */,
 				0C3691AA964ACEEE44AAD3A2 /* Pods_Splash_SplashUITests.framework */,
@@ -180,6 +226,8 @@
 				7B512ED3287F61E40029195A /* SpotifyAPIManager.h */,
 				7B512ED4287F61E40029195A /* SpotifyAPIManager.m */,
 				7B512ED9287F88D30029195A /* NetworkCalls.swift */,
+				7B9252412893555F001C179B /* ParseManager.h */,
+				7B9252422893555F001C179B /* ParseManager.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -224,6 +272,9 @@
 			children = (
 				7B512D76287631080029195A /* TimeViewController.h */,
 				7B512D77287631080029195A /* TimeViewController.m */,
+				7B512F1A288F2E000029195A /* TimerXIB.xib */,
+				7B512F1C288F2EA60029195A /* TimerXIBView.h */,
+				7B512F1D288F2EA60029195A /* TimerXIBView.m */,
 			);
 			path = TimeWithMusic;
 			sourceTree = "<group>";
@@ -244,6 +295,7 @@
 				7B512D7D2876314D0029195A /* ImpactViewController.m */,
 				7B512EDE2881EFE10029195A /* ImpactCalculationsViewController.h */,
 				7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */,
+				7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */,
 			);
 			path = Impact;
 			sourceTree = "<group>";
@@ -295,8 +347,37 @@
 				7B512F0D288A6A100029195A /* FriendsViewController.m */,
 				7B512F0F288A708A0029195A /* FriendsCell.h */,
 				7B512F10288A708A0029195A /* FriendsCell.m */,
+				7B33605228923C65002AE3FE /* ViewFriendsViewController.h */,
+				7B33605328923C65002AE3FE /* ViewFriendsViewController.m */,
+				7B33605828924A8D002AE3FE /* ViewFriendsCell.h */,
+				7B33605928924A8D002AE3FE /* ViewFriendsCell.m */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		7B512F1F288F59C00029195A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				7B512F22288F5CA80029195A /* ding.mp3 */,
+				7B512F2C288F5F2D0029195A /* 1.mp3 */,
+				7B512F2A288F5F2D0029195A /* 2.mp3 */,
+				7B512F28288F5F2D0029195A /* 3.mp3 */,
+				7B512F24288F5F2D0029195A /* 4.mp3 */,
+				7B512F2B288F5F2D0029195A /* 5.mp3 */,
+				7B512F29288F5F2D0029195A /* 6.mp3 */,
+				7B512F25288F5F2D0029195A /* 7.mp3 */,
+				7B512F26288F5F2D0029195A /* 8.mp3 */,
+				7B512F27288F5F2D0029195A /* overtime.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		7B512F362890B4D30029195A /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				7B512F372890B4FA0029195A /* DescriptionViewController.swift */,
+			);
+			path = Description;
 			sourceTree = "<group>";
 		};
 		7BE02E1C2876160D0060575C = {
@@ -336,6 +417,8 @@
 				7B512EC8287F49750029195A /* Networking */,
 				7B512F0B288A69F40029195A /* Friends */,
 				7B512F07288A29BE0029195A /* Helper */,
+				7B512F362890B4D30029195A /* Description */,
+				7B512F1F288F59C00029195A /* Audio */,
 				7BE02E282876160D0060575C /* AppDelegate.h */,
 				7BE02E292876160D0060575C /* AppDelegate.m */,
 				7B512EC1287CF2B10029195A /* SceneDelegate.h */,
@@ -491,9 +574,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B512F32288F5F2D0029195A /* 6.mp3 in Resources */,
+				7B512F34288F5F2D0029195A /* 5.mp3 in Resources */,
+				7B512F35288F5F2D0029195A /* 1.mp3 in Resources */,
+				7B512F31288F5F2D0029195A /* 3.mp3 in Resources */,
 				7BE02E382876160E0060575C /* LaunchScreen.storyboard in Resources */,
+				7B512F1B288F2E000029195A /* TimerXIB.xib in Resources */,
+				7B512F23288F5CA80029195A /* ding.mp3 in Resources */,
+				7B512F2F288F5F2D0029195A /* 8.mp3 in Resources */,
+				7B512F2D288F5F2D0029195A /* 4.mp3 in Resources */,
+				7B512F30288F5F2D0029195A /* overtime.mp3 in Resources */,
 				7BE02E352876160E0060575C /* Assets.xcassets in Resources */,
+				7B512F33288F5F2D0029195A /* 2.mp3 in Resources */,
 				7BE02E332876160D0060575C /* Main.storyboard in Resources */,
+				7B512F2E288F5F2D0029195A /* 7.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,9 +716,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B512D81287631660029195A /* LeaderboardViewController.m in Sources */,
+				7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */,
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
 				7B512EC2287CF2B10029195A /* SceneDelegate.m in Sources */,
+				7B33605428923C65002AE3FE /* ViewFriendsViewController.m in Sources */,
 				7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */,
+				7B33605A28924A8D002AE3FE /* ViewFriendsCell.m in Sources */,
 				7B512D85287649B20029195A /* StatsCell.m in Sources */,
 				7B512EAC2878AF370029195A /* Shower.m in Sources */,
 				7BE02E3B2876160E0060575C /* main.m in Sources */,
@@ -637,8 +734,10 @@
 				7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */,
 				7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */,
 				7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */,
+				7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */,
 				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
+				7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
 				7B512EDA287F88D30029195A /* NetworkCalls.swift in Sources */,
 				7B512EB7287CE1DF0029195A /* Constants.swift in Sources */,
@@ -647,6 +746,7 @@
 				7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */,
 				7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */,
 				7B512EB2287CD0540029195A /* LeaderboardCell.m in Sources */,
+				7B9252432893555F001C179B /* ParseManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

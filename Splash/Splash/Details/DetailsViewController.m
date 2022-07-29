@@ -13,7 +13,7 @@
 #import "StatsCell.h"
 #import "Helper.h"
 
-@interface DetailsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface DetailsViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *profilePic;
 @property (strong, nonatomic) NSArray *scoreNames;
@@ -35,17 +35,12 @@ const int kNumberOfRowsForDetails = 1;
     // Do any additional setup after loading the view.
     [self setupView];
     [self setupTableView];
-    self.scoreNames = @[@"💪 Goal ", @"🧼 Bubblescore", @"🔥 Streak ", @"⏳ Avg. Shower Time ", @"🕜 Total Shower Time ", @"🚿 Number of Showers "];
-    self.current = [PFUser currentUser];
-    self.friends = self.current[@"friends"];
-}
-
-- (void) viewDidAppear:(BOOL)animated {
+    [self setUpScrollView];
     [self checkFriends];
     [self checkIfUserEqualsCurrent];
 }
 
-#pragma mark - Helper methods for setting up view and table view
+#pragma mark - Helper methods for setting up view, table view, and scroll view
 
 - (void) setupTableView {
     self.detailsTableView.delegate = self;
@@ -67,6 +62,14 @@ const int kNumberOfRowsForDetails = 1;
     self.removeFriendButton.hidden = YES;
     self.challengeButton.hidden = YES;
     self.onLBButton.hidden = YES;
+    self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
+    self.current = [PFUser currentUser];
+    self.friends = self.current[@"friends"];
+}
+
+- (void) setUpScrollView {
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.view.frame.size.height + self.detailsTableView.bounds.size.height/3.5);
+    self.detailsTableView.scrollEnabled = NO;
 }
 
 #pragma mark - Helper Methods for Displaying Buttons Based on Friend Status
@@ -81,15 +84,18 @@ const int kNumberOfRowsForDetails = 1;
 }
 
 - (void) checkFriends {
+    self.friends = self.current[@"friends"];
     self.onLBButton.hidden = YES;
     if ([self hasUser:self.friends u:self.user]) {
         self.addFriendButton.hidden = YES;
         self.removeFriendButton.hidden = NO;
         self.challengeButton.hidden = NO;
+        NSLog(@"FRIENDS");
     } else {
         self.addFriendButton.hidden = NO;
         self.challengeButton.hidden = YES;
         self.removeFriendButton.hidden = YES;
+        NSLog(@"NOT FRIENDS");
     }
 }
 
@@ -107,15 +113,19 @@ const int kNumberOfRowsForDetails = 1;
 #pragma mark - Action Methods for Buttons
 
 - (IBAction)clickAdd:(id)sender {
-    if (![self hasUser:self.friends u:self.user] && (![self.current.objectId isEqualToString:self.user.objectId])) {
+    if (![self hasUser:self.friends u:self.user]) {
         [self.current addObject:self.user forKey:@"friends"];
         [self.current saveInBackground];
         DLog(@"ADDED FRIEND");
     }
-    
+    [self checkFriends];
 }
 
 - (IBAction)clickRemove:(id)sender {
+    [self.current removeObject:self.user forKey:@"friends"];
+    [self.current saveInBackground];
+    DLog(@"REMOVED FRIEND");
+    [self checkFriends];
 }
 
 - (IBAction)clickChallenge:(id)sender {

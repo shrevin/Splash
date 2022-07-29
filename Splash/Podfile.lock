@@ -1,25 +1,33 @@
 PODS:
   - Bolts/Tasks (1.9.1)
+  - GravitySliderFlowLayout (1.0)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
     - Bolts/Tasks (= 1.9.1)
   - Parse/UI (1.19.3):
     - Parse/Core
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
+  - GravitySliderFlowLayout
   - Parse
   - Parse/UI
+  - SWTableViewCell (~> 0.3.7)
 
 SPEC REPOS:
   trunk:
     - Bolts
+    - GravitySliderFlowLayout
     - Parse
+    - SWTableViewCell
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  GravitySliderFlowLayout: bb9ae6a302b85821c9e0271c00533fae8091143b
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: e8ed3b01092bbe44e9e615cdf817a14a5820e933
+PODFILE CHECKSUM: 2449ecd1fa9cba1d7a15136d9628216b2c785155
 
 COCOAPODS: 1.11.3

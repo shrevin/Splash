@@ -25,10 +25,6 @@ const int kNumberOfSeconds = 60;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setUpView];
-    self.minPicker.delegate = self;
-    self.minPicker.dataSource = self;
-    self.secPicker.delegate = self;
-    self.secPicker.dataSource = self;
 }
 
 - (void) setUpView {
@@ -36,6 +32,10 @@ const int kNumberOfSeconds = 60;
     [self.background.layer setBorderWidth: 0.5];
     self.background.layer.cornerRadius = 16;
     self.updateButton.layer.cornerRadius = 8;
+    self.minPicker.delegate = self;
+    self.minPicker.dataSource = self;
+    self.secPicker.delegate = self;
+    self.secPicker.dataSource = self;
 }
 
 
