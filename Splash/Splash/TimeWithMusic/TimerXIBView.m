@@ -142,14 +142,12 @@ UIAlertController *alertForShower;
 
 - (void) playSound:(NSString*)timeInterval sound:(NSString*)sound {
     if ([self.timeLabel.text isEqualToString:timeInterval]) {
-        // [[SpotifyAPIManager shared].appRemote.playerAPI pause:nil];
         DLog(@"played sound");
         self.playingMusic = YES;
         NSString *path = [[NSBundle mainBundle] pathForResource:sound ofType:@"mp3"];
         NSURL *url = [NSURL URLWithString:path];
         self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
         [self.player play];
-        //[self performSelector:@selector(playMusic) withObject:self afterDelay:5.0];
     }
 }
 
@@ -160,7 +158,6 @@ UIAlertController *alertForShower;
 
 -(void)connect2Spotify
 {
-    // [[SpotifyAPIManager shared] startConnection];
     if ([SpotifyAPIManager shared].appRemote!=nil)
     {
         if (![SpotifyAPIManager shared].appRemote.connected){
@@ -197,10 +194,8 @@ UIAlertController *alertForShower;
                     self.user[@"bubblescore"] = @([self.user[@"bubblescore"] intValue] + 1);
                     NSNumber *streak = self.user[@"streak"];
                     self.user[@"streak"] = @([streak intValue] + 1);
-                    //[self.user saveInBackground];
                 } else {
                     self.user[@"streak"] = @(0);
-                    //[self.user saveInBackground];
                 }
                 self.user[@"totalShowerTime"] = @([self.user[@"totalShowerTime"] intValue] + roundf(elapsedTime));
                 self.user[@"numShowers"] = @([self.user[@"numShowers"] intValue] + 1);

@@ -38,6 +38,8 @@
     self.usernameField.layer.cornerRadius = 16;
     self.passwordField.layer.cornerRadius = 16;
     self.signInButton.layer.cornerRadius = 16;
+    self.passwordField.secureTextEntry = YES;
+
 }
 
 - (void) setUpTapGesture {
@@ -63,6 +65,12 @@
     [self alertEmptyUsername];
     [self alertEmptyPassword];
     [self registerUser];
+}
+
+-(BOOL)isValidPassword:(NSString *)checkString{
+    NSString *stricterFilterString = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}";
+    NSPredicate *passwordTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
+    return [passwordTest evaluateWithObject:checkString];
 }
 
 #pragma mark - Helper methods to login or register an user
