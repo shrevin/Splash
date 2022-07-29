@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString*) formatTimeString:(int)secs;
 + (int) getRemainingSec: (int)secs;
 + (int) convertSecsToMin:(int)secs;
-
++ (void) alertEmptyUsername;
++ (void) alertEmptyPassword;
++ (void) alertEmptyEmail;
 
 #ifdef DEBUG
 #define DLog(...) NSLog(__VA_ARGS__)

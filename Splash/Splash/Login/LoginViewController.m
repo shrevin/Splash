@@ -9,13 +9,12 @@
 #import "Parse/Parse.h"
 #import "Helper.h"
 
-
 @interface LoginViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *signInButton;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
-
+@property (strong, nonatomic) IBOutlet UIImageView *image;
 @end
 
 @implementation LoginViewController
@@ -30,6 +29,8 @@
     // Do any additional setup after loading the view.
     [self setUpView];
     [self setUpTapGesture];
+    [self animateImage];
+    [self performSelector:@selector(changeImage) withObject:nil afterDelay:1.5];
 }
 
 - (void) setUpView {
@@ -39,7 +40,6 @@
     self.passwordField.layer.cornerRadius = 16;
     self.signInButton.layer.cornerRadius = 16;
     self.passwordField.secureTextEntry = YES;
-
 }
 
 - (void) setUpTapGesture {
@@ -56,43 +56,35 @@
 }
 
 - (IBAction)signInButton:(id)sender {
-    [self alertEmptyUsername];
-    [self alertEmptyPassword];
-    [self loginUser];
+    if ([self.usernameField.text isEqual:@""]) {
+        [Helper alertEmptyUsername];
+    } else if ([self.passwordField.text isEqual:@""]) {
+        [Helper alertEmptyPassword];
+    } else {
+        [self loginUser];
+    }
 }
 
-- (IBAction)registerButton:(id)sender {
-    [self alertEmptyUsername];
-    [self alertEmptyPassword];
-    [self registerUser];
+
+- (void) animateImage {
+    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"position"];
+    [shake setDuration:0.1];
+    [shake setRepeatCount:INFINITY];
+    [shake setAutoreverses:YES];
+    [shake setFromValue:[NSValue valueWithCGPoint:CGPointMake(self.image.center.x - 5,self.image.center.y)]];
+    [shake setToValue:[NSValue valueWithCGPoint:CGPointMake(self.image.center.x + 5, self.image.center.y)]];
+    [self.image.layer addAnimation:shake forKey:@"position"];
 }
 
--(BOOL)isValidPassword:(NSString *)checkString{
-    NSString *stricterFilterString = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}";
-    NSPredicate *passwordTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
-    return [passwordTest evaluateWithObject:checkString];
+- (void) changeImage {
+    self.image.image = [UIImage imageNamed:@"120"];
+    [self.image.layer removeAnimationForKey:@"position"];
 }
+
+
 
 #pragma mark - Helper methods to login or register an user
 
-- (void)registerUser {
-    // initialize a user object
-    PFUser *newUser = [PFUser user];
-    
-    // set user properties
-    newUser.username = self.usernameField.text;
-    newUser.password = self.passwordField.text;
-    // call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            DLog(@"Error: %@", error.localizedDescription);
-        } else {
-            DLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"segueFromLogin" sender:self];
-            // manually segue to logged in view
-        }
-    }];
-}
 
 - (void)loginUser {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Not a registered user" message:@"Please sign up" preferredStyle:(UIAlertControllerStyleAlert)];
@@ -119,38 +111,6 @@
     }];
 }
 
-#pragma mark - Helper methods to display alerts for empty text fields
-
-- (void) alertEmptyUsername {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Username" message:@"Please enter a username" preferredStyle:(UIAlertControllerStyleAlert)];
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                                 // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        if ([self.usernameField.text isEqual:@""]) {
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{}];
-        }
-}
-
-- (void) alertEmptyPassword {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Password" message:@"Please enter a password" preferredStyle:(UIAlertControllerStyleAlert)];
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                                 // handle response here.
-                                                         }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        if ([self.passwordField.text isEqual:@""]) {
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{}];
-        }
-    
-}
 
 #pragma mark - Navigation
 /*

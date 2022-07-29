@@ -24,12 +24,12 @@ import UIKit
     
     func setUpView() {
         self.blueView.frame = CGRect(x: self.view.bounds.size.width/2 - 35, y: self.view.bounds.size.height/2 - 35, width: 70, height: 70)
-        self.label.frame = CGRect(x: self.view.bounds.size.width/2 - 175, y: self.view.bounds.size.height/2 - 175, width: 200, height: 200)
+        self.label.frame = CGRect(x: self.view.bounds.size.width/2 - 175, y: self.view.bounds.size.height/2 - 175, width: 250, height: 200)
         self.blueView.backgroundColor = UIColor(red: 0.779, green: 0.897, blue: 0.934, alpha: 0.8)
         self.blueView.layer.cornerRadius = 16
         view.addSubview(blueView)
         self.label.center = self.view.center
-        self.label.numberOfLines = 10
+        self.label.numberOfLines = 0
         self.label.textAlignment = .center
         self.label.font = UIFont(name: "Gill Sans", size: 20)
     }

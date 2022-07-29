@@ -50,6 +50,7 @@
 		7B512F3A2890BA2D0029195A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F392890BA2D0029195A /* UIKit.framework */; };
 		7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */; };
 		7B9252432893555F001C179B /* ParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252422893555F001C179B /* ParseManager.m */; };
+		7B9252462893A086001C179B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252452893A086001C179B /* SignUpViewController.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -156,6 +157,8 @@
 		7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeImpactViewController.swift; sourceTree = "<group>"; };
 		7B9252412893555F001C179B /* ParseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseManager.h; sourceTree = "<group>"; };
 		7B9252422893555F001C179B /* ParseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseManager.m; sourceTree = "<group>"; };
+		7B9252442893A086001C179B /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		7B9252452893A086001C179B /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -380,6 +383,15 @@
 			path = Description;
 			sourceTree = "<group>";
 		};
+		7B9252472893A08C001C179B /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				7B9252442893A086001C179B /* SignUpViewController.h */,
+				7B9252452893A086001C179B /* SignUpViewController.m */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		7BE02E1C2876160D0060575C = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +417,7 @@
 		7BE02E272876160D0060575C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				7B9252472893A08C001C179B /* SignUp */,
 				7B512F00288A229C0029195A /* Home */,
 				7B512F06288A23100029195A /* Details */,
 				7B512F05288A230A0029195A /* Settings */,
@@ -735,6 +748,7 @@
 				7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */,
 				7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */,
 				7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */,
+				7B9252462893A086001C179B /* SignUpViewController.m in Sources */,
 				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
 				7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */,

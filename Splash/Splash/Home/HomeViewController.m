@@ -30,7 +30,7 @@
 NSString *HeaderViewIdentifier = @"TableViewHeaderView";
 int totalTime;
 const int kNumberOfRowsForHome = 1;
-NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that you can set for your showers. You can change this in settings. Keep trying to improve your goal! If you can't make your goal when showering, the timer will count up.", @"A number that determines how many times you met your goal. If you complete your shower before the clock turns red, your bubblescore will increase by 1!", @"The number of times you met your goal in a row!", @"The total number of showers you took divided by the total time you showered.", @"The sum of the times of all the showers you took.", @"The number of showers you choose to save in the app."];
+NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that you can set for your showers. You can change this in settings. If you can't make your goal when showering, the timer will turn red and count up.", @"A number that determines how many times you met your goal. If you complete your shower before the clock turns red, your bubblescore will increase by 1!", @"The number of times you met your goal in a row!", @"The total number of showers you took divided by the total time you showered.", @"The sum of the times of all the showers you took.", @"The number of showers you choose to save in the app."];
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -190,6 +190,13 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
     if ([segue.identifier isEqualToString:@"toDescriptions"]) {
         DescriptionViewController *descriptionVC = [segue destinationViewController];
         StatsCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        int index = indexPath.section;
+        descriptionVC.label.text = descriptions[index];
+    } else if ([segue.identifier isEqualToString:@"segueFromButton"]) {
+        DescriptionViewController *descriptionVC = [segue destinationViewController];
+        UIView *contentView = (UIView *)[(UIView *)sender superview];
+        StatsCell *cell = (StatsCell*)[contentView superview];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         int index = indexPath.section;
         descriptionVC.label.text = descriptions[index];
