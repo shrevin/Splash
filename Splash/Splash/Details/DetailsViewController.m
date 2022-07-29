@@ -101,8 +101,6 @@ const int kNumberOfRowsForDetails = 1;
 
 - (BOOL) hasUser:(NSArray*)my_arr u:(PFUser*)u {
     for (PFUser* p in my_arr) {
-        DLog(p.objectId);
-        DLog(u.objectId);
         if ([p.objectId isEqualToString:u.objectId]) {
             return YES;
         }
