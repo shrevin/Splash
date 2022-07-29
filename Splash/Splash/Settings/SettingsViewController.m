@@ -18,7 +18,7 @@
 
 @implementation SettingsViewController
 const int kNumberOfRowsForSettings = 1;
-const int kNumberOfMinutes = 7;
+const int kNumberOfMinutes = 9;
 const int kNumberOfSeconds = 60;
 
 - (void)viewDidLoad {
@@ -56,7 +56,7 @@ const int kNumberOfSeconds = 60;
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component API_UNAVAILABLE(tvos) {
     if (pickerView.tag == 1) {
-        return [NSString stringWithFormat:@"%ld", row + 1];
+        return [NSString stringWithFormat:@"%ld", row + 2];
     } else {
         return [NSString stringWithFormat:@"%ld", row];
     }
@@ -66,7 +66,7 @@ const int kNumberOfSeconds = 60;
 
 - (IBAction)clickUpdate:(id)sender {
     PFUser *user = [PFUser currentUser];
-    int minutes = [self.minPicker selectedRowInComponent:0] + 1;
+    int minutes = [self.minPicker selectedRowInComponent:0] + 2;
     int seconds = [self.secPicker selectedRowInComponent:0];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateFormat = @"mm:ss.S";

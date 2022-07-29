@@ -7,6 +7,12 @@
 
 #import "ParseManager.h"
 
+
+@protocol registerUser
+    -(void) registerUser;
+@end
+
 @implementation ParseManager
+
 
 @end
