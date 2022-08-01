@@ -6,8 +6,7 @@
 //
 
 #import "SignUpViewController.h"
-#import "Helper.h"
-#import "Parse/Parse.h"
+
 
 @interface SignUpViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *logo;
@@ -17,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
 @property (strong, nonatomic) IBOutlet UILabel *invalidPasswordText;
+@property ParseDataLoaderManager *dataLoader;
 @end
 
 @implementation SignUpViewController
@@ -38,19 +38,21 @@
     self.signUpButton.layer.cornerRadius = 16;
     self.passwordField.secureTextEntry = YES;
     self.invalidPasswordText.hidden = YES;
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
 }
 
 - (IBAction)clickSignUp:(id)sender {
     if ([self.emailField.text isEqualToString:@""]) {
-        [Helper alertEmptyEmail];
+        [Helper alertMessage:@"Missing email" message:@"Please enter an email"];
     } else if ([self.usernameField.text isEqualToString:@""]) {
-        [Helper alertEmptyUsername];
+        [Helper alertMessage:@"Missing username" message:@"Please enter a username"];
     } else if ([self.passwordField.text isEqualToString:@""]) {
-        [Helper alertEmptyPassword];
+        [Helper alertMessage:@"Missing password" message:@"Please enter a password"];
     } else if (![self isValidPassword:self.passwordField.text]) {
         self.invalidPasswordText.hidden = NO;
     } else {
-        [self registerUser];
+        [self.dataLoader registerUser:self.usernameField.text password:self.passwordField.text email:self.emailField.text];
+        //[self registerUser];
         [self performSegueWithIdentifier:@"toHome" sender:self];
     }
 }

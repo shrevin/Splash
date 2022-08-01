@@ -25,9 +25,9 @@
 }
 
 - (void) setCell:(Shower *)s {
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.profilePic.layer.cornerRadius = self.profilePic.frame.size.height/2;
-    self.profilePic.file = [PFUser currentUser][@"profile"];
-    [self.profilePic loadInBackground];
+    [self.dataLoader getProfileImage:self.profilePic user:[PFUser currentUser]];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocalizedDateFormatFromTemplate:@"EEEE, MMM d, yyyy"];
     self.dateLabel.text = [format stringFromDate:s.createdAt];

@@ -7,13 +7,15 @@
 
 #import "SettingsViewController.h"
 #import "Parse/Parse.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface SettingsViewController ()
 @property (strong, nonatomic) IBOutlet UIView *background;
 @property (strong, nonatomic) IBOutlet UIButton *updateButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *minPicker;
 @property (strong, nonatomic) IBOutlet UIPickerView *secPicker;
-
+@property ParseDataLoaderManager *dataLoader;
 @end
 
 @implementation SettingsViewController
@@ -28,6 +30,7 @@ const int kNumberOfSeconds = 60;
 }
 
 - (void) setUpView {
+    self.dataLoader = [[ParseDataLoaderManager alloc]init];
     [self.background.layer setBorderColor: [[UIColor blackColor] CGColor]];
     [self.background.layer setBorderWidth: 0.5];
     self.background.layer.cornerRadius = 16;
@@ -65,15 +68,15 @@ const int kNumberOfSeconds = 60;
 #pragma mark - Action Methods for Buttons
 
 - (IBAction)clickUpdate:(id)sender {
-    PFUser *user = [PFUser currentUser];
     int minutes = [self.minPicker selectedRowInComponent:0] + 2;
     int seconds = [self.secPicker selectedRowInComponent:0];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateFormat = @"mm:ss.S";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     NSDate *goal =[NSDate dateWithTimeIntervalSince1970:seconds + (minutes*60)];
-    user[@"goal"] = goal;
-    [user saveInBackground];
+    [self.dataLoader updateGoal:goal];
+    [Helper alertMessage:@"Success! 🥳" message:[NSString stringWithFormat:@"Your new goal is %d minutes and %d seconds.", minutes, seconds]];
+
 }
 
 /*

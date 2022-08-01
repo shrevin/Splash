@@ -11,10 +11,13 @@
 #import "ViewFriendsCell.h"
 #import "DetailsViewController.h"
 #import "Helper.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface ViewFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *friends;
+@property ParseDataLoaderManager *dataLoader;
 @end
 
 @implementation ViewFriendsViewController
@@ -22,6 +25,7 @@ NSArray *_rows;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -32,7 +36,7 @@ NSArray *_rows;
 }
 
 - (void) getFriends {
-    self.friends = [PFUser currentUser][@"friends"];
+    self.friends = [self.dataLoader getFriends:[PFUser currentUser]];
     [self.tableView reloadData];
 }
 
@@ -61,8 +65,7 @@ NSArray *_rows;
     if (index == 0) {
         DLog(@"DELETEEE");
         NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-        [[PFUser currentUser] removeObject:cell.user forKey:@"friends"];
-        [[PFUser currentUser] saveInBackground];
+        [self.dataLoader removeFriend:cell.user];
         [self.friends removeObjectAtIndex:cellIndexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath]
                             withRowAnimation:UITableViewRowAnimationAutomatic];

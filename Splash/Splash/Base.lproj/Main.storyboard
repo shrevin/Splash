@@ -917,7 +917,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.5470751787" green="0.72638329209999997" blue="0.98039215800000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.54700000000000004" green="0.72638329209999997" blue="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="5dN-T7-p8h" secondAttribute="bottom" constant="25" id="QB2-PD-j36"/>
                                                         <constraint firstItem="ud5-d8-Bv7" firstAttribute="centerY" secondItem="5dN-T7-p8h" secondAttribute="centerY" id="ZZO-Pe-8fp"/>
@@ -1330,7 +1330,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="tintColor" red="0.54100000000000004" green="0.753" blue="0.875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="sPY-ix-moM" firstAttribute="leading" secondItem="iqu-zE-W0Z" secondAttribute="leading" constant="26" id="7Lo-sB-xoc"/>
                                                 <constraint firstItem="sPY-ix-moM" firstAttribute="centerY" secondItem="iqu-zE-W0Z" secondAttribute="centerY" id="MtK-7M-SpQ"/>
@@ -1719,7 +1719,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="IYe-qP-e5K"/>
-        <segue reference="3mj-IN-Sf2"/>
+        <segue reference="0m4-LA-FWm"/>
         <segue reference="qRs-0e-3Ba"/>
     </inferredMetricsTieBreakers>
     <resources>

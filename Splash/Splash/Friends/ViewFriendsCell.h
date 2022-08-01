@@ -9,6 +9,8 @@
 #import "SWTableViewCell.h"
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet PFImageView *pic;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) PFUser *user;
+@property ParseDataLoaderManager *dataLoader;
 - (void) setCell:(PFUser *)user;
 @end
 

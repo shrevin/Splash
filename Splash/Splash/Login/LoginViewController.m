@@ -8,6 +8,8 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 #import "Helper.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface LoginViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
@@ -15,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *signInButton;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UIImageView *image;
+@property ParseDataLoaderManager *dataLoader;
 @end
 
 @implementation LoginViewController
@@ -34,6 +37,7 @@
 }
 
 - (void) setUpView {
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     self.usernameField.layer.cornerRadius = 16;
@@ -57,9 +61,9 @@
 
 - (IBAction)signInButton:(id)sender {
     if ([self.usernameField.text isEqual:@""]) {
-        [Helper alertEmptyUsername];
+        [Helper alertMessage:@"Missing username" message:@"Please enter a username"];
     } else if ([self.passwordField.text isEqual:@""]) {
-        [Helper alertEmptyPassword];
+        [Helper alertMessage:@"Missing password" message:@"Please enter a password"];
     } else {
         [self loginUser];
     }
@@ -98,17 +102,7 @@
     [alert addAction:okAction];
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
-    
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-        if (error != nil) {
-            DLog(@"User log in failed: %@", error.localizedDescription);
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{}];
-        } else {
-            DLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"segueFromLogin" sender:self];
-            // display view controller that needs to shown after successful login
-        }
-    }];
+    [self.dataLoader loginUser:username password:password vc:self segueId:@"segueFromLogin" alert:alert];
 }
 
 

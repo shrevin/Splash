@@ -10,16 +10,17 @@
 #import "Helper.h"
 #import "Shower.h"
 #import "SpotifyAPIManager.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface TimerXIBView () <SPTAppRemoteDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
-@property (strong, nonatomic) PFUser *user;
 @property AVAudioPlayer *player;
+@property ParseDataLoaderManager *dataLoader;
 @end
-
 
 @implementation TimerXIBView
 NSTimer *timerUp;
@@ -53,23 +54,23 @@ UIAlertController *alertForShower;
 - (void) customInit {
     [[NSBundle mainBundle] loadNibNamed:@"TimerXIB" owner:self options:nil];
     [self addSubview:self.contentView];
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.contentView.frame = self.bounds;
     format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"mm:ss";
     format.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    self.user = [PFUser currentUser];
     self.startButton.layer.cornerRadius = 16;
     self.stopButton.layer.cornerRadius = 16;
-    self.timeLabel.text = [format stringFromDate: self.user[@"goal"]];
-    startDate = self.user[@"goal"];
+    self.timeLabel.text = [self.dataLoader getGoal:[PFUser currentUser]];
+    startDate = [self.dataLoader getGoalAsDate:[PFUser currentUser]];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
     self.playingMusic = NO;
 }
 
 - (void) updateTime {
-    self.timeLabel.text = [format stringFromDate: self.user[@"goal"]];
-    startDate = self.user[@"goal"];
+    self.timeLabel.text = [self.dataLoader getGoal:[PFUser currentUser]];
+    startDate = [self.dataLoader getGoalAsDate:[PFUser currentUser]];
 }
 
 - (void) updateFontSize:(int)size {
@@ -94,7 +95,7 @@ UIAlertController *alertForShower;
     [timerDown invalidate];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
-    self.timeLabel.text = [format stringFromDate: self.user[@"goal"]];
+    self.timeLabel.text = [self.dataLoader getGoal:[PFUser currentUser]];
     currMin = startMin;
     currSec = startSec;
     self.timeLabel.textColor = [UIColor blackColor];
@@ -191,15 +192,15 @@ UIAlertController *alertForShower;
             if (error == nil) {
                 DLog(@"SUCCESSFULLY SAVED SHOWER");
                 if (metGoal >= 0) {
-                    self.user[@"bubblescore"] = @([self.user[@"bubblescore"] intValue] + 1);
-                    NSNumber *streak = self.user[@"streak"];
-                    self.user[@"streak"] = @([streak intValue] + 1);
+                    [self.dataLoader updateBubblescore:[PFUser currentUser] newScore:[self.dataLoader getBubblescore:[PFUser currentUser]] + 1];
+                    [self.dataLoader updateStreak:[PFUser currentUser] newStreak:[self.dataLoader getStreak:[PFUser currentUser]] + 1];
                 } else {
-                    self.user[@"streak"] = @(0);
+                    [self.dataLoader updateStreak:[PFUser currentUser] newStreak:0];
                 }
-                self.user[@"totalShowerTime"] = @([self.user[@"totalShowerTime"] intValue] + roundf(elapsedTime));
-                self.user[@"numShowers"] = @([self.user[@"numShowers"] intValue] + 1);
-                [self.user saveInBackground];
+                int newTime = [self.dataLoader getTotalShowerTime:[PFUser currentUser]] + roundf(elapsedTime);
+                [self.dataLoader updateTotalShowerTime:[PFUser currentUser] newTime:newTime];
+                int numShowers = [self.dataLoader getNumShowers:[PFUser currentUser]];
+                [self.dataLoader updateNumShowers:[PFUser currentUser] newNum:numShowers + 1];
             } else {
                 DLog(@"did not save shower");
             }

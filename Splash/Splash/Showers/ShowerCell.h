@@ -9,6 +9,8 @@
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
 #import "Shower.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet PFImageView *profilePic;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *lengthLabel;
+@property ParseDataLoaderManager *dataLoader;
 - (void) setCell:(Shower *)s;
 @end
 

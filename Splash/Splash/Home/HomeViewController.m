@@ -14,16 +14,18 @@
 #import "Shower.h"
 #import "Helper.h"
 #import "Splash-Swift.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *profileImage;
 @property (strong,nonatomic) NSArray *scoreNames;
 @property (strong, nonatomic) IBOutlet UIButton *pullDownButtonForPFP;
-@property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *friendsButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property ParseDataLoaderManager *dataLoader;
 @end
 
 @implementation HomeViewController
@@ -40,34 +42,27 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
 
 - (void) viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
-    NSArray *friends = self.user[@"friends"];
-    [self.friendsButton setTitle:[NSString stringWithFormat:@"%lu friends", (unsigned long)friends.count]
-                        forState:UIControlStateNormal];
+    NSArray *friends =  [self.dataLoader getFriends:[PFUser currentUser]];
+    [self.friendsButton setTitle:[NSString stringWithFormat:@"%lu friends", (unsigned long)friends.count] forState:UIControlStateNormal];
 }
 
 #pragma mark - Action method for clicking logout button
 
 - (IBAction)clickLogout:(id)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        LoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
-        self.view.window.rootViewController = loginVC;
-    }];
+    [self.dataLoader logout:self];
 }
 
 #pragma mark - Helper methods for setting up view controller and pull down button
 
 - (void) setUpView {
-    self.user = [PFUser currentUser];
+    self.dataLoader = [[ParseDataLoaderManager alloc]init];
     self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.usernameLabel.text = self.user.username;
+    self.usernameLabel.text = [self.dataLoader getUsername:[PFUser currentUser]];
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.friendsButton.layer.cornerRadius = 16;
-    self.profileImage.file = self.user[@"profile"];
-    [self.profileImage loadInBackground];
+    [self.dataLoader getProfileImage:self.profileImage user:[PFUser currentUser]];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
     self.tableView.sectionHeaderTopPadding = 0;
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.tableView.bounds.size.height/2);
@@ -105,22 +100,18 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
     }
     NSString *name = self.scoreNames[indexPath.section];
     if (indexPath.section == 0) {
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self.user[@"goal"]];
-        int currMinute = [components minute];
-        int currSeconds = [components second];
-        [cell setCell:name value:[NSString stringWithFormat:@"%@", [Helper formatTimeString:(currMinute*60) + currSeconds]]];
+        [cell setCell:name value:[self.dataLoader getGoal:[PFUser currentUser]]];
     } else if (indexPath.section == 1) {
-        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"bubblescore"]]];
+        [cell setCell:name value:[NSString stringWithFormat:@"%d", [self.dataLoader getBubblescore:[PFUser currentUser]]]];
     } else if (indexPath.section == 2) {
-        [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"streak"]]];
+        [cell setCell:name value:[NSString stringWithFormat:@"%d", [self.dataLoader getStreak:[PFUser currentUser]]]];
     } else if (indexPath.section == 3) {
-        int averageTime = roundf([self.user[@"totalShowerTime"] intValue] / [self.user[@"numShowers"] intValue]);
+        int averageTime = roundf([self.dataLoader getTotalShowerTime:[PFUser currentUser]] / [self.dataLoader getNumShowers:[PFUser currentUser]]);
         [cell setCell:name value:[Helper formatTimeString:averageTime]];
     } else if (indexPath.section ==  4){
-        [cell setCell:name value:[Helper formatTimeString:[self.user[@"totalShowerTime"] intValue]]];
+        [cell setCell:name value:[Helper formatTimeString:[self.dataLoader getTotalShowerTime:[PFUser currentUser]]]];
     } else if (indexPath.section == 5){
-            [cell setCell:name value:[NSString stringWithFormat:@"%@", self.user[@"numShowers"]]];
+            [cell setCell:name value:[NSString stringWithFormat:@"%d", [self.dataLoader getNumShowers:[PFUser currentUser]]]];
     } else {
             [cell setCell:name value:@"20"];
     }
@@ -147,10 +138,7 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
         self.profileImage.image = originalImage;
     }
     NSData *imageData = UIImagePNGRepresentation(self.profileImage.image);
-    PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"profile.png" data:imageData];
-    PFUser *user = [PFUser currentUser];
-    user[@"profile"] = imageFile;
-    [user saveInBackground];
+    [self.dataLoader changeProfileImage: imageData];
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -176,7 +164,6 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 

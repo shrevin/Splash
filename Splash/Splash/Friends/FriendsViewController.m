@@ -9,6 +9,8 @@
 #import "Parse/Parse.h"
 #import "FriendsCell.h"
 #import "DetailsViewController.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface FriendsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) NSMutableArray *possibleFriends;
@@ -17,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property ParseDataLoaderManager *dataLoader;
 @end
 
 @implementation FriendsViewController
@@ -24,10 +27,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     [self populateFriendsId];
     [self getData];
     [self setUpCollectionView];
     [self setUpTapGesture];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self populateFriendsId];
+    [self getData];
 }
 
 - (void) setUpCollectionView {
@@ -45,16 +54,13 @@
 
 - (void) populateFriendsId {
     self.friendsIds = [[NSMutableArray alloc]init];
-    NSArray *friendsList = [PFUser currentUser][@"friends"];
+    NSArray *friendsList = [self.dataLoader getFriends:[PFUser currentUser]];
     for (PFUser *user in friendsList) {
         [self.friendsIds addObject:user.objectId];
     }
 }
 - (void) getData {
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"objectId" notContainedIn:self.friendsIds];
-    [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
-    self.possibleFriends = [query findObjects];
+    self.possibleFriends = [self.dataLoader getPossibleNewFriends:self.friendsIds];
     self.possibleFriendsFiltered = self.possibleFriends;
     [self.collectionView reloadData];
 }
@@ -70,7 +76,7 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *evaluatedObject, NSDictionary *bindings) {
-            NSString *username = evaluatedObject[@"username"];
+            NSString *username = [self.dataLoader getUsername:evaluatedObject];
             return [username.lowercaseString containsString:searchText.lowercaseString];
         }];
         self.possibleFriendsFiltered = [self.possibleFriends filteredArrayUsingPredicate:predicate];

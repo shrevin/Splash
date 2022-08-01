@@ -49,8 +49,8 @@
 		7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F372890B4FA0029195A /* DescriptionViewController.swift */; };
 		7B512F3A2890BA2D0029195A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F392890BA2D0029195A /* UIKit.framework */; };
 		7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */; };
-		7B9252432893555F001C179B /* ParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252422893555F001C179B /* ParseManager.m */; };
 		7B9252462893A086001C179B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252452893A086001C179B /* SignUpViewController.m */; };
+		7B92524D2894BD3A001C179B /* ParseDataLoaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92524C2894BD3A001C179B /* ParseDataLoaderManager.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -155,10 +155,11 @@
 		7B512F372890B4FA0029195A /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		7B512F392890BA2D0029195A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeImpactViewController.swift; sourceTree = "<group>"; };
-		7B9252412893555F001C179B /* ParseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseManager.h; sourceTree = "<group>"; };
-		7B9252422893555F001C179B /* ParseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseManager.m; sourceTree = "<group>"; };
 		7B9252442893A086001C179B /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		7B9252452893A086001C179B /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		7B9252482894A093001C179B /* DataLoaderProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLoaderProtocol.h; sourceTree = "<group>"; };
+		7B92524B2894BD3A001C179B /* ParseDataLoaderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseDataLoaderManager.h; sourceTree = "<group>"; };
+		7B92524C2894BD3A001C179B /* ParseDataLoaderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseDataLoaderManager.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -229,8 +230,9 @@
 				7B512ED3287F61E40029195A /* SpotifyAPIManager.h */,
 				7B512ED4287F61E40029195A /* SpotifyAPIManager.m */,
 				7B512ED9287F88D30029195A /* NetworkCalls.swift */,
-				7B9252412893555F001C179B /* ParseManager.h */,
-				7B9252422893555F001C179B /* ParseManager.m */,
+				7B9252482894A093001C179B /* DataLoaderProtocol.h */,
+				7B92524B2894BD3A001C179B /* ParseDataLoaderManager.h */,
+				7B92524C2894BD3A001C179B /* ParseDataLoaderManager.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -750,6 +752,7 @@
 				7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */,
 				7B9252462893A086001C179B /* SignUpViewController.m in Sources */,
 				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
+				7B92524D2894BD3A001C179B /* ParseDataLoaderManager.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
 				7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
@@ -760,7 +763,6 @@
 				7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */,
 				7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */,
 				7B512EB2287CD0540029195A /* LeaderboardCell.m in Sources */,
-				7B9252432893555F001C179B /* ParseManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

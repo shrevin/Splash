@@ -8,7 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
-
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *bubblescoreValueLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *profileImage;
 @property (strong, nonatomic) PFUser *user;
-
+@property ParseDataLoaderManager *dataLoader;
 -(void)setCell:(PFUser*)top_user;
 @end
 

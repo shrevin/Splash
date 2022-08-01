@@ -11,7 +11,6 @@
 #import "Helper.h"
 
 @interface NoMusicViewController ()
-@property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet TimerXIBView *stopwatch;
 @end
 

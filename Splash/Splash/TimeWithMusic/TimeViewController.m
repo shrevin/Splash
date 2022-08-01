@@ -17,7 +17,6 @@
 #import "TimerXIBView.h"
 
 @interface TimeViewController () <SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTAppRemotePlaybackRestrictions>
-@property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (strong, nonatomic) IBOutlet UIButton *connectButton;
 @property (strong, nonatomic) IBOutlet UILabel *songLabel;
@@ -48,7 +47,6 @@ bool isPaused;
 }
 
 - (void) setUpView {
-    self.user = [PFUser currentUser];
     self.songImage.layer.cornerRadius = 16;
     self.connectButton.layer.cornerRadius = 16;
     self.connectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
