@@ -7,7 +7,6 @@
 
 #import "SignUpViewController.h"
 
-
 @interface SignUpViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *logo;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
@@ -16,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
 @property (strong, nonatomic) IBOutlet UILabel *invalidPasswordText;
-@property ParseDataLoaderManager *dataLoader;
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation SignUpViewController
@@ -24,9 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     [self setUpTapGesture];
     [self setUpView];
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -34,20 +33,27 @@
     [self performSelector:@selector(changeImage) withObject:nil afterDelay:3.0];
 }
 
+#pragma mark - Helper methods to set up view and tap gesture
 - (void) setUpView {
     self.signUpButton.layer.cornerRadius = 16;
     self.passwordField.secureTextEntry = YES;
     self.invalidPasswordText.hidden = YES;
-    self.dataLoader = [[ParseDataLoaderManager alloc] init];
 }
 
+- (void) setUpTapGesture {
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tapGestureRecognizer.delegate = self;
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
+}
+
+#pragma mark - Registering a user
 - (IBAction)clickSignUp:(id)sender {
     if ([self.emailField.text isEqualToString:@""]) {
-        [Helper alertMessage:@"Missing email" message:@"Please enter an email"];
+        [Helper alertMessage:@"Missing email" message:@"Please enter an email" navigate:NO currVC:self];
     } else if ([self.usernameField.text isEqualToString:@""]) {
-        [Helper alertMessage:@"Missing username" message:@"Please enter a username"];
+        [Helper alertMessage:@"Missing username" message:@"Please enter a username" navigate:NO currVC:self];
     } else if ([self.passwordField.text isEqualToString:@""]) {
-        [Helper alertMessage:@"Missing password" message:@"Please enter a password"];
+        [Helper alertMessage:@"Missing password" message:@"Please enter a password" navigate:NO currVC:self];
     } else if (![self isValidPassword:self.passwordField.text]) {
         self.invalidPasswordText.hidden = NO;
     } else {
@@ -74,14 +80,7 @@
     }];
 }
 
-
-- (void) setUpTapGesture {
-    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    self.tapGestureRecognizer.delegate = self;
-    [self.view addGestureRecognizer:self.tapGestureRecognizer];
-}
-
-
+#pragma mark - Configuring tap gesture to dismiss keyboard
 - (void) dismissKeyboard
 {
     //Code to handle the gesture
@@ -90,6 +89,7 @@
     [self.passwordField resignFirstResponder];
 }
 
+#pragma mark - Configuring logo's animation
 - (void) animateLogo {
     CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"position"];
     [shake setDuration:0.1];
@@ -105,7 +105,7 @@
     [self.logo.layer removeAnimationForKey:@"position"];
 }
 
-// Method that makes sure password is atleast 8 characters with one symbol
+#pragma mark - Method to make sure password is atleast 8 characters with one special character and one number
 -(BOOL)isValidPassword:(NSString *)checkString{
     NSError *error = NULL;
     // password requirements for 8 characters, at least one uppercase letter and one digit
@@ -119,7 +119,6 @@
         return NO;
     }
 }
-
 
 /*
 #pragma mark - Navigation

@@ -15,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *updateButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *minPicker;
 @property (strong, nonatomic) IBOutlet UIPickerView *secPicker;
-@property ParseDataLoaderManager *dataLoader;
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation SettingsViewController
@@ -73,9 +73,9 @@ const int kNumberOfSeconds = 60;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateFormat = @"mm:ss.S";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    NSDate *goal =[NSDate dateWithTimeIntervalSince1970:seconds + (minutes*60)];
+    NSDate *goal = [NSDate dateWithTimeIntervalSince1970:seconds + (minutes*60)];
     [self.dataLoader updateGoal:goal];
-    [Helper alertMessage:@"Success! 🥳" message:[NSString stringWithFormat:@"Your new goal is %d minutes and %d seconds.", minutes, seconds]];
+    [Helper alertMessage:@"Success! 🥳" message:[NSString stringWithFormat:@"Your new goal is %d minutes and %d seconds.", minutes, seconds] navigate:YES currVC:self];
 
 }
 

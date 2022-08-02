@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *skipBackwardsButton;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
 @property NoMusicViewController *noMusicVC;
+@property RoutineViewController *routineVC;
 @property (strong, nonatomic) IBOutlet TimerXIBView *stopwatchMusicScreen;
 @end
 
@@ -42,6 +43,7 @@ bool isPaused;
 - (void) viewDidAppear:(BOOL)animated {
     if (self.segment.selectedSegmentIndex == 0) {
         self.noMusicVC.view.hidden = YES;
+        self.routineVC.view.hidden = YES;
     }
     [self.stopwatchMusicScreen updateTime];
 }
@@ -64,6 +66,11 @@ bool isPaused;
     [self.view addSubview:self.noMusicVC.view];
     [self.noMusicVC didMoveToParentViewController:self];
     self.noMusicVC.view.frame = self.view.bounds;
+    self.routineVC = [self.storyboard instantiateViewControllerWithIdentifier:@"routineVC"];
+    [self addChildViewController:self.routineVC];
+    [self.view addSubview:self.routineVC.view];
+    [self.routineVC didMoveToParentViewController:self];
+    self.routineVC.view.frame = self.view.bounds;
 }
 
 #pragma mark - Action methods for clicking buttons and changing segment
@@ -72,11 +79,15 @@ bool isPaused;
     
     if (self.segment.selectedSegmentIndex == 1) {
         self.noMusicVC.view.hidden = NO;
+        self.routineVC.view.hidden = YES;
         [self.noMusicVC reloadInputViews];
+    } else if (self.segment.selectedSegmentIndex == 0){
+        self.noMusicVC.view.hidden = YES;
+        self.routineVC.view.hidden = YES;
     } else {
+        self.routineVC.view.hidden = NO;
         self.noMusicVC.view.hidden = YES;
     }
-    
 }
 
 # pragma  mark - Methods for Spotify SDK
@@ -142,8 +153,6 @@ bool isPaused;
     NetworkCalls* calls = [[NetworkCalls alloc]init];
     [calls fetchArtworkFor:playerState.track appRemote:[SpotifyAPIManager shared].appRemote im_view:self.songImage];
 }
-
-
 
 /*
 #pragma mark - Navigation

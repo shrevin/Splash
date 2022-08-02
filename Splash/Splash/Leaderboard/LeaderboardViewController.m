@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *filteredLeaderboard;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property ParseDataLoaderManager *dataLoader;
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation LeaderboardViewController

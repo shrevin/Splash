@@ -5,3 +5,4 @@
 #import <SpotifyiOS/SpotifyiOS.h>
 #import "Parse/Parse.h"
 #import "TimeViewController.h"
+#import "RoutineCell.h"

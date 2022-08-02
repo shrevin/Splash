@@ -35,10 +35,14 @@ NSArray *_rows;
     [self getFriends];
 }
 
+#pragma mark - Getting friends data
+
 - (void) getFriends {
-    self.friends = [self.dataLoader getFriends:[PFUser currentUser]];
+    self.friends = [self.dataLoader getFriends:[self.dataLoader getCurrentUser]];
     [self.tableView reloadData];
 }
+
+#pragma mark - Table view delegate methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"Cell";

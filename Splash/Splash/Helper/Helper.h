@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Parse/Parse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString*) formatTimeString:(int)secs;
 + (int) getRemainingSec: (int)secs;
 + (int) convertSecsToMin:(int)secs;
-+ (void) alertMessage:(NSString*) title message:(NSString*) message;
-
++ (NSString *) formatDate:(NSDate *)date;
++ (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate currVC:(UIViewController *)currVC;
 #ifdef DEBUG
 #define DLog(...) NSLog(__VA_ARGS__)
 #else

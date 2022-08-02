@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
 @property AVAudioPlayer *player;
-@property ParseDataLoaderManager *dataLoader;
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation TimerXIBView
@@ -61,16 +61,16 @@ UIAlertController *alertForShower;
     format.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
     self.startButton.layer.cornerRadius = 16;
     self.stopButton.layer.cornerRadius = 16;
-    self.timeLabel.text = [self.dataLoader getGoal:[PFUser currentUser]];
-    startDate = [self.dataLoader getGoalAsDate:[PFUser currentUser]];
+    self.timeLabel.text = [format stringFromDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]];
+    startDate = [self.dataLoader getGoal:[self.dataLoader getCurrentUser]];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
     self.playingMusic = NO;
 }
 
 - (void) updateTime {
-    self.timeLabel.text = [self.dataLoader getGoal:[PFUser currentUser]];
-    startDate = [self.dataLoader getGoalAsDate:[PFUser currentUser]];
+    self.timeLabel.text = [format stringFromDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]];
+    startDate = [self.dataLoader getGoal:[self.dataLoader getCurrentUser]];
 }
 
 - (void) updateFontSize:(int)size {
@@ -95,7 +95,7 @@ UIAlertController *alertForShower;
     [timerDown invalidate];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
-    self.timeLabel.text = [self.dataLoader getGoal:[PFUser currentUser]];
+    self.timeLabel.text = [Helper formatDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]];
     currMin = startMin;
     currSec = startSec;
     self.timeLabel.textColor = [UIColor blackColor];
@@ -188,19 +188,19 @@ UIAlertController *alertForShower;
     // create an OK action
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // handle response here.
-        [Shower postShower:@(roundf(elapsedTime)) met:@(metGoal) g:@(goalSeconds) completion:^(BOOL succeeded, NSError * _Nullable error) {
+        [self.dataLoader postShower:@(roundf(elapsedTime)) met:@(metGoal) g:@(goalSeconds) completion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error == nil) {
                 DLog(@"SUCCESSFULLY SAVED SHOWER");
                 if (metGoal >= 0) {
-                    [self.dataLoader updateBubblescore:[PFUser currentUser] newScore:[self.dataLoader getBubblescore:[PFUser currentUser]] + 1];
-                    [self.dataLoader updateStreak:[PFUser currentUser] newStreak:[self.dataLoader getStreak:[PFUser currentUser]] + 1];
+                    [self.dataLoader updateBubblescore:[self.dataLoader getCurrentUser] newScore:[self.dataLoader getBubblescore:[self.dataLoader getCurrentUser]] + 1];
+                    [self.dataLoader updateStreak:[self.dataLoader getCurrentUser] newStreak:[self.dataLoader getStreak:[self.dataLoader getCurrentUser]] + 1];
                 } else {
-                    [self.dataLoader updateStreak:[PFUser currentUser] newStreak:0];
+                    [self.dataLoader updateStreak:[self.dataLoader getCurrentUser] newStreak:0];
                 }
-                int newTime = [self.dataLoader getTotalShowerTime:[PFUser currentUser]] + roundf(elapsedTime);
-                [self.dataLoader updateTotalShowerTime:[PFUser currentUser] newTime:newTime];
-                int numShowers = [self.dataLoader getNumShowers:[PFUser currentUser]];
-                [self.dataLoader updateNumShowers:[PFUser currentUser] newNum:numShowers + 1];
+                int newTime = [self.dataLoader getTotalShowerTime:[self.dataLoader getCurrentUser]] + roundf(elapsedTime);
+                [self.dataLoader updateTotalShowerTime:[self.dataLoader getCurrentUser] newTime:newTime];
+                int numShowers = [self.dataLoader getNumShowers:[self.dataLoader getCurrentUser]];
+                [self.dataLoader updateNumShowers:[self.dataLoader getCurrentUser] newNum:numShowers + 1];
             } else {
                 DLog(@"did not save shower");
             }

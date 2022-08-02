@@ -2,4 +2,5 @@ ${PODS_ROOT}/Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUI
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
 ${BUILT_PRODUCTS_DIR}/GravitySliderFlowLayout/GravitySliderFlowLayout.framework
 ${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
+${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework
 ${BUILT_PRODUCTS_DIR}/SWTableViewCell/SWTableViewCell.framework

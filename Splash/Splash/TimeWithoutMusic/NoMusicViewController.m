@@ -34,7 +34,7 @@ bool isPausedNoMusic;
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.stopwatch updateTime];
-    [self.stopwatch updateFontSize:120];
+    [self.stopwatch updateFontSize:100];
     DLog(@"APPEARED");
 }
 

@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIView *backView1;
 @property (strong, nonatomic) IBOutlet UIView *backView2;
 @property (strong, nonatomic) IBOutlet UIView *backView3;
-@property ParseDataLoaderManager *dataLoader;
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation ImpactCalculationsViewController
@@ -40,7 +40,7 @@
 }
 
 - (void) performCalculations {
-    float avgShowerTime = ([self.dataLoader getTotalShowerTime:[PFUser currentUser]] / [self.dataLoader getNumShowers:[PFUser currentUser]])/60;
+    float avgShowerTime = ([self.dataLoader getTotalShowerTime:[self.dataLoader getCurrentUser]] / [self.dataLoader getNumShowers:[self.dataLoader getCurrentUser]])/60;
     self.gallonsPerWeekLabel.text = [NSString stringWithFormat:@"%.2f", avgShowerTime * self.waterFlow * self.showersPerWeek];
     self.gallonsPerYearLabel.text = [NSString stringWithFormat:@"%.2f", avgShowerTime * self.waterFlow * self.showersPerWeek * 52.0];
     self.bgalPerWeekLabel.text = [NSString stringWithFormat:@"%.2f", (avgShowerTime - 1) * self.waterFlow * self.showersPerWeek];

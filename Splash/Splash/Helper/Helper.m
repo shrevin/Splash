@@ -6,9 +6,12 @@
 //
 
 #import "Helper.h"
-#import "Parse/Parse.h"
+
 
 @implementation Helper
+
+#pragma mark - Helper methods to get dates and times
+
 + (int) getRemainingSec: (int)secs {
     return secs - ([self convertSecsToMin:secs] * 60);
 }
@@ -21,20 +24,27 @@
     return [[[[[NSString stringWithFormat: @"%i", [self convertSecsToMin:secs]] stringByAppendingString:@"m"] stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat: @"%i", [self getRemainingSec:secs]]] stringByAppendingString:@"s"];
 }
 
-#pragma mark - Helper methods to display alerts for empty text fields
++ (NSString *) formatDate:(NSDate *)date {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:date];
+    int currMinute = [components minute];
+    int currSeconds = [components second];
+    return [NSString stringWithFormat:@"%@", [Helper formatTimeString:(currMinute*60) + currSeconds]];
+}
 
+#pragma mark - Helper method to display alerts for empty text fields
 
-+ (void) alertMessage:(NSString*) title message:(NSString*) message {
++ (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate currVC:(UIViewController *) currVC{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
         // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                                 // handle response here.
-                                                         }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if (navigate) {
+                [currVC.navigationController popViewControllerAnimated:YES];
+            }
+        }];
         // add the OK action to the alert controller
         [alert addAction:okAction];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{
+        [currVC presentViewController:alert animated:YES completion:^{
             
         }];
 }

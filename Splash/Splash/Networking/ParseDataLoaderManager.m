@@ -9,6 +9,9 @@
 #import "ShowerCell.h"
 
 @implementation ParseDataLoaderManager
+
+
+#pragma mark - Sign Up
 - (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email {
     PFUser *newUser = [PFUser user];
     // set user properties
@@ -25,44 +28,23 @@
     }];
 }
 
-- (void) loginUser: (NSString *)username password:(NSString *)password vc:(UIViewController *) vc segueId:(NSString *)segueId alert:(UIAlertController *)alert{
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-        if (error != nil) {
-            DLog(@"User log in failed: %@", error.localizedDescription);
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{}];
-        } else {
-            DLog(@"User logged in successfully");
-            [vc performSegueWithIdentifier:@"segueFromLogin" sender:self];
-            // display view controller that needs to shown after successful login
-        }
+#pragma mark - Login / logout
+- (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(PFUser *user, NSError *error))completion {
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+        completion(user, error);
     }];
 }
 
-- (NSArray *) getFriends {
-    return [PFUser currentUser][@"friends"];
-}
-
-- (void) logout: (UIViewController *)vc {
+- (void) logout: (void (^)(void))completion {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        LoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
-        vc.view.window.rootViewController = loginVC;
+        completion();
     }];
 }
 
-- (void) getProfileImage: (PFImageView *)imageView user:(PFUser *)user {
-    imageView.file = user[@"profile"];
-    [imageView loadInBackground];
-}
-
-// getting the current user's goal stat
-- (NSString *) getGoal: (PFUser *)user {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:[PFUser currentUser][@"goal"]];
-    int currMinute = [components minute];
-    int currSeconds = [components second];
-    return [NSString stringWithFormat:@"%@", [Helper formatTimeString:(currMinute*60) + currSeconds]];
+#pragma mark - Getting stats for a user
+- (NSDate *) getGoal: (PFUser *) user {
+    return user[@"goal"];
 }
 
 // getting the current user's bubblescore stat
@@ -89,6 +71,16 @@
     return user.username;
 }
 
+- (PFUser *) getCurrentUser {
+    return [PFUser currentUser];
+}
+
+#pragma mark - Getting / changing profile picture
+- (void) getProfileImage: (PFImageView *)imageView user:(PFUser *)user {
+    imageView.file = user[@"profile"];
+    [imageView loadInBackground];
+}
+
 // changing the current user's profile image
 - (void) changeProfileImage: (NSData *)imageData {
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"profile.png" data:imageData];
@@ -97,6 +89,7 @@
     [user saveInBackground];
 }
 
+#pragma mark - Getting details about friends + adding and removing friends
 - (void) addFriend: (PFUser *)user {
     [[PFUser currentUser] addObject:user forKey:@"friends"];
     [[PFUser currentUser] saveInBackground];
@@ -107,15 +100,18 @@
     [[PFUser currentUser] saveInBackground];
 }
 
-- (PFUser *) getCurrentUser {
-    return [PFUser currentUser];
+- (NSArray *) getFriends: (PFUser *) user {
+    return user[@"friends"];
 }
 
-- (void) updateGoal: (NSDate *)goal {
-    [PFUser currentUser][@"goal"] = goal;
-    [[PFUser currentUser] saveInBackground];
+- (NSArray *) getPossibleNewFriends: (NSArray*)currFriends {
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"objectId" notContainedIn:currFriends];
+    [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
+    return [query findObjects];
 }
 
+#pragma mark - Getting leaderboard info
 - (NSMutableArray *) getLeaderboardData {
     PFQuery *query = [PFUser query];
     [query orderByDescending:@"bubblescore"];
@@ -123,8 +119,39 @@
     return [query findObjects];
 }
 
-- (NSDate *) getGoalAsDate: (PFUser *) user {
-    return user[@"goal"];
+#pragma mark - Getting shower info
+
+- (void) getShowerData: (void (^)(NSMutableArray*))completion {
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    PFQuery *query = [PFQuery queryWithClassName:@"Shower"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects.count > 0) {
+        // The find succeeded.
+        for (int i = objects.count - 1; i >= 0; i = i - 1) {
+            [arr addObject:objects[i]];
+        }
+        completion(arr);
+        } else {
+        // Log details of the failure
+          DLog(@"Error: %@ %@", error, [error userInfo]);
+      }
+    }];
+}
+
+- (void) postShower:(NSNumber * _Nullable )len met:(NSNumber * _Nullable )met g:(NSNumber * _Nullable )g completion:(PFBooleanResultBlock  _Nullable)completion {
+    Shower *newShower = [Shower new];
+    newShower[@"len"] = len;
+    newShower[@"metGoal"] = met;
+    newShower[@"goal"] = g;
+    newShower[@"user"] = [PFUser currentUser];
+    [newShower saveInBackgroundWithBlock: completion];
+}
+
+#pragma mark - Updating stats for a user
+- (void) updateGoal: (NSDate *)goal {
+    [PFUser currentUser][@"goal"] = goal;
+    [[PFUser currentUser] saveInBackground];
 }
 
 - (void) updateBubblescore: (PFUser *) user newScore:(int)newScore {
@@ -147,37 +174,9 @@
     [user saveInBackground];
 }
 
-- (NSArray *) getFriends: (PFUser *) user {
-    return user[@"friends"];
+#pragma mark - Getting creation time for any PFObject
+- (NSDate *) getCreatedAt:(PFObject *)object {
+    return object.createdAt;
 }
-
-- (NSArray *) getPossibleNewFriends: (NSArray*)currFriends {
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"objectId" notContainedIn:currFriends];
-    [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
-    return [query findObjects];
-}
-
-- (void) getShowerData: (NSMutableArray *) originalArray filteredArray:(NSMutableArray *)filteredArray tableView:(UITableView *)tableView {
-    PFQuery *query = [PFQuery queryWithClassName:@"Shower"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        //NSArray *copy = objects;
-        if (objects.count != 0) {
-        // The find succeeded.
-          for (int i = objects.count - 1; i >= 0; i = i - 1) {
-              [originalArray addObject:objects[i]];
-          }
-          __block NSMutableArray *filteredArray = originalArray;
-          NSLog([NSString stringWithFormat:@"%d", filteredArray.count]);
-          [tableView reloadData];
-        } else {
-        // Log details of the failure
-          DLog(@"Error: %@ %@", error, [error userInfo]);
-      }
-    }];
-    NSLog([NSString stringWithFormat:@"%d", filteredArray.count]);
-}
-
 
 @end

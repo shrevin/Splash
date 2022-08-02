@@ -18,4 +18,10 @@
     self.friendPic.layer.borderColor = ([UIColor colorWithRed:0.779 green:0.897 blue:0.934 alpha:1]).CGColor;
     self.user = user;
 }
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.friendPic.image = [UIImage systemImageNamed:@"person.circle.fill"];
+}
+
 @end

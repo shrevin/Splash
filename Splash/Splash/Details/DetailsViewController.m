@@ -26,7 +26,7 @@
 @property (strong, nonatomic) PFUser *current;
 @property (strong, nonatomic) IBOutlet UIButton *onLBButton;
 @property (strong, nonatomic) NSArray *friends;
-@property ParseDataLoaderManager *dataLoader;
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation DetailsViewController
@@ -38,12 +38,13 @@ const int kNumberOfRowsForDetails = 1;
     // Do any additional setup after loading the view.
     [self setupView];
     [self setupTableView];
+    [self fetchDataForVC];
     [self setUpScrollView];
     [self checkFriends];
     [self checkIfUserEqualsCurrent];
 }
 
-#pragma mark - Helper methods for setting up view, table view, and scroll view
+#pragma mark - Helper methods for setting up view, table view, scroll view, and fetching data from Parse
 
 - (void) setupTableView {
     self.detailsTableView.delegate = self;
@@ -52,10 +53,15 @@ const int kNumberOfRowsForDetails = 1;
     self.detailsTableView.sectionHeaderTopPadding = 0;
 }
 
-- (void) setupView {
+- (void) fetchDataForVC {
     self.dataLoader = [[ParseDataLoaderManager alloc]init];
     self.usernameLabel.text = [self.dataLoader getUsername:self.user];
     [self.dataLoader getProfileImage:self.profilePic user:self.user];
+    self.current = [self.dataLoader getCurrentUser];
+    self.friends = [self.dataLoader getFriends:self.current];
+}
+
+- (void) setupView {
     self.profilePic.layer.cornerRadius = 16;
     self.removeFriendButton.layer.cornerRadius = 16;
     self.addFriendButton.layer.cornerRadius = 16;
@@ -66,8 +72,6 @@ const int kNumberOfRowsForDetails = 1;
     self.challengeButton.hidden = YES;
     self.onLBButton.hidden = YES;
     self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
-    self.current = [self.dataLoader getCurrentUser];
-    self.friends = [self.dataLoader getFriends:[PFUser currentUser]];
 }
 
 - (void) setUpScrollView {
@@ -87,7 +91,7 @@ const int kNumberOfRowsForDetails = 1;
 }
 
 - (void) checkFriends {
-    self.friends = [self.dataLoader getFriends:[PFUser currentUser]];
+    self.friends = [self.dataLoader getFriends:self.current];
     self.onLBButton.hidden = YES;
     if ([self hasUser:self.friends u:self.user]) {
         self.addFriendButton.hidden = YES;
@@ -147,13 +151,18 @@ const int kNumberOfRowsForDetails = 1;
     DetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailsCell"];
     NSString *name = self.scoreNames[indexPath.section];
     if (indexPath.section == 0) {
-        [cell setCell:name value:[self.dataLoader getGoal:[PFUser currentUser]]];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:[self.dataLoader getGoal:self.user]];
+        int currMinute = [components minute];
+        int currSeconds = [components second];
+        NSString *goal = [NSString stringWithFormat:@"%@", [Helper formatTimeString:(currMinute*60) + currSeconds]];
+        [cell setCell:name value:goal];
     } else if (indexPath.section == 1) {
         [cell setCell:name value:[NSString stringWithFormat:@"%d", [self.dataLoader getBubblescore:self.user]]];
     } else if (indexPath.section == 2) {
         [cell setCell:name value:[NSString stringWithFormat:@"%d", [self.dataLoader getStreak:self.user]]];
     } else if (indexPath.section == 3) {
-        int averageTime = roundf([self.dataLoader getTotalShowerTime:[PFUser currentUser]] / [self.dataLoader getNumShowers:self.user]);
+        int averageTime = roundf([self.dataLoader getTotalShowerTime:self.user] / [self.dataLoader getNumShowers:self.user]);
         [cell setCell:name value:[Helper formatTimeString:averageTime]];
     } else if (indexPath.section ==  4){
         [cell setCell:name value:[Helper formatTimeString:[self.dataLoader getTotalShowerTime:self.user]]];

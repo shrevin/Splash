@@ -28,9 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.dataLoader = [[ParseDataLoaderManager alloc] init];
+    [self setUpCollectionView];
     [self populateFriendsId];
     [self getData];
-    [self setUpCollectionView];
     [self setUpTapGesture];
 }
 
@@ -38,6 +38,8 @@
     [self populateFriendsId];
     [self getData];
 }
+
+#pragma mark - Setting up views
 
 - (void) setUpCollectionView {
     self.collectionView.delegate = self;
@@ -52,6 +54,8 @@
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
+#pragma mark - Getting data
+
 - (void) populateFriendsId {
     self.friendsIds = [[NSMutableArray alloc]init];
     NSArray *friendsList = [self.dataLoader getFriends:[PFUser currentUser]];
@@ -64,6 +68,8 @@
     self.possibleFriendsFiltered = self.possibleFriends;
     [self.collectionView reloadData];
 }
+
+#pragma mark - Handing tap gesture for dismissing keyboard
 
 - (void) dismissKeyboard
 {
@@ -99,6 +105,7 @@
     [cell setCell:self.possibleFriendsFiltered[indexPath.row]];
     return cell;
 }
+
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 

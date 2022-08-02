@@ -11,31 +11,51 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol DataLoaderProtocol 
+@protocol DataLoaderProtocol
+
+#pragma mark - Sign Up
 - (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email;
-- (void) loginUser: (NSString *)username password:(NSString *)password vc:(UIViewController *) vc segueId:(NSString *)segueId alert:(UIAlertController *)alert;
-- (void) logout: (UIViewController *)vc;
-- (void) getProfileImage: (PFImageView *)imageView user:(PFUser *)user;
-- (NSString *) getGoal: (PFUser *)user;
+
+#pragma mark - Login / logout
+- (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(PFUser * user, NSError *error))completion;
+- (void) logout: (void (^)(void))completion;
+
+#pragma mark - Getting stats for a user
+- (NSDate *) getGoal: (PFUser *) user;
 - (int) getBubblescore: (PFUser *)user;
 - (int) getStreak: (PFUser *)user;
 - (int) getNumShowers: (PFUser *)user;
 - (int) getTotalShowerTime: (PFUser *)user;
 - (NSString *) getUsername: (PFUser *)user;
+- (PFUser *) getCurrentUser;
+
+#pragma mark - Getting / changing profile picture
+- (void) getProfileImage: (PFImageView *)imageView user:(PFUser *)user;
 - (void) changeProfileImage: (NSData *)imageData;
+
+#pragma mark - Getting details about friends
 - (void) addFriend: (PFUser *)user;
 - (void) removeFriend: (PFUser *)user;
-- (PFUser *) getCurrentUser;
-- (void) updateGoal: (NSDate *)goal;
+- (NSArray *) getFriends: (PFUser *) user;
+- (NSArray *) getPossibleNewFriends: (NSArray*)currFriends;
+
+#pragma mark - Getting leaderboard info
 - (NSMutableArray *) getLeaderboardData;
-- (NSDate *) getGoalAsDate: (PFUser *) user;
+
+#pragma mark - Getting shower info
+- (void) getShowerData: (void (^)(NSMutableArray*))completion;
+- (void) postShower:(NSNumber * _Nullable)len met:(NSNumber * _Nullable)metGoal g:(NSNumber * _Nullable )g completion:(PFBooleanResultBlock  _Nullable)completion;
+
+#pragma mark - Updating stats for a user
+- (void) updateGoal: (NSDate *)goal;
 - (void) updateBubblescore: (PFUser *) user newScore:(int)newScore;
 - (void) updateStreak: (PFUser *) user newStreak:(int)newStreak;
 - (void) updateTotalShowerTime: (PFUser *) user newTime:(int)newTime;
 - (void) updateNumShowers: (PFUser *) user newNum:(int)newNum;
-- (NSArray *) getFriends: (PFUser *) user;
-- (NSArray *) getPossibleNewFriends: (NSArray*)currFriends;
-- (void) getShowerData: (NSMutableArray *) originalArray filteredArray:(NSMutableArray *)filteredArray tableView:(UITableView *)tableView;
+
+#pragma mark - Getting creation time for any PFObject
+- (NSDate *) getCreatedAt:(PFObject *)object;
+
 @end
 
 NS_ASSUME_NONNULL_END
