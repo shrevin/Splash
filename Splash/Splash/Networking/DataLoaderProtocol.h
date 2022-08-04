@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
+#import "Routine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email;
 
 #pragma mark - Login / logout
-- (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(PFUser * user, NSError *error))completion;
+- (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(NSError *error))completion;
 - (void) logout: (void (^)(void))completion;
 
 #pragma mark - Getting stats for a user
@@ -42,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Getting leaderboard info
 - (NSMutableArray *) getLeaderboardData;
 
-#pragma mark - Getting shower info
+#pragma mark - Getting and posting shower info
 - (void) getShowerData: (void (^)(NSMutableArray*))completion;
 - (void) postShower:(NSNumber * _Nullable)len met:(NSNumber * _Nullable)metGoal g:(NSNumber * _Nullable )g completion:(PFBooleanResultBlock  _Nullable)completion;
 
@@ -55,6 +56,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Getting creation time for any PFObject
 - (NSDate *) getCreatedAt:(PFObject *)object;
+
+#pragma mark - Getting and posting routine info
+- (NSMutableArray *) getRoutineData;
+- (void) postRoutine:(NSString * _Nullable)title time:(NSNumber *_Nullable)time completion:(PFBooleanResultBlock  _Nullable)completion;
+- (NSString *) getTitleForRoutine: (Routine *)r;
+- (int) getTimeForRoutine: (Routine *)r;
+- (void) removeRoutine: (Routine *)routine;
 
 @end
 

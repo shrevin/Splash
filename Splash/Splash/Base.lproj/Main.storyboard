@@ -409,136 +409,153 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSw-f5-zsA">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cli-gn-4vQ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSe-bx-gvC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
-                                        <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cli-gn-4vQ">
-                                                <rect key="frame" x="0.0" y="91" width="414" height="1747"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8Tc-Cl-ffl">
-                                                    <size key="itemSize" width="402" height="128"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="VEk-Co-ahq" customClass="RoutineCell">
-                                                        <rect key="frame" x="6" y="0.0" width="402" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SLe-im-LVJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="402" height="128"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWf-mQ-0o0">
-                                                                    <rect key="frame" x="333" y="49" width="45" height="30"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="45" id="6Rh-5P-2Xr"/>
-                                                                        <constraint firstAttribute="height" constant="30" id="YIt-E4-HMN"/>
-                                                                    </constraints>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
-                                                                </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shampoo Hair" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzH-yF-PTD">
-                                                                    <rect key="frame" x="122.5" y="50" width="157.5" height="30"/>
-                                                                    <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="25"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m 0s" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjM-Uj-aii">
-                                                                    <rect key="frame" x="20" y="95" width="362" height="21"/>
-                                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="EjM-Uj-aii" firstAttribute="top" secondItem="HzH-yF-PTD" secondAttribute="bottom" constant="15" id="66j-np-2xB"/>
-                                                                <constraint firstItem="EjM-Uj-aii" firstAttribute="leading" secondItem="SLe-im-LVJ" secondAttribute="leading" constant="20" id="91r-aF-JXY"/>
-                                                                <constraint firstItem="HzH-yF-PTD" firstAttribute="top" secondItem="SLe-im-LVJ" secondAttribute="top" constant="50" id="M4H-6E-ZxA"/>
-                                                                <constraint firstItem="RWf-mQ-0o0" firstAttribute="centerY" secondItem="SLe-im-LVJ" secondAttribute="centerY" id="ctW-60-k6c"/>
-                                                                <constraint firstAttribute="trailing" secondItem="RWf-mQ-0o0" secondAttribute="trailing" constant="24" id="q0Q-s0-uGv"/>
-                                                                <constraint firstItem="HzH-yF-PTD" firstAttribute="centerX" secondItem="SLe-im-LVJ" secondAttribute="centerX" id="sg5-wj-Clz"/>
-                                                                <constraint firstAttribute="trailing" secondItem="EjM-Uj-aii" secondAttribute="trailing" constant="20" id="uys-l9-sPp"/>
-                                                            </constraints>
-                                                        </collectionViewCellContentView>
-                                                        <size key="customSize" width="402" height="128"/>
-                                                    </collectionViewCell>
-                                                </cells>
-                                            </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What steps make up your shower?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvb-59-nWh">
-                                                <rect key="frame" x="15" y="37" width="384" height="29"/>
-                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4N-En-cuZ">
-                                                <rect key="frame" x="274" y="1940" width="125" height="40"/>
-                                                <color key="backgroundColor" red="0.54100000000000004" green="0.753" blue="0.875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="125" id="QMl-YP-oC9"/>
-                                                    <constraint firstAttribute="height" constant="40" id="pUn-Dm-3UF"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Start Routine"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ox-ZI-UeK">
-                                                <rect key="frame" x="175" y="1846" width="64" height="54"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="54" id="1J2-yP-pis"/>
-                                                    <constraint firstAttribute="width" constant="64" id="C2U-Xy-acH"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="add"/>
-                                                <connections>
-                                                    <action selector="clickAdd:" destination="VOF-C8-JRb" eventType="touchUpInside" id="GYE-fL-BRG"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="P4N-En-cuZ" secondAttribute="bottom" constant="20" id="1SK-RX-r0r"/>
-                                            <constraint firstItem="P4N-En-cuZ" firstAttribute="top" secondItem="9ox-ZI-UeK" secondAttribute="bottom" constant="40" id="4bR-IO-GwG"/>
-                                            <constraint firstItem="cli-gn-4vQ" firstAttribute="leading" secondItem="hSe-bx-gvC" secondAttribute="leading" id="8IG-MD-USo"/>
-                                            <constraint firstAttribute="trailing" secondItem="cli-gn-4vQ" secondAttribute="trailing" id="Btt-C8-5a5"/>
-                                            <constraint firstItem="Tvb-59-nWh" firstAttribute="leading" secondItem="hSe-bx-gvC" secondAttribute="leading" constant="15" id="GO8-sY-mC1"/>
-                                            <constraint firstItem="Tvb-59-nWh" firstAttribute="top" secondItem="hSe-bx-gvC" secondAttribute="top" constant="37" id="VsG-pI-yvO"/>
-                                            <constraint firstItem="9ox-ZI-UeK" firstAttribute="centerX" secondItem="hSe-bx-gvC" secondAttribute="centerX" id="aHE-La-gRC"/>
-                                            <constraint firstItem="cli-gn-4vQ" firstAttribute="top" secondItem="Tvb-59-nWh" secondAttribute="bottom" constant="25" id="dCq-TI-diU"/>
-                                            <constraint firstAttribute="trailing" secondItem="P4N-En-cuZ" secondAttribute="trailing" constant="15" id="enO-EB-TSu"/>
-                                            <constraint firstAttribute="height" constant="2000" identifier="totalHeight" id="jj3-u7-Ogn"/>
-                                            <constraint firstAttribute="trailing" secondItem="Tvb-59-nWh" secondAttribute="trailing" constant="15" id="nQ0-ao-xFx"/>
-                                            <constraint firstItem="9ox-ZI-UeK" firstAttribute="top" secondItem="cli-gn-4vQ" secondAttribute="bottom" constant="8" id="w4h-Eq-RY7"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="hSe-bx-gvC" firstAttribute="top" secondItem="pSw-f5-zsA" secondAttribute="top" id="2Ep-bE-Qhg"/>
-                                    <constraint firstAttribute="bottom" secondItem="hSe-bx-gvC" secondAttribute="bottom" id="DUF-sX-mh7"/>
-                                    <constraint firstAttribute="trailing" secondItem="hSe-bx-gvC" secondAttribute="trailing" id="gT1-bt-DMR"/>
-                                    <constraint firstItem="hSe-bx-gvC" firstAttribute="leading" secondItem="pSw-f5-zsA" secondAttribute="leading" id="hoI-Np-fzu"/>
-                                    <constraint firstItem="hSe-bx-gvC" firstAttribute="width" secondItem="pSw-f5-zsA" secondAttribute="width" id="s31-jX-n6P"/>
-                                </constraints>
-                            </scrollView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8Tc-Cl-ffl">
+                                    <size key="itemSize" width="402" height="128"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonCell" id="RFx-HT-XJe" customClass="ButtonCell">
+                                        <rect key="frame" x="6" y="50" width="402" height="158"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3h5-N2-Y1A">
+                                            <rect key="frame" x="0.0" y="0.0" width="402" height="158"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Time: 10m 0s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYe-Rg-k0G">
+                                                    <rect key="frame" x="8" y="8" width="151" height="19"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ox-ZI-UeK">
+                                                    <rect key="frame" x="169" y="37" width="64" height="54"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="1J2-yP-pis"/>
+                                                        <constraint firstAttribute="width" constant="64" id="C2U-Xy-acH"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="add"/>
+                                                    <connections>
+                                                        <action selector="clickAdd:" destination="VOF-C8-JRb" eventType="touchUpInside" id="GYE-fL-BRG"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4N-En-cuZ">
+                                                    <rect key="frame" x="269" y="101" width="125" height="40"/>
+                                                    <color key="backgroundColor" red="0.54100000000000004" green="0.753" blue="0.875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="125" id="QMl-YP-oC9"/>
+                                                        <constraint firstAttribute="height" constant="40" id="pUn-Dm-3UF"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Start Routine"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JYe-Rg-k0G" firstAttribute="leading" secondItem="3h5-N2-Y1A" secondAttribute="leading" constant="8" id="2WF-u1-wGH"/>
+                                                <constraint firstItem="9ox-ZI-UeK" firstAttribute="centerX" secondItem="3h5-N2-Y1A" secondAttribute="centerX" id="NDJ-ol-Oqy"/>
+                                                <constraint firstItem="P4N-En-cuZ" firstAttribute="top" secondItem="9ox-ZI-UeK" secondAttribute="bottom" constant="10" id="dBi-d7-qhu"/>
+                                                <constraint firstAttribute="trailing" secondItem="P4N-En-cuZ" secondAttribute="trailing" constant="8" id="dqq-wk-cqv"/>
+                                                <constraint firstItem="9ox-ZI-UeK" firstAttribute="top" secondItem="JYe-Rg-k0G" secondAttribute="bottom" constant="10" id="epq-ku-1LL"/>
+                                                <constraint firstItem="JYe-Rg-k0G" firstAttribute="top" secondItem="3h5-N2-Y1A" secondAttribute="top" constant="8" id="f8p-1c-M6t"/>
+                                                <constraint firstAttribute="bottom" secondItem="P4N-En-cuZ" secondAttribute="bottom" constant="17" id="vOT-fu-VOD"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="402" height="158"/>
+                                        <connections>
+                                            <outlet property="startButton" destination="P4N-En-cuZ" id="ecW-VA-yYg"/>
+                                            <outlet property="totalTimeLabel" destination="JYe-Rg-k0G" id="4Ff-Xe-OxF"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="VEk-Co-ahq" customClass="RoutineCell">
+                                        <rect key="frame" x="6" y="218" width="402" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SLe-im-LVJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="402" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWf-mQ-0o0">
+                                                    <rect key="frame" x="333" y="49" width="45" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="6Rh-5P-2Xr"/>
+                                                        <constraint firstAttribute="height" constant="30" id="YIt-E4-HMN"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="clickDelete:" destination="VOF-C8-JRb" eventType="touchUpInside" id="G7o-Ex-b6t"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shampoo Hair" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzH-yF-PTD">
+                                                    <rect key="frame" x="122.5" y="50" width="157.5" height="30"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m 0s" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjM-Uj-aii">
+                                                    <rect key="frame" x="20" y="95" width="362" height="21"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EjM-Uj-aii" firstAttribute="top" secondItem="HzH-yF-PTD" secondAttribute="bottom" constant="15" id="66j-np-2xB"/>
+                                                <constraint firstItem="EjM-Uj-aii" firstAttribute="leading" secondItem="SLe-im-LVJ" secondAttribute="leading" constant="20" id="91r-aF-JXY"/>
+                                                <constraint firstItem="HzH-yF-PTD" firstAttribute="top" secondItem="SLe-im-LVJ" secondAttribute="top" constant="50" id="M4H-6E-ZxA"/>
+                                                <constraint firstItem="RWf-mQ-0o0" firstAttribute="centerY" secondItem="SLe-im-LVJ" secondAttribute="centerY" id="ctW-60-k6c"/>
+                                                <constraint firstAttribute="trailing" secondItem="RWf-mQ-0o0" secondAttribute="trailing" constant="24" id="q0Q-s0-uGv"/>
+                                                <constraint firstItem="HzH-yF-PTD" firstAttribute="centerX" secondItem="SLe-im-LVJ" secondAttribute="centerX" id="sg5-wj-Clz"/>
+                                                <constraint firstAttribute="trailing" secondItem="EjM-Uj-aii" secondAttribute="trailing" constant="20" id="uys-l9-sPp"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="402" height="128"/>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="EjM-Uj-aii" id="a9q-WX-ccV"/>
+                                            <outlet property="titleLabel" destination="HzH-yF-PTD" id="Asl-jB-XwF"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="view" id="h4V-tI-pR0" customClass="RoutineCollectionReusableView" customModule="Splash" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What steps make up your shower?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvb-59-nWh">
+                                            <rect key="frame" x="15" y="0.0" width="384" height="50"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Tvb-59-nWh" secondAttribute="bottom" id="Gg4-OV-uhH"/>
+                                        <constraint firstItem="Tvb-59-nWh" firstAttribute="top" secondItem="h4V-tI-pR0" secondAttribute="top" id="Q5L-gD-MU2"/>
+                                        <constraint firstItem="Tvb-59-nWh" firstAttribute="centerX" secondItem="h4V-tI-pR0" secondAttribute="centerX" id="VE4-Th-IGb"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tvb-59-nWh" secondAttribute="trailing" constant="15" id="WRp-uz-gN0"/>
+                                        <constraint firstItem="Tvb-59-nWh" firstAttribute="leading" secondItem="h4V-tI-pR0" secondAttribute="leading" constant="15" id="oL0-b2-h31"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="title" destination="Tvb-59-nWh" id="NGA-fb-6wR"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TIA-Cg-N0U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pSw-f5-zsA" firstAttribute="leading" secondItem="TIA-Cg-N0U" secondAttribute="leading" id="1gQ-vA-S2v"/>
-                            <constraint firstItem="TIA-Cg-N0U" firstAttribute="bottom" secondItem="pSw-f5-zsA" secondAttribute="bottom" id="Dir-uT-cg5"/>
-                            <constraint firstItem="pSw-f5-zsA" firstAttribute="top" secondItem="TIA-Cg-N0U" secondAttribute="top" id="G1A-lj-ybp"/>
-                            <constraint firstItem="pSw-f5-zsA" firstAttribute="trailing" secondItem="TIA-Cg-N0U" secondAttribute="trailing" id="NqV-C8-o5O"/>
+                            <constraint firstItem="cli-gn-4vQ" firstAttribute="top" secondItem="TIA-Cg-N0U" secondAttribute="top" id="8bk-Le-orM"/>
+                            <constraint firstItem="TIA-Cg-N0U" firstAttribute="trailing" secondItem="cli-gn-4vQ" secondAttribute="trailing" id="D3n-ad-fX0"/>
+                            <constraint firstItem="TIA-Cg-N0U" firstAttribute="bottom" secondItem="cli-gn-4vQ" secondAttribute="bottom" id="gfE-0E-bsk"/>
+                            <constraint firstItem="cli-gn-4vQ" firstAttribute="leading" secondItem="TIA-Cg-N0U" secondAttribute="leading" id="gfr-FU-Lwv"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundView" destination="hSe-bx-gvC" id="I63-AM-VCW"/>
                         <outlet property="collectionView" destination="cli-gn-4vQ" id="xUp-wl-Pjo"/>
-                        <outlet property="heightConstraint" destination="jj3-u7-Ogn" id="Dri-Vh-KXc"/>
-                        <outlet property="scrollView" destination="pSw-f5-zsA" id="IYx-Ix-lDm"/>
-                        <outlet property="startButton" destination="P4N-En-cuZ" id="uOW-WB-SE5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2k-w7-y0W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

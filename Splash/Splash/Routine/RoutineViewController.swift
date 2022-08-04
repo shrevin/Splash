@@ -7,18 +7,24 @@
 
 import UIKit
 import SCLAlertView
+import AVFAudio
 
 class RoutineViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
    
-    @IBOutlet var startButton: UIButton!
-    @IBOutlet var heightConstraint: NSLayoutConstraint!
-    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var collectionView: UICollectionView!
-    var colors: [UIColor] = [.link, .systemGreen, .systemBlue, .red, .systemOrange, .black, .systemPurple, .systemYellow, .systemPink]
+    var dataLoader:DataLoaderProtocol = ParseDataLoaderManager()
+    var routineArray = NSMutableArray()
+    
     @IBOutlet var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpCollectionView()
+        self.getData()
+    }
+    
+    // MARK: - Helper methods for setting up views, getting data, and handling gestures in view
+    func setUpCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.size.width - 30, height: view.frame.size.height / 5)
@@ -26,29 +32,14 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         collectionView.collectionViewLayout = layout
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        collectionView.isScrollEnabled = false
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
         collectionView.addGestureRecognizer(gesture)
-        self.setConstraint()
-        self.startButton.layer.cornerRadius = 16
     }
     
-    func setConstraint() {
-        for constraint in self.backgroundView.constraints {
-            if constraint.identifier == "totalHeight" {
-               constraint.constant = self.collectionView.frame.height + 200
-            }
-        }
-        self.backgroundView.layoutIfNeeded()
-    }
-    
-    func updateConstraint() {
-        for constraint in self.backgroundView.constraints {
-            if constraint.identifier == "totalHeight" {
-                constraint.constant = constraint.constant + 150
-            }
-        }
-        self.backgroundView.layoutIfNeeded()
+    func getData() {
+        self.routineArray = self.dataLoader.getRoutineData();
+        self.collectionView.reloadData();
+        
     }
     
     @objc func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer){
@@ -74,15 +65,43 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLayoutSubviews()
     }
     
+    // MARK: - Collection view data source and delegate methods
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "view", for: indexPath) as? RoutineCollectionReusableView{
+            sectionHeader.title.text = "What steps make up your shower?"
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colors.count
+        return routineArray.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.layer.cornerRadius = 16
-        cell.backgroundColor = colors[indexPath.row]
-        return cell
+        var routineCell = RoutineCell();
+        var buttonCell = ButtonCell();
+        if (indexPath.row == self.routineArray.count) {
+            buttonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "buttonCell", for: indexPath) as! ButtonCell
+            buttonCell.layer.cornerRadius = 16
+            buttonCell.backgroundColor = .white
+            let timePart = Helper.formatTimeString(Int32(self.getTotalTime()))
+            buttonCell.customize(timePart)
+            return buttonCell;
+        } else {
+            routineCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! RoutineCell
+            routineCell.layer.cornerRadius = 16
+            routineCell.backgroundColor = .systemOrange
+            routineCell.setCell(routineArray[indexPath.row] as! Routine);
+            return routineCell;
+        }
+        
+    }
+    
+    // MARK: - Collection view flow layout methods
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 402, height: 60)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -91,12 +110,48 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     // Re-order functions
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
+        if (indexPath.row != self.routineArray.count) {
+            return true
+        }
+        return false
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = colors.remove(at: sourceIndexPath.row)
-        colors.insert(item, at: destinationIndexPath.row)
+        let item = routineArray[sourceIndexPath.row]
+        routineArray.removeObject(at: sourceIndexPath.row)
+        routineArray.insert(item, at: destinationIndexPath.row)
+        
+    }
+    
+    // MARK: - Helper methods for repeated functionality
+    func getTotalTime() -> Int {
+        var total = 0;
+        for routine in routineArray {
+            total = total + Int(self.dataLoader.getTimeFor(routine as! Routine));
+        }
+        return total;
+    }
+    
+    func createTextfield(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, title: String, keyboard: UIKeyboardType) -> UITextField {
+        let textfield = UITextField(frame: CGRect(x: x,y: y,width: width,height: height))
+        textfield.layer.borderColor = UIColor.black.cgColor
+        textfield.layer.borderWidth = 1.5
+        textfield.layer.cornerRadius = 5
+        textfield.placeholder = title
+        textfield.textAlignment = NSTextAlignment.center
+        textfield.keyboardType = keyboard
+        return textfield
+    }
+    
+    // MARK: - Methods for adding and deleting cells
+    @IBAction func clickDelete(_ sender: Any) {
+        let contentView = (sender as! UIView).superview
+        let cell = contentView?.superview as! RoutineCell
+        let cellIndexPath = self.collectionView.indexPath(for: cell)
+        let routine = self.routineArray[(cellIndexPath?.row)!] as! Routine
+        self.dataLoader.remove(routine)
+        self.routineArray.removeObject(at: (cellIndexPath?.row)!)
+        self.collectionView.deleteItems(at: [cellIndexPath!])
     }
     
     @IBAction func clickAdd(_ sender: Any) {
@@ -116,43 +171,26 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         let x = (subview.frame.width - 180) / 2
                 
         // Add textfield 1
-        let textfield1 = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 35))
-        textfield1.layer.borderColor = UIColor.black.cgColor
-        textfield1.layer.borderWidth = 1.5
-        textfield1.layer.cornerRadius = 5
-        textfield1.placeholder = "Title"
-        textfield1.textAlignment = NSTextAlignment.center
+        let textfield1 = self.createTextfield(x: x, y: 10, width: 180, height: 35, title: "Title", keyboard: .default)
         subview.addSubview(textfield1)
                 
         // Add textfield 2
-        let textfield2 = UITextField(frame: CGRect(x: x,y: textfield1.frame.maxY + 10,width: 180,height: 35))
-        textfield2.layer.borderWidth = 1.5
-        textfield2.layer.cornerRadius = 5
-        textfield2.layer.borderColor = UIColor.black.cgColor
-        textfield2.placeholder = "# of minutes"
-        textfield2.textAlignment = NSTextAlignment.center
-        textfield2.textContentType = .dateTime;
+        let textfield2 = self.createTextfield(x: x, y: textfield1.frame.maxY + 10, width: 180, height: 35, title: "# of minutes", keyboard: .numberPad)
         subview.addSubview(textfield2)
         
         // Add textfield 3
-        let textfield3 = UITextField(frame: CGRect(x: x,y: textfield2.frame.maxY + 10,width: 180,height: 35))
-        textfield3.layer.borderWidth = 1.5
-        textfield3.layer.cornerRadius = 5
-        textfield3.layer.borderColor = UIColor.black.cgColor
-        textfield3.placeholder = "# of seconds"
-        textfield3.textAlignment = NSTextAlignment.center
+        let textfield3 = self.createTextfield(x: x, y: textfield2.frame.maxY + 10, width: 180, height: 35, title: "# of seconds", keyboard: .numberPad)
         subview.addSubview(textfield3)
                 
         // Add the subview to the alert's UI property
         alert.customSubview = subview
         _ = alert.addButton("Add") {
-            print("Clicked Add")
-            print(textfield1.text)
-            print(textfield2.text)
-            print(textfield3.text)
-            self.colors.append(UIColor .systemPink)
-            self.collectionView.reloadData()
-            self.updateConstraint()
+            let min = Int(textfield2.text ?? "1")
+            let sec = Int(textfield3.text ?? "0")
+            let time = (min!*60) + sec!
+            self.dataLoader.postRoutine(textfield1.text, time: time as NSNumber) { boolean, error in
+                self.getData()
+            }
         }
                 
         // Add Button with visible timeout and custom Colors
@@ -166,8 +204,10 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
                 print("Timeout occurred")
         }
                 
-        _ = alert.showInfo("Create Routine", subTitle: "Enter a title and the time you want this step of your shower to take", timeout: SCLAlertView.SCLTimeoutConfiguration(timeoutValue: timeoutValue, timeoutAction: timeoutAction))
+        _ = alert.showInfo("Add Step to Routine", subTitle: "Enter a title and the time you want this step of your shower to take", timeout: SCLAlertView.SCLTimeoutConfiguration(timeoutValue: timeoutValue, timeoutAction: timeoutAction))
     }
+    
+    
 
     /*
     // MARK: - Navigation

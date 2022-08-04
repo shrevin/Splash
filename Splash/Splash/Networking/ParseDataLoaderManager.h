@@ -12,6 +12,8 @@
 #import "Helper.h"
 #import "LoginViewController.h"
 #import "Parse/PFImageView.h"
+#import "ShowerCell.h"
+#import "Routine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

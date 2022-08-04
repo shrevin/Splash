@@ -6,7 +6,7 @@
 //
 
 #import "ParseDataLoaderManager.h"
-#import "ShowerCell.h"
+
 
 @implementation ParseDataLoaderManager
 
@@ -29,9 +29,9 @@
 }
 
 #pragma mark - Login / logout
-- (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(PFUser *user, NSError *error))completion {
+- (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(NSError *error))completion {
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
-        completion(user, error);
+        completion(error);
     }];
 }
 
@@ -178,5 +178,41 @@
 - (NSDate *) getCreatedAt:(PFObject *)object {
     return object.createdAt;
 }
+
+#pragma mark - Getting and posting routine info
+
+- (NSMutableArray *) getRoutineData {
+    return [PFUser currentUser][@"routineArray"];
+}
+
+
+- (void) postRoutine:(NSString * _Nullable)title time:(NSNumber *_Nullable)time completion:(PFBooleanResultBlock  _Nullable)completion{
+    Routine *newRoutine = [Routine new];
+    newRoutine[@"title"] = title;
+    newRoutine[@"time"] = time;
+    newRoutine[@"user"] = [PFUser currentUser];
+    [newRoutine saveInBackgroundWithBlock: ^(BOOL succeeded, NSError *error) {
+        [[PFUser currentUser] addObject:newRoutine forKey:@"routineArray"];
+        [[PFUser currentUser] saveInBackgroundWithBlock:completion];
+    }];
+}
+
+- (NSString *) getTitleForRoutine: (Routine *)r {
+    [r fetchIfNeeded];
+    return r[@"title"];
+}
+
+- (int) getTimeForRoutine: (Routine *)r {
+    NSNumber *time = r[@"time"];
+    return [time intValue];
+}
+
+- (void) removeRoutine: (Routine *)routine {
+    [[PFUser currentUser] removeObject:routine forKey:@"routineArray"];
+    [[PFUser currentUser] saveInBackground];
+    [routine deleteInBackground];
+}
+
+
 
 @end

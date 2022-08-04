@@ -98,7 +98,7 @@
     [alert addAction:okAction];
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
-    [self.dataLoader loginUser:username password:password completion:^(PFUser *user, NSError *error) {
+    [self.dataLoader loginUser:username password:password completion:^(NSError *error) {
         if (error != nil) {
             DLog(@"User log in failed: %@", error.localizedDescription);
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{}];
