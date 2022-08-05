@@ -10,7 +10,7 @@ target 'Splash' do
   pod 'Parse/UI'
   pod 'SWTableViewCell', '~> 0.3.7'
   pod 'GravitySliderFlowLayout'
-
+  pod 'SCLAlertView'
 
   target 'SplashTests' do
     inherit! :search_paths

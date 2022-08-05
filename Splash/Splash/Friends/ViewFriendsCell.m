@@ -21,12 +21,12 @@
 }
 
 - (void) setCell:(PFUser *)user {
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     [user fetchIfNeeded];
     self.user = user;
-    self.usernameLabel.text = user[@"username"];
+    self.usernameLabel.text = [self.dataLoader getUsername:user];
     self.pic.layer.cornerRadius = self.pic.frame.size.height/2;
-    self.pic.file = self.user[@"profile"];
-    [self.pic loadInBackground];
+    [self.dataLoader getProfileImage:self.pic user:user];
 }
 
 @end

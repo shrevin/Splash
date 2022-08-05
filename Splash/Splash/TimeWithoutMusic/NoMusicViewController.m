@@ -11,7 +11,6 @@
 #import "Helper.h"
 
 @interface NoMusicViewController ()
-@property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) IBOutlet TimerXIBView *stopwatch;
 @end
 
@@ -35,7 +34,7 @@ bool isPausedNoMusic;
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.stopwatch updateTime];
-    [self.stopwatch updateFontSize:120];
+    [self.stopwatch updateFontSize:100];
     DLog(@"APPEARED");
 }
 

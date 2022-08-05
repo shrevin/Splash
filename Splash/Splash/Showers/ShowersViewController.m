@@ -10,6 +10,8 @@
 #import "Parse/Parse.h"
 #import "TimeViewController.h"
 #import "Helper.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface ShowersViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *showersTableView;
@@ -18,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredData;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property id<DataLoaderProtocol> dataLoader;
 @end
 
 @implementation ShowersViewController
@@ -26,6 +29,7 @@ const int kNumberOfRowsForShowers = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     // Do any additional setup after loading the view.
     [self getData];
     [self setUpTableView];
@@ -52,21 +56,11 @@ const int kNumberOfRowsForShowers = 1;
 }
 
 -(void) getData {
-    PFQuery *query = [PFQuery queryWithClassName:@"Shower"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-      if (!error) {
-        // The find succeeded.
-          self.showersArray = [[NSMutableArray alloc] init];
-          for (int i = objects.count - 1; i >= 0; i = i - 1) {
-              [self.showersArray addObject:objects[i]];
-          }
-          self.filteredData = self.showersArray;
-          [self.showersTableView reloadData];
-      } else {
-        // Log details of the failure
-          DLog(@"Error: %@ %@", error, [error userInfo]);
-      }
+    self.showersArray = [[NSMutableArray alloc] init];
+    [self.dataLoader getShowerData:^(NSMutableArray * arr) {
+        self.showersArray = arr;
+        self.filteredData = arr;
+        [self.showersTableView reloadData];
     }];
     [self.refreshControl endRefreshing];
 }
@@ -90,7 +84,6 @@ const int kNumberOfRowsForShowers = 1;
 {
     return self.filteredData.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShowerCell *cell = [self.showersTableView dequeueReusableCellWithIdentifier:@"showerCell"];

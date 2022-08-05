@@ -49,7 +49,13 @@
 		7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F372890B4FA0029195A /* DescriptionViewController.swift */; };
 		7B512F3A2890BA2D0029195A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F392890BA2D0029195A /* UIKit.framework */; };
 		7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */; };
-		7B9252432893555F001C179B /* ParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252422893555F001C179B /* ParseManager.m */; };
+		7B9252462893A086001C179B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252452893A086001C179B /* SignUpViewController.m */; };
+		7B92524D2894BD3A001C179B /* ParseDataLoaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92524C2894BD3A001C179B /* ParseDataLoaderManager.m */; };
+		7B925250289886A6001C179B /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92524F289886A6001C179B /* RoutineViewController.swift */; };
+		7B92525328997997001C179B /* RoutineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92525228997997001C179B /* RoutineCell.m */; };
+		7B9252562899D6F1001C179B /* Routine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9252552899D6F1001C179B /* Routine.m */; };
+		7B925258289B2FCA001C179B /* RoutineCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B925257289B2FCA001C179B /* RoutineCollectionReusableView.swift */; };
+		7B92525E289B349F001C179B /* ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92525D289B349F001C179B /* ButtonCell.m */; };
 		7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE02E292876160D0060575C /* AppDelegate.m */; };
 		7BE02E332876160D0060575C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E312876160D0060575C /* Main.storyboard */; };
 		7BE02E352876160E0060575C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE02E342876160E0060575C /* Assets.xcassets */; };
@@ -154,8 +160,19 @@
 		7B512F372890B4FA0029195A /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		7B512F392890BA2D0029195A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeImpactViewController.swift; sourceTree = "<group>"; };
-		7B9252412893555F001C179B /* ParseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseManager.h; sourceTree = "<group>"; };
-		7B9252422893555F001C179B /* ParseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseManager.m; sourceTree = "<group>"; };
+		7B9252442893A086001C179B /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		7B9252452893A086001C179B /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		7B9252482894A093001C179B /* DataLoaderProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLoaderProtocol.h; sourceTree = "<group>"; };
+		7B92524B2894BD3A001C179B /* ParseDataLoaderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseDataLoaderManager.h; sourceTree = "<group>"; };
+		7B92524C2894BD3A001C179B /* ParseDataLoaderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseDataLoaderManager.m; sourceTree = "<group>"; };
+		7B92524F289886A6001C179B /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		7B92525128997997001C179B /* RoutineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoutineCell.h; sourceTree = "<group>"; };
+		7B92525228997997001C179B /* RoutineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoutineCell.m; sourceTree = "<group>"; };
+		7B9252542899D6F1001C179B /* Routine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Routine.h; sourceTree = "<group>"; };
+		7B9252552899D6F1001C179B /* Routine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Routine.m; sourceTree = "<group>"; };
+		7B925257289B2FCA001C179B /* RoutineCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionReusableView.swift; sourceTree = "<group>"; };
+		7B92525C289B349F001C179B /* ButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonCell.h; sourceTree = "<group>"; };
+		7B92525D289B349F001C179B /* ButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonCell.m; sourceTree = "<group>"; };
 		7BE02E252876160D0060575C /* Splash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE02E282876160D0060575C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BE02E292876160D0060575C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -226,8 +243,9 @@
 				7B512ED3287F61E40029195A /* SpotifyAPIManager.h */,
 				7B512ED4287F61E40029195A /* SpotifyAPIManager.m */,
 				7B512ED9287F88D30029195A /* NetworkCalls.swift */,
-				7B9252412893555F001C179B /* ParseManager.h */,
-				7B9252422893555F001C179B /* ParseManager.m */,
+				7B9252482894A093001C179B /* DataLoaderProtocol.h */,
+				7B92524B2894BD3A001C179B /* ParseDataLoaderManager.h */,
+				7B92524C2894BD3A001C179B /* ParseDataLoaderManager.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -380,6 +398,30 @@
 			path = Description;
 			sourceTree = "<group>";
 		};
+		7B9252472893A08C001C179B /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				7B9252442893A086001C179B /* SignUpViewController.h */,
+				7B9252452893A086001C179B /* SignUpViewController.m */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		7B92524E28988686001C179B /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				7B92524F289886A6001C179B /* RoutineViewController.swift */,
+				7B92525128997997001C179B /* RoutineCell.h */,
+				7B92525228997997001C179B /* RoutineCell.m */,
+				7B9252542899D6F1001C179B /* Routine.h */,
+				7B9252552899D6F1001C179B /* Routine.m */,
+				7B925257289B2FCA001C179B /* RoutineCollectionReusableView.swift */,
+				7B92525C289B349F001C179B /* ButtonCell.h */,
+				7B92525D289B349F001C179B /* ButtonCell.m */,
+			);
+			path = Routine;
+			sourceTree = "<group>";
+		};
 		7BE02E1C2876160D0060575C = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +447,8 @@
 		7BE02E272876160D0060575C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				7B9252472893A08C001C179B /* SignUp */,
+				7B512EFE288A22840029195A /* Login */,
 				7B512F00288A229C0029195A /* Home */,
 				7B512F06288A23100029195A /* Details */,
 				7B512F05288A230A0029195A /* Settings */,
@@ -412,12 +456,12 @@
 				7B512F03288A22E40029195A /* Impact */,
 				7B512F02288A22C80029195A /* TimeWithoutMusic */,
 				7B512F01288A22B10029195A /* TimeWithMusic */,
-				7B512EFE288A22840029195A /* Login */,
 				7B512EFD288A22610029195A /* Showers */,
 				7B512EC8287F49750029195A /* Networking */,
 				7B512F0B288A69F40029195A /* Friends */,
 				7B512F07288A29BE0029195A /* Helper */,
 				7B512F362890B4D30029195A /* Description */,
+				7B92524E28988686001C179B /* Routine */,
 				7B512F1F288F59C00029195A /* Audio */,
 				7BE02E282876160D0060575C /* AppDelegate.h */,
 				7BE02E292876160D0060575C /* AppDelegate.m */,
@@ -720,12 +764,15 @@
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
 				7B512EC2287CF2B10029195A /* SceneDelegate.m in Sources */,
 				7B33605428923C65002AE3FE /* ViewFriendsViewController.m in Sources */,
+				7B92525E289B349F001C179B /* ButtonCell.m in Sources */,
 				7BE02E2A2876160D0060575C /* AppDelegate.m in Sources */,
 				7B33605A28924A8D002AE3FE /* ViewFriendsCell.m in Sources */,
 				7B512D85287649B20029195A /* StatsCell.m in Sources */,
 				7B512EAC2878AF370029195A /* Shower.m in Sources */,
 				7BE02E3B2876160E0060575C /* main.m in Sources */,
+				7B9252562899D6F1001C179B /* Routine.m in Sources */,
 				7B512D75287630F10029195A /* HomeViewController.m in Sources */,
+				7B925250289886A6001C179B /* RoutineViewController.swift in Sources */,
 				7B512EFC288A01430029195A /* DetailsCell.m in Sources */,
 				7B512F0A288A2A060029195A /* Helper.m in Sources */,
 				7B512F14288B16B40029195A /* ForgotPasswordViewController.m in Sources */,
@@ -735,18 +782,21 @@
 				7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */,
 				7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */,
 				7B92524028934DEC001C179B /* VisualizeImpactViewController.swift in Sources */,
+				7B9252462893A086001C179B /* SignUpViewController.m in Sources */,
 				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
+				7B92524D2894BD3A001C179B /* ParseDataLoaderManager.m in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
 				7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
 				7B512EDA287F88D30029195A /* NetworkCalls.swift in Sources */,
+				7B92525328997997001C179B /* RoutineCell.m in Sources */,
 				7B512EB7287CE1DF0029195A /* Constants.swift in Sources */,
 				7B512EC7287E3B140029195A /* Access.m in Sources */,
 				7B512ED5287F61E40029195A /* SpotifyAPIManager.m in Sources */,
+				7B925258289B2FCA001C179B /* RoutineCollectionReusableView.swift in Sources */,
 				7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */,
 				7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */,
 				7B512EB2287CD0540029195A /* LeaderboardCell.m in Sources */,
-				7B9252432893555F001C179B /* ParseManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

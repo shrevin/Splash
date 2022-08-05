@@ -7,18 +7,20 @@
 
 #import "SettingsViewController.h"
 #import "Parse/Parse.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface SettingsViewController ()
 @property (strong, nonatomic) IBOutlet UIView *background;
 @property (strong, nonatomic) IBOutlet UIButton *updateButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *minPicker;
 @property (strong, nonatomic) IBOutlet UIPickerView *secPicker;
-
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation SettingsViewController
 const int kNumberOfRowsForSettings = 1;
-const int kNumberOfMinutes = 7;
+const int kNumberOfMinutes = 9;
 const int kNumberOfSeconds = 60;
 
 - (void)viewDidLoad {
@@ -28,6 +30,7 @@ const int kNumberOfSeconds = 60;
 }
 
 - (void) setUpView {
+    self.dataLoader = [[ParseDataLoaderManager alloc]init];
     [self.background.layer setBorderColor: [[UIColor blackColor] CGColor]];
     [self.background.layer setBorderWidth: 0.5];
     self.background.layer.cornerRadius = 16;
@@ -56,7 +59,7 @@ const int kNumberOfSeconds = 60;
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component API_UNAVAILABLE(tvos) {
     if (pickerView.tag == 1) {
-        return [NSString stringWithFormat:@"%ld", row + 1];
+        return [NSString stringWithFormat:@"%ld", row + 2];
     } else {
         return [NSString stringWithFormat:@"%ld", row];
     }
@@ -65,15 +68,15 @@ const int kNumberOfSeconds = 60;
 #pragma mark - Action Methods for Buttons
 
 - (IBAction)clickUpdate:(id)sender {
-    PFUser *user = [PFUser currentUser];
-    int minutes = [self.minPicker selectedRowInComponent:0] + 1;
+    int minutes = [self.minPicker selectedRowInComponent:0] + 2;
     int seconds = [self.secPicker selectedRowInComponent:0];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     dateFormat.dateFormat = @"mm:ss.S";
     dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PST"];
-    NSDate *goal =[NSDate dateWithTimeIntervalSince1970:seconds + (minutes*60)];
-    user[@"goal"] = goal;
-    [user saveInBackground];
+    NSDate *goal = [NSDate dateWithTimeIntervalSince1970:seconds + (minutes*60)];
+    [self.dataLoader updateGoal:goal];
+    [Helper alertMessage:@"Success! 🥳" message:[NSString stringWithFormat:@"Your new goal is %d minutes and %d seconds.", minutes, seconds] navigate:YES currVC:self];
+
 }
 
 /*

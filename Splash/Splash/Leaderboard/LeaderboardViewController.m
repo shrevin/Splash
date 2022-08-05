@@ -9,6 +9,8 @@
 #import "LeaderboardCell.h"
 #import "Parse/Parse.h"
 #import "DetailsViewController.h"
+#import "DataLoaderProtocol.h"
+#import "ParseDataLoaderManager.h"
 
 @interface LeaderboardViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *leaderboardTableView;
@@ -17,7 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *filteredLeaderboard;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation LeaderboardViewController
@@ -27,6 +29,7 @@ const int kNumberOfRowsForLeaderboard = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     [self getLeaderboardData];
     [self setUpTableView];
     [self setUpTapGesture];
@@ -41,10 +44,7 @@ const int kNumberOfRowsForLeaderboard = 1;
 #pragma mark - Helper methods to fetch data and set up views
 
 - (void) getLeaderboardData {
-    PFQuery *query = [PFUser query];
-    [query orderByDescending:@"bubblescore"];
-    query.limit = 10;
-    self.leaderboard = [query findObjects];
+    self.leaderboard = [self.dataLoader getLeaderboardData];
     self.filteredLeaderboard = self.leaderboard;
     [self.refreshControl endRefreshing];
 }
@@ -73,7 +73,7 @@ const int kNumberOfRowsForLeaderboard = 1;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject[@"username"] containsString:searchText] || [[evaluatedObject[@"bubblescore"] stringValue] containsString:searchText];
+            return [[self.dataLoader getUsername:evaluatedObject] containsString:searchText] || [[NSString stringWithFormat:@"%i", [self.dataLoader getBubblescore:evaluatedObject]] containsString:searchText];
         }];
         self.filteredLeaderboard = [self.leaderboard filteredArrayUsingPredicate:predicate];
     } else {

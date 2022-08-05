@@ -32,9 +32,6 @@ class VisualizeImpactViewController:  UIViewController, UICollectionViewDelegate
         return cell;
     }
     
-       
-    
-
     /*
     // MARK: - Navigation
 

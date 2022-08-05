@@ -25,12 +25,12 @@
 }
 
 - (void) setCell:(Shower *)s {
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.profilePic.layer.cornerRadius = self.profilePic.frame.size.height/2;
-    self.profilePic.file = [PFUser currentUser][@"profile"];
-    [self.profilePic loadInBackground];
+    [self.dataLoader getProfileImage:self.profilePic user:[self.dataLoader getCurrentUser]];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setLocalizedDateFormatFromTemplate:@"EEEE, MMM d, yyyy"];
-    self.dateLabel.text = [format stringFromDate:s.createdAt];
+    self.dateLabel.text = [format stringFromDate:[self.dataLoader getCreatedAt:s]];
     self.lengthLabel.text = [Helper formatTimeString:[[NSString stringWithFormat:@"%@", s[@"len"]] intValue]];
 }
 
