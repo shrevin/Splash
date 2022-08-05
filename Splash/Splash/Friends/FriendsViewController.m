@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property ParseDataLoaderManager *dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation FriendsViewController

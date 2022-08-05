@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredData;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
-@property id<DataLoaderProtocol> dataLoader;
+@property (readwrite, nonatomic) id<DataLoaderProtocol> dataLoader;
 @end
 
 @implementation ShowersViewController

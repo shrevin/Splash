@@ -17,7 +17,7 @@
 @interface ViewFriendsViewController () <UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *friends;
-@property ParseDataLoaderManager *dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation ViewFriendsViewController

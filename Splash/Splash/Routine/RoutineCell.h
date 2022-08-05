@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RoutineCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property id<DataLoaderProtocol> dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 - (void) setCell:(Routine *) r;
 @end
 

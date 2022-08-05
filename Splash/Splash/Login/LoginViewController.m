@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *signInButton;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UIImageView *image;
-@property id <DataLoaderProtocol> dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation LoginViewController
@@ -80,9 +80,13 @@
 #pragma mark - Logging in a user
 - (IBAction)signInButton:(id)sender {
     if ([self.usernameField.text isEqual:@""]) {
-        [Helper alertMessage:@"Missing username" message:@"Please enter a username" navigate:NO currVC:self];
+        [Helper alertMessage:@"Missing username" message:@"Please enter a username" navigate:NO completion1:^{} completion2:^(UIAlertController * _Nonnull alert) {
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
     } else if ([self.passwordField.text isEqual:@""]) {
-        [Helper alertMessage:@"Missing password" message:@"Please enter a password" navigate:NO currVC:self];
+        [Helper alertMessage:@"Missing password" message:@"Please enter a password" navigate:NO completion1:^{} completion2:^(UIAlertController * _Nonnull alert) {
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
     } else {
         [self loginUser];
     }

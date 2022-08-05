@@ -26,7 +26,7 @@
 @property (strong, nonatomic) PFUser *current;
 @property (strong, nonatomic) IBOutlet UIButton *onLBButton;
 @property (strong, nonatomic) NSArray *friends;
-@property id <DataLoaderProtocol> dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation DetailsViewController

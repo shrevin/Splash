@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) getRemainingSec: (int)secs;
 + (int) convertSecsToMin:(int)secs;
 + (NSString *) formatDate:(NSDate *)date;
-+ (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate currVC:(UIViewController *)currVC;
++ (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate completion1:(void (^)(void))completion1 completion2:(void (^)(UIAlertController *alert))completion2;
 #ifdef DEBUG
 #define DLog(...) NSLog(__VA_ARGS__)
 #else

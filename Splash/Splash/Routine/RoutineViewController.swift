@@ -92,7 +92,7 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else {
             routineCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! RoutineCell
             routineCell.layer.cornerRadius = 16
-            routineCell.backgroundColor = .systemOrange
+            routineCell.backgroundColor = UIColor(red: 0.929, green: 0.656, blue: 0.529, alpha: 1.0)
             routineCell.setCell(routineArray[indexPath.row] as! Routine);
             return routineCell;
         }

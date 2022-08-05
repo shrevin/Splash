@@ -6,7 +6,8 @@
 //
 
 #import "ImpactViewController.h"
-#import "ImpactCalculationsViewController.h"
+#import "Splash-Swift.h"
+#import "Helper.h"
 
 @interface ImpactViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *background;
@@ -26,9 +27,12 @@
     [self setUpTapGesture];
 }
 
+#pragma mark - Setting up views and tap gesture
 - (void) setUpView {
     self.waterFlowTextField.delegate = self;
     self.showersTextField.delegate = self;
+    self.waterFlowTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.showersTextField.keyboardType = UIKeyboardTypeDecimalPad;
     [self.background.layer setBorderColor: [[UIColor blackColor] CGColor]];
     [self.background.layer setBorderWidth: 0.5];
     self.background.layer.cornerRadius = 16;
@@ -42,6 +46,7 @@
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
+#pragma mark - Handling tap gesture to dismiss keybooard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.view endEditing:YES];
     return YES;
@@ -54,13 +59,26 @@
     [self.showersTextField resignFirstResponder];
 }
 
-/*
+#pragma mark - Action methods for buttons
+- (IBAction)clickCalculate:(id)sender {
+    if ([self.waterFlowTextField.text isEqualToString:@""] || [self.showersTextField.text isEqualToString:@""]) {
+        [Helper alertMessage:@"Empty fields" message:@"Please fill in all fields." navigate:NO completion1:^{} completion2:^(UIAlertController * _Nonnull alert) {
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+    } else {
+        [self performSegueWithIdentifier:@"toImpact" sender:self];
+    }
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
+    VisualizeImpactViewController *visualizeVC = [segue destinationViewController];
+    visualizeVC.waterFlow = [self.waterFlowTextField.text floatValue];
+    visualizeVC.showersPerWeek = [self.showersTextField.text floatValue];
 }
-*/
+
 
 @end

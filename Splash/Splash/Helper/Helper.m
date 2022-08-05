@@ -11,7 +11,6 @@
 @implementation Helper
 
 #pragma mark - Helper methods to get dates and times
-
 + (int) getRemainingSec: (int)secs {
     return secs - ([self convertSecsToMin:secs] * 60);
 }
@@ -33,19 +32,16 @@
 }
 
 #pragma mark - Helper method to display alerts for empty text fields
-
-+ (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate currVC:(UIViewController *) currVC{
++ (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate completion1:(void (^)(void))completion1 completion2:(void (^)(UIAlertController *alert))completion2{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
         // create an OK action
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if (navigate) {
-                [currVC.navigationController popViewControllerAnimated:YES];
+                completion1();
             }
         }];
         // add the OK action to the alert controller
         [alert addAction:okAction];
-        [currVC presentViewController:alert animated:YES completion:^{
-            
-        }];
+        completion2(alert);
 }
 @end

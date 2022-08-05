@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B2465D9289D8B14000E0CF8 /* ImpactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2465D8289D8B14000E0CF8 /* ImpactCell.swift */; };
 		7B33605428923C65002AE3FE /* ViewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605328923C65002AE3FE /* ViewFriendsViewController.m */; };
 		7B33605A28924A8D002AE3FE /* ViewFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605928924A8D002AE3FE /* ViewFriendsCell.m */; };
 		7B512D75287630F10029195A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D74287630F10029195A /* HomeViewController.m */; };
@@ -25,14 +26,12 @@
 		7B512ED5287F61E40029195A /* SpotifyAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512ED4287F61E40029195A /* SpotifyAPIManager.m */; };
 		7B512ED8287F6F1B0029195A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512ED7287F6F1B0029195A /* SettingsViewController.m */; };
 		7B512EDA287F88D30029195A /* NetworkCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B512ED9287F88D30029195A /* NetworkCalls.swift */; };
-		7B512EE02881EFE10029195A /* ImpactCalculationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */; };
 		7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EE2288616DC0029195A /* DetailsViewController.m */; };
 		7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EEB28874C640029195A /* NoMusicViewController.m */; };
 		7B512EFC288A01430029195A /* DetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512EFB288A01430029195A /* DetailsCell.m */; };
 		7B512F0A288A2A060029195A /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F09288A2A060029195A /* Helper.m */; };
 		7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F0D288A6A100029195A /* FriendsViewController.m */; };
 		7B512F11288A708A0029195A /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F10288A708A0029195A /* FriendsCell.m */; };
-		7B512F14288B16B40029195A /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F13288B16B40029195A /* ForgotPasswordViewController.m */; };
 		7B512F1B288F2E000029195A /* TimerXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B512F1A288F2E000029195A /* TimerXIB.xib */; };
 		7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512F1D288F2EA60029195A /* TimerXIBView.m */; };
 		7B512F21288F5B9C0029195A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B512F20288F5B9C0029195A /* AVFoundation.framework */; };
@@ -94,6 +93,7 @@
 		51B3B10E6785926A62617D7A /* Pods-Splash-SplashUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash-SplashUITests.debug.xcconfig"; path = "Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D494687862A51CD3767EEF9 /* Pods-Splash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash.debug.xcconfig"; path = "Target Support Files/Pods-Splash/Pods-Splash.debug.xcconfig"; sourceTree = "<group>"; };
 		6EE88852BEB7D03956D70961 /* Pods-Splash-SplashUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash-SplashUITests.release.xcconfig"; path = "Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7B2465D8289D8B14000E0CF8 /* ImpactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactCell.swift; sourceTree = "<group>"; };
 		7B33605228923C65002AE3FE /* ViewFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsViewController.h; sourceTree = "<group>"; };
 		7B33605328923C65002AE3FE /* ViewFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFriendsViewController.m; sourceTree = "<group>"; };
 		7B33605828924A8D002AE3FE /* ViewFriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsCell.h; sourceTree = "<group>"; };
@@ -127,8 +127,6 @@
 		7B512ED6287F6F1B0029195A /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		7B512ED7287F6F1B0029195A /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7B512ED9287F88D30029195A /* NetworkCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCalls.swift; sourceTree = "<group>"; };
-		7B512EDE2881EFE10029195A /* ImpactCalculationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImpactCalculationsViewController.h; sourceTree = "<group>"; };
-		7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImpactCalculationsViewController.m; sourceTree = "<group>"; };
 		7B512EE1288616DC0029195A /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		7B512EE2288616DC0029195A /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		7B512EEA28874C640029195A /* NoMusicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoMusicViewController.h; sourceTree = "<group>"; };
@@ -141,8 +139,6 @@
 		7B512F0D288A6A100029195A /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		7B512F0F288A708A0029195A /* FriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
 		7B512F10288A708A0029195A /* FriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
-		7B512F12288B16B40029195A /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
-		7B512F13288B16B40029195A /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		7B512F1A288F2E000029195A /* TimerXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerXIB.xib; sourceTree = "<group>"; };
 		7B512F1C288F2EA60029195A /* TimerXIBView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimerXIBView.h; sourceTree = "<group>"; };
 		7B512F1D288F2EA60029195A /* TimerXIBView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimerXIBView.m; sourceTree = "<group>"; };
@@ -268,8 +264,6 @@
 			children = (
 				7BE02E5E2876171D0060575C /* LoginViewController.h */,
 				7BE02E5F2876171D0060575C /* LoginViewController.m */,
-				7B512F12288B16B40029195A /* ForgotPasswordViewController.h */,
-				7B512F13288B16B40029195A /* ForgotPasswordViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -311,9 +305,8 @@
 			children = (
 				7B512D7C2876314D0029195A /* ImpactViewController.h */,
 				7B512D7D2876314D0029195A /* ImpactViewController.m */,
-				7B512EDE2881EFE10029195A /* ImpactCalculationsViewController.h */,
-				7B512EDF2881EFE10029195A /* ImpactCalculationsViewController.m */,
 				7B92523F28934DEC001C179B /* VisualizeImpactViewController.swift */,
+				7B2465D8289D8B14000E0CF8 /* ImpactCell.swift */,
 			);
 			path = Impact;
 			sourceTree = "<group>";
@@ -775,8 +768,6 @@
 				7B925250289886A6001C179B /* RoutineViewController.swift in Sources */,
 				7B512EFC288A01430029195A /* DetailsCell.m in Sources */,
 				7B512F0A288A2A060029195A /* Helper.m in Sources */,
-				7B512F14288B16B40029195A /* ForgotPasswordViewController.m in Sources */,
-				7B512EE02881EFE10029195A /* ImpactCalculationsViewController.m in Sources */,
 				7B512F11288A708A0029195A /* FriendsCell.m in Sources */,
 				7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */,
 				7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */,
@@ -785,6 +776,7 @@
 				7B9252462893A086001C179B /* SignUpViewController.m in Sources */,
 				7B512EE3288616DC0029195A /* DetailsViewController.m in Sources */,
 				7B92524D2894BD3A001C179B /* ParseDataLoaderManager.m in Sources */,
+				7B2465D9289D8B14000E0CF8 /* ImpactCell.swift in Sources */,
 				7B512D7E2876314D0029195A /* ImpactViewController.m in Sources */,
 				7B512F1E288F2EA60029195A /* TimerXIBView.m in Sources */,
 				7B512D78287631080029195A /* TimeViewController.m in Sources */,
