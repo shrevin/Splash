@@ -99,7 +99,7 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
     func scrollToNextCell(){
         //get cell size
         self.playSound()
-        let cellSize = CGSize(width: self.width * 3.18, height: self.height * 3.18);
+        let cellSize = CGSize(width: self.collectionView.contentSize.width/(CGFloat(routineArray.count) - 1.45), height: self.collectionView.contentSize.height)
         //get current content Offset of the Collection view
         let contentOffset = collectionView.contentOffset;
         //scroll to next cell
@@ -109,6 +109,7 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: - Action methods for buttons
     @IBAction func clickStart(_ sender: Any) {
         self.startButton.isHidden = true
+        self.finishButton.isHidden = false
         self.startTime = CACurrentMediaTime()
         visibleCell()
     }
@@ -116,8 +117,15 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
     @IBAction func clickFinish(_ sender: Any) {
         finish = true
         self.timer.invalidate()
+        self.finishButton.isHidden = true
+        self.startButton.isHidden = false
         let elapsedTime = CACurrentMediaTime() - self.startTime;
-        print(elapsedTime)
+        let goal = Helper.getGoalAsSeconds(dataLoader.getGoal(dataLoader.getCurrentUser()));
+        Helper.request(toSaveShower: elapsedTime, metGoal: goal - Int32(elapsedTime), goalSeconds: goal) { (alert) in
+            self.present(alert, animated: true) {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     // MARK: - Methods for playing sound
@@ -134,10 +142,6 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     
-    // MARK: - Methods for saving shower request
-    func saveShower() {
-        
-    }
     
     
     /*

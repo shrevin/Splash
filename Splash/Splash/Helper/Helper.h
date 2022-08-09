@@ -19,8 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *) formatDate:(NSDate *)date;
 + (int) getGoalAsSeconds:(NSDate *)date;
 + (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate completion1:(void (^)(void))completion1 completion2:(void (^)(UIAlertController *alert))completion2;
-+ (void) requestToSaveShower:(CFTimeInterval)elapsedTime metGoal:(int)metGoal goalSeconds:(int)goalSeconds;
-@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
++ (void) requestToSaveShower:(CFTimeInterval)elapsedTime metGoal:(int)metGoal goalSeconds:(int)goalSeconds completion:(void (^)(UIAlertController *alert))completion;
 #ifdef DEBUG
 #define DLog(...) NSLog(__VA_ARGS__)
 #else

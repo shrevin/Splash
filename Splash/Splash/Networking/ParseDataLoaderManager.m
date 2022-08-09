@@ -12,7 +12,7 @@
 
 
 #pragma mark - Sign Up
-- (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email {
+- (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email completion:(void (^)(void))completion {
     PFUser *newUser = [PFUser user];
     // set user properties
     newUser.username = username;
@@ -25,6 +25,7 @@
         } else {
             DLog(@"User registered successfully");
         }
+        completion();
     }];
 }
 

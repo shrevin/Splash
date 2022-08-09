@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DataLoaderProtocol
 
 #pragma mark - Sign Up
-- (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email;
+- (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email completion:(void (^)(void))completion;
 
 #pragma mark - Login / logout
 - (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(NSError *error))completion;
