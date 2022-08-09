@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
 @property AVAudioPlayer *player;
-@property id <DataLoaderProtocol> dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation TimerXIBView

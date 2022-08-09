@@ -15,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
 @property (strong, nonatomic) IBOutlet UILabel *invalidPasswordText;
-@property id <DataLoaderProtocol> dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation SignUpViewController
@@ -49,11 +49,17 @@
 #pragma mark - Registering a user
 - (IBAction)clickSignUp:(id)sender {
     if ([self.emailField.text isEqualToString:@""]) {
-        [Helper alertMessage:@"Missing email" message:@"Please enter an email" navigate:NO currVC:self];
+        [Helper alertMessage:@"Missing email" message:@"Please enter an email" navigate:NO completion1:^{} completion2:^(UIAlertController * _Nonnull alert) {
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
     } else if ([self.usernameField.text isEqualToString:@""]) {
-        [Helper alertMessage:@"Missing username" message:@"Please enter a username" navigate:NO currVC:self];
+        [Helper alertMessage:@"Missing username" message:@"Please enter a username" navigate:NO completion1:^{} completion2:^(UIAlertController * _Nonnull alert) {
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
     } else if ([self.passwordField.text isEqualToString:@""]) {
-        [Helper alertMessage:@"Missing password" message:@"Please enter a password" navigate:NO currVC:self];
+        [Helper alertMessage:@"Missing password" message:@"Please enter a password" navigate:NO completion1:^{} completion2:^(UIAlertController * _Nonnull alert) {
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
     } else if (![self isValidPassword:self.passwordField.text]) {
         self.invalidPasswordText.hidden = NO;
     } else {

@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet PFImageView *pic;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) PFUser *user;
-@property ParseDataLoaderManager *dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 - (void) setCell:(PFUser *)user;
 @end
 

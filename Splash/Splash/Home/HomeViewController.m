@@ -25,7 +25,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *friendsButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property id <DataLoaderProtocol> dataLoader;
+@property (readwrite, nonatomic) id <DataLoaderProtocol> dataLoader;
 @end
 
 @implementation HomeViewController
