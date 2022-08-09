@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7B2465D9289D8B14000E0CF8 /* ImpactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2465D8289D8B14000E0CF8 /* ImpactCell.swift */; };
+		7B2465DB289EBFEC000E0CF8 /* RoutineTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2465DA289EBFEC000E0CF8 /* RoutineTimerViewController.swift */; };
+		7B2465DE289EC4A4000E0CF8 /* RoutineTimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2465DD289EC4A4000E0CF8 /* RoutineTimerCell.swift */; };
+		7B2465E1289F1615000E0CF8 /* RoutineTimerXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2465E0289F1615000E0CF8 /* RoutineTimerXIB.xib */; };
+		7B2465E6289F4D59000E0CF8 /* RoutineTimerXIBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2465E5289F4D59000E0CF8 /* RoutineTimerXIBView.swift */; };
+		7B2465E828A2E1AF000E0CF8 /* nextStep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B2465E728A2E1AF000E0CF8 /* nextStep.mp3 */; };
 		7B33605428923C65002AE3FE /* ViewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605328923C65002AE3FE /* ViewFriendsViewController.m */; };
 		7B33605A28924A8D002AE3FE /* ViewFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33605928924A8D002AE3FE /* ViewFriendsCell.m */; };
 		7B512D75287630F10029195A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B512D74287630F10029195A /* HomeViewController.m */; };
@@ -94,6 +99,11 @@
 		6D494687862A51CD3767EEF9 /* Pods-Splash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash.debug.xcconfig"; path = "Target Support Files/Pods-Splash/Pods-Splash.debug.xcconfig"; sourceTree = "<group>"; };
 		6EE88852BEB7D03956D70961 /* Pods-Splash-SplashUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splash-SplashUITests.release.xcconfig"; path = "Target Support Files/Pods-Splash-SplashUITests/Pods-Splash-SplashUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7B2465D8289D8B14000E0CF8 /* ImpactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactCell.swift; sourceTree = "<group>"; };
+		7B2465DA289EBFEC000E0CF8 /* RoutineTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTimerViewController.swift; sourceTree = "<group>"; };
+		7B2465DD289EC4A4000E0CF8 /* RoutineTimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTimerCell.swift; sourceTree = "<group>"; };
+		7B2465E0289F1615000E0CF8 /* RoutineTimerXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutineTimerXIB.xib; sourceTree = "<group>"; };
+		7B2465E5289F4D59000E0CF8 /* RoutineTimerXIBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTimerXIBView.swift; sourceTree = "<group>"; };
+		7B2465E728A2E1AF000E0CF8 /* nextStep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nextStep.mp3; sourceTree = "<group>"; };
 		7B33605228923C65002AE3FE /* ViewFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsViewController.h; sourceTree = "<group>"; };
 		7B33605328923C65002AE3FE /* ViewFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFriendsViewController.m; sourceTree = "<group>"; };
 		7B33605828924A8D002AE3FE /* ViewFriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFriendsCell.h; sourceTree = "<group>"; };
@@ -233,6 +243,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7B2465DC289EC375000E0CF8 /* RoutineTimer */ = {
+			isa = PBXGroup;
+			children = (
+				7B2465DA289EBFEC000E0CF8 /* RoutineTimerViewController.swift */,
+				7B2465DD289EC4A4000E0CF8 /* RoutineTimerCell.swift */,
+			);
+			path = RoutineTimer;
+			sourceTree = "<group>";
+		};
+		7B2465DF289F14E8000E0CF8 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				7B512F1A288F2E000029195A /* TimerXIB.xib */,
+				7B512F1C288F2EA60029195A /* TimerXIBView.h */,
+				7B512F1D288F2EA60029195A /* TimerXIBView.m */,
+				7B2465E0289F1615000E0CF8 /* RoutineTimerXIB.xib */,
+				7B2465E5289F4D59000E0CF8 /* RoutineTimerXIBView.swift */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
 		7B512EC8287F49750029195A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,9 +315,6 @@
 			children = (
 				7B512D76287631080029195A /* TimeViewController.h */,
 				7B512D77287631080029195A /* TimeViewController.m */,
-				7B512F1A288F2E000029195A /* TimerXIB.xib */,
-				7B512F1C288F2EA60029195A /* TimerXIBView.h */,
-				7B512F1D288F2EA60029195A /* TimerXIBView.m */,
 			);
 			path = TimeWithMusic;
 			sourceTree = "<group>";
@@ -379,6 +407,7 @@
 				7B512F25288F5F2D0029195A /* 7.mp3 */,
 				7B512F26288F5F2D0029195A /* 8.mp3 */,
 				7B512F27288F5F2D0029195A /* overtime.mp3 */,
+				7B2465E728A2E1AF000E0CF8 /* nextStep.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -455,6 +484,8 @@
 				7B512F07288A29BE0029195A /* Helper */,
 				7B512F362890B4D30029195A /* Description */,
 				7B92524E28988686001C179B /* Routine */,
+				7B2465DC289EC375000E0CF8 /* RoutineTimer */,
+				7B2465DF289F14E8000E0CF8 /* Xib */,
 				7B512F1F288F59C00029195A /* Audio */,
 				7BE02E282876160D0060575C /* AppDelegate.h */,
 				7BE02E292876160D0060575C /* AppDelegate.m */,
@@ -616,11 +647,13 @@
 				7B512F35288F5F2D0029195A /* 1.mp3 in Resources */,
 				7B512F31288F5F2D0029195A /* 3.mp3 in Resources */,
 				7BE02E382876160E0060575C /* LaunchScreen.storyboard in Resources */,
+				7B2465E828A2E1AF000E0CF8 /* nextStep.mp3 in Resources */,
 				7B512F1B288F2E000029195A /* TimerXIB.xib in Resources */,
 				7B512F23288F5CA80029195A /* ding.mp3 in Resources */,
 				7B512F2F288F5F2D0029195A /* 8.mp3 in Resources */,
 				7B512F2D288F5F2D0029195A /* 4.mp3 in Resources */,
 				7B512F30288F5F2D0029195A /* overtime.mp3 in Resources */,
+				7B2465E1289F1615000E0CF8 /* RoutineTimerXIB.xib in Resources */,
 				7BE02E352876160E0060575C /* Assets.xcassets in Resources */,
 				7B512F33288F5F2D0029195A /* 2.mp3 in Resources */,
 				7BE02E332876160D0060575C /* Main.storyboard in Resources */,
@@ -752,6 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B2465DB289EBFEC000E0CF8 /* RoutineTimerViewController.swift in Sources */,
 				7B512D81287631660029195A /* LeaderboardViewController.m in Sources */,
 				7B512F382890B4FA0029195A /* DescriptionViewController.swift in Sources */,
 				7BE02E602876171D0060575C /* LoginViewController.m in Sources */,
@@ -768,6 +802,7 @@
 				7B925250289886A6001C179B /* RoutineViewController.swift in Sources */,
 				7B512EFC288A01430029195A /* DetailsCell.m in Sources */,
 				7B512F0A288A2A060029195A /* Helper.m in Sources */,
+				7B2465E6289F4D59000E0CF8 /* RoutineTimerXIBView.swift in Sources */,
 				7B512F11288A708A0029195A /* FriendsCell.m in Sources */,
 				7B512D7B2876312D0029195A /* ShowersViewController.m in Sources */,
 				7B512F0E288A6A100029195A /* FriendsViewController.m in Sources */,
@@ -785,6 +820,7 @@
 				7B512EB7287CE1DF0029195A /* Constants.swift in Sources */,
 				7B512EC7287E3B140029195A /* Access.m in Sources */,
 				7B512ED5287F61E40029195A /* SpotifyAPIManager.m in Sources */,
+				7B2465DE289EC4A4000E0CF8 /* RoutineTimerCell.swift in Sources */,
 				7B925258289B2FCA001C179B /* RoutineCollectionReusableView.swift in Sources */,
 				7B512EEC28874C640029195A /* NoMusicViewController.m in Sources */,
 				7B512EAF2878B24D0029195A /* ShowerCell.m in Sources */,

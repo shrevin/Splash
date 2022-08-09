@@ -213,6 +213,11 @@
     [routine deleteInBackground];
 }
 
+- (void) updateRoutineArray:(NSArray *)routineArr {
+    [PFUser currentUser][@"routineArray"] = routineArr;
+    [[PFUser currentUser] saveInBackground];
+}
+
 
 
 @end

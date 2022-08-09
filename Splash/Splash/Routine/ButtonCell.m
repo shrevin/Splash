@@ -14,4 +14,14 @@
     self.totalTimeLabel.text = label;
 }
 
+- (void) setColorOfTotal: (int) total {
+    int goal = [Helper getGoalAsSeconds:([self.dataLoader getGoal:([self.dataLoader getCurrentUser])])];
+    if (total > goal) {
+        self.totalTimeLabel.textColor = UIColor.redColor;
+    } else {
+        self.totalTimeLabel.textColor = UIColor.blackColor;
+    }
+    
+}
+
 @end

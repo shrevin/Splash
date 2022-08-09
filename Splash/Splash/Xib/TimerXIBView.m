@@ -95,7 +95,7 @@ UIAlertController *alertForShower;
     [timerDown invalidate];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
-    self.timeLabel.text = [Helper formatDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]];
+    self.timeLabel.text = [format stringFromDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]];
     currMin = startMin;
     currSec = startSec;
     self.timeLabel.textColor = [UIColor blackColor];

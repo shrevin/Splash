@@ -12,9 +12,9 @@ import AVFAudio
 class RoutineViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
    
     @IBOutlet var collectionView: UICollectionView!
+    
     var dataLoader:DataLoaderProtocol = ParseDataLoaderManager()
     var routineArray = NSMutableArray()
-    
     @IBOutlet var backgroundView: UIView!
     
     override func viewDidLoad() {
@@ -120,7 +120,7 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         let item = routineArray[sourceIndexPath.row]
         routineArray.removeObject(at: sourceIndexPath.row)
         routineArray.insert(item, at: destinationIndexPath.row)
-        
+        self.dataLoader.updateRoutineArray(routineArray as! [Any])
     }
     
     // MARK: - Helper methods for repeated functionality
@@ -129,6 +129,7 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         for routine in routineArray {
             total = total + Int(self.dataLoader.getTimeFor(routine as! Routine));
         }
+        
         return total;
     }
     
@@ -150,8 +151,7 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cellIndexPath = self.collectionView.indexPath(for: cell)
         let routine = self.routineArray[(cellIndexPath?.row)!] as! Routine
         self.dataLoader.remove(routine)
-        self.routineArray.removeObject(at: (cellIndexPath?.row)!)
-        self.collectionView.deleteItems(at: [cellIndexPath!])
+        self.getData()
     }
     
     @IBAction func clickAdd(_ sender: Any) {
@@ -209,14 +209,15 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let routineTimer = segue.destination as! RoutineTimerViewController;
+        routineTimer.routineArray = self.routineArray as! [Routine]
     }
-    */
 
 }

@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *) getTitleForRoutine: (Routine *)r;
 - (int) getTimeForRoutine: (Routine *)r;
 - (void) removeRoutine: (Routine *)routine;
-
+- (void) updateRoutineArray:(NSArray *)routineArr;
 @end
 
 NS_ASSUME_NONNULL_END
