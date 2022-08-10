@@ -52,6 +52,7 @@
         completion2(alert);
 }
 
+#pragma mark - Helper method to save shower data
 + (void) requestToSaveShower:(CFTimeInterval)elapsedTime metGoal:(int)metGoal goalSeconds:(int)goalSeconds completion:(void (^)(UIAlertController *alert))completion {
     id <DataLoaderProtocol> dataLoader = [ParseDataLoaderManager new];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Save Shower"
@@ -85,9 +86,6 @@
     // add the OK action to the alert controller
     [alert addAction:saveAction];
     completion(alert);
-//    [self.root presentViewController:alert animated:YES completion:^{
-//        // optional code for what happens after the alert controller has finished presenting
-//    }];
 }
 
 @end

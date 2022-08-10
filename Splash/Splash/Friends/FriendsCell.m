@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 
 @implementation FriendsCell
+
 -(void)setCell:(PFUser*)user {
     self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.friendName.text = [self.dataLoader getUsername:user];

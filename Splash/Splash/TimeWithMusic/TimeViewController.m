@@ -48,6 +48,7 @@ bool isPaused;
     [self.stopwatchMusicScreen updateTime];
 }
 
+#pragma mark - Setting up view and container view controller
 - (void) setUpView {
     self.songImage.layer.cornerRadius = 16;
     self.connectButton.layer.cornerRadius = 16;
@@ -74,7 +75,6 @@ bool isPaused;
 }
 
 #pragma mark - Action methods for clicking buttons and changing segment
-
 - (IBAction)tapSegment:(id)sender {
     
     if (self.segment.selectedSegmentIndex == 1) {
@@ -91,7 +91,6 @@ bool isPaused;
 }
 
 # pragma  mark - Methods for Spotify SDK
-
 - (IBAction)clickConnect:(id)sender {
     [SpotifyAPIManager shared].delegate = self;
     [[SpotifyAPIManager shared] startConnection];

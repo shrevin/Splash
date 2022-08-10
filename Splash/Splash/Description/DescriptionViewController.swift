@@ -22,6 +22,7 @@ import UIKit
         }
     }
     
+    // MARK: - Setting up the view
     func setUpView() {
         self.blueView.frame = CGRect(x: self.view.bounds.size.width/2 - 35, y: self.view.bounds.size.height/2 - 35, width: 70, height: 70)
         self.label.frame = CGRect(x: self.view.bounds.size.width/2 - 175, y: self.view.bounds.size.height/2 - 175, width: 250, height: 200)
@@ -34,11 +35,7 @@ import UIKit
         self.label.font = UIFont(name: "Gill Sans", size: 20)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // Do any additional setup after loading the view.
-        
-    }
-    
+    // MARK: - Configuring animation
     func showAnimation () {
         let animation = CABasicAnimation()
         animation.keyPath = "transform.scale"

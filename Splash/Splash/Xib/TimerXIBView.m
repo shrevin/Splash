@@ -51,6 +51,7 @@ UIAlertController *alertForShower;
     return self;
 }
 
+#pragma mark - Setting up views
 - (void) customInit {
     [[NSBundle mainBundle] loadNibNamed:@"TimerXIB" owner:self options:nil];
     [self addSubview:self.contentView];
@@ -77,6 +78,7 @@ UIAlertController *alertForShower;
     self.timeLabel.font = [UIFont systemFontOfSize:size];
 }
 
+#pragma mark - Action methods for buttons
 - (IBAction)clickStart:(id)sender {
     start = CACurrentMediaTime();
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -145,6 +147,13 @@ UIAlertController *alertForShower;
     
 }
 
+- (void) goingPastZero {
+    currSec += 1;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:currSec + (currMin*60)];
+    self.timeLabel.text = [format stringFromDate:date];
+}
+
+#pragma mark - Helper methods for playing music and sounds
 - (void) playSound:(NSString*)timeInterval sound:(NSString*)sound {
     if ([self.timeLabel.text isEqualToString:timeInterval]) {
         DLog(@"played sound");
@@ -176,10 +185,6 @@ UIAlertController *alertForShower;
     [[SpotifyAPIManager shared].appRemote.playerAPI resume:nil];
 }
 
-- (void) goingPastZero {
-    currSec += 1;
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:currSec + (currMin*60)];
-    self.timeLabel.text = [format stringFromDate:date];
-}
+
 
 @end

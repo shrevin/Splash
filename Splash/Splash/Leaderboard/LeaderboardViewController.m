@@ -42,7 +42,6 @@ const int kNumberOfRowsForLeaderboard = 1;
 }
 
 #pragma mark - Helper methods to fetch data and set up views
-
 - (void) getLeaderboardData {
     self.leaderboard = [self.dataLoader getLeaderboardData];
     self.filteredLeaderboard = self.leaderboard;
@@ -69,7 +68,6 @@ const int kNumberOfRowsForLeaderboard = 1;
 }
 
 #pragma mark - Search Bar Delegate Method
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *evaluatedObject, NSDictionary *bindings) {
@@ -83,7 +81,6 @@ const int kNumberOfRowsForLeaderboard = 1;
 }
 
 #pragma mark - Table View DataSource Methods
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView
                                            dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifierForLeaderboard];
@@ -109,7 +106,6 @@ const int kNumberOfRowsForLeaderboard = 1;
 }
 
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
@@ -118,6 +114,5 @@ const int kNumberOfRowsForLeaderboard = 1;
     LeaderboardCell *cell = sender;
     detailsVC.user = cell.user;
 }
-
 
 @end

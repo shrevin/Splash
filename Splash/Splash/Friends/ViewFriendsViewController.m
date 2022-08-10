@@ -36,14 +36,12 @@ NSArray *_rows;
 }
 
 #pragma mark - Getting friends data
-
 - (void) getFriends {
     self.friends = [self.dataLoader getFriends:[self.dataLoader getCurrentUser]];
     [self.tableView reloadData];
 }
 
 #pragma mark - Table view delegate methods
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"Cell";
     ViewFriendsCell *cell = (ViewFriendsCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -52,7 +50,6 @@ NSArray *_rows;
     [cell setCell:self.friends[indexPath.row]];
     return cell;
 }
-
 
 - (NSArray *)rightButtons
 {
@@ -63,7 +60,6 @@ NSArray *_rows;
 
     return rightUtilityButtons;
 }
-
 
 - (void)swipeableTableViewCell:(ViewFriendsCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     if (index == 0) {
@@ -76,6 +72,7 @@ NSArray *_rows;
         
     }
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.friends.count;
 }
@@ -88,7 +85,6 @@ NSArray *_rows;
 
 
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

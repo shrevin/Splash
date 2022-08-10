@@ -45,7 +45,6 @@ const int kNumberOfRowsForDetails = 1;
 }
 
 #pragma mark - Helper methods for setting up view, table view, scroll view, and fetching data from Parse
-
 - (void) setupTableView {
     self.detailsTableView.delegate = self;
     self.detailsTableView.dataSource = self;
@@ -80,7 +79,6 @@ const int kNumberOfRowsForDetails = 1;
 }
 
 #pragma mark - Helper Methods for Displaying Buttons Based on Friend Status
-
 - (void) checkIfUserEqualsCurrent {
     if ([self.current.objectId isEqual:self.user.objectId]) {
         self.addFriendButton.hidden = YES;
@@ -116,7 +114,6 @@ const int kNumberOfRowsForDetails = 1;
 }
 
 #pragma mark - Action Methods for Buttons
-
 - (IBAction)clickAdd:(id)sender {
     [self.dataLoader addFriend:self.user];
     [self checkFriends];
@@ -131,7 +128,6 @@ const int kNumberOfRowsForDetails = 1;
 }
 
 #pragma mark - Table View Delegate Methods
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView
                                            dequeueReusableHeaderFooterViewWithIdentifier:DetailsHeaderViewIdentifier];

@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,6 +21,14 @@
             <subviews>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSr-WD-kBa" customClass="CircularSlider" customModule="CircularSlider">
                     <rect key="frame" x="10" y="74" width="394" height="193"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4H-se-zTz">
+                            <rect key="frame" x="333" y="61" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="value">
                             <real key="value" value="0.0"/>
@@ -34,7 +43,6 @@
                         <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
                             <color key="value" red="0.54100000000000004" green="0.753" blue="0.875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="hideLabels" value="NO"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="YES"/>
                         <userDefinedRuntimeAttribute type="color" keyPath="pgHighlightedColor">
                             <color key="value" systemColor="systemGreenColor"/>
@@ -48,9 +56,11 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tSr-WD-kBa" secondAttribute="bottom" constant="30" id="ArT-60-bOf"/>
+                <constraint firstItem="c4H-se-zTz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="343" id="JF0-BY-ayE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tSr-WD-kBa" secondAttribute="trailing" constant="10" id="KaR-Tn-BIR"/>
                 <constraint firstItem="tSr-WD-kBa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="YX8-gE-XrH"/>
                 <constraint firstItem="tSr-WD-kBa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="lWk-9t-LL2"/>
+                <constraint firstItem="c4H-se-zTz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="91" id="szF-69-tZ9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="-90.066964285714278"/>

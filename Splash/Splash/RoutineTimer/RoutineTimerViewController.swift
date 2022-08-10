@@ -26,7 +26,7 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
     var width = 0.0
     var height = 0.0
     var player: AVAudioPlayer!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
@@ -46,6 +46,7 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.collectionViewLayout = gravitySliderLayout
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+                
         //self.collectionView.isScrollEnabled = false
     }
     
@@ -54,14 +55,9 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
         cell.layer.borderColor = UIColor.black.cgColor;
         cell.layer.borderWidth = 0.5;
         cell.layer.cornerRadius = 10;
-        
-        cell.layer.shadowColor = UIColor.white.cgColor
-        cell.layer.shadowOpacity = 0.2
-        cell.layer.shadowRadius = 20
-        cell.layer.shadowOffset = CGSize(width: 0.0, height: 30)
                 
     }
-
+    
     // MARK: - Collection view data source and delegate methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.routineArray.count;
@@ -142,8 +138,6 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     
-    
-    
     /*
     // MARK: - Navigation
 
@@ -153,5 +147,5 @@ class RoutineTimerViewController: UIViewController, UICollectionViewDelegate, UI
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

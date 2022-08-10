@@ -37,7 +37,6 @@
     [self.background.layer setBorderWidth: 0.5];
     self.background.layer.cornerRadius = 16;
     self.calculateButton.layer.cornerRadius = 8;
-    self.calculateButton.titleLabel.font = [UIFont fontWithName:@"Bradley Hand Bold" size:19];
 }
 
 - (void) setUpTapGesture {
