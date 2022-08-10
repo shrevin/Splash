@@ -11,6 +11,7 @@ target 'Splash' do
   pod 'SWTableViewCell', '~> 0.3.7'
   pod 'GravitySliderFlowLayout'
   pod 'SCLAlertView'
+  pod 'CircularSlider'
 
   target 'SplashTests' do
     inherit! :search_paths

@@ -63,9 +63,10 @@
     } else if (![self isValidPassword:self.passwordField.text]) {
         self.invalidPasswordText.hidden = NO;
     } else {
-        [self.dataLoader registerUser:self.usernameField.text password:self.passwordField.text email:self.emailField.text];
-        //[self registerUser];
-        [self performSegueWithIdentifier:@"toHome" sender:self];
+        [self.dataLoader registerUser:self.usernameField.text password:self.passwordField.text email:self.emailField.text completion:^{
+            [self performSegueWithIdentifier:@"toHome" sender:self];
+        }];
+        
     }
 }
 

@@ -82,7 +82,7 @@ class VisualizeImpactViewController:  UIViewController, UICollectionViewDelegate
             cell.layer.shadowOpacity = 0.2
             cell.layer.shadowRadius = 20
             cell.layer.shadowOffset = CGSize(width: 0.0, height: 30)
-        }
+    }
     
     func calcGalPerWeek(avg: CGFloat)->CGFloat {
         return avg * self.waterFlow * self.showersPerWeek

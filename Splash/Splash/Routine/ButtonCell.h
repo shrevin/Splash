@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property id<DataLoaderProtocol> dataLoader;
 - (void) customizeCell:(NSString *)label;
+- (void) setColorOfTotal: (int) total;
 @end
 
 NS_ASSUME_NONNULL_END

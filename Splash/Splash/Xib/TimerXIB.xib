@@ -18,7 +18,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="211"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNF-1t-50T">
@@ -28,10 +28,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zw-RU-0Yi">
-                    <rect key="frame" x="174.5" y="133" width="65" height="30"/>
+                    <rect key="frame" x="174.5" y="133" width="65" height="50"/>
                     <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="b0I-lB-pZ7"/>
+                        <constraint firstAttribute="height" constant="50" id="b0I-lB-pZ7"/>
                         <constraint firstAttribute="width" constant="65" id="cDl-rY-Mky"/>
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,10 +42,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE0-xz-Imt">
-                    <rect key="frame" x="174.5" y="133" width="65" height="30"/>
+                    <rect key="frame" x="174.5" y="133" width="65" height="50"/>
                     <color key="backgroundColor" red="0.77946764079999997" green="0.8971353259" blue="0.93381427689999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="72M-Jv-jja"/>
+                        <constraint firstAttribute="height" constant="50" id="72M-Jv-jja"/>
                         <constraint firstAttribute="width" constant="65" id="d13-ko-oAf"/>
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,15 +59,17 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QE0-xz-Imt" secondAttribute="bottom" constant="28" id="CfG-5f-2gf"/>
                 <constraint firstItem="yNF-1t-50T" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="M7g-Bc-YNg"/>
                 <constraint firstItem="QE0-xz-Imt" firstAttribute="top" secondItem="yNF-1t-50T" secondAttribute="bottom" constant="10" id="Rmc-t1-yim"/>
                 <constraint firstItem="2zw-RU-0Yi" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Toi-3x-SFC"/>
+                <constraint firstItem="yNF-1t-50T" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="YEY-IW-bdR"/>
                 <constraint firstItem="2zw-RU-0Yi" firstAttribute="top" secondItem="yNF-1t-50T" secondAttribute="bottom" constant="10" id="aEp-oT-qpc"/>
                 <constraint firstItem="QE0-xz-Imt" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="sz0-3y-U6n"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="yNF-1t-50T" secondAttribute="top" constant="33" id="tEL-4O-T1G"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="137.68115942028987" y="-147.99107142857142"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-137.61160714285714"/>
         </view>
     </objects>
     <resources>

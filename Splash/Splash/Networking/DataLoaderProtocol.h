@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DataLoaderProtocol
 
 #pragma mark - Sign Up
-- (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email;
+- (void) registerUser: (NSString *)username password:(NSString *)password email:(NSString *)email completion:(void (^)(void))completion;
 
 #pragma mark - Login / logout
 - (void) loginUser: (NSString *)username password:(NSString *)password completion:(void (^)(NSError *error))completion;
@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *) getTitleForRoutine: (Routine *)r;
 - (int) getTimeForRoutine: (Routine *)r;
 - (void) removeRoutine: (Routine *)routine;
-
+- (void) updateRoutineArray:(NSArray *)routineArr;
 @end
 
 NS_ASSUME_NONNULL_END

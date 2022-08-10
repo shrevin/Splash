@@ -95,7 +95,7 @@ UIAlertController *alertForShower;
     [timerDown invalidate];
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
-    self.timeLabel.text = [Helper formatDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]];
+    self.timeLabel.text = [format stringFromDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]];
     currMin = startMin;
     currSec = startSec;
     self.timeLabel.textColor = [UIColor blackColor];
@@ -105,7 +105,11 @@ UIAlertController *alertForShower;
     DLog([NSString stringWithFormat:@"%i",goalSeconds]);
     int metGoal = goalSeconds - roundf(elapsedTime);
     DLog([NSString stringWithFormat:@"%i",metGoal]);
-    [self requestToSaveShower:elapsedTime metGoal:metGoal goalSeconds:goalSeconds];
+    [Helper requestToSaveShower:elapsedTime metGoal:metGoal goalSeconds:goalSeconds completion:^(UIAlertController * _Nonnull alert) {
+        [self.root presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+    }];
 }
 
 #pragma mark - Helper Methods to Format Dates and Timer
@@ -176,42 +180,6 @@ UIAlertController *alertForShower;
     currSec += 1;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:currSec + (currMin*60)];
     self.timeLabel.text = [format stringFromDate:date];
-}
-
-- (void) requestToSaveShower:(CFTimeInterval)elapsedTime metGoal:(int)metGoal goalSeconds:(int)goalSeconds {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Save Shower"
-                                                                               message:[@"Time: " stringByAppendingString:[Helper formatTimeString:roundf(elapsedTime)]]
-                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) { // handle cancel response here. Doing nothing will dismiss the view.
-    }];
-    [alert addAction:cancelAction];
-    // create an OK action
-    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
-        [self.dataLoader postShower:@(roundf(elapsedTime)) met:@(metGoal) g:@(goalSeconds) completion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (error == nil) {
-                DLog(@"SUCCESSFULLY SAVED SHOWER");
-                if (metGoal >= 0) {
-                    [self.dataLoader updateBubblescore:[self.dataLoader getCurrentUser] newScore:[self.dataLoader getBubblescore:[self.dataLoader getCurrentUser]] + 1];
-                    [self.dataLoader updateStreak:[self.dataLoader getCurrentUser] newStreak:[self.dataLoader getStreak:[self.dataLoader getCurrentUser]] + 1];
-                } else {
-                    [self.dataLoader updateStreak:[self.dataLoader getCurrentUser] newStreak:0];
-                }
-                int newTime = [self.dataLoader getTotalShowerTime:[self.dataLoader getCurrentUser]] + roundf(elapsedTime);
-                [self.dataLoader updateTotalShowerTime:[self.dataLoader getCurrentUser] newTime:newTime];
-                int numShowers = [self.dataLoader getNumShowers:[self.dataLoader getCurrentUser]];
-                [self.dataLoader updateNumShowers:[self.dataLoader getCurrentUser] newNum:numShowers + 1];
-            } else {
-                DLog(@"did not save shower");
-            }
-        }];
-        
-    }];
-    // add the OK action to the alert controller
-    [alert addAction:saveAction];
-    [self.root presentViewController:alert animated:YES completion:^{
-        // optional code for what happens after the alert controller has finished presenting
-    }];
 }
 
 @end
