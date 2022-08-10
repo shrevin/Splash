@@ -36,6 +36,7 @@ const int kNumberOfRowsForShowers = 1;
     [self setUpTapGesture];
 }
 
+# pragma  mark - Methods for setting up table view and tap gesture
 - (void) setUpTableView {
     self.showersTableView.delegate = self;
     self.showersTableView.dataSource = self;
@@ -55,6 +56,13 @@ const int kNumberOfRowsForShowers = 1;
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
+- (void) dismissKeyboard
+{
+    //Code to handle the gesture
+    [self.searchBar resignFirstResponder];
+}
+
+# pragma  mark - Methods for getting data
 -(void) getData {
     self.showersArray = [[NSMutableArray alloc] init];
     [self.dataLoader getShowerData:^(NSMutableArray * arr) {
@@ -65,12 +73,7 @@ const int kNumberOfRowsForShowers = 1;
     [self.refreshControl endRefreshing];
 }
 
-- (void) dismissKeyboard
-{
-    //Code to handle the gesture
-    [self.searchBar resignFirstResponder];
-}
-
+# pragma  mark - Table view data source and delegate methods
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifierForShowers];
     return header;
@@ -94,7 +97,7 @@ const int kNumberOfRowsForShowers = 1;
     return cell;
 }
 
-// called when text changes (including clear)
+# pragma  mark - Methods for setting up the search bar
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Shower *evaluatedShower, NSDictionary *bindings) {

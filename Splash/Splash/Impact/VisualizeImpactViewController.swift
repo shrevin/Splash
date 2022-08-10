@@ -29,7 +29,6 @@ class VisualizeImpactViewController:  UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
         self.setUpCollectionView()
         self.getData()
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - Methods for setting up collection view and getting data

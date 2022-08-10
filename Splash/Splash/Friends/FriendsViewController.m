@@ -40,7 +40,6 @@
 }
 
 #pragma mark - Setting up views
-
 - (void) setUpCollectionView {
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -55,7 +54,6 @@
 }
 
 #pragma mark - Getting data
-
 - (void) populateFriendsId {
     self.friendsIds = [[NSMutableArray alloc]init];
     NSArray *friendsList = [self.dataLoader getFriends:[PFUser currentUser]];
@@ -70,7 +68,6 @@
 }
 
 #pragma mark - Handing tap gesture for dismissing keyboard
-
 - (void) dismissKeyboard
 {
     //Code to handle the gesture
@@ -78,7 +75,6 @@
 }
 
 #pragma mark - UISearchBarDelegate
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(PFUser *evaluatedObject, NSDictionary *bindings) {
@@ -93,7 +89,6 @@
 }
 
 #pragma mark - UICollectionViewDataSource
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.possibleFriendsFiltered.count;
 }
@@ -108,14 +103,12 @@
 
 
 #pragma mark - UICollectionViewDelegateFlowLayout
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.collectionView.window.bounds.size.width/2 - 30, self.collectionView.window.bounds.size.height/3);
 }
 
 
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

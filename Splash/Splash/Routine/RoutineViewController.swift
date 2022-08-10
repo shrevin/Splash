@@ -108,7 +108,6 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         return CGSize(width: view.frame.size.width - 30, height: view.frame.size.height / 5)
     }
     
-    // Re-order functions
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         if (indexPath.row != self.routineArray.count) {
             return true
@@ -207,11 +206,7 @@ class RoutineViewController: UIViewController, UICollectionViewDelegate, UIColle
         _ = alert.showInfo("Add Step to Routine", subTitle: "Enter a title and the time you want this step of your shower to take", timeout: SCLAlertView.SCLTimeoutConfiguration(timeoutValue: timeoutValue, timeoutAction: timeoutAction))
     }
     
-    
-
-    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

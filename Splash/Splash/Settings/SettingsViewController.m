@@ -43,7 +43,6 @@ const int kNumberOfSeconds = 60;
 
 
 #pragma mark - UIPickerView Delegate and DataSource Methods
-
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return kNumberOfRowsForSettings;
 }
@@ -66,7 +65,6 @@ const int kNumberOfSeconds = 60;
 }
 
 #pragma mark - Action Methods for Buttons
-
 - (IBAction)clickUpdate:(id)sender {
     int minutes = [self.minPicker selectedRowInComponent:0] + 2;
     int seconds = [self.secPicker selectedRowInComponent:0];
@@ -80,7 +78,6 @@ const int kNumberOfSeconds = 60;
     } completion2:^(UIAlertController * _Nonnull alert) {
         [self presentViewController:alert animated:YES completion:nil];
     }];
-
 }
 
 /*

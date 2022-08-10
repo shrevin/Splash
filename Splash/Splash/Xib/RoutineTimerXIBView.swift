@@ -17,7 +17,6 @@ class RoutineTimerXIBView: UIView, CircularSliderDelegate {
     var value = Float()
     var timer = Timer()
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customInit()

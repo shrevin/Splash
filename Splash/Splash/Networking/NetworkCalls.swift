@@ -8,10 +8,6 @@
 import Foundation
 @objc class NetworkCalls: NSObject {
 
-    @objc func hi() -> Void {
-        print("hi");
-    }
-    
     private var lastPlayerState: SPTAppRemotePlayerState?
     
     // method to get access token to access Spotify's appRemote

@@ -44,7 +44,6 @@
 }
 
 #pragma mark - SPTSessionManagerDelegate
-
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
 {
     DLog(@"success: %@", session);
