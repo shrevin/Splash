@@ -55,9 +55,7 @@ NSArray *_rows;
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-    [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                title:@"Delete"];
-
+    [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] title:@"Delete"];
     return rightUtilityButtons;
 }
 
@@ -67,9 +65,7 @@ NSArray *_rows;
         NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
         [self.dataLoader removeFriend:cell.user];
         [self.friends removeObjectAtIndex:cellIndexPath.row];
-        [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath]
-                            withRowAnimation:UITableViewRowAnimationAutomatic];
-        
+        [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -82,7 +78,6 @@ NSArray *_rows;
     ViewFriendsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"toDetails" sender:cell];
 }
-
 
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation

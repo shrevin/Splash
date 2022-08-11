@@ -29,7 +29,6 @@ const int kNumberOfRowsForLeaderboard = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     [self getLeaderboardData];
     [self setUpTableView];
     [self setUpTapGesture];
@@ -43,6 +42,7 @@ const int kNumberOfRowsForLeaderboard = 1;
 
 #pragma mark - Helper methods to fetch data and set up views
 - (void) getLeaderboardData {
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.leaderboard = [self.dataLoader getLeaderboardData];
     self.filteredLeaderboard = self.leaderboard;
     [self.refreshControl endRefreshing];

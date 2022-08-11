@@ -29,9 +29,8 @@ const int kNumberOfRowsForShowers = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     // Do any additional setup after loading the view.
-    [self getData];
+    [self getShowerData];
     [self setUpTableView];
     [self setUpTapGesture];
 }
@@ -63,7 +62,8 @@ const int kNumberOfRowsForShowers = 1;
 }
 
 # pragma  mark - Methods for getting data
--(void) getData {
+-(void) getShowerData {
+    self.dataLoader = [[ParseDataLoaderManager alloc] init];
     self.showersArray = [[NSMutableArray alloc] init];
     [self.dataLoader getShowerData:^(NSMutableArray * arr) {
         self.showersArray = arr;

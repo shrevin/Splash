@@ -35,7 +35,6 @@ bool isPaused;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.stopwatchMusicScreen.root = self;
     [self setUpView];
     [self setUpContainerVC];
 }
@@ -50,6 +49,7 @@ bool isPaused;
 
 #pragma mark - Setting up view and container view controller
 - (void) setUpView {
+    self.stopwatchMusicScreen.root = self;
     self.songImage.layer.cornerRadius = 16;
     self.connectButton.layer.cornerRadius = 16;
     self.connectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;

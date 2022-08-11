@@ -21,7 +21,6 @@
     } else {
         self.totalTimeLabel.textColor = UIColor.blackColor;
     }
-    
 }
 
 @end

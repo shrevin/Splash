@@ -15,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *waterFlowTextField;
 @property (strong, nonatomic) IBOutlet UITextField *showersTextField;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
-
 @end
 
 @implementation ImpactViewController

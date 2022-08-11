@@ -1178,7 +1178,6 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.54100000000000004" green="0.753" blue="0.875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstItem="BUA-C8-gHx" firstAttribute="leading" secondItem="74o-pk-kcO" secondAttribute="leading" constant="31" id="8cR-Vo-kll"/>
                                                         <constraint firstItem="yrt-Gx-XNA" firstAttribute="leading" secondItem="BUA-C8-gHx" secondAttribute="trailing" constant="4" id="V8A-oa-rJe"/>
@@ -1192,6 +1191,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="BUA-C8-gHx" secondAttribute="bottom" constant="25" id="xwS-q5-Pay"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.5411764979" green="0.75294119120000003" blue="0.87450981139999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <connections>
                                                     <outlet property="typeLabel" destination="BUA-C8-gHx" id="28I-A0-equ"/>
                                                     <outlet property="valueLabel" destination="yrt-Gx-XNA" id="UTn-XD-0DP"/>
@@ -1839,7 +1839,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="IYe-qP-e5K"/>
         <segue reference="3mj-IN-Sf2"/>
-        <segue reference="qRs-0e-3Ba"/>
+        <segue reference="3gv-oc-JGE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="40" height="40"/>

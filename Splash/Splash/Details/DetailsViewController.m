@@ -127,7 +127,7 @@ const int kNumberOfRowsForDetails = 1;
 - (IBAction)clickChallenge:(id)sender {
 }
 
-#pragma mark - Table View Delegate Methods
+#pragma mark - Table View Data Source and Delegate Methods
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView
                                            dequeueReusableHeaderFooterViewWithIdentifier:DetailsHeaderViewIdentifier];

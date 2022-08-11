@@ -37,6 +37,7 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpView];
+    [self setUpTableView];
     [self configureChangeProfilePicButton];
 }
 
@@ -59,12 +60,15 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
 - (void) setUpView {
     self.dataLoader = [[ParseDataLoaderManager alloc]init];
     self.scoreNames = @[@"💪 Goal: ", @"🧼 Bubblescore: ", @"🔥 Streak: ", @"⏳ Avg. Shower Time: ", @"🕜 Total Shower Time: ", @"🚿 Number of Showers: "];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     self.usernameLabel.text = [self.dataLoader getUsername:[self.dataLoader getCurrentUser]];
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.friendsButton.layer.cornerRadius = 16;
     [self.dataLoader getProfileImage:self.profileImage user:[PFUser currentUser]];
+}
+
+- (void) setUpTableView {
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
     self.tableView.sectionHeaderTopPadding = 0;
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.tableView.bounds.size.height/2);
@@ -85,8 +89,7 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
 
 #pragma mark - Table View Delegate and Data Source Methods
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = [tableView
-                                           dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderViewIdentifier];
     return header;
 }
 
@@ -96,9 +99,6 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StatsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myStatsCell"];
-    if (indexPath.section % 2) {
-        [cell setBackgroundColor:[UIColor blackColor]];
-    }
     NSString *name = self.scoreNames[indexPath.section];
     if (indexPath.section == 0) {
         [cell setCell:name value:[Helper formatDate:[self.dataLoader getGoal:[self.dataLoader getCurrentUser]]]];
@@ -118,6 +118,14 @@ NSArray *descriptions = @[@"The time ranging from 2 minutes to 8 minutes that yo
     }
     cell.layer.cornerRadius = 25;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    StatsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIView *bgColorView = [[UIView alloc] init];
+    [bgColorView setBackgroundColor:[UIColor lightGrayColor]];
+    bgColorView.layer.cornerRadius = 25;
+    [cell setSelectedBackgroundView:bgColorView];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
