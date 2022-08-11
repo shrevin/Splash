@@ -70,23 +70,6 @@
     }
 }
 
-- (void)registerUser {
-    // initialize a user object
-    PFUser *newUser = [PFUser user];
-    // set user properties
-    newUser.username = self.usernameField.text;
-    newUser.password = self.passwordField.text;
-    newUser.email = self.emailField.text;
-    // call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            DLog(@"Error: %@", error.localizedDescription);
-        } else {
-            DLog(@"User registered successfully");
-        }
-    }];
-}
-
 #pragma mark - Configuring tap gesture to dismiss keyboard
 - (void) dismissKeyboard
 {

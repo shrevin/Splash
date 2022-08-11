@@ -42,14 +42,14 @@
 + (void) alertMessage:(NSString*) title message:(NSString*) message navigate:(BOOL)navigate completion1:(void (^)(void))completion1 completion2:(void (^)(UIAlertController *alert))completion2{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
         // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            if (navigate) {
-                completion1();
-            }
-        }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        completion2(alert);
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (navigate) {
+            completion1();
+        }
+    }];
+    // add the OK action to the alert controller
+    [alert addAction:okAction];
+    completion2(alert);
 }
 
 #pragma mark - Helper method to save shower data

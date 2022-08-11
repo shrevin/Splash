@@ -30,13 +30,13 @@
     self.dataLoader = [[ParseDataLoaderManager alloc] init];
     [self setUpCollectionView];
     [self populateFriendsId];
-    [self getData];
+    [self getFriendsData];
     [self setUpTapGesture];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [self populateFriendsId];
-    [self getData];
+    [self getFriendsData];
 }
 
 #pragma mark - Setting up views
@@ -61,7 +61,7 @@
         [self.friendsIds addObject:user.objectId];
     }
 }
-- (void) getData {
+- (void) getFriendsData {
     self.possibleFriends = [self.dataLoader getPossibleNewFriends:self.friendsIds];
     self.possibleFriendsFiltered = self.possibleFriends;
     [self.collectionView reloadData];
