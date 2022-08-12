@@ -106,7 +106,6 @@ Showerify is an app that gamifies saving water where users improve their shower 
     * -> Details Screen (for each person)
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
 ![](https://i.imgur.com/lU3L7lv.jpg)
 
 ### [BONUS] Digital Wireframes & Mockups
@@ -115,7 +114,9 @@ LINK TO FIGMA:
 https://www.figma.com/file/UCKmBN8lOQ5Od3bav4RI8Q/Shower-App-Final?node-id=0%3A1
 
 ### [BONUS] Interactive Prototype
-
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=w-p7pZcHnSA
+" target="_blank"><img src="http://img.youtube.com/vi/w-p7pZcHnSA/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ## Schema 
 ### Models
