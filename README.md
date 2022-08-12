@@ -49,10 +49,10 @@ Showerify is an app that gamifies saving water where users improve their shower 
 
 - [x] Users can connect with other friends 
 - [x] Users can the profiles of other friends
-* Users can schedule shower races with friends
+- [ ] Users can schedule shower races with friends
 - [x] Users can personalize a routine and time their routine in the shower
 - [x] Users can hear voice countdowns
-* Users can see a calendar of all the dates that the user met their goal in green
+- [ ] Users can see a calendar of all the dates that the user met their goal in green
 
 
 ### 2. Screen Archetypes
